@@ -1,0 +1,533 @@
+@charset "utf-8";
+
+{margin: 0;
+padding:0;
+}
+li {
+	list-style: none;
+}
+
+body {
+	font-family: "微软雅黑";
+	background: #eeeeee;
+}
+
+a {
+	color: #333;
+}
+
+.row {
+	width: 960px;
+	margin: 20px auto;
+	position: Relative;
+	background: white;
+	-webkit-box-shadow: 0 0px 20px 3px #bcdccd;
+	-moz-box-shadow: 0 0px 20px 3px #bcdccd;
+	box-shadow: 0 0px 20px 3px #bcdccd;
+}
+
+.color-red {
+	color: red;
+}
+
+.tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+
+.content {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.add {
+	color: #3c8dbc;
+}
+
+.main {
+	width: 900px;
+	margin: 0 auto;
+}
+
+.main h3 {
+	width: 100%;
+	height: 70px;
+	line-height: 70px;
+	font-family: "微软雅黑";
+}
+
+.form-line {
+	margin: 25px auto 10px 0;
+}
+
+.form-inline .line-input {
+	width: 290px;
+	height: 40px;
+	padding: 0;
+	border: lightblue 1px solid;
+	border-radius: 5px;
+	outline: none;
+	color: lightslategray;
+	text-indent: 5px;
+	display: inline-block;
+	font-size: 14px;
+	margin-left: 10px;
+}
+
+.form-group {
+	margin-top: 20px;
+}
+
+.lable {
+	float: left;
+	width: 220px;
+}
+
+select {
+	width: 220px;
+	height: 40px;
+	border: lightblue 1px solid;
+	border-radius: 5px;
+	outline: none;
+	color: lightslategray;
+	text-indent: 5px;
+	font-weight: 500;
+	display: inline-block;
+	font-size: 14px;
+	padding: 1px 0;
+	margin-left: 8px;
+}
+
+select {
+	width: 290px;
+}
+
+.form-a {
+	display: inline-block;
+	color: black;
+	width: 80px;
+	font-size: 18px;
+	text-align: left;
+}
+
+.line-input:focus {
+	border-color: lightskyblue;
+}
+
+.btn-size {
+	width: 80px;
+	height: 40px;
+	background: #6db921;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	outline: none;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	font-weight: 500;
+}
+
+input[type=checkbox] {
+	vertical-align: middle;
+}
+
+#hr {
+	width: 800px;
+	color: white;
+	margin-bottom: 20px;
+	border-bottom: 2px dashed lightgrey;
+}
+
+.clearfix {
+	content: '';
+	clear: both;
+	display: block;
+}
+
+.form-group .fontCol {
+	font-size: 16px;
+	font-weight: 700;
+	color: rgb(98, 98, 98)
+}
+
+.mag label {
+	width: 100px;
+	text-align: right;
+}
+
+.sureOrder input {
+	width: 275px;
+	height: 54px;
+	line-height: 54px;
+	background-color: #f1793D;
+	color: #FFFFFF;
+	outline: none;
+	border: none;
+	margin-top: 90px;
+	border-radius: 5px;
+}
+
+.btn-size {
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+	font-family: 微软雅黑;
+	font-weight: 500;
+	background: rgb(0, 166, 90);
+	border-width: initial;
+	border-style: none;
+	border-color: initial;
+	border-image: initial;
+	border-radius: 4px;
+	outline: none;
+}
+
+.btn-size a {
+	color: #FFFFFF;
+}
+
+.venueBtn {
+	float: right;
+}
+
+.checkList table th {
+	text-align: left;
+}
+
+.checkList table th:last-of-type {
+	text-align: right;
+}
+
+.checkList table td {
+	text-align: left;
+}
+
+.checkList table tr td:last-of-type {
+	text-align: right;
+}
+
+.checkList .check {
+	margin: 0 20px;
+}
+
+.venueContent label {
+	width: 110px;
+	text-align: right;
+}
+
+.btn:hover {
+	color: #FFFFFF;
+}
+
+.marginBottom {
+	margin-bottom: 200px;
+}
+
+.marginTop {
+	margin-top: 30px;
+}
+
+.fr {
+	float: right;
+	cursor: pointer;
+}
+
+.tip-img {
+	height: 202px;
+	width: 78px;
+	background-image: url(../app/img/content-side-bg.png);
+}
+
+.tip-img p {
+	width: 15px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+
+/*餐厅信息管理页面*/
+.RInfoManage .tip-img{
+	height: 260px;
+	width: 78px;
+	background-image: url(../app/img/side.png);
+}
+.RInfoManage .tip-img p {
+	font-size: 20px;
+	line-height: 30px;
+}
+.RInfoManage .form-control {
+	border-radius:5px;
+	border: lightblue 1px solid;
+}
+.RInfoManage .RestaurantCheck .form-control {
+	width: 420px;
+	height: 40px;
+	margin-right: 20px;
+	border-radius:5px;
+	
+}
+
+.RInfoManageAdd {
+	color: #3c8dbc;
+	font-size: 24px;
+}
+
+.RInfoManage .RestaurantCheck {
+	height: 40px;
+	line-height: 40px;
+}
+
+.RestaurantIntro {
+	width: 200px;
+}
+
+.input-group-addon .RInfoManageBtn {
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+	outline: none;
+	border: none;
+	width: 100px;
+	border: lightblue 1px solid;
+	color: #fff;
+	background-color: #00A65A;
+	margin-left: 20px;
+}
+
+.lHeight {
+	height: 60px;
+	line-height: 80px;
+}
+
+.input-group-addon {
+	padding: 0;
+	border: 0;
+}
+/*餐厅信息添加*/
+.RInfoAdd label {
+	width: 60px;
+	text-align: right;
+}
+
+.RInfoAdd .tip-img {
+	height: 260px;
+	width: 78px;
+	background-image: url(../app/img/side.png);
+}
+.RInfoAdd .tip-img p {
+	line-height:30px;
+	font-size:20px;
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	margin-top: 40px;
+}
+#ScenicSpot .tip-img{
+	height: 260px;
+	width: 78px;
+	background-image: url(../app/img/side.png)
+}
+/* #ScenicSpo .tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 22px;
+	margin-top: 40px;
+} */
+.RInfoAdd .form-control {
+	width: 290px;
+	display: inline-block;
+	height: 40px;
+/* 	line-height: 40px; */
+	border-radius: 5px;
+	border: lightblue 1px solid;
+}
+
+.RInfoAdd .form-control:focus {
+	border-color: lightskyblue;
+	display: inlin-block;
+}
+
+.RInfoAdd .help-block {
+	margin-left: 61%;
+}
+
+.help-block {
+	margin-left: 30%;
+}
+
+.RInfoAdd  .form-horizontal .has-feedback .form-control-feedback {
+	top: 4px;
+	right: 80px;
+}
+/*景点信息添加*/
+.ScenicSpotAdd .tip-img {
+	height: 260px;
+	width: 78px;
+	background-image: url(../app/img/side.png);
+}
+
+.ScenicSpotAdd .tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	line-height: 30px;
+	font-size: 20px;
+	margin-top: 40px;
+}
+
+.ScenicSpotAdd label {
+	width: 100px;
+	text-align: right;
+}
+
+.ScenicSpotAdd .form-inline input {
+	width: 290px;
+}
+/*景点信息管理*/
+.ScenicSpotAdm .tip-img p {
+	line-height: 22px;
+	font-size: 18px;
+}
+
+.ScenicSpotAdm.RestaurantCheck .form-control {
+	width: 420px;
+	height: 40px;
+}
+/*积分管理*/
+.IntegralManage .check {
+	margin-right: 0;
+}
+/*角色管理*/
+/*员工管理*/
+.common label {
+	width: 100px;
+	text-align: right;
+}
+
+.common .tip-img {
+	height: 202px;
+	width: 78px;
+	background-image: url(../app/img/content-side-bg.png);
+}
+
+.common .tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+/*证件类型管理*/
+.DocumentType .tip-img {
+	height: 260px;
+	width: 78px;
+	background-image: url(../app/img/side.png);
+}
+.DocumentType .tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+/*景点信息更新*/
+.ScenicSpotUpdate .tip-img {
+	height: 260px;
+	width: 78px;
+	background-image: url(../app/img/side.png) !important;
+}
+
+.ScenicSpotUpdate .tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+
+.ScenicSpotUpdate label {
+	width: 100px;
+	text-align: right;
+}
+/*登录参数*/
+.logonParameter label {
+	width: 130px;
+}
+
+.logonParameter .forlabel {
+	width: 130px;
+}
+
+.logonParameter .tip-img p {
+	font-size: 17px;
+	line-height: 23px;
+}
+/*员工添加*/
+.roleContent {
+	margin: 20px 0 0;
+}
+
+.roleContent .roleList {
+	width: 80%;
+	margin-left: 10%;
+}
+
+.listBox {
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid lightblue;
+	width: 100%;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.listBox span {
+	height: 40px;
+	line-height: 40px;
+}
+
+.listBox .listBoxLeft {
+	line-height: 30px;
+	border-right: 1px solid lightblue;
+	display: block;
+	width: 50px;
+}
+
+.roleList {
+	margin-bottom: 10px;
+}
+
+.staffAdd .marginBottom {
+	margin-bottom: 50px;
+}
+
+.staffAdd .radio-inline {
+	font-weight: 700;
+}
+
+.staffAdd .cardNumWidth {
+	width: 220px;
+}
+
+.readStaffCard {
+	background-color: rgb(0, 166, 90);
+	color: #fff;
+	height: 40px;
+	margin-left: 5px;
+	width: 64px;
+}
+
+.readStaffCard:hover {
+	color: #fff;
+	background-color: rgb(0, 166, 90);
+	border: none;
+	outline: none;
+}

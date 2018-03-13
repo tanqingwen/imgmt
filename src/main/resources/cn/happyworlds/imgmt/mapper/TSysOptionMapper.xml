@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.TSysOptionMapper">
+
+    <sql id="TSysOptionBaseColumnSql">
+        id,
+        <!-- mm_id, -->
+        data,
+        remark,
+        updatedAt,
+        updatedBy
+    </sql>
+
+    <sql id="TSysOptionBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.id)">
+                    id = #{map.id}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmId)">
+                    AND mm_id = #{map.mmId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.data)">
+                    AND data = #{map.data}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.remark)">
+                    AND remark = #{map.remark}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.updatedAt)">
+                    AND updatedAt = #{map.updatedAt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.updatedBy)">
+                    AND updatedBy = #{map.updatedBy}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertTSysOption" parameterType="cn.happyworlds.imgmt.entity.TSysOption">
+        INSERT INTO t_sys_option(
+        <include refid="TSysOptionBaseColumnSql"/>
+        )VALUES(
+            #{id},
+            #{mmId},
+            #{data},
+            #{remark},
+            #{updatedAt},
+            #{updatedBy}
+        )
+    </insert>
+
+    
+    <delete id="deleteTSysOptionById" parameterType="String">
+        DELETE FROM t_sys_option WHERE id = #{id}
+    </delete>
+
+    <update id="updateTSysOption" parameterType="cn.happyworlds.imgmt.entity.TSysOption">
+        UPDATE t_sys_option
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmId)">
+                mm_id = #{mmId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(data)">
+                data = #{data} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(remark)">
+                remark = #{remark} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(updatedAt)">
+                updatedAt = #{updatedAt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(updatedBy)">
+                updatedBy = #{updatedBy} ,
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="searchTSysOptionById" parameterType="String" resultMap="TSysOptionMap">
+        SELECT
+        <include refid="TSysOptionBaseColumnSql"/>
+        FROM t_sys_option
+        WHERE id = #{id}
+    </select>
+
+    <select id="searchTSysOptionByParams" parameterType="map" resultMap="TSysOptionMap">
+        SELECT
+        <include refid="TSysOptionBaseColumnSql"/>
+        FROM t_sys_option
+        <include refid="TSysOptionBaseWhereSql"/>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.TSysOption" id="TSysOptionMap">
+        <id column="id" property="id"/>
+        <result column="mm_id" property="mmId"/>
+        <result column="data" property="data"/>
+        <result column="remark" property="remark"/>
+        <result column="updatedAt" property="updatedAt"/>
+        <result column="updatedBy" property="updatedBy"/>
+    </resultMap>
+
+</mapper>

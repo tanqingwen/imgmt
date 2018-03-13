@@ -1,0 +1,1745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpCopmstMapper">
+
+    <sql id="cpCopmstBaseColumnSql">
+        co_corporate_id,
+        co_bill_cardholder_no,
+        co_serv_cntr_code,
+        co_microfilm_no,
+        co_company_name,
+        co_emboss_name,
+        co_registration_date,
+        co_paidup_capital,
+        co_collateral_amt,
+        co_sic,
+        co_financial_yr_end,
+        co_diff_card_fc_ind,
+        co_reward_prg_ind,
+        co_reg_add_line1,
+        co_reg_add_line2,
+        co_reg_add_line3,
+        co_reg_add_line4,
+        co_reg_add_line5,
+        co_reg_city,
+        co_reg_state,
+        co_reg_cntry_cd,
+        co_reg_add_postcode,
+        co_reg_add_tel,
+        co_reg_add_fax,
+        co_opr_add_line1,
+        co_opr_add_line2,
+        co_opr_add_line3,
+        co_opr_add_line4,
+        co_opr_add_line5,
+        co_opr_city,
+        co_opr_state,
+        co_opr_cntry_cd,
+        co_opr_add_postcode,
+        co_opr_add_tel,
+        co_opr_add_fax,
+        co_mail_add_line1,
+        co_mail_add_line2,
+        co_mail_add_line3,
+        co_mail_add_line4,
+        co_mail_add_line5,
+        co_mail_city,
+        co_mail_state,
+        co_mail_cntry_cd,
+        co_mail_add_postcode,
+        co_mail_add_tel,
+        co_mail_add_fax,
+        co_parent_company,
+        co_par_add_line1,
+        co_par_add_line2,
+        co_par_add_line3,
+        co_par_add_line4,
+        co_par_add_line5,
+        co_par_city,
+        co_par_state,
+        co_par_cntry_cd,
+        co_par_add_postcode,
+        co_par_add_tel,
+        co_par_add_fax,
+        co_main_banker,
+        co_mainbk_add_line1,
+        co_mainbk_add_line2,
+        co_mainbk_add_line3,
+        co_mainbk_add_line4,
+        co_mainbk_add_line5,
+        co_mainbk_city,
+        co_mainbk_state,
+        co_mainbk_cntry_cd,
+        co_mainbk_add_postcode,
+        co_mainbk_add_tel,
+        co_mainbk_add_fax,
+        co_mainbk_acc_no,
+        co_auth_signatory_name,
+        co_auth_sign_desgn,
+        co_auth_sign_nric_no,
+        co_auth_sign_tel,
+        co_auth_sign_mobile,
+        co_auth_sign_pager,
+        co_card_prodct_code,
+        co_lcl_credit_lmt,
+        co_frgn_credit_lmt,
+        co_billing_cycle,
+        co_monitor_code,
+        co_pay_indicator,
+        co_autopay_ind,
+        co_autopay_bank_branch,
+        co_autopay_bank_acc_no,
+        co_autopay_bank_acc_name,
+        co_frgn_autopay_ind,
+        co_autopay_for_bank_branch,
+        co_autopay_for_bank_acc_no,
+        co_autopay_for_bank_acc_name,
+        co_status_code,
+        co_join_fee,
+        co_annual_acc_serv_chg,
+        co_age_code_val,
+        co_voice_ind,
+        co_online_ind,
+        co_rtnchq_cnt,
+        co_rtnchq_prd,
+        co_rtnchq_voice_ind,
+        co_rtnchq_online_ind,
+        co_anniversary_date,
+        co_suspend_date,
+        co_bankruptcy_date,
+        co_cancellation_date,
+        co_canx_legal_date,
+        co_canx_fraud_date,
+        co_reserved_woff_date,
+        co_reinstatement_date,
+        co_last_maintn_date,
+        co_last_mod_user,
+        checksum
+    </sql>
+
+    <sql id="cpCopmstBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCorporateId)">
+                    co_corporate_id = #{map.coCorporateId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coBillCardholderNo)">
+                    AND co_bill_cardholder_no = #{map.coBillCardholderNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coServCntrCode)">
+                    AND co_serv_cntr_code = #{map.coServCntrCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMicrofilmNo)">
+                    AND co_microfilm_no = #{map.coMicrofilmNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCompanyName)">
+                    AND co_company_name = #{map.coCompanyName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coEmbossName)">
+                    AND co_emboss_name = #{map.coEmbossName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegistrationDate)">
+                    AND co_registration_date = #{map.coRegistrationDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coPaidupCapital)">
+                    AND co_paidup_capital = #{map.coPaidupCapital}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCollateralAmt)">
+                    AND co_collateral_amt = #{map.coCollateralAmt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coSic)">
+                    AND co_sic = #{map.coSic}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coFinancialYrEnd)">
+                    AND co_financial_yr_end = #{map.coFinancialYrEnd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coDiffCardFcInd)">
+                    AND co_diff_card_fc_ind = #{map.coDiffCardFcInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRewardPrgInd)">
+                    AND co_reward_prg_ind = #{map.coRewardPrgInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddLine1)">
+                    AND co_reg_add_line1 = #{map.coRegAddLine1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddLine2)">
+                    AND co_reg_add_line2 = #{map.coRegAddLine2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddLine3)">
+                    AND co_reg_add_line3 = #{map.coRegAddLine3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddLine4)">
+                    AND co_reg_add_line4 = #{map.coRegAddLine4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddLine5)">
+                    AND co_reg_add_line5 = #{map.coRegAddLine5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegCity)">
+                    AND co_reg_city = #{map.coRegCity}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegState)">
+                    AND co_reg_state = #{map.coRegState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegCntryCd)">
+                    AND co_reg_cntry_cd = #{map.coRegCntryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddPostcode)">
+                    AND co_reg_add_postcode = #{map.coRegAddPostcode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddTel)">
+                    AND co_reg_add_tel = #{map.coRegAddTel}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddFax)">
+                    AND co_reg_add_fax = #{map.coRegAddFax}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddLine1)">
+                    AND co_opr_add_line1 = #{map.coOprAddLine1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddLine2)">
+                    AND co_opr_add_line2 = #{map.coOprAddLine2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddLine3)">
+                    AND co_opr_add_line3 = #{map.coOprAddLine3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddLine4)">
+                    AND co_opr_add_line4 = #{map.coOprAddLine4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddLine5)">
+                    AND co_opr_add_line5 = #{map.coOprAddLine5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprCity)">
+                    AND co_opr_city = #{map.coOprCity}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprState)">
+                    AND co_opr_state = #{map.coOprState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprCntryCd)">
+                    AND co_opr_cntry_cd = #{map.coOprCntryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddPostcode)">
+                    AND co_opr_add_postcode = #{map.coOprAddPostcode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddTel)">
+                    AND co_opr_add_tel = #{map.coOprAddTel}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddFax)">
+                    AND co_opr_add_fax = #{map.coOprAddFax}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddLine1)">
+                    AND co_mail_add_line1 = #{map.coMailAddLine1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddLine2)">
+                    AND co_mail_add_line2 = #{map.coMailAddLine2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddLine3)">
+                    AND co_mail_add_line3 = #{map.coMailAddLine3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddLine4)">
+                    AND co_mail_add_line4 = #{map.coMailAddLine4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddLine5)">
+                    AND co_mail_add_line5 = #{map.coMailAddLine5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailCity)">
+                    AND co_mail_city = #{map.coMailCity}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailState)">
+                    AND co_mail_state = #{map.coMailState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailCntryCd)">
+                    AND co_mail_cntry_cd = #{map.coMailCntryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddPostcode)">
+                    AND co_mail_add_postcode = #{map.coMailAddPostcode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddTel)">
+                    AND co_mail_add_tel = #{map.coMailAddTel}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddFax)">
+                    AND co_mail_add_fax = #{map.coMailAddFax}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParentCompany)">
+                    AND co_parent_company = #{map.coParentCompany}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddLine1)">
+                    AND co_par_add_line1 = #{map.coParAddLine1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddLine2)">
+                    AND co_par_add_line2 = #{map.coParAddLine2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddLine3)">
+                    AND co_par_add_line3 = #{map.coParAddLine3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddLine4)">
+                    AND co_par_add_line4 = #{map.coParAddLine4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddLine5)">
+                    AND co_par_add_line5 = #{map.coParAddLine5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParCity)">
+                    AND co_par_city = #{map.coParCity}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParState)">
+                    AND co_par_state = #{map.coParState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParCntryCd)">
+                    AND co_par_cntry_cd = #{map.coParCntryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddPostcode)">
+                    AND co_par_add_postcode = #{map.coParAddPostcode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddTel)">
+                    AND co_par_add_tel = #{map.coParAddTel}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddFax)">
+                    AND co_par_add_fax = #{map.coParAddFax}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainBanker)">
+                    AND co_main_banker = #{map.coMainBanker}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddLine1)">
+                    AND co_mainbk_add_line1 = #{map.coMainbkAddLine1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddLine2)">
+                    AND co_mainbk_add_line2 = #{map.coMainbkAddLine2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddLine3)">
+                    AND co_mainbk_add_line3 = #{map.coMainbkAddLine3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddLine4)">
+                    AND co_mainbk_add_line4 = #{map.coMainbkAddLine4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddLine5)">
+                    AND co_mainbk_add_line5 = #{map.coMainbkAddLine5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkCity)">
+                    AND co_mainbk_city = #{map.coMainbkCity}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkState)">
+                    AND co_mainbk_state = #{map.coMainbkState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkCntryCd)">
+                    AND co_mainbk_cntry_cd = #{map.coMainbkCntryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddPostcode)">
+                    AND co_mainbk_add_postcode = #{map.coMainbkAddPostcode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddTel)">
+                    AND co_mainbk_add_tel = #{map.coMainbkAddTel}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddFax)">
+                    AND co_mainbk_add_fax = #{map.coMainbkAddFax}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAccNo)">
+                    AND co_mainbk_acc_no = #{map.coMainbkAccNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignatoryName)">
+                    AND co_auth_signatory_name = #{map.coAuthSignatoryName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignDesgn)">
+                    AND co_auth_sign_desgn = #{map.coAuthSignDesgn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignNricNo)">
+                    AND co_auth_sign_nric_no = #{map.coAuthSignNricNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignTel)">
+                    AND co_auth_sign_tel = #{map.coAuthSignTel}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignMobile)">
+                    AND co_auth_sign_mobile = #{map.coAuthSignMobile}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignPager)">
+                    AND co_auth_sign_pager = #{map.coAuthSignPager}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCardProdctCode)">
+                    AND co_card_prodct_code = #{map.coCardProdctCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coLclCreditLmt)">
+                    AND co_lcl_credit_lmt = #{map.coLclCreditLmt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coFrgnCreditLmt)">
+                    AND co_frgn_credit_lmt = #{map.coFrgnCreditLmt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coBillingCycle)">
+                    AND co_billing_cycle = #{map.coBillingCycle}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMonitorCode)">
+                    AND co_monitor_code = #{map.coMonitorCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coPayIndicator)">
+                    AND co_pay_indicator = #{map.coPayIndicator}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayInd)">
+                    AND co_autopay_ind = #{map.coAutopayInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayBankBranch)">
+                    AND co_autopay_bank_branch = #{map.coAutopayBankBranch}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayBankAccNo)">
+                    AND co_autopay_bank_acc_no = #{map.coAutopayBankAccNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayBankAccName)">
+                    AND co_autopay_bank_acc_name = #{map.coAutopayBankAccName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coFrgnAutopayInd)">
+                    AND co_frgn_autopay_ind = #{map.coFrgnAutopayInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayForBankBranch)">
+                    AND co_autopay_for_bank_branch = #{map.coAutopayForBankBranch}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayForBankAccNo)">
+                    AND co_autopay_for_bank_acc_no = #{map.coAutopayForBankAccNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayForBankAccName)">
+                    AND co_autopay_for_bank_acc_name = #{map.coAutopayForBankAccName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coStatusCode)">
+                    AND co_status_code = #{map.coStatusCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coJoinFee)">
+                    AND co_join_fee = #{map.coJoinFee}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAnnualAccServChg)">
+                    AND co_annual_acc_serv_chg = #{map.coAnnualAccServChg}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAgeCodeVal)">
+                    AND co_age_code_val = #{map.coAgeCodeVal}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coVoiceInd)">
+                    AND co_voice_ind = #{map.coVoiceInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOnlineInd)">
+                    AND co_online_ind = #{map.coOnlineInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRtnchqCnt)">
+                    AND co_rtnchq_cnt = #{map.coRtnchqCnt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRtnchqPrd)">
+                    AND co_rtnchq_prd = #{map.coRtnchqPrd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRtnchqVoiceInd)">
+                    AND co_rtnchq_voice_ind = #{map.coRtnchqVoiceInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRtnchqOnlineInd)">
+                    AND co_rtnchq_online_ind = #{map.coRtnchqOnlineInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAnniversaryDate)">
+                    AND co_anniversary_date = #{map.coAnniversaryDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coSuspendDate)">
+                    AND co_suspend_date = #{map.coSuspendDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coBankruptcyDate)">
+                    AND co_bankruptcy_date = #{map.coBankruptcyDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCancellationDate)">
+                    AND co_cancellation_date = #{map.coCancellationDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCanxLegalDate)">
+                    AND co_canx_legal_date = #{map.coCanxLegalDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCanxFraudDate)">
+                    AND co_canx_fraud_date = #{map.coCanxFraudDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coReservedWoffDate)">
+                    AND co_reserved_woff_date = #{map.coReservedWoffDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coReinstatementDate)">
+                    AND co_reinstatement_date = #{map.coReinstatementDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coLastMaintnDate)">
+                    AND co_last_maintn_date = #{map.coLastMaintnDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coLastModUser)">
+                    AND co_last_mod_user = #{map.coLastModUser}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpCopmst" parameterType="cn.happyworlds.imgmt.entity.CpCopmst">
+        INSERT INTO cp_copmst(
+        <include refid="cpCopmstBaseColumnSql"/>
+        )VALUES(
+            #{coCorporateId},
+            #{coBillCardholderNo},
+            #{coServCntrCode},
+            #{coMicrofilmNo},
+            #{coCompanyName},
+            #{coEmbossName},
+            #{coRegistrationDate},
+            #{coPaidupCapital},
+            #{coCollateralAmt},
+            #{coSic},
+            #{coFinancialYrEnd},
+            #{coDiffCardFcInd},
+            #{coRewardPrgInd},
+            #{coRegAddLine1},
+            #{coRegAddLine2},
+            #{coRegAddLine3},
+            #{coRegAddLine4},
+            #{coRegAddLine5},
+            #{coRegCity},
+            #{coRegState},
+            #{coRegCntryCd},
+            #{coRegAddPostcode},
+            #{coRegAddTel},
+            #{coRegAddFax},
+            #{coOprAddLine1},
+            #{coOprAddLine2},
+            #{coOprAddLine3},
+            #{coOprAddLine4},
+            #{coOprAddLine5},
+            #{coOprCity},
+            #{coOprState},
+            #{coOprCntryCd},
+            #{coOprAddPostcode},
+            #{coOprAddTel},
+            #{coOprAddFax},
+            #{coMailAddLine1},
+            #{coMailAddLine2},
+            #{coMailAddLine3},
+            #{coMailAddLine4},
+            #{coMailAddLine5},
+            #{coMailCity},
+            #{coMailState},
+            #{coMailCntryCd},
+            #{coMailAddPostcode},
+            #{coMailAddTel},
+            #{coMailAddFax},
+            #{coParentCompany},
+            #{coParAddLine1},
+            #{coParAddLine2},
+            #{coParAddLine3},
+            #{coParAddLine4},
+            #{coParAddLine5},
+            #{coParCity},
+            #{coParState},
+            #{coParCntryCd},
+            #{coParAddPostcode},
+            #{coParAddTel},
+            #{coParAddFax},
+            #{coMainBanker},
+            #{coMainbkAddLine1},
+            #{coMainbkAddLine2},
+            #{coMainbkAddLine3},
+            #{coMainbkAddLine4},
+            #{coMainbkAddLine5},
+            #{coMainbkCity},
+            #{coMainbkState},
+            #{coMainbkCntryCd},
+            #{coMainbkAddPostcode},
+            #{coMainbkAddTel},
+            #{coMainbkAddFax},
+            #{coMainbkAccNo},
+            #{coAuthSignatoryName},
+            #{coAuthSignDesgn},
+            #{coAuthSignNricNo},
+            #{coAuthSignTel},
+            #{coAuthSignMobile},
+            #{coAuthSignPager},
+            #{coCardProdctCode},
+            #{coLclCreditLmt},
+            #{coFrgnCreditLmt},
+            #{coBillingCycle},
+            #{coMonitorCode},
+            #{coPayIndicator},
+            #{coAutopayInd},
+            #{coAutopayBankBranch},
+            #{coAutopayBankAccNo},
+            #{coAutopayBankAccName},
+            #{coFrgnAutopayInd},
+            #{coAutopayForBankBranch},
+            #{coAutopayForBankAccNo},
+            #{coAutopayForBankAccName},
+            #{coStatusCode},
+            #{coJoinFee},
+            #{coAnnualAccServChg},
+            #{coAgeCodeVal},
+            #{coVoiceInd},
+            #{coOnlineInd},
+            #{coRtnchqCnt},
+            #{coRtnchqPrd},
+            #{coRtnchqVoiceInd},
+            #{coRtnchqOnlineInd},
+            #{coAnniversaryDate},
+            #{coSuspendDate},
+            #{coBankruptcyDate},
+            #{coCancellationDate},
+            #{coCanxLegalDate},
+            #{coCanxFraudDate},
+            #{coReservedWoffDate},
+            #{coReinstatementDate},
+            #{coLastMaintnDate},
+            #{coLastModUser},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpCopmstByCoCorporateId" parameterType="String">
+        DELETE FROM cp_copmst WHERE co_corporate_id = #{coCorporateId}
+    </delete>
+
+    <select id="deleteCpCopmstByParams" parameterType="map">
+        DELETE FROM cp_copmst
+        <include refid="cpCopmstBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpCopmst" parameterType="cn.happyworlds.imgmt.entity.CpCopmst">
+        UPDATE cp_copmst
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coBillCardholderNo)">
+                co_bill_cardholder_no = #{coBillCardholderNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coServCntrCode)">
+                co_serv_cntr_code = #{coServCntrCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMicrofilmNo)">
+                co_microfilm_no = #{coMicrofilmNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coCompanyName)">
+                co_company_name = #{coCompanyName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coEmbossName)">
+                co_emboss_name = #{coEmbossName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRegistrationDate)">
+                co_registration_date = #{coRegistrationDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coPaidupCapital)">
+                co_paidup_capital = #{coPaidupCapital} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coCollateralAmt)">
+                co_collateral_amt = #{coCollateralAmt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coSic)">
+                co_sic = #{coSic} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coFinancialYrEnd)">
+                co_financial_yr_end = #{coFinancialYrEnd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coDiffCardFcInd)">
+                co_diff_card_fc_ind = #{coDiffCardFcInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRewardPrgInd)">
+                co_reward_prg_ind = #{coRewardPrgInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRegAddLine1)">
+                co_reg_add_line1 = #{coRegAddLine1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRegAddLine2)">
+                co_reg_add_line2 = #{coRegAddLine2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRegAddLine3)">
+                co_reg_add_line3 = #{coRegAddLine3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRegAddLine4)">
+                co_reg_add_line4 = #{coRegAddLine4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRegAddLine5)">
+                co_reg_add_line5 = #{coRegAddLine5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRegCity)">
+                co_reg_city = #{coRegCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRegState)">
+                co_reg_state = #{coRegState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRegCntryCd)">
+                co_reg_cntry_cd = #{coRegCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRegAddPostcode)">
+                co_reg_add_postcode = #{coRegAddPostcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRegAddTel)">
+                co_reg_add_tel = #{coRegAddTel} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRegAddFax)">
+                co_reg_add_fax = #{coRegAddFax} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coOprAddLine1)">
+                co_opr_add_line1 = #{coOprAddLine1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coOprAddLine2)">
+                co_opr_add_line2 = #{coOprAddLine2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coOprAddLine3)">
+                co_opr_add_line3 = #{coOprAddLine3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coOprAddLine4)">
+                co_opr_add_line4 = #{coOprAddLine4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coOprAddLine5)">
+                co_opr_add_line5 = #{coOprAddLine5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coOprCity)">
+                co_opr_city = #{coOprCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coOprState)">
+                co_opr_state = #{coOprState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coOprCntryCd)">
+                co_opr_cntry_cd = #{coOprCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coOprAddPostcode)">
+                co_opr_add_postcode = #{coOprAddPostcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coOprAddTel)">
+                co_opr_add_tel = #{coOprAddTel} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coOprAddFax)">
+                co_opr_add_fax = #{coOprAddFax} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMailAddLine1)">
+                co_mail_add_line1 = #{coMailAddLine1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMailAddLine2)">
+                co_mail_add_line2 = #{coMailAddLine2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMailAddLine3)">
+                co_mail_add_line3 = #{coMailAddLine3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMailAddLine4)">
+                co_mail_add_line4 = #{coMailAddLine4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMailAddLine5)">
+                co_mail_add_line5 = #{coMailAddLine5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMailCity)">
+                co_mail_city = #{coMailCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMailState)">
+                co_mail_state = #{coMailState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMailCntryCd)">
+                co_mail_cntry_cd = #{coMailCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMailAddPostcode)">
+                co_mail_add_postcode = #{coMailAddPostcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMailAddTel)">
+                co_mail_add_tel = #{coMailAddTel} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMailAddFax)">
+                co_mail_add_fax = #{coMailAddFax} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coParentCompany)">
+                co_parent_company = #{coParentCompany} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coParAddLine1)">
+                co_par_add_line1 = #{coParAddLine1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coParAddLine2)">
+                co_par_add_line2 = #{coParAddLine2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coParAddLine3)">
+                co_par_add_line3 = #{coParAddLine3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coParAddLine4)">
+                co_par_add_line4 = #{coParAddLine4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coParAddLine5)">
+                co_par_add_line5 = #{coParAddLine5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coParCity)">
+                co_par_city = #{coParCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coParState)">
+                co_par_state = #{coParState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coParCntryCd)">
+                co_par_cntry_cd = #{coParCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coParAddPostcode)">
+                co_par_add_postcode = #{coParAddPostcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coParAddTel)">
+                co_par_add_tel = #{coParAddTel} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coParAddFax)">
+                co_par_add_fax = #{coParAddFax} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMainBanker)">
+                co_main_banker = #{coMainBanker} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMainbkAddLine1)">
+                co_mainbk_add_line1 = #{coMainbkAddLine1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMainbkAddLine2)">
+                co_mainbk_add_line2 = #{coMainbkAddLine2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMainbkAddLine3)">
+                co_mainbk_add_line3 = #{coMainbkAddLine3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMainbkAddLine4)">
+                co_mainbk_add_line4 = #{coMainbkAddLine4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMainbkAddLine5)">
+                co_mainbk_add_line5 = #{coMainbkAddLine5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMainbkCity)">
+                co_mainbk_city = #{coMainbkCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMainbkState)">
+                co_mainbk_state = #{coMainbkState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMainbkCntryCd)">
+                co_mainbk_cntry_cd = #{coMainbkCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMainbkAddPostcode)">
+                co_mainbk_add_postcode = #{coMainbkAddPostcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMainbkAddTel)">
+                co_mainbk_add_tel = #{coMainbkAddTel} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMainbkAddFax)">
+                co_mainbk_add_fax = #{coMainbkAddFax} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMainbkAccNo)">
+                co_mainbk_acc_no = #{coMainbkAccNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAuthSignatoryName)">
+                co_auth_signatory_name = #{coAuthSignatoryName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAuthSignDesgn)">
+                co_auth_sign_desgn = #{coAuthSignDesgn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAuthSignNricNo)">
+                co_auth_sign_nric_no = #{coAuthSignNricNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAuthSignTel)">
+                co_auth_sign_tel = #{coAuthSignTel} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAuthSignMobile)">
+                co_auth_sign_mobile = #{coAuthSignMobile} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAuthSignPager)">
+                co_auth_sign_pager = #{coAuthSignPager} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coCardProdctCode)">
+                co_card_prodct_code = #{coCardProdctCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coLclCreditLmt)">
+                co_lcl_credit_lmt = #{coLclCreditLmt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coFrgnCreditLmt)">
+                co_frgn_credit_lmt = #{coFrgnCreditLmt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coBillingCycle)">
+                co_billing_cycle = #{coBillingCycle} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coMonitorCode)">
+                co_monitor_code = #{coMonitorCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coPayIndicator)">
+                co_pay_indicator = #{coPayIndicator} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAutopayInd)">
+                co_autopay_ind = #{coAutopayInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAutopayBankBranch)">
+                co_autopay_bank_branch = #{coAutopayBankBranch} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAutopayBankAccNo)">
+                co_autopay_bank_acc_no = #{coAutopayBankAccNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAutopayBankAccName)">
+                co_autopay_bank_acc_name = #{coAutopayBankAccName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coFrgnAutopayInd)">
+                co_frgn_autopay_ind = #{coFrgnAutopayInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAutopayForBankBranch)">
+                co_autopay_for_bank_branch = #{coAutopayForBankBranch} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAutopayForBankAccNo)">
+                co_autopay_for_bank_acc_no = #{coAutopayForBankAccNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAutopayForBankAccName)">
+                co_autopay_for_bank_acc_name = #{coAutopayForBankAccName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coStatusCode)">
+                co_status_code = #{coStatusCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coJoinFee)">
+                co_join_fee = #{coJoinFee} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAnnualAccServChg)">
+                co_annual_acc_serv_chg = #{coAnnualAccServChg} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAgeCodeVal)">
+                co_age_code_val = #{coAgeCodeVal} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coVoiceInd)">
+                co_voice_ind = #{coVoiceInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coOnlineInd)">
+                co_online_ind = #{coOnlineInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRtnchqCnt)">
+                co_rtnchq_cnt = #{coRtnchqCnt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRtnchqPrd)">
+                co_rtnchq_prd = #{coRtnchqPrd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRtnchqVoiceInd)">
+                co_rtnchq_voice_ind = #{coRtnchqVoiceInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coRtnchqOnlineInd)">
+                co_rtnchq_online_ind = #{coRtnchqOnlineInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coAnniversaryDate)">
+                co_anniversary_date = #{coAnniversaryDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coSuspendDate)">
+                co_suspend_date = #{coSuspendDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coBankruptcyDate)">
+                co_bankruptcy_date = #{coBankruptcyDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coCancellationDate)">
+                co_cancellation_date = #{coCancellationDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coCanxLegalDate)">
+                co_canx_legal_date = #{coCanxLegalDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coCanxFraudDate)">
+                co_canx_fraud_date = #{coCanxFraudDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coReservedWoffDate)">
+                co_reserved_woff_date = #{coReservedWoffDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coReinstatementDate)">
+                co_reinstatement_date = #{coReinstatementDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coLastMaintnDate)">
+                co_last_maintn_date = #{coLastMaintnDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(coLastModUser)">
+                co_last_mod_user = #{coLastModUser} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE co_corporate_id = #{coCorporateId}
+    </update>
+
+    <update id="updateCpCopmstByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_copmst
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coBillCardholderNo)">
+                    co_bill_cardholder_no = #{map.coBillCardholderNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coServCntrCode)">
+                    co_serv_cntr_code = #{map.coServCntrCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMicrofilmNo)">
+                    co_microfilm_no = #{map.coMicrofilmNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCompanyName)">
+                    co_company_name = #{map.coCompanyName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coEmbossName)">
+                    co_emboss_name = #{map.coEmbossName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegistrationDate)">
+                    co_registration_date = #{map.coRegistrationDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coPaidupCapital)">
+                    co_paidup_capital = #{map.coPaidupCapital} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCollateralAmt)">
+                    co_collateral_amt = #{map.coCollateralAmt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coSic)">
+                    co_sic = #{map.coSic} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coFinancialYrEnd)">
+                    co_financial_yr_end = #{map.coFinancialYrEnd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coDiffCardFcInd)">
+                    co_diff_card_fc_ind = #{map.coDiffCardFcInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRewardPrgInd)">
+                    co_reward_prg_ind = #{map.coRewardPrgInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddLine1)">
+                    co_reg_add_line1 = #{map.coRegAddLine1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddLine2)">
+                    co_reg_add_line2 = #{map.coRegAddLine2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddLine3)">
+                    co_reg_add_line3 = #{map.coRegAddLine3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddLine4)">
+                    co_reg_add_line4 = #{map.coRegAddLine4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddLine5)">
+                    co_reg_add_line5 = #{map.coRegAddLine5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegCity)">
+                    co_reg_city = #{map.coRegCity} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegState)">
+                    co_reg_state = #{map.coRegState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegCntryCd)">
+                    co_reg_cntry_cd = #{map.coRegCntryCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddPostcode)">
+                    co_reg_add_postcode = #{map.coRegAddPostcode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddTel)">
+                    co_reg_add_tel = #{map.coRegAddTel} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddFax)">
+                    co_reg_add_fax = #{map.coRegAddFax} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddLine1)">
+                    co_opr_add_line1 = #{map.coOprAddLine1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddLine2)">
+                    co_opr_add_line2 = #{map.coOprAddLine2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddLine3)">
+                    co_opr_add_line3 = #{map.coOprAddLine3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddLine4)">
+                    co_opr_add_line4 = #{map.coOprAddLine4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddLine5)">
+                    co_opr_add_line5 = #{map.coOprAddLine5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprCity)">
+                    co_opr_city = #{map.coOprCity} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprState)">
+                    co_opr_state = #{map.coOprState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprCntryCd)">
+                    co_opr_cntry_cd = #{map.coOprCntryCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddPostcode)">
+                    co_opr_add_postcode = #{map.coOprAddPostcode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddTel)">
+                    co_opr_add_tel = #{map.coOprAddTel} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddFax)">
+                    co_opr_add_fax = #{map.coOprAddFax} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddLine1)">
+                    co_mail_add_line1 = #{map.coMailAddLine1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddLine2)">
+                    co_mail_add_line2 = #{map.coMailAddLine2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddLine3)">
+                    co_mail_add_line3 = #{map.coMailAddLine3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddLine4)">
+                    co_mail_add_line4 = #{map.coMailAddLine4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddLine5)">
+                    co_mail_add_line5 = #{map.coMailAddLine5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailCity)">
+                    co_mail_city = #{map.coMailCity} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailState)">
+                    co_mail_state = #{map.coMailState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailCntryCd)">
+                    co_mail_cntry_cd = #{map.coMailCntryCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddPostcode)">
+                    co_mail_add_postcode = #{map.coMailAddPostcode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddTel)">
+                    co_mail_add_tel = #{map.coMailAddTel} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddFax)">
+                    co_mail_add_fax = #{map.coMailAddFax} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParentCompany)">
+                    co_parent_company = #{map.coParentCompany} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddLine1)">
+                    co_par_add_line1 = #{map.coParAddLine1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddLine2)">
+                    co_par_add_line2 = #{map.coParAddLine2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddLine3)">
+                    co_par_add_line3 = #{map.coParAddLine3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddLine4)">
+                    co_par_add_line4 = #{map.coParAddLine4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddLine5)">
+                    co_par_add_line5 = #{map.coParAddLine5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParCity)">
+                    co_par_city = #{map.coParCity} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParState)">
+                    co_par_state = #{map.coParState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParCntryCd)">
+                    co_par_cntry_cd = #{map.coParCntryCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddPostcode)">
+                    co_par_add_postcode = #{map.coParAddPostcode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddTel)">
+                    co_par_add_tel = #{map.coParAddTel} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddFax)">
+                    co_par_add_fax = #{map.coParAddFax} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainBanker)">
+                    co_main_banker = #{map.coMainBanker} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddLine1)">
+                    co_mainbk_add_line1 = #{map.coMainbkAddLine1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddLine2)">
+                    co_mainbk_add_line2 = #{map.coMainbkAddLine2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddLine3)">
+                    co_mainbk_add_line3 = #{map.coMainbkAddLine3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddLine4)">
+                    co_mainbk_add_line4 = #{map.coMainbkAddLine4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddLine5)">
+                    co_mainbk_add_line5 = #{map.coMainbkAddLine5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkCity)">
+                    co_mainbk_city = #{map.coMainbkCity} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkState)">
+                    co_mainbk_state = #{map.coMainbkState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkCntryCd)">
+                    co_mainbk_cntry_cd = #{map.coMainbkCntryCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddPostcode)">
+                    co_mainbk_add_postcode = #{map.coMainbkAddPostcode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddTel)">
+                    co_mainbk_add_tel = #{map.coMainbkAddTel} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddFax)">
+                    co_mainbk_add_fax = #{map.coMainbkAddFax} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAccNo)">
+                    co_mainbk_acc_no = #{map.coMainbkAccNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignatoryName)">
+                    co_auth_signatory_name = #{map.coAuthSignatoryName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignDesgn)">
+                    co_auth_sign_desgn = #{map.coAuthSignDesgn} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignNricNo)">
+                    co_auth_sign_nric_no = #{map.coAuthSignNricNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignTel)">
+                    co_auth_sign_tel = #{map.coAuthSignTel} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignMobile)">
+                    co_auth_sign_mobile = #{map.coAuthSignMobile} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignPager)">
+                    co_auth_sign_pager = #{map.coAuthSignPager} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCardProdctCode)">
+                    co_card_prodct_code = #{map.coCardProdctCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coLclCreditLmt)">
+                    co_lcl_credit_lmt = #{map.coLclCreditLmt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coFrgnCreditLmt)">
+                    co_frgn_credit_lmt = #{map.coFrgnCreditLmt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coBillingCycle)">
+                    co_billing_cycle = #{map.coBillingCycle} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMonitorCode)">
+                    co_monitor_code = #{map.coMonitorCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coPayIndicator)">
+                    co_pay_indicator = #{map.coPayIndicator} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayInd)">
+                    co_autopay_ind = #{map.coAutopayInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayBankBranch)">
+                    co_autopay_bank_branch = #{map.coAutopayBankBranch} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayBankAccNo)">
+                    co_autopay_bank_acc_no = #{map.coAutopayBankAccNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayBankAccName)">
+                    co_autopay_bank_acc_name = #{map.coAutopayBankAccName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coFrgnAutopayInd)">
+                    co_frgn_autopay_ind = #{map.coFrgnAutopayInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayForBankBranch)">
+                    co_autopay_for_bank_branch = #{map.coAutopayForBankBranch} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayForBankAccNo)">
+                    co_autopay_for_bank_acc_no = #{map.coAutopayForBankAccNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayForBankAccName)">
+                    co_autopay_for_bank_acc_name = #{map.coAutopayForBankAccName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coStatusCode)">
+                    co_status_code = #{map.coStatusCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coJoinFee)">
+                    co_join_fee = #{map.coJoinFee} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAnnualAccServChg)">
+                    co_annual_acc_serv_chg = #{map.coAnnualAccServChg} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAgeCodeVal)">
+                    co_age_code_val = #{map.coAgeCodeVal} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coVoiceInd)">
+                    co_voice_ind = #{map.coVoiceInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOnlineInd)">
+                    co_online_ind = #{map.coOnlineInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRtnchqCnt)">
+                    co_rtnchq_cnt = #{map.coRtnchqCnt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRtnchqPrd)">
+                    co_rtnchq_prd = #{map.coRtnchqPrd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRtnchqVoiceInd)">
+                    co_rtnchq_voice_ind = #{map.coRtnchqVoiceInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRtnchqOnlineInd)">
+                    co_rtnchq_online_ind = #{map.coRtnchqOnlineInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAnniversaryDate)">
+                    co_anniversary_date = #{map.coAnniversaryDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coSuspendDate)">
+                    co_suspend_date = #{map.coSuspendDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coBankruptcyDate)">
+                    co_bankruptcy_date = #{map.coBankruptcyDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCancellationDate)">
+                    co_cancellation_date = #{map.coCancellationDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCanxLegalDate)">
+                    co_canx_legal_date = #{map.coCanxLegalDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCanxFraudDate)">
+                    co_canx_fraud_date = #{map.coCanxFraudDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coReservedWoffDate)">
+                    co_reserved_woff_date = #{map.coReservedWoffDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coReinstatementDate)">
+                    co_reinstatement_date = #{map.coReinstatementDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coLastMaintnDate)">
+                    co_last_maintn_date = #{map.coLastMaintnDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coLastModUser)">
+                    co_last_mod_user = #{map.coLastModUser} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCorporateIdCondition)">
+                    co_corporate_id = #{map.coCorporateIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coBillCardholderNoCondition)">
+                    AND co_bill_cardholder_no = #{map.coBillCardholderNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coServCntrCodeCondition)">
+                    AND co_serv_cntr_code = #{map.coServCntrCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMicrofilmNoCondition)">
+                    AND co_microfilm_no = #{map.coMicrofilmNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCompanyNameCondition)">
+                    AND co_company_name = #{map.coCompanyNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coEmbossNameCondition)">
+                    AND co_emboss_name = #{map.coEmbossNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegistrationDateCondition)">
+                    AND co_registration_date = #{map.coRegistrationDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coPaidupCapitalCondition)">
+                    AND co_paidup_capital = #{map.coPaidupCapitalCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCollateralAmtCondition)">
+                    AND co_collateral_amt = #{map.coCollateralAmtCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coSicCondition)">
+                    AND co_sic = #{map.coSicCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coFinancialYrEndCondition)">
+                    AND co_financial_yr_end = #{map.coFinancialYrEndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coDiffCardFcIndCondition)">
+                    AND co_diff_card_fc_ind = #{map.coDiffCardFcIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRewardPrgIndCondition)">
+                    AND co_reward_prg_ind = #{map.coRewardPrgIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddLine1Condition)">
+                    AND co_reg_add_line1 = #{map.coRegAddLine1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddLine2Condition)">
+                    AND co_reg_add_line2 = #{map.coRegAddLine2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddLine3Condition)">
+                    AND co_reg_add_line3 = #{map.coRegAddLine3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddLine4Condition)">
+                    AND co_reg_add_line4 = #{map.coRegAddLine4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddLine5Condition)">
+                    AND co_reg_add_line5 = #{map.coRegAddLine5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegCityCondition)">
+                    AND co_reg_city = #{map.coRegCityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegStateCondition)">
+                    AND co_reg_state = #{map.coRegStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegCntryCdCondition)">
+                    AND co_reg_cntry_cd = #{map.coRegCntryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddPostcodeCondition)">
+                    AND co_reg_add_postcode = #{map.coRegAddPostcodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddTelCondition)">
+                    AND co_reg_add_tel = #{map.coRegAddTelCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRegAddFaxCondition)">
+                    AND co_reg_add_fax = #{map.coRegAddFaxCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddLine1Condition)">
+                    AND co_opr_add_line1 = #{map.coOprAddLine1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddLine2Condition)">
+                    AND co_opr_add_line2 = #{map.coOprAddLine2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddLine3Condition)">
+                    AND co_opr_add_line3 = #{map.coOprAddLine3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddLine4Condition)">
+                    AND co_opr_add_line4 = #{map.coOprAddLine4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddLine5Condition)">
+                    AND co_opr_add_line5 = #{map.coOprAddLine5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprCityCondition)">
+                    AND co_opr_city = #{map.coOprCityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprStateCondition)">
+                    AND co_opr_state = #{map.coOprStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprCntryCdCondition)">
+                    AND co_opr_cntry_cd = #{map.coOprCntryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddPostcodeCondition)">
+                    AND co_opr_add_postcode = #{map.coOprAddPostcodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddTelCondition)">
+                    AND co_opr_add_tel = #{map.coOprAddTelCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOprAddFaxCondition)">
+                    AND co_opr_add_fax = #{map.coOprAddFaxCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddLine1Condition)">
+                    AND co_mail_add_line1 = #{map.coMailAddLine1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddLine2Condition)">
+                    AND co_mail_add_line2 = #{map.coMailAddLine2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddLine3Condition)">
+                    AND co_mail_add_line3 = #{map.coMailAddLine3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddLine4Condition)">
+                    AND co_mail_add_line4 = #{map.coMailAddLine4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddLine5Condition)">
+                    AND co_mail_add_line5 = #{map.coMailAddLine5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailCityCondition)">
+                    AND co_mail_city = #{map.coMailCityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailStateCondition)">
+                    AND co_mail_state = #{map.coMailStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailCntryCdCondition)">
+                    AND co_mail_cntry_cd = #{map.coMailCntryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddPostcodeCondition)">
+                    AND co_mail_add_postcode = #{map.coMailAddPostcodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddTelCondition)">
+                    AND co_mail_add_tel = #{map.coMailAddTelCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMailAddFaxCondition)">
+                    AND co_mail_add_fax = #{map.coMailAddFaxCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParentCompanyCondition)">
+                    AND co_parent_company = #{map.coParentCompanyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddLine1Condition)">
+                    AND co_par_add_line1 = #{map.coParAddLine1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddLine2Condition)">
+                    AND co_par_add_line2 = #{map.coParAddLine2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddLine3Condition)">
+                    AND co_par_add_line3 = #{map.coParAddLine3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddLine4Condition)">
+                    AND co_par_add_line4 = #{map.coParAddLine4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddLine5Condition)">
+                    AND co_par_add_line5 = #{map.coParAddLine5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParCityCondition)">
+                    AND co_par_city = #{map.coParCityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParStateCondition)">
+                    AND co_par_state = #{map.coParStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParCntryCdCondition)">
+                    AND co_par_cntry_cd = #{map.coParCntryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddPostcodeCondition)">
+                    AND co_par_add_postcode = #{map.coParAddPostcodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddTelCondition)">
+                    AND co_par_add_tel = #{map.coParAddTelCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coParAddFaxCondition)">
+                    AND co_par_add_fax = #{map.coParAddFaxCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainBankerCondition)">
+                    AND co_main_banker = #{map.coMainBankerCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddLine1Condition)">
+                    AND co_mainbk_add_line1 = #{map.coMainbkAddLine1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddLine2Condition)">
+                    AND co_mainbk_add_line2 = #{map.coMainbkAddLine2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddLine3Condition)">
+                    AND co_mainbk_add_line3 = #{map.coMainbkAddLine3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddLine4Condition)">
+                    AND co_mainbk_add_line4 = #{map.coMainbkAddLine4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddLine5Condition)">
+                    AND co_mainbk_add_line5 = #{map.coMainbkAddLine5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkCityCondition)">
+                    AND co_mainbk_city = #{map.coMainbkCityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkStateCondition)">
+                    AND co_mainbk_state = #{map.coMainbkStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkCntryCdCondition)">
+                    AND co_mainbk_cntry_cd = #{map.coMainbkCntryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddPostcodeCondition)">
+                    AND co_mainbk_add_postcode = #{map.coMainbkAddPostcodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddTelCondition)">
+                    AND co_mainbk_add_tel = #{map.coMainbkAddTelCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAddFaxCondition)">
+                    AND co_mainbk_add_fax = #{map.coMainbkAddFaxCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMainbkAccNoCondition)">
+                    AND co_mainbk_acc_no = #{map.coMainbkAccNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignatoryNameCondition)">
+                    AND co_auth_signatory_name = #{map.coAuthSignatoryNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignDesgnCondition)">
+                    AND co_auth_sign_desgn = #{map.coAuthSignDesgnCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignNricNoCondition)">
+                    AND co_auth_sign_nric_no = #{map.coAuthSignNricNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignTelCondition)">
+                    AND co_auth_sign_tel = #{map.coAuthSignTelCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignMobileCondition)">
+                    AND co_auth_sign_mobile = #{map.coAuthSignMobileCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAuthSignPagerCondition)">
+                    AND co_auth_sign_pager = #{map.coAuthSignPagerCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCardProdctCodeCondition)">
+                    AND co_card_prodct_code = #{map.coCardProdctCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coLclCreditLmtCondition)">
+                    AND co_lcl_credit_lmt = #{map.coLclCreditLmtCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coFrgnCreditLmtCondition)">
+                    AND co_frgn_credit_lmt = #{map.coFrgnCreditLmtCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coBillingCycleCondition)">
+                    AND co_billing_cycle = #{map.coBillingCycleCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coMonitorCodeCondition)">
+                    AND co_monitor_code = #{map.coMonitorCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coPayIndicatorCondition)">
+                    AND co_pay_indicator = #{map.coPayIndicatorCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayIndCondition)">
+                    AND co_autopay_ind = #{map.coAutopayIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayBankBranchCondition)">
+                    AND co_autopay_bank_branch = #{map.coAutopayBankBranchCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayBankAccNoCondition)">
+                    AND co_autopay_bank_acc_no = #{map.coAutopayBankAccNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayBankAccNameCondition)">
+                    AND co_autopay_bank_acc_name = #{map.coAutopayBankAccNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coFrgnAutopayIndCondition)">
+                    AND co_frgn_autopay_ind = #{map.coFrgnAutopayIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayForBankBranchCondition)">
+                    AND co_autopay_for_bank_branch = #{map.coAutopayForBankBranchCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayForBankAccNoCondition)">
+                    AND co_autopay_for_bank_acc_no = #{map.coAutopayForBankAccNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAutopayForBankAccNameCondition)">
+                    AND co_autopay_for_bank_acc_name = #{map.coAutopayForBankAccNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coStatusCodeCondition)">
+                    AND co_status_code = #{map.coStatusCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coJoinFeeCondition)">
+                    AND co_join_fee = #{map.coJoinFeeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAnnualAccServChgCondition)">
+                    AND co_annual_acc_serv_chg = #{map.coAnnualAccServChgCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAgeCodeValCondition)">
+                    AND co_age_code_val = #{map.coAgeCodeValCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coVoiceIndCondition)">
+                    AND co_voice_ind = #{map.coVoiceIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coOnlineIndCondition)">
+                    AND co_online_ind = #{map.coOnlineIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRtnchqCntCondition)">
+                    AND co_rtnchq_cnt = #{map.coRtnchqCntCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRtnchqPrdCondition)">
+                    AND co_rtnchq_prd = #{map.coRtnchqPrdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRtnchqVoiceIndCondition)">
+                    AND co_rtnchq_voice_ind = #{map.coRtnchqVoiceIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coRtnchqOnlineIndCondition)">
+                    AND co_rtnchq_online_ind = #{map.coRtnchqOnlineIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coAnniversaryDateCondition)">
+                    AND co_anniversary_date = #{map.coAnniversaryDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coSuspendDateCondition)">
+                    AND co_suspend_date = #{map.coSuspendDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coBankruptcyDateCondition)">
+                    AND co_bankruptcy_date = #{map.coBankruptcyDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCancellationDateCondition)">
+                    AND co_cancellation_date = #{map.coCancellationDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCanxLegalDateCondition)">
+                    AND co_canx_legal_date = #{map.coCanxLegalDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coCanxFraudDateCondition)">
+                    AND co_canx_fraud_date = #{map.coCanxFraudDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coReservedWoffDateCondition)">
+                    AND co_reserved_woff_date = #{map.coReservedWoffDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coReinstatementDateCondition)">
+                    AND co_reinstatement_date = #{map.coReinstatementDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coLastMaintnDateCondition)">
+                    AND co_last_maintn_date = #{map.coLastMaintnDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.coLastModUserCondition)">
+                    AND co_last_mod_user = #{map.coLastModUserCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpCopmstByCoCorporateId" parameterType="String" resultMap="cpCopmstMap">
+        SELECT
+        <include refid="cpCopmstBaseColumnSql"/>
+        FROM cp_copmst
+        WHERE co_corporate_id = #{coCorporateId}
+    </select>
+
+    <select id="searchCpCopmstByParams" parameterType="map" resultMap="cpCopmstMap">
+        SELECT
+        <include refid="cpCopmstBaseColumnSql"/>
+        FROM cp_copmst
+        <include refid="cpCopmstBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpCopmst" id="cpCopmstMap">
+        <id column="co_corporate_id" property="coCorporateId"/>
+        <result column="co_bill_cardholder_no" property="coBillCardholderNo"/>
+        <result column="co_serv_cntr_code" property="coServCntrCode"/>
+        <result column="co_microfilm_no" property="coMicrofilmNo"/>
+        <result column="co_company_name" property="coCompanyName"/>
+        <result column="co_emboss_name" property="coEmbossName"/>
+        <result column="co_registration_date" property="coRegistrationDate"/>
+        <result column="co_paidup_capital" property="coPaidupCapital"/>
+        <result column="co_collateral_amt" property="coCollateralAmt"/>
+        <result column="co_sic" property="coSic"/>
+        <result column="co_financial_yr_end" property="coFinancialYrEnd"/>
+        <result column="co_diff_card_fc_ind" property="coDiffCardFcInd"/>
+        <result column="co_reward_prg_ind" property="coRewardPrgInd"/>
+        <result column="co_reg_add_line1" property="coRegAddLine1"/>
+        <result column="co_reg_add_line2" property="coRegAddLine2"/>
+        <result column="co_reg_add_line3" property="coRegAddLine3"/>
+        <result column="co_reg_add_line4" property="coRegAddLine4"/>
+        <result column="co_reg_add_line5" property="coRegAddLine5"/>
+        <result column="co_reg_city" property="coRegCity"/>
+        <result column="co_reg_state" property="coRegState"/>
+        <result column="co_reg_cntry_cd" property="coRegCntryCd"/>
+        <result column="co_reg_add_postcode" property="coRegAddPostcode"/>
+        <result column="co_reg_add_tel" property="coRegAddTel"/>
+        <result column="co_reg_add_fax" property="coRegAddFax"/>
+        <result column="co_opr_add_line1" property="coOprAddLine1"/>
+        <result column="co_opr_add_line2" property="coOprAddLine2"/>
+        <result column="co_opr_add_line3" property="coOprAddLine3"/>
+        <result column="co_opr_add_line4" property="coOprAddLine4"/>
+        <result column="co_opr_add_line5" property="coOprAddLine5"/>
+        <result column="co_opr_city" property="coOprCity"/>
+        <result column="co_opr_state" property="coOprState"/>
+        <result column="co_opr_cntry_cd" property="coOprCntryCd"/>
+        <result column="co_opr_add_postcode" property="coOprAddPostcode"/>
+        <result column="co_opr_add_tel" property="coOprAddTel"/>
+        <result column="co_opr_add_fax" property="coOprAddFax"/>
+        <result column="co_mail_add_line1" property="coMailAddLine1"/>
+        <result column="co_mail_add_line2" property="coMailAddLine2"/>
+        <result column="co_mail_add_line3" property="coMailAddLine3"/>
+        <result column="co_mail_add_line4" property="coMailAddLine4"/>
+        <result column="co_mail_add_line5" property="coMailAddLine5"/>
+        <result column="co_mail_city" property="coMailCity"/>
+        <result column="co_mail_state" property="coMailState"/>
+        <result column="co_mail_cntry_cd" property="coMailCntryCd"/>
+        <result column="co_mail_add_postcode" property="coMailAddPostcode"/>
+        <result column="co_mail_add_tel" property="coMailAddTel"/>
+        <result column="co_mail_add_fax" property="coMailAddFax"/>
+        <result column="co_parent_company" property="coParentCompany"/>
+        <result column="co_par_add_line1" property="coParAddLine1"/>
+        <result column="co_par_add_line2" property="coParAddLine2"/>
+        <result column="co_par_add_line3" property="coParAddLine3"/>
+        <result column="co_par_add_line4" property="coParAddLine4"/>
+        <result column="co_par_add_line5" property="coParAddLine5"/>
+        <result column="co_par_city" property="coParCity"/>
+        <result column="co_par_state" property="coParState"/>
+        <result column="co_par_cntry_cd" property="coParCntryCd"/>
+        <result column="co_par_add_postcode" property="coParAddPostcode"/>
+        <result column="co_par_add_tel" property="coParAddTel"/>
+        <result column="co_par_add_fax" property="coParAddFax"/>
+        <result column="co_main_banker" property="coMainBanker"/>
+        <result column="co_mainbk_add_line1" property="coMainbkAddLine1"/>
+        <result column="co_mainbk_add_line2" property="coMainbkAddLine2"/>
+        <result column="co_mainbk_add_line3" property="coMainbkAddLine3"/>
+        <result column="co_mainbk_add_line4" property="coMainbkAddLine4"/>
+        <result column="co_mainbk_add_line5" property="coMainbkAddLine5"/>
+        <result column="co_mainbk_city" property="coMainbkCity"/>
+        <result column="co_mainbk_state" property="coMainbkState"/>
+        <result column="co_mainbk_cntry_cd" property="coMainbkCntryCd"/>
+        <result column="co_mainbk_add_postcode" property="coMainbkAddPostcode"/>
+        <result column="co_mainbk_add_tel" property="coMainbkAddTel"/>
+        <result column="co_mainbk_add_fax" property="coMainbkAddFax"/>
+        <result column="co_mainbk_acc_no" property="coMainbkAccNo"/>
+        <result column="co_auth_signatory_name" property="coAuthSignatoryName"/>
+        <result column="co_auth_sign_desgn" property="coAuthSignDesgn"/>
+        <result column="co_auth_sign_nric_no" property="coAuthSignNricNo"/>
+        <result column="co_auth_sign_tel" property="coAuthSignTel"/>
+        <result column="co_auth_sign_mobile" property="coAuthSignMobile"/>
+        <result column="co_auth_sign_pager" property="coAuthSignPager"/>
+        <result column="co_card_prodct_code" property="coCardProdctCode"/>
+        <result column="co_lcl_credit_lmt" property="coLclCreditLmt"/>
+        <result column="co_frgn_credit_lmt" property="coFrgnCreditLmt"/>
+        <result column="co_billing_cycle" property="coBillingCycle"/>
+        <result column="co_monitor_code" property="coMonitorCode"/>
+        <result column="co_pay_indicator" property="coPayIndicator"/>
+        <result column="co_autopay_ind" property="coAutopayInd"/>
+        <result column="co_autopay_bank_branch" property="coAutopayBankBranch"/>
+        <result column="co_autopay_bank_acc_no" property="coAutopayBankAccNo"/>
+        <result column="co_autopay_bank_acc_name" property="coAutopayBankAccName"/>
+        <result column="co_frgn_autopay_ind" property="coFrgnAutopayInd"/>
+        <result column="co_autopay_for_bank_branch" property="coAutopayForBankBranch"/>
+        <result column="co_autopay_for_bank_acc_no" property="coAutopayForBankAccNo"/>
+        <result column="co_autopay_for_bank_acc_name" property="coAutopayForBankAccName"/>
+        <result column="co_status_code" property="coStatusCode"/>
+        <result column="co_join_fee" property="coJoinFee"/>
+        <result column="co_annual_acc_serv_chg" property="coAnnualAccServChg"/>
+        <result column="co_age_code_val" property="coAgeCodeVal"/>
+        <result column="co_voice_ind" property="coVoiceInd"/>
+        <result column="co_online_ind" property="coOnlineInd"/>
+        <result column="co_rtnchq_cnt" property="coRtnchqCnt"/>
+        <result column="co_rtnchq_prd" property="coRtnchqPrd"/>
+        <result column="co_rtnchq_voice_ind" property="coRtnchqVoiceInd"/>
+        <result column="co_rtnchq_online_ind" property="coRtnchqOnlineInd"/>
+        <result column="co_anniversary_date" property="coAnniversaryDate"/>
+        <result column="co_suspend_date" property="coSuspendDate"/>
+        <result column="co_bankruptcy_date" property="coBankruptcyDate"/>
+        <result column="co_cancellation_date" property="coCancellationDate"/>
+        <result column="co_canx_legal_date" property="coCanxLegalDate"/>
+        <result column="co_canx_fraud_date" property="coCanxFraudDate"/>
+        <result column="co_reserved_woff_date" property="coReservedWoffDate"/>
+        <result column="co_reinstatement_date" property="coReinstatementDate"/>
+        <result column="co_last_maintn_date" property="coLastMaintnDate"/>
+        <result column="co_last_mod_user" property="coLastModUser"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

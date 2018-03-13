@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="cn.happyworlds.imgmt.mapper.MemberServiceMapper">
+    <select id="searchMemberByParams" parameterType="map" resultMap="hashmap">
+        select 
+        	t1.hw_member_id,
+        	t1.cb_id_type,
+        	t1.cb_customer_idno,
+        	t1.cb_cardholder_name,
+        	t1.cb_mobile_no,
+        	t1.hw_regist_time,
+        	t1.hw_balance,
+        	t2.cb_cardholder_no 
+        from 
+        	cp_csttbl t1, 
+        	cp_crdtbl t2 
+        where 
+        	t1.cb_id_type = t2.cb_id_type 
+        and 
+        	t1.cb_customer_idno = t2.cb_idno
+        <if test="map!=null">
+        	<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberId)">
+                AND t1.hw_member_id = #{map.hwMemberId}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustomerIdno)">
+                AND t1.cb_customer_idno = #{map.cbCustomerIdno}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardholderName)">
+                AND t1.cb_cardholder_name = #{map.cbCardholderName}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMobileNo)">
+                AND t1.cb_mobile_no = #{map.cbMobileNo}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY ${map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+    
+    <resultMap id="hashmap" type="java.util.HashMap">
+		<result property="hwMemberId" column="hw_member_id" />
+		<result property="cbIdType" column="cb_id_type"/>
+		<result property="cbCustomerIdno" column="cb_customer_idno"/>
+		<result property="cbCardholderName" column="cb_cardholder_name"/>
+		<result property="cbMobileNo" column="cb_mobile_no"/>
+		<result property="hwRegistTime" column="hw_regist_time"/>
+		<result property="hwBalance" column="hw_balance"/>
+		<result property="cbCardholderNo" column="cb_cardholder_no"/>
+	</resultMap>
+</mapper>

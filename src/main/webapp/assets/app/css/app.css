@@ -1,0 +1,39 @@
+.login-logo {
+	margin-bottom: 0px;
+	padding-top: 10px;
+	padding-bottom: 7px;
+	background-color: #1D2089;
+}
+
+.login-box-body {
+	border-top: 1px #356aa0 solid; 
+	margin-top: 0px;
+}
+
+.info-box-btn .btn {
+	margin-top: 4px;
+}
+
+.login-page, .register-page {
+	background-color: #22aef8;
+	background-image: url("../img/bg-tech.jpg");
+	background-position: right;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.context-tips {
+	position: relative;
+	padding: 15px 15px 0 15px;
+	margin-bottom: -15px;
+}
+
+.bg-select-contract {
+	background-color: #c0c0c0;
+}
+
+.td-stat-label {
+	background-color: #f9fafc;
+	text-align: right;
+	width: 10%;
+}

@@ -1,0 +1,3150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpCsttblMapper">
+
+    <sql id="cpCsttblBaseColumnSql">
+        cb_member_code,
+        cb_id_type,
+        cb_customer_idno,
+        cb_cardholder_name,
+        cb_mobile_no,
+        cb_qualification,
+        cb_email,
+        cb_sex,
+        cb_dob,
+        cb_residency_code,
+        cb_title,
+        cb_nationality,
+        cb_user_amt1,
+        cb_cust_limit,
+        cb_user_code1,
+        cb_user_code2,
+        cb_user_code3,
+        cb_user_field1,
+        cb_user_field2,
+        cb_nric_issu_type,
+        cb_stop_dunn,
+        cb_customer_ref_no,
+        cb_nric_issu_idno,
+        cb_od_groupid,
+        cb_open_date,
+        cb_department_code,
+        cb_alt2_bill_state,
+        cb_mod_date,
+        cb_mod_time,
+        cb_recommender_id,
+        cb_home_addr1,
+        cb_home_addr2,
+        cb_home_addr3,
+        cb_home_addr4,
+        cb_home_addr5,
+        cb_home_city,
+        cb_home_state,
+        cb_home_cntry_cd,
+        cb_home_postcode,
+        cb_passport_no,
+        cb_branch_id,
+        cb_social_status,
+        cb_home_phone,
+        cb_pr_of_country,
+        cb_marital_status,
+        cb_home_ownership,
+        cb_house_type,
+        cb_year_there,
+        cb_liquid_asset,
+        cb_pager_no,
+        cb_company_name,
+        cb_co_addr1,
+        cb_co_addr2,
+        cb_co_addr3,
+        cb_co_addr4,
+        cb_co_addr5,
+        cb_co_city,
+        cb_co_state,
+        cb_co_cntry_cd,
+        cb_co_postcode,
+        cb_co_phone,
+        cb_co_faxno,
+        cb_co_desgn,
+        cb_comp_structure,
+        cb_emp_stability,
+        cb_mth_basic_salary,
+        cb_mth_fixed_allow,
+        cb_other_income,
+        cb_length_srv,
+        cb_self_employ,
+        cb_buss_sic,
+        cb_ex_employ_name,
+        cb_ex_length_service,
+        cb_ex_employ_desgn,
+        cb_oth_loan_bank1,
+        cb_oth_loan_type1,
+        cb_oth_loan_amt1,
+        cb_oth_loan_bank2,
+        cb_oth_loan_type2,
+        cb_oth_loan_amt2,
+        cb_oth_loan_bank3,
+        cb_oth_loan_type3,
+        cb_oth_loan_amt3,
+        cb_cr_card_no1,
+        cb_cr_card_no2,
+        cb_cr_card_limit1,
+        cb_cr_card_limit2,
+        cb_cr_card_no3,
+        cb_cr_card_limit3,
+        cb_oth_bank_cr_status,
+        cb_mother_name,
+        cb_spouse_name,
+        cb_spouse_nric,
+        cb_spouse_employ_name,
+        cb_no_of_dependents,
+        cb_rel_name,
+        cb_rel_nric,
+        cb_rel_dob,
+        cb_rel_sex,
+        cb_rel_relation_to_ch,
+        cb_rel_desgn,
+        cb_rel_addr1,
+        cb_rel_addr2,
+        cb_rel_addr3,
+        cb_rel_addr4,
+        cb_rel_addr5,
+        cb_rel_city,
+        cb_rel_state,
+        cb_rel_cntry_cd,
+        cb_rel_telno,
+        cb_cust_class,
+        cb_interest_grp_code,
+        cb_alt1_bill_addr1,
+        cb_alt1_bill_addr2,
+        cb_alt1_bill_addr3,
+        cb_alt1_bill_addr4,
+        cb_alt1_bill_addr5,
+        cb_alt1_bill_city,
+        cb_alt1_bill_state,
+        cb_alt1_bill_cntry_cd,
+        cb_alt1_bill_addr_postcode,
+        cb_alt2_bill_addr1,
+        cb_alt2_bill_addr2,
+        cb_alt2_bill_addr3,
+        cb_alt2_bill_addr4,
+        cb_alt2_bill_addr5,
+        cb_alt2_bill_city,
+        cb_alt2_bill_cntry_cd,
+        cb_alt2_bill_addr_postcode,
+        cb_direct_mail_ind,
+        cb_language_ind,
+        cb_photo_ind,
+        cb_cust_monitor_cd,
+        cb_cust_status_cd,
+        cb_nric_issu_date,
+        cb_nric_issu_place,
+        cb_district,
+        cb_close_date,
+        cb_pob,
+        cb_attribute,
+        cb_source_cd,
+        cb_recommender_name,
+        cb_user_date1,
+        cb_user_date2,
+        cb_user_amt2,
+        cb_sms_status,
+        cb_sms_mobile_no,
+        cb_ib_status,
+        cb_mlzone_id,
+        cb_mlclass_id,
+        cb_eng_name,
+        checksum,
+        cb_alt2bill_state,
+        cb_alt1bill_addr1,
+        cb_alt1bill_addr2,
+        cb_alt1bill_addr3,
+        cb_alt1bill_addr4,
+        cb_alt1bill_addr5,
+        cb_alt1bill_city,
+        cb_alt1bill_state,
+        cb_alt1bill_cntry_cd,
+        cb_alt1bill_addr_postcode,
+        cb_alt2bill_addr1,
+        cb_alt2bill_addr2,
+        cb_alt2bill_addr3,
+        cb_alt2bill_addr4,
+        cb_alt2bill_addr5,
+        cb_alt2bill_city,
+        cb_alt2bill_cntry_cd,
+        cb_alt2bill_addr_postcode
+    </sql>
+
+    <sql id="cpCsttblBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMemberCode)">
+                    cb_member_code = #{map.cbMemberCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdType)">
+                    AND cb_id_type = #{map.cbIdType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustomerIdno)">
+                    AND cb_customer_idno = #{map.cbCustomerIdno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardholderName)">
+                    AND cb_cardholder_name = #{map.cbCardholderName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMobileNo)">
+                    AND cb_mobile_no = #{map.cbMobileNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbQualification)">
+                    AND cb_qualification = #{map.cbQualification}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEmail)">
+                    AND cb_email = #{map.cbEmail}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSex)">
+                    AND cb_sex = #{map.cbSex}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbDob)">
+                    AND cb_dob = #{map.cbDob}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbResidencyCode)">
+                    AND cb_residency_code = #{map.cbResidencyCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbTitle)">
+                    AND cb_title = #{map.cbTitle}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNationality)">
+                    AND cb_nationality = #{map.cbNationality}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserAmt1)">
+                    AND cb_user_amt1 = #{map.cbUserAmt1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustLimit)">
+                    AND cb_cust_limit = #{map.cbCustLimit}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode1)">
+                    AND cb_user_code1 = #{map.cbUserCode1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode2)">
+                    AND cb_user_code2 = #{map.cbUserCode2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode3)">
+                    AND cb_user_code3 = #{map.cbUserCode3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserField1)">
+                    AND cb_user_field1 = #{map.cbUserField1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserField2)">
+                    AND cb_user_field2 = #{map.cbUserField2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNricIssuType)">
+                    AND cb_nric_issu_type = #{map.cbNricIssuType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbStopDunn)">
+                    AND cb_stop_dunn = #{map.cbStopDunn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustomerRefNo)">
+                    AND cb_customer_ref_no = #{map.cbCustomerRefNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNricIssuIdno)">
+                    AND cb_nric_issu_idno = #{map.cbNricIssuIdno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOdGroupid)">
+                    AND cb_od_groupid = #{map.cbOdGroupid}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOpenDate)">
+                    AND cb_open_date = #{map.cbOpenDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbDepartmentCode)">
+                    AND cb_department_code = #{map.cbDepartmentCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillState)">
+                    AND cb_alt2_bill_state = #{map.cbAlt2BillState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbModDate)">
+                    AND cb_mod_date = #{map.cbModDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbModTime)">
+                    AND cb_mod_time = #{map.cbModTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRecommenderId)">
+                    AND cb_recommender_id = #{map.cbRecommenderId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeAddr1)">
+                    AND cb_home_addr1 = #{map.cbHomeAddr1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeAddr2)">
+                    AND cb_home_addr2 = #{map.cbHomeAddr2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeAddr3)">
+                    AND cb_home_addr3 = #{map.cbHomeAddr3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeAddr4)">
+                    AND cb_home_addr4 = #{map.cbHomeAddr4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeAddr5)">
+                    AND cb_home_addr5 = #{map.cbHomeAddr5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeCity)">
+                    AND cb_home_city = #{map.cbHomeCity}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeState)">
+                    AND cb_home_state = #{map.cbHomeState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeCntryCd)">
+                    AND cb_home_cntry_cd = #{map.cbHomeCntryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomePostcode)">
+                    AND cb_home_postcode = #{map.cbHomePostcode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPassportNo)">
+                    AND cb_passport_no = #{map.cbPassportNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBranchId)">
+                    AND cb_branch_id = #{map.cbBranchId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSocialStatus)">
+                    AND cb_social_status = #{map.cbSocialStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomePhone)">
+                    AND cb_home_phone = #{map.cbHomePhone}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPrOfCountry)">
+                    AND cb_pr_of_country = #{map.cbPrOfCountry}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMaritalStatus)">
+                    AND cb_marital_status = #{map.cbMaritalStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeOwnership)">
+                    AND cb_home_ownership = #{map.cbHomeOwnership}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHouseType)">
+                    AND cb_house_type = #{map.cbHouseType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbYearThere)">
+                    AND cb_year_there = #{map.cbYearThere}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLiquidAsset)">
+                    AND cb_liquid_asset = #{map.cbLiquidAsset}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPagerNo)">
+                    AND cb_pager_no = #{map.cbPagerNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCompanyName)">
+                    AND cb_company_name = #{map.cbCompanyName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoAddr1)">
+                    AND cb_co_addr1 = #{map.cbCoAddr1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoAddr2)">
+                    AND cb_co_addr2 = #{map.cbCoAddr2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoAddr3)">
+                    AND cb_co_addr3 = #{map.cbCoAddr3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoAddr4)">
+                    AND cb_co_addr4 = #{map.cbCoAddr4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoAddr5)">
+                    AND cb_co_addr5 = #{map.cbCoAddr5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoCity)">
+                    AND cb_co_city = #{map.cbCoCity}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoState)">
+                    AND cb_co_state = #{map.cbCoState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoCntryCd)">
+                    AND cb_co_cntry_cd = #{map.cbCoCntryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoPostcode)">
+                    AND cb_co_postcode = #{map.cbCoPostcode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoPhone)">
+                    AND cb_co_phone = #{map.cbCoPhone}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoFaxno)">
+                    AND cb_co_faxno = #{map.cbCoFaxno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoDesgn)">
+                    AND cb_co_desgn = #{map.cbCoDesgn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCompStructure)">
+                    AND cb_comp_structure = #{map.cbCompStructure}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEmpStability)">
+                    AND cb_emp_stability = #{map.cbEmpStability}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMthBasicSalary)">
+                    AND cb_mth_basic_salary = #{map.cbMthBasicSalary}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMthFixedAllow)">
+                    AND cb_mth_fixed_allow = #{map.cbMthFixedAllow}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOtherIncome)">
+                    AND cb_other_income = #{map.cbOtherIncome}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLengthSrv)">
+                    AND cb_length_srv = #{map.cbLengthSrv}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSelfEmploy)">
+                    AND cb_self_employ = #{map.cbSelfEmploy}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBussSic)">
+                    AND cb_buss_sic = #{map.cbBussSic}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbExEmployName)">
+                    AND cb_ex_employ_name = #{map.cbExEmployName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbExLengthService)">
+                    AND cb_ex_length_service = #{map.cbExLengthService}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbExEmployDesgn)">
+                    AND cb_ex_employ_desgn = #{map.cbExEmployDesgn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanBank1)">
+                    AND cb_oth_loan_bank1 = #{map.cbOthLoanBank1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanType1)">
+                    AND cb_oth_loan_type1 = #{map.cbOthLoanType1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanAmt1)">
+                    AND cb_oth_loan_amt1 = #{map.cbOthLoanAmt1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanBank2)">
+                    AND cb_oth_loan_bank2 = #{map.cbOthLoanBank2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanType2)">
+                    AND cb_oth_loan_type2 = #{map.cbOthLoanType2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanAmt2)">
+                    AND cb_oth_loan_amt2 = #{map.cbOthLoanAmt2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanBank3)">
+                    AND cb_oth_loan_bank3 = #{map.cbOthLoanBank3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanType3)">
+                    AND cb_oth_loan_type3 = #{map.cbOthLoanType3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanAmt3)">
+                    AND cb_oth_loan_amt3 = #{map.cbOthLoanAmt3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardNo1)">
+                    AND cb_cr_card_no1 = #{map.cbCrCardNo1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardNo2)">
+                    AND cb_cr_card_no2 = #{map.cbCrCardNo2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardLimit1)">
+                    AND cb_cr_card_limit1 = #{map.cbCrCardLimit1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardLimit2)">
+                    AND cb_cr_card_limit2 = #{map.cbCrCardLimit2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardNo3)">
+                    AND cb_cr_card_no3 = #{map.cbCrCardNo3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardLimit3)">
+                    AND cb_cr_card_limit3 = #{map.cbCrCardLimit3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthBankCrStatus)">
+                    AND cb_oth_bank_cr_status = #{map.cbOthBankCrStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMotherName)">
+                    AND cb_mother_name = #{map.cbMotherName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSpouseName)">
+                    AND cb_spouse_name = #{map.cbSpouseName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSpouseNric)">
+                    AND cb_spouse_nric = #{map.cbSpouseNric}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSpouseEmployName)">
+                    AND cb_spouse_employ_name = #{map.cbSpouseEmployName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNoOfDependents)">
+                    AND cb_no_of_dependents = #{map.cbNoOfDependents}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelName)">
+                    AND cb_rel_name = #{map.cbRelName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelNric)">
+                    AND cb_rel_nric = #{map.cbRelNric}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelDob)">
+                    AND cb_rel_dob = #{map.cbRelDob}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelSex)">
+                    AND cb_rel_sex = #{map.cbRelSex}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelRelationToCh)">
+                    AND cb_rel_relation_to_ch = #{map.cbRelRelationToCh}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelDesgn)">
+                    AND cb_rel_desgn = #{map.cbRelDesgn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelAddr1)">
+                    AND cb_rel_addr1 = #{map.cbRelAddr1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelAddr2)">
+                    AND cb_rel_addr2 = #{map.cbRelAddr2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelAddr3)">
+                    AND cb_rel_addr3 = #{map.cbRelAddr3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelAddr4)">
+                    AND cb_rel_addr4 = #{map.cbRelAddr4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelAddr5)">
+                    AND cb_rel_addr5 = #{map.cbRelAddr5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelCity)">
+                    AND cb_rel_city = #{map.cbRelCity}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelState)">
+                    AND cb_rel_state = #{map.cbRelState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelCntryCd)">
+                    AND cb_rel_cntry_cd = #{map.cbRelCntryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelTelno)">
+                    AND cb_rel_telno = #{map.cbRelTelno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustClass)">
+                    AND cb_cust_class = #{map.cbCustClass}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbInterestGrpCode)">
+                    AND cb_interest_grp_code = #{map.cbInterestGrpCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddr1)">
+                    AND cb_alt1_bill_addr1 = #{map.cbAlt1BillAddr1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddr2)">
+                    AND cb_alt1_bill_addr2 = #{map.cbAlt1BillAddr2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddr3)">
+                    AND cb_alt1_bill_addr3 = #{map.cbAlt1BillAddr3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddr4)">
+                    AND cb_alt1_bill_addr4 = #{map.cbAlt1BillAddr4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddr5)">
+                    AND cb_alt1_bill_addr5 = #{map.cbAlt1BillAddr5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillCity)">
+                    AND cb_alt1_bill_city = #{map.cbAlt1BillCity}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillState)">
+                    AND cb_alt1_bill_state = #{map.cbAlt1BillState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillCntryCd)">
+                    AND cb_alt1_bill_cntry_cd = #{map.cbAlt1BillCntryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddrPostcode)">
+                    AND cb_alt1_bill_addr_postcode = #{map.cbAlt1BillAddrPostcode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddr1)">
+                    AND cb_alt2_bill_addr1 = #{map.cbAlt2BillAddr1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddr2)">
+                    AND cb_alt2_bill_addr2 = #{map.cbAlt2BillAddr2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddr3)">
+                    AND cb_alt2_bill_addr3 = #{map.cbAlt2BillAddr3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddr4)">
+                    AND cb_alt2_bill_addr4 = #{map.cbAlt2BillAddr4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddr5)">
+                    AND cb_alt2_bill_addr5 = #{map.cbAlt2BillAddr5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillCity)">
+                    AND cb_alt2_bill_city = #{map.cbAlt2BillCity}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillCntryCd)">
+                    AND cb_alt2_bill_cntry_cd = #{map.cbAlt2BillCntryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddrPostcode)">
+                    AND cb_alt2_bill_addr_postcode = #{map.cbAlt2BillAddrPostcode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbDirectMailInd)">
+                    AND cb_direct_mail_ind = #{map.cbDirectMailInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLanguageInd)">
+                    AND cb_language_ind = #{map.cbLanguageInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPhotoInd)">
+                    AND cb_photo_ind = #{map.cbPhotoInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustMonitorCd)">
+                    AND cb_cust_monitor_cd = #{map.cbCustMonitorCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustStatusCd)">
+                    AND cb_cust_status_cd = #{map.cbCustStatusCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNricIssuDate)">
+                    AND cb_nric_issu_date = #{map.cbNricIssuDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNricIssuPlace)">
+                    AND cb_nric_issu_place = #{map.cbNricIssuPlace}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbDistrict)">
+                    AND cb_district = #{map.cbDistrict}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCloseDate)">
+                    AND cb_close_date = #{map.cbCloseDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPob)">
+                    AND cb_pob = #{map.cbPob}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAttribute)">
+                    AND cb_attribute = #{map.cbAttribute}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSourceCd)">
+                    AND cb_source_cd = #{map.cbSourceCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRecommenderName)">
+                    AND cb_recommender_name = #{map.cbRecommenderName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserDate1)">
+                    AND cb_user_date1 = #{map.cbUserDate1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserDate2)">
+                    AND cb_user_date2 = #{map.cbUserDate2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserAmt2)">
+                    AND cb_user_amt2 = #{map.cbUserAmt2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSmsStatus)">
+                    AND cb_sms_status = #{map.cbSmsStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSmsMobileNo)">
+                    AND cb_sms_mobile_no = #{map.cbSmsMobileNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIbStatus)">
+                    AND cb_ib_status = #{map.cbIbStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMlzoneId)">
+                    AND cb_mlzone_id = #{map.cbMlzoneId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMlclassId)">
+                    AND cb_mlclass_id = #{map.cbMlclassId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEngName)">
+                    AND cb_eng_name = #{map.cbEngName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billState)">
+                    AND cb_alt2bill_state = #{map.cbAlt2billState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddr1)">
+                    AND cb_alt1bill_addr1 = #{map.cbAlt1billAddr1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddr2)">
+                    AND cb_alt1bill_addr2 = #{map.cbAlt1billAddr2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddr3)">
+                    AND cb_alt1bill_addr3 = #{map.cbAlt1billAddr3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddr4)">
+                    AND cb_alt1bill_addr4 = #{map.cbAlt1billAddr4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddr5)">
+                    AND cb_alt1bill_addr5 = #{map.cbAlt1billAddr5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billCity)">
+                    AND cb_alt1bill_city = #{map.cbAlt1billCity}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billState)">
+                    AND cb_alt1bill_state = #{map.cbAlt1billState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billCntryCd)">
+                    AND cb_alt1bill_cntry_cd = #{map.cbAlt1billCntryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddrPostcode)">
+                    AND cb_alt1bill_addr_postcode = #{map.cbAlt1billAddrPostcode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddr1)">
+                    AND cb_alt2bill_addr1 = #{map.cbAlt2billAddr1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddr2)">
+                    AND cb_alt2bill_addr2 = #{map.cbAlt2billAddr2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddr3)">
+                    AND cb_alt2bill_addr3 = #{map.cbAlt2billAddr3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddr4)">
+                    AND cb_alt2bill_addr4 = #{map.cbAlt2billAddr4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddr5)">
+                    AND cb_alt2bill_addr5 = #{map.cbAlt2billAddr5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billCity)">
+                    AND cb_alt2bill_city = #{map.cbAlt2billCity}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billCntryCd)">
+                    AND cb_alt2bill_cntry_cd = #{map.cbAlt2billCntryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddrPostcode)">
+                    AND cb_alt2bill_addr_postcode = #{map.cbAlt2billAddrPostcode}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpCsttbl" parameterType="cn.happyworlds.imgmt.entity.CpCsttbl">
+        INSERT INTO cp_csttbl(
+        <include refid="cpCsttblBaseColumnSql"/>
+        )VALUES(
+            #{cbMemberCode},
+            #{cbIdType},
+            #{cbCustomerIdno},
+            #{cbCardholderName},
+            #{cbMobileNo},
+            #{cbQualification},
+            #{cbEmail},
+            #{cbSex},
+            #{cbDob},
+            #{cbResidencyCode},
+            #{cbTitle},
+            #{cbNationality},
+            #{cbUserAmt1},
+            #{cbCustLimit},
+            #{cbUserCode1},
+            #{cbUserCode2},
+            #{cbUserCode3},
+            #{cbUserField1},
+            #{cbUserField2},
+            #{cbNricIssuType},
+            #{cbStopDunn},
+            #{cbCustomerRefNo},
+            #{cbNricIssuIdno},
+            #{cbOdGroupid},
+            #{cbOpenDate},
+            #{cbDepartmentCode},
+            #{cbAlt2BillState},
+            #{cbModDate},
+            #{cbModTime},
+            #{cbRecommenderId},
+            #{cbHomeAddr1},
+            #{cbHomeAddr2},
+            #{cbHomeAddr3},
+            #{cbHomeAddr4},
+            #{cbHomeAddr5},
+            #{cbHomeCity},
+            #{cbHomeState},
+            #{cbHomeCntryCd},
+            #{cbHomePostcode},
+            #{cbPassportNo},
+            #{cbBranchId},
+            #{cbSocialStatus},
+            #{cbHomePhone},
+            #{cbPrOfCountry},
+            #{cbMaritalStatus},
+            #{cbHomeOwnership},
+            #{cbHouseType},
+            #{cbYearThere},
+            #{cbLiquidAsset},
+            #{cbPagerNo},
+            #{cbCompanyName},
+            #{cbCoAddr1},
+            #{cbCoAddr2},
+            #{cbCoAddr3},
+            #{cbCoAddr4},
+            #{cbCoAddr5},
+            #{cbCoCity},
+            #{cbCoState},
+            #{cbCoCntryCd},
+            #{cbCoPostcode},
+            #{cbCoPhone},
+            #{cbCoFaxno},
+            #{cbCoDesgn},
+            #{cbCompStructure},
+            #{cbEmpStability},
+            #{cbMthBasicSalary},
+            #{cbMthFixedAllow},
+            #{cbOtherIncome},
+            #{cbLengthSrv},
+            #{cbSelfEmploy},
+            #{cbBussSic},
+            #{cbExEmployName},
+            #{cbExLengthService},
+            #{cbExEmployDesgn},
+            #{cbOthLoanBank1},
+            #{cbOthLoanType1},
+            #{cbOthLoanAmt1},
+            #{cbOthLoanBank2},
+            #{cbOthLoanType2},
+            #{cbOthLoanAmt2},
+            #{cbOthLoanBank3},
+            #{cbOthLoanType3},
+            #{cbOthLoanAmt3},
+            #{cbCrCardNo1},
+            #{cbCrCardNo2},
+            #{cbCrCardLimit1},
+            #{cbCrCardLimit2},
+            #{cbCrCardNo3},
+            #{cbCrCardLimit3},
+            #{cbOthBankCrStatus},
+            #{cbMotherName},
+            #{cbSpouseName},
+            #{cbSpouseNric},
+            #{cbSpouseEmployName},
+            #{cbNoOfDependents},
+            #{cbRelName},
+            #{cbRelNric},
+            #{cbRelDob},
+            #{cbRelSex},
+            #{cbRelRelationToCh},
+            #{cbRelDesgn},
+            #{cbRelAddr1},
+            #{cbRelAddr2},
+            #{cbRelAddr3},
+            #{cbRelAddr4},
+            #{cbRelAddr5},
+            #{cbRelCity},
+            #{cbRelState},
+            #{cbRelCntryCd},
+            #{cbRelTelno},
+            #{cbCustClass},
+            #{cbInterestGrpCode},
+            #{cbAlt1BillAddr1},
+            #{cbAlt1BillAddr2},
+            #{cbAlt1BillAddr3},
+            #{cbAlt1BillAddr4},
+            #{cbAlt1BillAddr5},
+            #{cbAlt1BillCity},
+            #{cbAlt1BillState},
+            #{cbAlt1BillCntryCd},
+            #{cbAlt1BillAddrPostcode},
+            #{cbAlt2BillAddr1},
+            #{cbAlt2BillAddr2},
+            #{cbAlt2BillAddr3},
+            #{cbAlt2BillAddr4},
+            #{cbAlt2BillAddr5},
+            #{cbAlt2BillCity},
+            #{cbAlt2BillCntryCd},
+            #{cbAlt2BillAddrPostcode},
+            #{cbDirectMailInd},
+            #{cbLanguageInd},
+            #{cbPhotoInd},
+            #{cbCustMonitorCd},
+            #{cbCustStatusCd},
+            #{cbNricIssuDate},
+            #{cbNricIssuPlace},
+            #{cbDistrict},
+            #{cbCloseDate},
+            #{cbPob},
+            #{cbAttribute},
+            #{cbSourceCd},
+            #{cbRecommenderName},
+            #{cbUserDate1},
+            #{cbUserDate2},
+            #{cbUserAmt2},
+            #{cbSmsStatus},
+            #{cbSmsMobileNo},
+            #{cbIbStatus},
+            #{cbMlzoneId},
+            #{cbMlclassId},
+            #{cbEngName},
+            #{checksum},
+            #{cbAlt2billState},
+            #{cbAlt1billAddr1},
+            #{cbAlt1billAddr2},
+            #{cbAlt1billAddr3},
+            #{cbAlt1billAddr4},
+            #{cbAlt1billAddr5},
+            #{cbAlt1billCity},
+            #{cbAlt1billState},
+            #{cbAlt1billCntryCd},
+            #{cbAlt1billAddrPostcode},
+            #{cbAlt2billAddr1},
+            #{cbAlt2billAddr2},
+            #{cbAlt2billAddr3},
+            #{cbAlt2billAddr4},
+            #{cbAlt2billAddr5},
+            #{cbAlt2billCity},
+            #{cbAlt2billCntryCd},
+            #{cbAlt2billAddrPostcode}
+        )
+    </insert>
+        
+    <!-- 
+    <delete id="deleteCpCsttblBy${table.pkColumn.variableSpellSqlName}" parameterType="${table.pkColumn.javaType}">
+        DELETE FROM cp_csttbl WHERE ${table.pkColumn.sqlName} = #{${table.pkColumn.variableName}}
+    </delete>
+	-->
+	
+    <select id="deleteCpCsttblByParams" parameterType="map">
+        DELETE FROM cp_csttbl
+        <include refid="cpCsttblBaseWhereSql"/>
+    </select>
+	
+    <update id="updateCpCsttbl" parameterType="cn.happyworlds.imgmt.entity.CpCsttbl">
+        UPDATE cp_csttbl
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIdType)">
+                cb_id_type = #{cbIdType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCustomerIdno)">
+                cb_customer_idno = #{cbCustomerIdno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCardholderName)">
+                cb_cardholder_name = #{cbCardholderName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMobileNo)">
+                cb_mobile_no = #{cbMobileNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbQualification)">
+                cb_qualification = #{cbQualification} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbEmail)">
+                cb_email = #{cbEmail} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSex)">
+                cb_sex = #{cbSex} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbDob)">
+                cb_dob = #{cbDob} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbResidencyCode)">
+                cb_residency_code = #{cbResidencyCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbTitle)">
+                cb_title = #{cbTitle} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNationality)">
+                cb_nationality = #{cbNationality} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserAmt1)">
+                cb_user_amt1 = #{cbUserAmt1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCustLimit)">
+                cb_cust_limit = #{cbCustLimit} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserCode1)">
+                cb_user_code1 = #{cbUserCode1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserCode2)">
+                cb_user_code2 = #{cbUserCode2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserCode3)">
+                cb_user_code3 = #{cbUserCode3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserField1)">
+                cb_user_field1 = #{cbUserField1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserField2)">
+                cb_user_field2 = #{cbUserField2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNricIssuType)">
+                cb_nric_issu_type = #{cbNricIssuType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbStopDunn)">
+                cb_stop_dunn = #{cbStopDunn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCustomerRefNo)">
+                cb_customer_ref_no = #{cbCustomerRefNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNricIssuIdno)">
+                cb_nric_issu_idno = #{cbNricIssuIdno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOdGroupid)">
+                cb_od_groupid = #{cbOdGroupid} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOpenDate)">
+                cb_open_date = #{cbOpenDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbDepartmentCode)">
+                cb_department_code = #{cbDepartmentCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillState)">
+                cb_alt2_bill_state = #{cbAlt2BillState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbModDate)">
+                cb_mod_date = #{cbModDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbModTime)">
+                cb_mod_time = #{cbModTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRecommenderId)">
+                cb_recommender_id = #{cbRecommenderId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeAddr1)">
+                cb_home_addr1 = #{cbHomeAddr1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeAddr2)">
+                cb_home_addr2 = #{cbHomeAddr2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeAddr3)">
+                cb_home_addr3 = #{cbHomeAddr3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeAddr4)">
+                cb_home_addr4 = #{cbHomeAddr4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeAddr5)">
+                cb_home_addr5 = #{cbHomeAddr5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeCity)">
+                cb_home_city = #{cbHomeCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeState)">
+                cb_home_state = #{cbHomeState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeCntryCd)">
+                cb_home_cntry_cd = #{cbHomeCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomePostcode)">
+                cb_home_postcode = #{cbHomePostcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPassportNo)">
+                cb_passport_no = #{cbPassportNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbBranchId)">
+                cb_branch_id = #{cbBranchId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSocialStatus)">
+                cb_social_status = #{cbSocialStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomePhone)">
+                cb_home_phone = #{cbHomePhone} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPrOfCountry)">
+                cb_pr_of_country = #{cbPrOfCountry} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMaritalStatus)">
+                cb_marital_status = #{cbMaritalStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeOwnership)">
+                cb_home_ownership = #{cbHomeOwnership} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHouseType)">
+                cb_house_type = #{cbHouseType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbYearThere)">
+                cb_year_there = #{cbYearThere} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbLiquidAsset)">
+                cb_liquid_asset = #{cbLiquidAsset} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPagerNo)">
+                cb_pager_no = #{cbPagerNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCompanyName)">
+                cb_company_name = #{cbCompanyName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoAddr1)">
+                cb_co_addr1 = #{cbCoAddr1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoAddr2)">
+                cb_co_addr2 = #{cbCoAddr2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoAddr3)">
+                cb_co_addr3 = #{cbCoAddr3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoAddr4)">
+                cb_co_addr4 = #{cbCoAddr4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoAddr5)">
+                cb_co_addr5 = #{cbCoAddr5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoCity)">
+                cb_co_city = #{cbCoCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoState)">
+                cb_co_state = #{cbCoState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoCntryCd)">
+                cb_co_cntry_cd = #{cbCoCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoPostcode)">
+                cb_co_postcode = #{cbCoPostcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoPhone)">
+                cb_co_phone = #{cbCoPhone} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoFaxno)">
+                cb_co_faxno = #{cbCoFaxno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoDesgn)">
+                cb_co_desgn = #{cbCoDesgn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCompStructure)">
+                cb_comp_structure = #{cbCompStructure} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbEmpStability)">
+                cb_emp_stability = #{cbEmpStability} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMthBasicSalary)">
+                cb_mth_basic_salary = #{cbMthBasicSalary} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMthFixedAllow)">
+                cb_mth_fixed_allow = #{cbMthFixedAllow} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOtherIncome)">
+                cb_other_income = #{cbOtherIncome} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbLengthSrv)">
+                cb_length_srv = #{cbLengthSrv} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSelfEmploy)">
+                cb_self_employ = #{cbSelfEmploy} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbBussSic)">
+                cb_buss_sic = #{cbBussSic} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbExEmployName)">
+                cb_ex_employ_name = #{cbExEmployName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbExLengthService)">
+                cb_ex_length_service = #{cbExLengthService} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbExEmployDesgn)">
+                cb_ex_employ_desgn = #{cbExEmployDesgn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanBank1)">
+                cb_oth_loan_bank1 = #{cbOthLoanBank1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanType1)">
+                cb_oth_loan_type1 = #{cbOthLoanType1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanAmt1)">
+                cb_oth_loan_amt1 = #{cbOthLoanAmt1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanBank2)">
+                cb_oth_loan_bank2 = #{cbOthLoanBank2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanType2)">
+                cb_oth_loan_type2 = #{cbOthLoanType2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanAmt2)">
+                cb_oth_loan_amt2 = #{cbOthLoanAmt2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanBank3)">
+                cb_oth_loan_bank3 = #{cbOthLoanBank3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanType3)">
+                cb_oth_loan_type3 = #{cbOthLoanType3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanAmt3)">
+                cb_oth_loan_amt3 = #{cbOthLoanAmt3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCrCardNo1)">
+                cb_cr_card_no1 = #{cbCrCardNo1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCrCardNo2)">
+                cb_cr_card_no2 = #{cbCrCardNo2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCrCardLimit1)">
+                cb_cr_card_limit1 = #{cbCrCardLimit1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCrCardLimit2)">
+                cb_cr_card_limit2 = #{cbCrCardLimit2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCrCardNo3)">
+                cb_cr_card_no3 = #{cbCrCardNo3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCrCardLimit3)">
+                cb_cr_card_limit3 = #{cbCrCardLimit3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthBankCrStatus)">
+                cb_oth_bank_cr_status = #{cbOthBankCrStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMotherName)">
+                cb_mother_name = #{cbMotherName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSpouseName)">
+                cb_spouse_name = #{cbSpouseName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSpouseNric)">
+                cb_spouse_nric = #{cbSpouseNric} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSpouseEmployName)">
+                cb_spouse_employ_name = #{cbSpouseEmployName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNoOfDependents)">
+                cb_no_of_dependents = #{cbNoOfDependents} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelName)">
+                cb_rel_name = #{cbRelName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelNric)">
+                cb_rel_nric = #{cbRelNric} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelDob)">
+                cb_rel_dob = #{cbRelDob} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelSex)">
+                cb_rel_sex = #{cbRelSex} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelRelationToCh)">
+                cb_rel_relation_to_ch = #{cbRelRelationToCh} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelDesgn)">
+                cb_rel_desgn = #{cbRelDesgn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelAddr1)">
+                cb_rel_addr1 = #{cbRelAddr1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelAddr2)">
+                cb_rel_addr2 = #{cbRelAddr2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelAddr3)">
+                cb_rel_addr3 = #{cbRelAddr3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelAddr4)">
+                cb_rel_addr4 = #{cbRelAddr4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelAddr5)">
+                cb_rel_addr5 = #{cbRelAddr5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelCity)">
+                cb_rel_city = #{cbRelCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelState)">
+                cb_rel_state = #{cbRelState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelCntryCd)">
+                cb_rel_cntry_cd = #{cbRelCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelTelno)">
+                cb_rel_telno = #{cbRelTelno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCustClass)">
+                cb_cust_class = #{cbCustClass} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbInterestGrpCode)">
+                cb_interest_grp_code = #{cbInterestGrpCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillAddr1)">
+                cb_alt1_bill_addr1 = #{cbAlt1BillAddr1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillAddr2)">
+                cb_alt1_bill_addr2 = #{cbAlt1BillAddr2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillAddr3)">
+                cb_alt1_bill_addr3 = #{cbAlt1BillAddr3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillAddr4)">
+                cb_alt1_bill_addr4 = #{cbAlt1BillAddr4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillAddr5)">
+                cb_alt1_bill_addr5 = #{cbAlt1BillAddr5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillCity)">
+                cb_alt1_bill_city = #{cbAlt1BillCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillState)">
+                cb_alt1_bill_state = #{cbAlt1BillState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillCntryCd)">
+                cb_alt1_bill_cntry_cd = #{cbAlt1BillCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillAddrPostcode)">
+                cb_alt1_bill_addr_postcode = #{cbAlt1BillAddrPostcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillAddr1)">
+                cb_alt2_bill_addr1 = #{cbAlt2BillAddr1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillAddr2)">
+                cb_alt2_bill_addr2 = #{cbAlt2BillAddr2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillAddr3)">
+                cb_alt2_bill_addr3 = #{cbAlt2BillAddr3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillAddr4)">
+                cb_alt2_bill_addr4 = #{cbAlt2BillAddr4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillAddr5)">
+                cb_alt2_bill_addr5 = #{cbAlt2BillAddr5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillCity)">
+                cb_alt2_bill_city = #{cbAlt2BillCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillCntryCd)">
+                cb_alt2_bill_cntry_cd = #{cbAlt2BillCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillAddrPostcode)">
+                cb_alt2_bill_addr_postcode = #{cbAlt2BillAddrPostcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbDirectMailInd)">
+                cb_direct_mail_ind = #{cbDirectMailInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbLanguageInd)">
+                cb_language_ind = #{cbLanguageInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPhotoInd)">
+                cb_photo_ind = #{cbPhotoInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCustMonitorCd)">
+                cb_cust_monitor_cd = #{cbCustMonitorCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCustStatusCd)">
+                cb_cust_status_cd = #{cbCustStatusCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNricIssuDate)">
+                cb_nric_issu_date = #{cbNricIssuDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNricIssuPlace)">
+                cb_nric_issu_place = #{cbNricIssuPlace} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbDistrict)">
+                cb_district = #{cbDistrict} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCloseDate)">
+                cb_close_date = #{cbCloseDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPob)">
+                cb_pob = #{cbPob} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAttribute)">
+                cb_attribute = #{cbAttribute} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSourceCd)">
+                cb_source_cd = #{cbSourceCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRecommenderName)">
+                cb_recommender_name = #{cbRecommenderName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserDate1)">
+                cb_user_date1 = #{cbUserDate1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserDate2)">
+                cb_user_date2 = #{cbUserDate2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserAmt2)">
+                cb_user_amt2 = #{cbUserAmt2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSmsStatus)">
+                cb_sms_status = #{cbSmsStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSmsMobileNo)">
+                cb_sms_mobile_no = #{cbSmsMobileNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIbStatus)">
+                cb_ib_status = #{cbIbStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMlzoneId)">
+                cb_mlzone_id = #{cbMlzoneId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMlclassId)">
+                cb_mlclass_id = #{cbMlclassId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbEngName)">
+                cb_eng_name = #{cbEngName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billState)">
+                cb_alt2bill_state = #{cbAlt2billState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billAddr1)">
+                cb_alt1bill_addr1 = #{cbAlt1billAddr1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billAddr2)">
+                cb_alt1bill_addr2 = #{cbAlt1billAddr2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billAddr3)">
+                cb_alt1bill_addr3 = #{cbAlt1billAddr3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billAddr4)">
+                cb_alt1bill_addr4 = #{cbAlt1billAddr4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billAddr5)">
+                cb_alt1bill_addr5 = #{cbAlt1billAddr5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billCity)">
+                cb_alt1bill_city = #{cbAlt1billCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billState)">
+                cb_alt1bill_state = #{cbAlt1billState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billCntryCd)">
+                cb_alt1bill_cntry_cd = #{cbAlt1billCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billAddrPostcode)">
+                cb_alt1bill_addr_postcode = #{cbAlt1billAddrPostcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billAddr1)">
+                cb_alt2bill_addr1 = #{cbAlt2billAddr1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billAddr2)">
+                cb_alt2bill_addr2 = #{cbAlt2billAddr2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billAddr3)">
+                cb_alt2bill_addr3 = #{cbAlt2billAddr3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billAddr4)">
+                cb_alt2bill_addr4 = #{cbAlt2billAddr4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billAddr5)">
+                cb_alt2bill_addr5 = #{cbAlt2billAddr5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billCity)">
+                cb_alt2bill_city = #{cbAlt2billCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billCntryCd)">
+                cb_alt2bill_cntry_cd = #{cbAlt2billCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billAddrPostcode)">
+                cb_alt2bill_addr_postcode = #{cbAlt2billAddrPostcode}
+            </if>
+        </set>
+        WHERE cb_customer_idno = #{cbCustomerIdno}
+    </update>
+	
+	
+	<update id="updateCpCsttblPri" parameterType="cn.happyworlds.imgmt.entity.CpCsttbl">
+        UPDATE cp_csttbl
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIdType)">
+                cb_id_type = #{cbIdType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCustomerIdno)">
+                cb_customer_idno = #{cbCustomerIdno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCardholderName)">
+                cb_cardholder_name = #{cbCardholderName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMobileNo)">
+                cb_mobile_no = #{cbMobileNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbQualification)">
+                cb_qualification = #{cbQualification} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbEmail)">
+                cb_email = #{cbEmail} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSex)">
+                cb_sex = #{cbSex} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbDob)">
+                cb_dob = #{cbDob} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbResidencyCode)">
+                cb_residency_code = #{cbResidencyCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbTitle)">
+                cb_title = #{cbTitle} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNationality)">
+                cb_nationality = #{cbNationality} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserAmt1)">
+                cb_user_amt1 = #{cbUserAmt1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCustLimit)">
+                cb_cust_limit = #{cbCustLimit} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserCode1)">
+                cb_user_code1 = #{cbUserCode1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserCode2)">
+                cb_user_code2 = #{cbUserCode2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserCode3)">
+                cb_user_code3 = #{cbUserCode3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserField1)">
+                cb_user_field1 = #{cbUserField1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserField2)">
+                cb_user_field2 = #{cbUserField2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNricIssuType)">
+                cb_nric_issu_type = #{cbNricIssuType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbStopDunn)">
+                cb_stop_dunn = #{cbStopDunn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCustomerRefNo)">
+                cb_customer_ref_no = #{cbCustomerRefNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNricIssuIdno)">
+                cb_nric_issu_idno = #{cbNricIssuIdno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOdGroupid)">
+                cb_od_groupid = #{cbOdGroupid} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOpenDate)">
+                cb_open_date = #{cbOpenDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbDepartmentCode)">
+                cb_department_code = #{cbDepartmentCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillState)">
+                cb_alt2_bill_state = #{cbAlt2BillState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbModDate)">
+                cb_mod_date = #{cbModDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbModTime)">
+                cb_mod_time = #{cbModTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRecommenderId)">
+                cb_recommender_id = #{cbRecommenderId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeAddr1)">
+                cb_home_addr1 = #{cbHomeAddr1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeAddr2)">
+                cb_home_addr2 = #{cbHomeAddr2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeAddr3)">
+                cb_home_addr3 = #{cbHomeAddr3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeAddr4)">
+                cb_home_addr4 = #{cbHomeAddr4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeAddr5)">
+                cb_home_addr5 = #{cbHomeAddr5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeCity)">
+                cb_home_city = #{cbHomeCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeState)">
+                cb_home_state = #{cbHomeState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeCntryCd)">
+                cb_home_cntry_cd = #{cbHomeCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomePostcode)">
+                cb_home_postcode = #{cbHomePostcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPassportNo)">
+                cb_passport_no = #{cbPassportNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbBranchId)">
+                cb_branch_id = #{cbBranchId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSocialStatus)">
+                cb_social_status = #{cbSocialStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomePhone)">
+                cb_home_phone = #{cbHomePhone} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPrOfCountry)">
+                cb_pr_of_country = #{cbPrOfCountry} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMaritalStatus)">
+                cb_marital_status = #{cbMaritalStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHomeOwnership)">
+                cb_home_ownership = #{cbHomeOwnership} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbHouseType)">
+                cb_house_type = #{cbHouseType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbYearThere)">
+                cb_year_there = #{cbYearThere} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbLiquidAsset)">
+                cb_liquid_asset = #{cbLiquidAsset} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPagerNo)">
+                cb_pager_no = #{cbPagerNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCompanyName)">
+                cb_company_name = #{cbCompanyName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoAddr1)">
+                cb_co_addr1 = #{cbCoAddr1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoAddr2)">
+                cb_co_addr2 = #{cbCoAddr2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoAddr3)">
+                cb_co_addr3 = #{cbCoAddr3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoAddr4)">
+                cb_co_addr4 = #{cbCoAddr4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoAddr5)">
+                cb_co_addr5 = #{cbCoAddr5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoCity)">
+                cb_co_city = #{cbCoCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoState)">
+                cb_co_state = #{cbCoState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoCntryCd)">
+                cb_co_cntry_cd = #{cbCoCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoPostcode)">
+                cb_co_postcode = #{cbCoPostcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoPhone)">
+                cb_co_phone = #{cbCoPhone} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoFaxno)">
+                cb_co_faxno = #{cbCoFaxno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCoDesgn)">
+                cb_co_desgn = #{cbCoDesgn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCompStructure)">
+                cb_comp_structure = #{cbCompStructure} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbEmpStability)">
+                cb_emp_stability = #{cbEmpStability} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMthBasicSalary)">
+                cb_mth_basic_salary = #{cbMthBasicSalary} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMthFixedAllow)">
+                cb_mth_fixed_allow = #{cbMthFixedAllow} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOtherIncome)">
+                cb_other_income = #{cbOtherIncome} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbLengthSrv)">
+                cb_length_srv = #{cbLengthSrv} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSelfEmploy)">
+                cb_self_employ = #{cbSelfEmploy} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbBussSic)">
+                cb_buss_sic = #{cbBussSic} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbExEmployName)">
+                cb_ex_employ_name = #{cbExEmployName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbExLengthService)">
+                cb_ex_length_service = #{cbExLengthService} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbExEmployDesgn)">
+                cb_ex_employ_desgn = #{cbExEmployDesgn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanBank1)">
+                cb_oth_loan_bank1 = #{cbOthLoanBank1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanType1)">
+                cb_oth_loan_type1 = #{cbOthLoanType1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanAmt1)">
+                cb_oth_loan_amt1 = #{cbOthLoanAmt1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanBank2)">
+                cb_oth_loan_bank2 = #{cbOthLoanBank2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanType2)">
+                cb_oth_loan_type2 = #{cbOthLoanType2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanAmt2)">
+                cb_oth_loan_amt2 = #{cbOthLoanAmt2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanBank3)">
+                cb_oth_loan_bank3 = #{cbOthLoanBank3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanType3)">
+                cb_oth_loan_type3 = #{cbOthLoanType3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthLoanAmt3)">
+                cb_oth_loan_amt3 = #{cbOthLoanAmt3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCrCardNo1)">
+                cb_cr_card_no1 = #{cbCrCardNo1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCrCardNo2)">
+                cb_cr_card_no2 = #{cbCrCardNo2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCrCardLimit1)">
+                cb_cr_card_limit1 = #{cbCrCardLimit1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCrCardLimit2)">
+                cb_cr_card_limit2 = #{cbCrCardLimit2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCrCardNo3)">
+                cb_cr_card_no3 = #{cbCrCardNo3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCrCardLimit3)">
+                cb_cr_card_limit3 = #{cbCrCardLimit3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOthBankCrStatus)">
+                cb_oth_bank_cr_status = #{cbOthBankCrStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMotherName)">
+                cb_mother_name = #{cbMotherName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSpouseName)">
+                cb_spouse_name = #{cbSpouseName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSpouseNric)">
+                cb_spouse_nric = #{cbSpouseNric} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSpouseEmployName)">
+                cb_spouse_employ_name = #{cbSpouseEmployName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNoOfDependents)">
+                cb_no_of_dependents = #{cbNoOfDependents} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelName)">
+                cb_rel_name = #{cbRelName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelNric)">
+                cb_rel_nric = #{cbRelNric} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelDob)">
+                cb_rel_dob = #{cbRelDob} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelSex)">
+                cb_rel_sex = #{cbRelSex} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelRelationToCh)">
+                cb_rel_relation_to_ch = #{cbRelRelationToCh} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelDesgn)">
+                cb_rel_desgn = #{cbRelDesgn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelAddr1)">
+                cb_rel_addr1 = #{cbRelAddr1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelAddr2)">
+                cb_rel_addr2 = #{cbRelAddr2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelAddr3)">
+                cb_rel_addr3 = #{cbRelAddr3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelAddr4)">
+                cb_rel_addr4 = #{cbRelAddr4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelAddr5)">
+                cb_rel_addr5 = #{cbRelAddr5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelCity)">
+                cb_rel_city = #{cbRelCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelState)">
+                cb_rel_state = #{cbRelState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelCntryCd)">
+                cb_rel_cntry_cd = #{cbRelCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelTelno)">
+                cb_rel_telno = #{cbRelTelno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCustClass)">
+                cb_cust_class = #{cbCustClass} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbInterestGrpCode)">
+                cb_interest_grp_code = #{cbInterestGrpCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillAddr1)">
+                cb_alt1_bill_addr1 = #{cbAlt1BillAddr1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillAddr2)">
+                cb_alt1_bill_addr2 = #{cbAlt1BillAddr2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillAddr3)">
+                cb_alt1_bill_addr3 = #{cbAlt1BillAddr3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillAddr4)">
+                cb_alt1_bill_addr4 = #{cbAlt1BillAddr4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillAddr5)">
+                cb_alt1_bill_addr5 = #{cbAlt1BillAddr5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillCity)">
+                cb_alt1_bill_city = #{cbAlt1BillCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillState)">
+                cb_alt1_bill_state = #{cbAlt1BillState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillCntryCd)">
+                cb_alt1_bill_cntry_cd = #{cbAlt1BillCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1BillAddrPostcode)">
+                cb_alt1_bill_addr_postcode = #{cbAlt1BillAddrPostcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillAddr1)">
+                cb_alt2_bill_addr1 = #{cbAlt2BillAddr1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillAddr2)">
+                cb_alt2_bill_addr2 = #{cbAlt2BillAddr2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillAddr3)">
+                cb_alt2_bill_addr3 = #{cbAlt2BillAddr3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillAddr4)">
+                cb_alt2_bill_addr4 = #{cbAlt2BillAddr4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillAddr5)">
+                cb_alt2_bill_addr5 = #{cbAlt2BillAddr5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillCity)">
+                cb_alt2_bill_city = #{cbAlt2BillCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillCntryCd)">
+                cb_alt2_bill_cntry_cd = #{cbAlt2BillCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2BillAddrPostcode)">
+                cb_alt2_bill_addr_postcode = #{cbAlt2BillAddrPostcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbDirectMailInd)">
+                cb_direct_mail_ind = #{cbDirectMailInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbLanguageInd)">
+                cb_language_ind = #{cbLanguageInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPhotoInd)">
+                cb_photo_ind = #{cbPhotoInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCustMonitorCd)">
+                cb_cust_monitor_cd = #{cbCustMonitorCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCustStatusCd)">
+                cb_cust_status_cd = #{cbCustStatusCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNricIssuDate)">
+                cb_nric_issu_date = #{cbNricIssuDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNricIssuPlace)">
+                cb_nric_issu_place = #{cbNricIssuPlace} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbDistrict)">
+                cb_district = #{cbDistrict} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCloseDate)">
+                cb_close_date = #{cbCloseDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPob)">
+                cb_pob = #{cbPob} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAttribute)">
+                cb_attribute = #{cbAttribute} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSourceCd)">
+                cb_source_cd = #{cbSourceCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRecommenderName)">
+                cb_recommender_name = #{cbRecommenderName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserDate1)">
+                cb_user_date1 = #{cbUserDate1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserDate2)">
+                cb_user_date2 = #{cbUserDate2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserAmt2)">
+                cb_user_amt2 = #{cbUserAmt2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSmsStatus)">
+                cb_sms_status = #{cbSmsStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSmsMobileNo)">
+                cb_sms_mobile_no = #{cbSmsMobileNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIbStatus)">
+                cb_ib_status = #{cbIbStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMlzoneId)">
+                cb_mlzone_id = #{cbMlzoneId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMlclassId)">
+                cb_mlclass_id = #{cbMlclassId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbEngName)">
+                cb_eng_name = #{cbEngName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billState)">
+                cb_alt2bill_state = #{cbAlt2billState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billAddr1)">
+                cb_alt1bill_addr1 = #{cbAlt1billAddr1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billAddr2)">
+                cb_alt1bill_addr2 = #{cbAlt1billAddr2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billAddr3)">
+                cb_alt1bill_addr3 = #{cbAlt1billAddr3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billAddr4)">
+                cb_alt1bill_addr4 = #{cbAlt1billAddr4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billAddr5)">
+                cb_alt1bill_addr5 = #{cbAlt1billAddr5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billCity)">
+                cb_alt1bill_city = #{cbAlt1billCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billState)">
+                cb_alt1bill_state = #{cbAlt1billState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billCntryCd)">
+                cb_alt1bill_cntry_cd = #{cbAlt1billCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt1billAddrPostcode)">
+                cb_alt1bill_addr_postcode = #{cbAlt1billAddrPostcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billAddr1)">
+                cb_alt2bill_addr1 = #{cbAlt2billAddr1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billAddr2)">
+                cb_alt2bill_addr2 = #{cbAlt2billAddr2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billAddr3)">
+                cb_alt2bill_addr3 = #{cbAlt2billAddr3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billAddr4)">
+                cb_alt2bill_addr4 = #{cbAlt2billAddr4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billAddr5)">
+                cb_alt2bill_addr5 = #{cbAlt2billAddr5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billCity)">
+                cb_alt2bill_city = #{cbAlt2billCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billCntryCd)">
+                cb_alt2bill_cntry_cd = #{cbAlt2billCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAlt2billAddrPostcode)">
+                cb_alt2bill_addr_postcode = #{cbAlt2billAddrPostcode}
+            </if>
+        </set>
+        WHERE cb_member_code = #{cbMemberCode}
+    </update>
+	
+	
+    <update id="updateCpCsttblByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_csttbl
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdType)">
+                    cb_id_type = #{map.cbIdType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustomerIdno)">
+                    cb_customer_idno = #{map.cbCustomerIdno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardholderName)">
+                    cb_cardholder_name = #{map.cbCardholderName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMobileNo)">
+                    cb_mobile_no = #{map.cbMobileNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbQualification)">
+                    cb_qualification = #{map.cbQualification} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEmail)">
+                    cb_email = #{map.cbEmail} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSex)">
+                    cb_sex = #{map.cbSex} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbDob)">
+                    cb_dob = #{map.cbDob} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbResidencyCode)">
+                    cb_residency_code = #{map.cbResidencyCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbTitle)">
+                    cb_title = #{map.cbTitle} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNationality)">
+                    cb_nationality = #{map.cbNationality} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserAmt1)">
+                    cb_user_amt1 = #{map.cbUserAmt1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustLimit)">
+                    cb_cust_limit = #{map.cbCustLimit} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode1)">
+                    cb_user_code1 = #{map.cbUserCode1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode2)">
+                    cb_user_code2 = #{map.cbUserCode2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode3)">
+                    cb_user_code3 = #{map.cbUserCode3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserField1)">
+                    cb_user_field1 = #{map.cbUserField1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserField2)">
+                    cb_user_field2 = #{map.cbUserField2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNricIssuType)">
+                    cb_nric_issu_type = #{map.cbNricIssuType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbStopDunn)">
+                    cb_stop_dunn = #{map.cbStopDunn} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustomerRefNo)">
+                    cb_customer_ref_no = #{map.cbCustomerRefNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNricIssuIdno)">
+                    cb_nric_issu_idno = #{map.cbNricIssuIdno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOdGroupid)">
+                    cb_od_groupid = #{map.cbOdGroupid} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOpenDate)">
+                    cb_open_date = #{map.cbOpenDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbDepartmentCode)">
+                    cb_department_code = #{map.cbDepartmentCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillState)">
+                    cb_alt2_bill_state = #{map.cbAlt2BillState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbModDate)">
+                    cb_mod_date = #{map.cbModDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbModTime)">
+                    cb_mod_time = #{map.cbModTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRecommenderId)">
+                    cb_recommender_id = #{map.cbRecommenderId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeAddr1)">
+                    cb_home_addr1 = #{map.cbHomeAddr1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeAddr2)">
+                    cb_home_addr2 = #{map.cbHomeAddr2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeAddr3)">
+                    cb_home_addr3 = #{map.cbHomeAddr3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeAddr4)">
+                    cb_home_addr4 = #{map.cbHomeAddr4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeAddr5)">
+                    cb_home_addr5 = #{map.cbHomeAddr5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeCity)">
+                    cb_home_city = #{map.cbHomeCity} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeState)">
+                    cb_home_state = #{map.cbHomeState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeCntryCd)">
+                    cb_home_cntry_cd = #{map.cbHomeCntryCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomePostcode)">
+                    cb_home_postcode = #{map.cbHomePostcode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPassportNo)">
+                    cb_passport_no = #{map.cbPassportNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBranchId)">
+                    cb_branch_id = #{map.cbBranchId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSocialStatus)">
+                    cb_social_status = #{map.cbSocialStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomePhone)">
+                    cb_home_phone = #{map.cbHomePhone} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPrOfCountry)">
+                    cb_pr_of_country = #{map.cbPrOfCountry} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMaritalStatus)">
+                    cb_marital_status = #{map.cbMaritalStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeOwnership)">
+                    cb_home_ownership = #{map.cbHomeOwnership} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHouseType)">
+                    cb_house_type = #{map.cbHouseType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbYearThere)">
+                    cb_year_there = #{map.cbYearThere} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLiquidAsset)">
+                    cb_liquid_asset = #{map.cbLiquidAsset} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPagerNo)">
+                    cb_pager_no = #{map.cbPagerNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCompanyName)">
+                    cb_company_name = #{map.cbCompanyName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoAddr1)">
+                    cb_co_addr1 = #{map.cbCoAddr1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoAddr2)">
+                    cb_co_addr2 = #{map.cbCoAddr2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoAddr3)">
+                    cb_co_addr3 = #{map.cbCoAddr3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoAddr4)">
+                    cb_co_addr4 = #{map.cbCoAddr4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoAddr5)">
+                    cb_co_addr5 = #{map.cbCoAddr5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoCity)">
+                    cb_co_city = #{map.cbCoCity} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoState)">
+                    cb_co_state = #{map.cbCoState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoCntryCd)">
+                    cb_co_cntry_cd = #{map.cbCoCntryCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoPostcode)">
+                    cb_co_postcode = #{map.cbCoPostcode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoPhone)">
+                    cb_co_phone = #{map.cbCoPhone} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoFaxno)">
+                    cb_co_faxno = #{map.cbCoFaxno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoDesgn)">
+                    cb_co_desgn = #{map.cbCoDesgn} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCompStructure)">
+                    cb_comp_structure = #{map.cbCompStructure} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEmpStability)">
+                    cb_emp_stability = #{map.cbEmpStability} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMthBasicSalary)">
+                    cb_mth_basic_salary = #{map.cbMthBasicSalary} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMthFixedAllow)">
+                    cb_mth_fixed_allow = #{map.cbMthFixedAllow} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOtherIncome)">
+                    cb_other_income = #{map.cbOtherIncome} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLengthSrv)">
+                    cb_length_srv = #{map.cbLengthSrv} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSelfEmploy)">
+                    cb_self_employ = #{map.cbSelfEmploy} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBussSic)">
+                    cb_buss_sic = #{map.cbBussSic} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbExEmployName)">
+                    cb_ex_employ_name = #{map.cbExEmployName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbExLengthService)">
+                    cb_ex_length_service = #{map.cbExLengthService} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbExEmployDesgn)">
+                    cb_ex_employ_desgn = #{map.cbExEmployDesgn} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanBank1)">
+                    cb_oth_loan_bank1 = #{map.cbOthLoanBank1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanType1)">
+                    cb_oth_loan_type1 = #{map.cbOthLoanType1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanAmt1)">
+                    cb_oth_loan_amt1 = #{map.cbOthLoanAmt1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanBank2)">
+                    cb_oth_loan_bank2 = #{map.cbOthLoanBank2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanType2)">
+                    cb_oth_loan_type2 = #{map.cbOthLoanType2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanAmt2)">
+                    cb_oth_loan_amt2 = #{map.cbOthLoanAmt2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanBank3)">
+                    cb_oth_loan_bank3 = #{map.cbOthLoanBank3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanType3)">
+                    cb_oth_loan_type3 = #{map.cbOthLoanType3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanAmt3)">
+                    cb_oth_loan_amt3 = #{map.cbOthLoanAmt3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardNo1)">
+                    cb_cr_card_no1 = #{map.cbCrCardNo1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardNo2)">
+                    cb_cr_card_no2 = #{map.cbCrCardNo2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardLimit1)">
+                    cb_cr_card_limit1 = #{map.cbCrCardLimit1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardLimit2)">
+                    cb_cr_card_limit2 = #{map.cbCrCardLimit2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardNo3)">
+                    cb_cr_card_no3 = #{map.cbCrCardNo3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardLimit3)">
+                    cb_cr_card_limit3 = #{map.cbCrCardLimit3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthBankCrStatus)">
+                    cb_oth_bank_cr_status = #{map.cbOthBankCrStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMotherName)">
+                    cb_mother_name = #{map.cbMotherName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSpouseName)">
+                    cb_spouse_name = #{map.cbSpouseName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSpouseNric)">
+                    cb_spouse_nric = #{map.cbSpouseNric} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSpouseEmployName)">
+                    cb_spouse_employ_name = #{map.cbSpouseEmployName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNoOfDependents)">
+                    cb_no_of_dependents = #{map.cbNoOfDependents} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelName)">
+                    cb_rel_name = #{map.cbRelName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelNric)">
+                    cb_rel_nric = #{map.cbRelNric} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelDob)">
+                    cb_rel_dob = #{map.cbRelDob} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelSex)">
+                    cb_rel_sex = #{map.cbRelSex} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelRelationToCh)">
+                    cb_rel_relation_to_ch = #{map.cbRelRelationToCh} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelDesgn)">
+                    cb_rel_desgn = #{map.cbRelDesgn} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelAddr1)">
+                    cb_rel_addr1 = #{map.cbRelAddr1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelAddr2)">
+                    cb_rel_addr2 = #{map.cbRelAddr2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelAddr3)">
+                    cb_rel_addr3 = #{map.cbRelAddr3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelAddr4)">
+                    cb_rel_addr4 = #{map.cbRelAddr4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelAddr5)">
+                    cb_rel_addr5 = #{map.cbRelAddr5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelCity)">
+                    cb_rel_city = #{map.cbRelCity} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelState)">
+                    cb_rel_state = #{map.cbRelState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelCntryCd)">
+                    cb_rel_cntry_cd = #{map.cbRelCntryCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelTelno)">
+                    cb_rel_telno = #{map.cbRelTelno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustClass)">
+                    cb_cust_class = #{map.cbCustClass} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbInterestGrpCode)">
+                    cb_interest_grp_code = #{map.cbInterestGrpCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddr1)">
+                    cb_alt1_bill_addr1 = #{map.cbAlt1BillAddr1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddr2)">
+                    cb_alt1_bill_addr2 = #{map.cbAlt1BillAddr2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddr3)">
+                    cb_alt1_bill_addr3 = #{map.cbAlt1BillAddr3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddr4)">
+                    cb_alt1_bill_addr4 = #{map.cbAlt1BillAddr4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddr5)">
+                    cb_alt1_bill_addr5 = #{map.cbAlt1BillAddr5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillCity)">
+                    cb_alt1_bill_city = #{map.cbAlt1BillCity} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillState)">
+                    cb_alt1_bill_state = #{map.cbAlt1BillState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillCntryCd)">
+                    cb_alt1_bill_cntry_cd = #{map.cbAlt1BillCntryCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddrPostcode)">
+                    cb_alt1_bill_addr_postcode = #{map.cbAlt1BillAddrPostcode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddr1)">
+                    cb_alt2_bill_addr1 = #{map.cbAlt2BillAddr1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddr2)">
+                    cb_alt2_bill_addr2 = #{map.cbAlt2BillAddr2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddr3)">
+                    cb_alt2_bill_addr3 = #{map.cbAlt2BillAddr3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddr4)">
+                    cb_alt2_bill_addr4 = #{map.cbAlt2BillAddr4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddr5)">
+                    cb_alt2_bill_addr5 = #{map.cbAlt2BillAddr5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillCity)">
+                    cb_alt2_bill_city = #{map.cbAlt2BillCity} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillCntryCd)">
+                    cb_alt2_bill_cntry_cd = #{map.cbAlt2BillCntryCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddrPostcode)">
+                    cb_alt2_bill_addr_postcode = #{map.cbAlt2BillAddrPostcode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbDirectMailInd)">
+                    cb_direct_mail_ind = #{map.cbDirectMailInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLanguageInd)">
+                    cb_language_ind = #{map.cbLanguageInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPhotoInd)">
+                    cb_photo_ind = #{map.cbPhotoInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustMonitorCd)">
+                    cb_cust_monitor_cd = #{map.cbCustMonitorCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustStatusCd)">
+                    cb_cust_status_cd = #{map.cbCustStatusCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNricIssuDate)">
+                    cb_nric_issu_date = #{map.cbNricIssuDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNricIssuPlace)">
+                    cb_nric_issu_place = #{map.cbNricIssuPlace} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbDistrict)">
+                    cb_district = #{map.cbDistrict} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCloseDate)">
+                    cb_close_date = #{map.cbCloseDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPob)">
+                    cb_pob = #{map.cbPob} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAttribute)">
+                    cb_attribute = #{map.cbAttribute} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSourceCd)">
+                    cb_source_cd = #{map.cbSourceCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRecommenderName)">
+                    cb_recommender_name = #{map.cbRecommenderName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserDate1)">
+                    cb_user_date1 = #{map.cbUserDate1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserDate2)">
+                    cb_user_date2 = #{map.cbUserDate2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserAmt2)">
+                    cb_user_amt2 = #{map.cbUserAmt2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSmsStatus)">
+                    cb_sms_status = #{map.cbSmsStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSmsMobileNo)">
+                    cb_sms_mobile_no = #{map.cbSmsMobileNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIbStatus)">
+                    cb_ib_status = #{map.cbIbStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMlzoneId)">
+                    cb_mlzone_id = #{map.cbMlzoneId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMlclassId)">
+                    cb_mlclass_id = #{map.cbMlclassId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEngName)">
+                    cb_eng_name = #{map.cbEngName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billState)">
+                    cb_alt2bill_state = #{map.cbAlt2billState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddr1)">
+                    cb_alt1bill_addr1 = #{map.cbAlt1billAddr1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddr2)">
+                    cb_alt1bill_addr2 = #{map.cbAlt1billAddr2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddr3)">
+                    cb_alt1bill_addr3 = #{map.cbAlt1billAddr3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddr4)">
+                    cb_alt1bill_addr4 = #{map.cbAlt1billAddr4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddr5)">
+                    cb_alt1bill_addr5 = #{map.cbAlt1billAddr5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billCity)">
+                    cb_alt1bill_city = #{map.cbAlt1billCity} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billState)">
+                    cb_alt1bill_state = #{map.cbAlt1billState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billCntryCd)">
+                    cb_alt1bill_cntry_cd = #{map.cbAlt1billCntryCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddrPostcode)">
+                    cb_alt1bill_addr_postcode = #{map.cbAlt1billAddrPostcode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddr1)">
+                    cb_alt2bill_addr1 = #{map.cbAlt2billAddr1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddr2)">
+                    cb_alt2bill_addr2 = #{map.cbAlt2billAddr2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddr3)">
+                    cb_alt2bill_addr3 = #{map.cbAlt2billAddr3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddr4)">
+                    cb_alt2bill_addr4 = #{map.cbAlt2billAddr4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddr5)">
+                    cb_alt2bill_addr5 = #{map.cbAlt2billAddr5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billCity)">
+                    cb_alt2bill_city = #{map.cbAlt2billCity} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billCntryCd)">
+                    cb_alt2bill_cntry_cd = #{map.cbAlt2billCntryCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddrPostcode)">
+                    cb_alt2bill_addr_postcode = #{map.cbAlt2billAddrPostcode}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMemberCodeCondition)">
+                    cb_member_code = #{map.cbMemberCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdTypeCondition)">
+                    AND cb_id_type = #{map.cbIdTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustomerIdnoCondition)">
+                    AND cb_customer_idno = #{map.cbCustomerIdnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardholderNameCondition)">
+                    AND cb_cardholder_name = #{map.cbCardholderNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMobileNoCondition)">
+                    AND cb_mobile_no = #{map.cbMobileNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbQualificationCondition)">
+                    AND cb_qualification = #{map.cbQualificationCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEmailCondition)">
+                    AND cb_email = #{map.cbEmailCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSexCondition)">
+                    AND cb_sex = #{map.cbSexCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbDobCondition)">
+                    AND cb_dob = #{map.cbDobCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbResidencyCodeCondition)">
+                    AND cb_residency_code = #{map.cbResidencyCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbTitleCondition)">
+                    AND cb_title = #{map.cbTitleCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNationalityCondition)">
+                    AND cb_nationality = #{map.cbNationalityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserAmt1Condition)">
+                    AND cb_user_amt1 = #{map.cbUserAmt1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustLimitCondition)">
+                    AND cb_cust_limit = #{map.cbCustLimitCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode1Condition)">
+                    AND cb_user_code1 = #{map.cbUserCode1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode2Condition)">
+                    AND cb_user_code2 = #{map.cbUserCode2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode3Condition)">
+                    AND cb_user_code3 = #{map.cbUserCode3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserField1Condition)">
+                    AND cb_user_field1 = #{map.cbUserField1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserField2Condition)">
+                    AND cb_user_field2 = #{map.cbUserField2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNricIssuTypeCondition)">
+                    AND cb_nric_issu_type = #{map.cbNricIssuTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbStopDunnCondition)">
+                    AND cb_stop_dunn = #{map.cbStopDunnCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustomerRefNoCondition)">
+                    AND cb_customer_ref_no = #{map.cbCustomerRefNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNricIssuIdnoCondition)">
+                    AND cb_nric_issu_idno = #{map.cbNricIssuIdnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOdGroupidCondition)">
+                    AND cb_od_groupid = #{map.cbOdGroupidCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOpenDateCondition)">
+                    AND cb_open_date = #{map.cbOpenDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbDepartmentCodeCondition)">
+                    AND cb_department_code = #{map.cbDepartmentCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillStateCondition)">
+                    AND cb_alt2_bill_state = #{map.cbAlt2BillStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbModDateCondition)">
+                    AND cb_mod_date = #{map.cbModDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbModTimeCondition)">
+                    AND cb_mod_time = #{map.cbModTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRecommenderIdCondition)">
+                    AND cb_recommender_id = #{map.cbRecommenderIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeAddr1Condition)">
+                    AND cb_home_addr1 = #{map.cbHomeAddr1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeAddr2Condition)">
+                    AND cb_home_addr2 = #{map.cbHomeAddr2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeAddr3Condition)">
+                    AND cb_home_addr3 = #{map.cbHomeAddr3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeAddr4Condition)">
+                    AND cb_home_addr4 = #{map.cbHomeAddr4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeAddr5Condition)">
+                    AND cb_home_addr5 = #{map.cbHomeAddr5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeCityCondition)">
+                    AND cb_home_city = #{map.cbHomeCityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeStateCondition)">
+                    AND cb_home_state = #{map.cbHomeStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeCntryCdCondition)">
+                    AND cb_home_cntry_cd = #{map.cbHomeCntryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomePostcodeCondition)">
+                    AND cb_home_postcode = #{map.cbHomePostcodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPassportNoCondition)">
+                    AND cb_passport_no = #{map.cbPassportNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBranchIdCondition)">
+                    AND cb_branch_id = #{map.cbBranchIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSocialStatusCondition)">
+                    AND cb_social_status = #{map.cbSocialStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomePhoneCondition)">
+                    AND cb_home_phone = #{map.cbHomePhoneCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPrOfCountryCondition)">
+                    AND cb_pr_of_country = #{map.cbPrOfCountryCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMaritalStatusCondition)">
+                    AND cb_marital_status = #{map.cbMaritalStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHomeOwnershipCondition)">
+                    AND cb_home_ownership = #{map.cbHomeOwnershipCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbHouseTypeCondition)">
+                    AND cb_house_type = #{map.cbHouseTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbYearThereCondition)">
+                    AND cb_year_there = #{map.cbYearThereCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLiquidAssetCondition)">
+                    AND cb_liquid_asset = #{map.cbLiquidAssetCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPagerNoCondition)">
+                    AND cb_pager_no = #{map.cbPagerNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCompanyNameCondition)">
+                    AND cb_company_name = #{map.cbCompanyNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoAddr1Condition)">
+                    AND cb_co_addr1 = #{map.cbCoAddr1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoAddr2Condition)">
+                    AND cb_co_addr2 = #{map.cbCoAddr2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoAddr3Condition)">
+                    AND cb_co_addr3 = #{map.cbCoAddr3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoAddr4Condition)">
+                    AND cb_co_addr4 = #{map.cbCoAddr4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoAddr5Condition)">
+                    AND cb_co_addr5 = #{map.cbCoAddr5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoCityCondition)">
+                    AND cb_co_city = #{map.cbCoCityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoStateCondition)">
+                    AND cb_co_state = #{map.cbCoStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoCntryCdCondition)">
+                    AND cb_co_cntry_cd = #{map.cbCoCntryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoPostcodeCondition)">
+                    AND cb_co_postcode = #{map.cbCoPostcodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoPhoneCondition)">
+                    AND cb_co_phone = #{map.cbCoPhoneCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoFaxnoCondition)">
+                    AND cb_co_faxno = #{map.cbCoFaxnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCoDesgnCondition)">
+                    AND cb_co_desgn = #{map.cbCoDesgnCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCompStructureCondition)">
+                    AND cb_comp_structure = #{map.cbCompStructureCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEmpStabilityCondition)">
+                    AND cb_emp_stability = #{map.cbEmpStabilityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMthBasicSalaryCondition)">
+                    AND cb_mth_basic_salary = #{map.cbMthBasicSalaryCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMthFixedAllowCondition)">
+                    AND cb_mth_fixed_allow = #{map.cbMthFixedAllowCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOtherIncomeCondition)">
+                    AND cb_other_income = #{map.cbOtherIncomeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLengthSrvCondition)">
+                    AND cb_length_srv = #{map.cbLengthSrvCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSelfEmployCondition)">
+                    AND cb_self_employ = #{map.cbSelfEmployCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBussSicCondition)">
+                    AND cb_buss_sic = #{map.cbBussSicCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbExEmployNameCondition)">
+                    AND cb_ex_employ_name = #{map.cbExEmployNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbExLengthServiceCondition)">
+                    AND cb_ex_length_service = #{map.cbExLengthServiceCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbExEmployDesgnCondition)">
+                    AND cb_ex_employ_desgn = #{map.cbExEmployDesgnCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanBank1Condition)">
+                    AND cb_oth_loan_bank1 = #{map.cbOthLoanBank1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanType1Condition)">
+                    AND cb_oth_loan_type1 = #{map.cbOthLoanType1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanAmt1Condition)">
+                    AND cb_oth_loan_amt1 = #{map.cbOthLoanAmt1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanBank2Condition)">
+                    AND cb_oth_loan_bank2 = #{map.cbOthLoanBank2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanType2Condition)">
+                    AND cb_oth_loan_type2 = #{map.cbOthLoanType2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanAmt2Condition)">
+                    AND cb_oth_loan_amt2 = #{map.cbOthLoanAmt2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanBank3Condition)">
+                    AND cb_oth_loan_bank3 = #{map.cbOthLoanBank3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanType3Condition)">
+                    AND cb_oth_loan_type3 = #{map.cbOthLoanType3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthLoanAmt3Condition)">
+                    AND cb_oth_loan_amt3 = #{map.cbOthLoanAmt3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardNo1Condition)">
+                    AND cb_cr_card_no1 = #{map.cbCrCardNo1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardNo2Condition)">
+                    AND cb_cr_card_no2 = #{map.cbCrCardNo2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardLimit1Condition)">
+                    AND cb_cr_card_limit1 = #{map.cbCrCardLimit1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardLimit2Condition)">
+                    AND cb_cr_card_limit2 = #{map.cbCrCardLimit2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardNo3Condition)">
+                    AND cb_cr_card_no3 = #{map.cbCrCardNo3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrCardLimit3Condition)">
+                    AND cb_cr_card_limit3 = #{map.cbCrCardLimit3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOthBankCrStatusCondition)">
+                    AND cb_oth_bank_cr_status = #{map.cbOthBankCrStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMotherNameCondition)">
+                    AND cb_mother_name = #{map.cbMotherNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSpouseNameCondition)">
+                    AND cb_spouse_name = #{map.cbSpouseNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSpouseNricCondition)">
+                    AND cb_spouse_nric = #{map.cbSpouseNricCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSpouseEmployNameCondition)">
+                    AND cb_spouse_employ_name = #{map.cbSpouseEmployNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNoOfDependentsCondition)">
+                    AND cb_no_of_dependents = #{map.cbNoOfDependentsCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelNameCondition)">
+                    AND cb_rel_name = #{map.cbRelNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelNricCondition)">
+                    AND cb_rel_nric = #{map.cbRelNricCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelDobCondition)">
+                    AND cb_rel_dob = #{map.cbRelDobCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelSexCondition)">
+                    AND cb_rel_sex = #{map.cbRelSexCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelRelationToChCondition)">
+                    AND cb_rel_relation_to_ch = #{map.cbRelRelationToChCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelDesgnCondition)">
+                    AND cb_rel_desgn = #{map.cbRelDesgnCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelAddr1Condition)">
+                    AND cb_rel_addr1 = #{map.cbRelAddr1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelAddr2Condition)">
+                    AND cb_rel_addr2 = #{map.cbRelAddr2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelAddr3Condition)">
+                    AND cb_rel_addr3 = #{map.cbRelAddr3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelAddr4Condition)">
+                    AND cb_rel_addr4 = #{map.cbRelAddr4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelAddr5Condition)">
+                    AND cb_rel_addr5 = #{map.cbRelAddr5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelCityCondition)">
+                    AND cb_rel_city = #{map.cbRelCityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelStateCondition)">
+                    AND cb_rel_state = #{map.cbRelStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelCntryCdCondition)">
+                    AND cb_rel_cntry_cd = #{map.cbRelCntryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelTelnoCondition)">
+                    AND cb_rel_telno = #{map.cbRelTelnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustClassCondition)">
+                    AND cb_cust_class = #{map.cbCustClassCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbInterestGrpCodeCondition)">
+                    AND cb_interest_grp_code = #{map.cbInterestGrpCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddr1Condition)">
+                    AND cb_alt1_bill_addr1 = #{map.cbAlt1BillAddr1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddr2Condition)">
+                    AND cb_alt1_bill_addr2 = #{map.cbAlt1BillAddr2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddr3Condition)">
+                    AND cb_alt1_bill_addr3 = #{map.cbAlt1BillAddr3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddr4Condition)">
+                    AND cb_alt1_bill_addr4 = #{map.cbAlt1BillAddr4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddr5Condition)">
+                    AND cb_alt1_bill_addr5 = #{map.cbAlt1BillAddr5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillCityCondition)">
+                    AND cb_alt1_bill_city = #{map.cbAlt1BillCityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillStateCondition)">
+                    AND cb_alt1_bill_state = #{map.cbAlt1BillStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillCntryCdCondition)">
+                    AND cb_alt1_bill_cntry_cd = #{map.cbAlt1BillCntryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1BillAddrPostcodeCondition)">
+                    AND cb_alt1_bill_addr_postcode = #{map.cbAlt1BillAddrPostcodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddr1Condition)">
+                    AND cb_alt2_bill_addr1 = #{map.cbAlt2BillAddr1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddr2Condition)">
+                    AND cb_alt2_bill_addr2 = #{map.cbAlt2BillAddr2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddr3Condition)">
+                    AND cb_alt2_bill_addr3 = #{map.cbAlt2BillAddr3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddr4Condition)">
+                    AND cb_alt2_bill_addr4 = #{map.cbAlt2BillAddr4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddr5Condition)">
+                    AND cb_alt2_bill_addr5 = #{map.cbAlt2BillAddr5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillCityCondition)">
+                    AND cb_alt2_bill_city = #{map.cbAlt2BillCityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillCntryCdCondition)">
+                    AND cb_alt2_bill_cntry_cd = #{map.cbAlt2BillCntryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2BillAddrPostcodeCondition)">
+                    AND cb_alt2_bill_addr_postcode = #{map.cbAlt2BillAddrPostcodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbDirectMailIndCondition)">
+                    AND cb_direct_mail_ind = #{map.cbDirectMailIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLanguageIndCondition)">
+                    AND cb_language_ind = #{map.cbLanguageIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPhotoIndCondition)">
+                    AND cb_photo_ind = #{map.cbPhotoIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustMonitorCdCondition)">
+                    AND cb_cust_monitor_cd = #{map.cbCustMonitorCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCustStatusCdCondition)">
+                    AND cb_cust_status_cd = #{map.cbCustStatusCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNricIssuDateCondition)">
+                    AND cb_nric_issu_date = #{map.cbNricIssuDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNricIssuPlaceCondition)">
+                    AND cb_nric_issu_place = #{map.cbNricIssuPlaceCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbDistrictCondition)">
+                    AND cb_district = #{map.cbDistrictCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCloseDateCondition)">
+                    AND cb_close_date = #{map.cbCloseDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPobCondition)">
+                    AND cb_pob = #{map.cbPobCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAttributeCondition)">
+                    AND cb_attribute = #{map.cbAttributeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSourceCdCondition)">
+                    AND cb_source_cd = #{map.cbSourceCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRecommenderNameCondition)">
+                    AND cb_recommender_name = #{map.cbRecommenderNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserDate1Condition)">
+                    AND cb_user_date1 = #{map.cbUserDate1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserDate2Condition)">
+                    AND cb_user_date2 = #{map.cbUserDate2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserAmt2Condition)">
+                    AND cb_user_amt2 = #{map.cbUserAmt2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSmsStatusCondition)">
+                    AND cb_sms_status = #{map.cbSmsStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSmsMobileNoCondition)">
+                    AND cb_sms_mobile_no = #{map.cbSmsMobileNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIbStatusCondition)">
+                    AND cb_ib_status = #{map.cbIbStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMlzoneIdCondition)">
+                    AND cb_mlzone_id = #{map.cbMlzoneIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMlclassIdCondition)">
+                    AND cb_mlclass_id = #{map.cbMlclassIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEngNameCondition)">
+                    AND cb_eng_name = #{map.cbEngNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billStateCondition)">
+                    AND cb_alt2bill_state = #{map.cbAlt2billStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddr1Condition)">
+                    AND cb_alt1bill_addr1 = #{map.cbAlt1billAddr1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddr2Condition)">
+                    AND cb_alt1bill_addr2 = #{map.cbAlt1billAddr2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddr3Condition)">
+                    AND cb_alt1bill_addr3 = #{map.cbAlt1billAddr3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddr4Condition)">
+                    AND cb_alt1bill_addr4 = #{map.cbAlt1billAddr4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddr5Condition)">
+                    AND cb_alt1bill_addr5 = #{map.cbAlt1billAddr5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billCityCondition)">
+                    AND cb_alt1bill_city = #{map.cbAlt1billCityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billStateCondition)">
+                    AND cb_alt1bill_state = #{map.cbAlt1billStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billCntryCdCondition)">
+                    AND cb_alt1bill_cntry_cd = #{map.cbAlt1billCntryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt1billAddrPostcodeCondition)">
+                    AND cb_alt1bill_addr_postcode = #{map.cbAlt1billAddrPostcodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddr1Condition)">
+                    AND cb_alt2bill_addr1 = #{map.cbAlt2billAddr1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddr2Condition)">
+                    AND cb_alt2bill_addr2 = #{map.cbAlt2billAddr2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddr3Condition)">
+                    AND cb_alt2bill_addr3 = #{map.cbAlt2billAddr3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddr4Condition)">
+                    AND cb_alt2bill_addr4 = #{map.cbAlt2billAddr4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddr5Condition)">
+                    AND cb_alt2bill_addr5 = #{map.cbAlt2billAddr5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billCityCondition)">
+                    AND cb_alt2bill_city = #{map.cbAlt2billCityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billCntryCdCondition)">
+                    AND cb_alt2bill_cntry_cd = #{map.cbAlt2billCntryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAlt2billAddrPostcodeCondition)">
+                    AND cb_alt2bill_addr_postcode = #{map.cbAlt2billAddrPostcodeCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+	
+	<select id="searchCpCsttblByCbMobileNo" parameterType="map" resultMap="cpCsttblMap">
+        SELECT
+        <include refid="cpCsttblBaseColumnSql"/>
+        FROM cp_csttbl
+        WHERE cb_mobile_no = #{cbMobileNo}
+    </select>
+	
+    <select id="searchCpCsttblByCbCustomerIdno" parameterType="map" resultMap="cpCsttblMap">
+        SELECT
+        <include refid="cpCsttblBaseColumnSql"/>
+        FROM cp_csttbl
+        WHERE cb_customer_idno = #{cbCustomerIdno}
+    </select>
+
+    <select id="searchCpCsttblByParams" parameterType="map" resultMap="cpCsttblMap">
+        SELECT
+        <include refid="cpCsttblBaseColumnSql"/>
+        FROM cp_csttbl
+        <include refid="cpCsttblBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+	
+	<!-- 微信查询会员身份证 -->
+	<select id="searchCpCsttblOpenId" parameterType="map" resultMap="cpCsttblMap"> 
+		select cb_customer_idno from cp_csttbl where cb_user_code1=#{cbUserCode1}
+	</select>
+	
+	<select id="searchCpcsttblByDiscount" parameterType="java.lang.String" resultType="java.util.Map">
+		select cb_member_code as cbMemberCode, cb_cardholder_name as cbCardholderName, dis_status as disStatus
+		from cp_csttbl left join dis_user on cb_member_code=user_id and dis_id=#{disId}
+	</select>
+	
+    <resultMap type="cn.happyworlds.imgmt.entity.CpCsttbl" id="cpCsttblMap">
+        <id column="cb_member_code" property="cbMemberCode"/>
+        <result column="cb_id_type" property="cbIdType"/>
+        <result column="cb_customer_idno" property="cbCustomerIdno"/>
+        <result column="cb_cardholder_name" property="cbCardholderName"/>
+        <result column="cb_mobile_no" property="cbMobileNo"/>
+        <result column="cb_qualification" property="cbQualification"/>
+        <result column="cb_email" property="cbEmail"/>
+        <result column="cb_sex" property="cbSex"/>
+        <result column="cb_dob" property="cbDob"/>
+        <result column="cb_residency_code" property="cbResidencyCode"/>
+        <result column="cb_title" property="cbTitle"/>
+        <result column="cb_nationality" property="cbNationality"/>
+        <result column="cb_user_amt1" property="cbUserAmt1"/>
+        <result column="cb_cust_limit" property="cbCustLimit"/>
+        <result column="cb_user_code1" property="cbUserCode1"/>
+        <result column="cb_user_code2" property="cbUserCode2"/>
+        <result column="cb_user_code3" property="cbUserCode3"/>
+        <result column="cb_user_field1" property="cbUserField1"/>
+        <result column="cb_user_field2" property="cbUserField2"/>
+        <result column="cb_nric_issu_type" property="cbNricIssuType"/>
+        <result column="cb_stop_dunn" property="cbStopDunn"/>
+        <result column="cb_customer_ref_no" property="cbCustomerRefNo"/>
+        <result column="cb_nric_issu_idno" property="cbNricIssuIdno"/>
+        <result column="cb_od_groupid" property="cbOdGroupid"/>
+        <result column="cb_open_date" property="cbOpenDate"/>
+        <result column="cb_department_code" property="cbDepartmentCode"/>
+        <result column="cb_alt2_bill_state" property="cbAlt2BillState"/>
+        <result column="cb_mod_date" property="cbModDate"/>
+        <result column="cb_mod_time" property="cbModTime"/>
+        <result column="cb_recommender_id" property="cbRecommenderId"/>
+        <result column="cb_home_addr1" property="cbHomeAddr1"/>
+        <result column="cb_home_addr2" property="cbHomeAddr2"/>
+        <result column="cb_home_addr3" property="cbHomeAddr3"/>
+        <result column="cb_home_addr4" property="cbHomeAddr4"/>
+        <result column="cb_home_addr5" property="cbHomeAddr5"/>
+        <result column="cb_home_city" property="cbHomeCity"/>
+        <result column="cb_home_state" property="cbHomeState"/>
+        <result column="cb_home_cntry_cd" property="cbHomeCntryCd"/>
+        <result column="cb_home_postcode" property="cbHomePostcode"/>
+        <result column="cb_passport_no" property="cbPassportNo"/>
+        <result column="cb_branch_id" property="cbBranchId"/>
+        <result column="cb_social_status" property="cbSocialStatus"/>
+        <result column="cb_home_phone" property="cbHomePhone"/>
+        <result column="cb_pr_of_country" property="cbPrOfCountry"/>
+        <result column="cb_marital_status" property="cbMaritalStatus"/>
+        <result column="cb_home_ownership" property="cbHomeOwnership"/>
+        <result column="cb_house_type" property="cbHouseType"/>
+        <result column="cb_year_there" property="cbYearThere"/>
+        <result column="cb_liquid_asset" property="cbLiquidAsset"/>
+        <result column="cb_pager_no" property="cbPagerNo"/>
+        <result column="cb_company_name" property="cbCompanyName"/>
+        <result column="cb_co_addr1" property="cbCoAddr1"/>
+        <result column="cb_co_addr2" property="cbCoAddr2"/>
+        <result column="cb_co_addr3" property="cbCoAddr3"/>
+        <result column="cb_co_addr4" property="cbCoAddr4"/>
+        <result column="cb_co_addr5" property="cbCoAddr5"/>
+        <result column="cb_co_city" property="cbCoCity"/>
+        <result column="cb_co_state" property="cbCoState"/>
+        <result column="cb_co_cntry_cd" property="cbCoCntryCd"/>
+        <result column="cb_co_postcode" property="cbCoPostcode"/>
+        <result column="cb_co_phone" property="cbCoPhone"/>
+        <result column="cb_co_faxno" property="cbCoFaxno"/>
+        <result column="cb_co_desgn" property="cbCoDesgn"/>
+        <result column="cb_comp_structure" property="cbCompStructure"/>
+        <result column="cb_emp_stability" property="cbEmpStability"/>
+        <result column="cb_mth_basic_salary" property="cbMthBasicSalary"/>
+        <result column="cb_mth_fixed_allow" property="cbMthFixedAllow"/>
+        <result column="cb_other_income" property="cbOtherIncome"/>
+        <result column="cb_length_srv" property="cbLengthSrv"/>
+        <result column="cb_self_employ" property="cbSelfEmploy"/>
+        <result column="cb_buss_sic" property="cbBussSic"/>
+        <result column="cb_ex_employ_name" property="cbExEmployName"/>
+        <result column="cb_ex_length_service" property="cbExLengthService"/>
+        <result column="cb_ex_employ_desgn" property="cbExEmployDesgn"/>
+        <result column="cb_oth_loan_bank1" property="cbOthLoanBank1"/>
+        <result column="cb_oth_loan_type1" property="cbOthLoanType1"/>
+        <result column="cb_oth_loan_amt1" property="cbOthLoanAmt1"/>
+        <result column="cb_oth_loan_bank2" property="cbOthLoanBank2"/>
+        <result column="cb_oth_loan_type2" property="cbOthLoanType2"/>
+        <result column="cb_oth_loan_amt2" property="cbOthLoanAmt2"/>
+        <result column="cb_oth_loan_bank3" property="cbOthLoanBank3"/>
+        <result column="cb_oth_loan_type3" property="cbOthLoanType3"/>
+        <result column="cb_oth_loan_amt3" property="cbOthLoanAmt3"/>
+        <result column="cb_cr_card_no1" property="cbCrCardNo1"/>
+        <result column="cb_cr_card_no2" property="cbCrCardNo2"/>
+        <result column="cb_cr_card_limit1" property="cbCrCardLimit1"/>
+        <result column="cb_cr_card_limit2" property="cbCrCardLimit2"/>
+        <result column="cb_cr_card_no3" property="cbCrCardNo3"/>
+        <result column="cb_cr_card_limit3" property="cbCrCardLimit3"/>
+        <result column="cb_oth_bank_cr_status" property="cbOthBankCrStatus"/>
+        <result column="cb_mother_name" property="cbMotherName"/>
+        <result column="cb_spouse_name" property="cbSpouseName"/>
+        <result column="cb_spouse_nric" property="cbSpouseNric"/>
+        <result column="cb_spouse_employ_name" property="cbSpouseEmployName"/>
+        <result column="cb_no_of_dependents" property="cbNoOfDependents"/>
+        <result column="cb_rel_name" property="cbRelName"/>
+        <result column="cb_rel_nric" property="cbRelNric"/>
+        <result column="cb_rel_dob" property="cbRelDob"/>
+        <result column="cb_rel_sex" property="cbRelSex"/>
+        <result column="cb_rel_relation_to_ch" property="cbRelRelationToCh"/>
+        <result column="cb_rel_desgn" property="cbRelDesgn"/>
+        <result column="cb_rel_addr1" property="cbRelAddr1"/>
+        <result column="cb_rel_addr2" property="cbRelAddr2"/>
+        <result column="cb_rel_addr3" property="cbRelAddr3"/>
+        <result column="cb_rel_addr4" property="cbRelAddr4"/>
+        <result column="cb_rel_addr5" property="cbRelAddr5"/>
+        <result column="cb_rel_city" property="cbRelCity"/>
+        <result column="cb_rel_state" property="cbRelState"/>
+        <result column="cb_rel_cntry_cd" property="cbRelCntryCd"/>
+        <result column="cb_rel_telno" property="cbRelTelno"/>
+        <result column="cb_cust_class" property="cbCustClass"/>
+        <result column="cb_interest_grp_code" property="cbInterestGrpCode"/>
+        <result column="cb_alt1_bill_addr1" property="cbAlt1BillAddr1"/>
+        <result column="cb_alt1_bill_addr2" property="cbAlt1BillAddr2"/>
+        <result column="cb_alt1_bill_addr3" property="cbAlt1BillAddr3"/>
+        <result column="cb_alt1_bill_addr4" property="cbAlt1BillAddr4"/>
+        <result column="cb_alt1_bill_addr5" property="cbAlt1BillAddr5"/>
+        <result column="cb_alt1_bill_city" property="cbAlt1BillCity"/>
+        <result column="cb_alt1_bill_state" property="cbAlt1BillState"/>
+        <result column="cb_alt1_bill_cntry_cd" property="cbAlt1BillCntryCd"/>
+        <result column="cb_alt1_bill_addr_postcode" property="cbAlt1BillAddrPostcode"/>
+        <result column="cb_alt2_bill_addr1" property="cbAlt2BillAddr1"/>
+        <result column="cb_alt2_bill_addr2" property="cbAlt2BillAddr2"/>
+        <result column="cb_alt2_bill_addr3" property="cbAlt2BillAddr3"/>
+        <result column="cb_alt2_bill_addr4" property="cbAlt2BillAddr4"/>
+        <result column="cb_alt2_bill_addr5" property="cbAlt2BillAddr5"/>
+        <result column="cb_alt2_bill_city" property="cbAlt2BillCity"/>
+        <result column="cb_alt2_bill_cntry_cd" property="cbAlt2BillCntryCd"/>
+        <result column="cb_alt2_bill_addr_postcode" property="cbAlt2BillAddrPostcode"/>
+        <result column="cb_direct_mail_ind" property="cbDirectMailInd"/>
+        <result column="cb_language_ind" property="cbLanguageInd"/>
+        <result column="cb_photo_ind" property="cbPhotoInd"/>
+        <result column="cb_cust_monitor_cd" property="cbCustMonitorCd"/>
+        <result column="cb_cust_status_cd" property="cbCustStatusCd"/>
+        <result column="cb_nric_issu_date" property="cbNricIssuDate"/>
+        <result column="cb_nric_issu_place" property="cbNricIssuPlace"/>
+        <result column="cb_district" property="cbDistrict"/>
+        <result column="cb_close_date" property="cbCloseDate"/>
+        <result column="cb_pob" property="cbPob"/>
+        <result column="cb_attribute" property="cbAttribute"/>
+        <result column="cb_source_cd" property="cbSourceCd"/>
+        <result column="cb_recommender_name" property="cbRecommenderName"/>
+        <result column="cb_user_date1" property="cbUserDate1"/>
+        <result column="cb_user_date2" property="cbUserDate2"/>
+        <result column="cb_user_amt2" property="cbUserAmt2"/>
+        <result column="cb_sms_status" property="cbSmsStatus"/>
+        <result column="cb_sms_mobile_no" property="cbSmsMobileNo"/>
+        <result column="cb_ib_status" property="cbIbStatus"/>
+        <result column="cb_mlzone_id" property="cbMlzoneId"/>
+        <result column="cb_mlclass_id" property="cbMlclassId"/>
+        <result column="cb_eng_name" property="cbEngName"/>
+        <result column="checksum" property="checksum"/>
+        <result column="cb_alt2bill_state" property="cbAlt2billState"/>
+        <result column="cb_alt1bill_addr1" property="cbAlt1billAddr1"/>
+        <result column="cb_alt1bill_addr2" property="cbAlt1billAddr2"/>
+        <result column="cb_alt1bill_addr3" property="cbAlt1billAddr3"/>
+        <result column="cb_alt1bill_addr4" property="cbAlt1billAddr4"/>
+        <result column="cb_alt1bill_addr5" property="cbAlt1billAddr5"/>
+        <result column="cb_alt1bill_city" property="cbAlt1billCity"/>
+        <result column="cb_alt1bill_state" property="cbAlt1billState"/>
+        <result column="cb_alt1bill_cntry_cd" property="cbAlt1billCntryCd"/>
+        <result column="cb_alt1bill_addr_postcode" property="cbAlt1billAddrPostcode"/>
+        <result column="cb_alt2bill_addr1" property="cbAlt2billAddr1"/>
+        <result column="cb_alt2bill_addr2" property="cbAlt2billAddr2"/>
+        <result column="cb_alt2bill_addr3" property="cbAlt2billAddr3"/>
+        <result column="cb_alt2bill_addr4" property="cbAlt2billAddr4"/>
+        <result column="cb_alt2bill_addr5" property="cbAlt2billAddr5"/>
+        <result column="cb_alt2bill_city" property="cbAlt2billCity"/>
+        <result column="cb_alt2bill_cntry_cd" property="cbAlt2billCntryCd"/>
+        <result column="cb_alt2bill_addr_postcode" property="cbAlt2billAddrPostcode"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,116 @@
+i{
+	font-style: normal;
+}
+.font36{
+    font-size: 36px;
+}
+.content{
+	padding-bottom: 40px;
+}
+.content-wrapper{
+	padding-bottom: 20px;
+}
+.tip-img{
+    height: 202px;
+    width: 78px;
+    background-image: url(../img/content-side-bg.png);
+}
+.tip-img p{
+    width: 20px;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 40px;
+}
+.submit-group{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    padding: 0;
+}
+select {
+    /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+    border: solid 1px #000;
+
+    /*很关键：将默认的select选择框样式清除*/
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+
+    /*在选择框的最右侧中间显示小箭头图片*/
+    background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+
+
+    /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+    padding-right: 14px;
+}
+select::-ms-expand {
+    display: none;
+}
+.form-group select{
+    width: 220px;
+    display: inline-block;
+    border: 1px solid lightblue;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 4px;
+    padding-left: 10px;
+}
+.form-group select:focus{
+	border: 1px solid #3c8dbc;
+	outline: none;
+}
+.form-group>div{
+	display: flex;
+	align-items: center;
+}
+.form-horizontal h3{
+    margin-bottom: 25px;
+}
+.form-group .input-group{
+    width: 220px;
+}
+.input-group .input-group-addon{
+	background-color: rgb(238,238,238);
+	border-radius: 4px 0 0 4px;
+}
+.color-red{
+    color: red !important;
+}
+label{
+    width: 10em;
+    text-align: right;
+    margin-right: 8px;
+    font-weight: normal;
+    font-size: 16px;
+}
+.btn-size{
+     background-color: #00a65a;
+ }
+.ly-input-group{
+    width: 220px;
+    display: flex;
+    justify-content: space-between;
+}
+.site-manage-title{
+    display: flex;
+    justify-content: space-between;
+}
+.add-btn{
+    display: flex;
+    align-items: center;
+    color: rgb(71,159,222);
+    background-color: #fff;
+    font-size: 24px;
+}
+.add-btn:hover,.add-btn:focus,.add-btn:active:focus{
+    color: rgb(71,159,222);
+}
+.add-btn:active{
+	box-shadow: none;
+}
+.icon-add{
+    height: 24px;
+    line-height: 22px;
+}

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.VipCardStatMapper">
+
+    <sql id="cpBaseColumnSql">
+        CB_CARDHOLDER_NO,
+        CB_EMBOSSNAME,
+        cp_crdtbl.CB_ID_TYPE,
+        CB_IDNO,
+        CB_SOURCE_CD,
+        CB_CVKI,
+        CB_ANNIV_DATE,
+        PR_GROUP_DESC,
+        CB_MOD_USER,
+        CB_EXPIRY_CCYYMM,
+        cb_id_desc,
+        CB_OUTSTD_BAL,
+        CB_PLASTIC_CD,
+        CB_ACCT_STATUS,
+        CB_EXTERNAL_BRANCH
+    </sql>
+    <sql id="cpBaseRecedeColumnSql">
+        CB_CARDHOLDER_NO,
+        CB_EMBOSSNAME,
+        cp_crdtbl.CB_ID_TYPE,
+        CB_IDNO,
+        CB_SOURCE_CD,
+        CB_CVKI,
+        CB_ANNIV_DATE,
+        PR_GROUP_DESC,
+        CB_MOD_USER,
+        CB_EXPIRY_CCYYMM,
+        cb_id_desc,
+        CB_CIF_FLAG,
+        CB_PLASTIC_CD
+    </sql>
+    
+
+    <sql id="cpInfoBaseWhereSql">
+        <if test="map!=null">
+        	<!--  
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardholderNo)">
+                AND right(CB_CARDHOLDER_NO,6) = #{map.cbCardholderNo}
+            </if>
+            -->
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardholderNo)">
+                AND CB_CARDHOLDER_NO = #{map.cbCardholderNo}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEmbossname)">
+                AND CB_EMBOSSNAME = #{map.cbEmbossname}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdno)">
+                AND CB_IDNO = #{map.cbIdno}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSourceCd)">
+                AND CB_SOURCE_CD = #{map.cbSourceCd}
+            </if>
+        </if>
+    </sql>
+    
+    <sql id="cpCaseBaseWhereSql">
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAnnivDateStart)">
+                AND CB_ANNIV_DATE &gt;= #{map.cbAnnivDateStart}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAnnivDateEnd)">
+                AND CB_ANNIV_DATE &lt;= #{map.cbAnnivDateEnd}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardholderNo)">
+                AND right(CB_CARDHOLDER_NO,10) = #{map.cbCardholderNo}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prGroupDesc)">
+                AND PR_GROUP_DESC = #{map.prGroupDesc}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPlasticCd)">
+                AND CB_PLASTIC_CD = #{map.cbPlasticCd}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdno)">
+                AND CB_IDNO = #{map.cbIdno}
+            </if>
+        </if>
+    </sql>
+
+    <select id="searchVipCardInfoStat" parameterType="map" resultMap="VipCardStatMap">
+    	select 
+		<include refid="cpBaseColumnSql"/> 
+    	from cp_indacc,cp_crdtbl,cp_idtype,cp_prdgrp 
+    		where 1=1 
+    		and cp_indacc.cb_Individual_Acctno=cp_crdtbl.cb_Individual_Acctno 
+    		and cb_card_prdct_group = pr_prodct_group 
+    		and cp_crdtbl.CB_ID_TYPE=cp_idtype.cb_id_type 
+    		and cp_crdtbl.CB_PLASTIC_CD ='U'
+    		<include refid="cpInfoBaseWhereSql"/>
+    		order by cp_crdtbl.CB_ANNIV_DATE DESC
+    </select>
+    
+    <select id="searchVipCardCaseNullStat" parameterType="map" resultMap="VipCardStatMap">
+    	select 
+		<include refid="cpBaseColumnSql"/>
+		from cp_indacc,cp_prdgrp,cp_crdtbl,cp_idtype 
+		where 1=1  
+		and cp_indacc.cb_ind_cardholder_no = cp_crdtbl.cb_cardholder_no  
+		and cp_crdtbl.cb_card_prdct_group = cp_prdgrp.pr_prodct_group  
+		and cp_crdtbl.cb_id_type = cp_idtype.cb_id_type 
+		<include refid="cpCaseBaseWhereSql"/>
+		order by cb_anniv_date DESC
+    </select>
+    <select id="searchVipCardCaseNormalStat" parameterType="map" resultMap="VipCardStatMap">
+    	select 
+		<include refid="cpBaseColumnSql"/>
+		from cp_indacc,cp_prdgrp,cp_crdtbl,cp_idtype 
+		where 1=1  
+		and cp_indacc.cb_ind_cardholder_no = cp_crdtbl.cb_cardholder_no  
+		and cp_crdtbl.cb_card_prdct_group = cp_prdgrp.pr_prodct_group  
+		and cp_crdtbl.cb_id_type = cp_idtype.cb_id_type and cb_plastic_cd = ''
+		<include refid="cpCaseBaseWhereSql"/>
+		order by cb_anniv_date DESC
+    </select>
+    <select id="searchVipCardCaseLossStat" parameterType="map" resultMap="VipCardStatMap">
+    	select 
+		<include refid="cpBaseColumnSql"/>
+		from cp_indacc,cp_prdgrp,cp_crdtbl,cp_idtype,cp_blkmlc 
+		where 1=1  
+		and bm_card_no= right(CB_CARDHOLDER_NO,6) 
+		and cp_indacc.cb_ind_cardholder_no = cp_crdtbl.cb_cardholder_no  
+		and cp_crdtbl.cb_card_prdct_group = cp_prdgrp.pr_prodct_group  
+		and cp_crdtbl.cb_id_type = cp_idtype.cb_id_type 
+		<include refid="cpCaseBaseWhereSql"/>
+		order by cb_anniv_date DESC
+    </select>
+    <select id="searchVipCardCaseRecedeStat" parameterType="map" resultMap="VipCardStatMap">
+    	select 
+		<include refid="cpBaseRecedeColumnSql"/>
+		from cp_prdgrp,cp_crdtbl,cp_idtype,cp_blkmlc 
+		where 1=1  
+		and bm_card_no= right(CB_CARDHOLDER_NO,6) 
+		and cp_crdtbl.cb_card_prdct_group = cp_prdgrp.pr_prodct_group  
+		and cp_crdtbl.cb_id_type = cp_idtype.cb_id_type 
+		<include refid="cpCaseBaseWhereSql"/>
+		order by cb_anniv_date DESC
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.VipCardStat" id="VipCardStatMap">
+        <id column="CB_CARDHOLDER_NO" property="cbCardholderNo"/>
+        <result column="CB_EMBOSSNAME" property="cbEmbossname"/>
+        <result column="CB_ID_TYPE" property="cbIdType"/>
+        <result column="CB_IDNO" property="cbIdno"/>
+        <result column="CB_SOURCE_CD" property="cbSourceCd"/>
+        <result column="CB_CVKI" property="cbCvki"/>
+        <result column="CB_ANNIV_DATE" property="cbAnnivDate"/>
+        <result column="PR_GROUP_DESC" property="prGroupDesc"/>
+        <result column="CB_MOD_USER" property="cbModUser"/>
+        <result column="CB_PLASTIC_CD" property="cbPlasticCd"/>
+        <result column="CB_EXPIRY_CCYYMM" property="cbExpiryCcyymm"/>
+        <result column="cb_id_desc" property="cbIdDesc"/>
+        <result column="CB_OUTSTD_BAL" property="cbOutstdBal"/>
+        <result column="CB_CIF_FLAG" property="cbCifFlag"/>
+        <result column="CB_ACCT_STATUS" property="cbAcctStatus"/>
+        <result column="CB_EXTERNAL_BRANCH" property="cbExternalBranch"/>
+    </resultMap>
+
+</mapper>

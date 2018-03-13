@@ -1,0 +1,346 @@
+.main-left ,.main-right{
+    float:left;
+    margin-left:20px;
+    background-color:#fff;
+}
+.main-left {
+    width:250px;
+    border:1px solid #ebebeb;
+}
+.main-right {
+    width:680px;
+}
+.main-left-top {
+    padding:20px;
+}
+.head-portrait {
+    float:left;
+    width:60px;
+    height:60px;
+    margin-right:25px;
+    border-radius:50%;
+}
+.main-left-info {
+    float:left;
+    width:120px;
+}
+.main-left-name {
+    width:100%;
+    line-height:30px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size:14px;
+    color:#333;
+}
+.main-left-operation {
+    margin-top:6px;
+}
+.main-left-operation span {
+    display: block;
+    float:left;
+    height:24px;
+    padding:0 8px;
+    border-left:1px solid #e5e5e5;
+}
+/*小图标*/
+.main-left-icon {
+    display: inline-block;
+    margin-top:2px;
+    background:url(../../img/personal_center_icon.png)  no-repeat;
+}
+.sex-icon{height:14px;width:14px;background-position:0 -22px;}
+.sex-selected-icon{height:14px;width:15px;background-position:-16px -22px;}
+.set-icon{height:20px;width:20px;background-position:-74px 0;}
+.bell-icon{height:20px;width:20px;background-position:-22px 0;}
+.gear-icon{height:20px;width:20px;background-position:0 0;}
+.notice-icon{height:20px;width:20px;background-position:-96px 0;}
+.crown-icon{height:20px;width:28px;background-position:-44px 0;}
+.rights-icon{height:20px;width:28px;background-position:-116px 0;}
+.main-left-content {
+    line-height:34px;
+    border-top:1px solid #ebebeb;
+}
+.main-left-title {
+    padding-left:20px;
+    font-size:14px;
+    color:#333;
+}
+.main-left-choose li {
+    padding-left:20px;
+}
+.main-left-choosed {
+    background-color:#ebebeb;
+}
+.main-left-choosed .main-left-message a {
+    color:#ff7800;
+}
+.main-left-list {
+    float:left;
+    width:5px;
+    height:5px;
+    margin:14px 10px;
+    border-radius:50%;
+    background-color:#cacaca;
+}
+.main-left-message {
+    float:left;
+}
+.main-left-message a {
+    color:#525252;
+}
+.main-right-title {
+    padding:15px 20px;
+    font-size:14px;
+    color:#000;
+}
+.main-right-back {
+    display: none;
+    float:right;
+    color:#49b6f4;
+}
+.main-right-back:hover {
+    text-decoration: underline;
+}
+.main-right-filter {
+    padding:0 20px 20px;
+    text-align: right;
+    color:#333;
+}
+.main-right-filter select {
+    padding:4px;
+}
+.mr-table-box {
+    padding:0 20px;
+}
+.mr-table {
+    margin-bottom:20px;
+    width:100%;
+    border-collapse: collapse;
+}
+.mr-table th {
+    line-height:25px;
+    background-color:#f1f1f1;
+    font-weight: 100;
+}
+.mr-table td {
+    padding:10px;
+    border:1px solid #f1f1f1;
+}
+.mr-table-th {
+    width:341px;
+    text-indent: 10px;
+    text-align: left;
+}
+.mr-th-width {
+    width:100px;
+}
+.mr-table-td {
+    text-align: center;
+}
+.mr-table-icon {
+    float:left;
+    width:78px;
+    height:56px;
+    margin-right:10px;
+}
+.mr-table-info {
+    color:#333;
+}
+.mr-info-title {
+    font-size:14px;
+    color:#49b6f4;
+}
+.mr-table-details {
+    color:#49b6f4;
+}
+.mr-page {
+    text-align: center;
+    margin-bottom:20px;
+}
+.mr-page a{
+    display: inline-block;
+    width:26px;
+    height:22px;
+    line-height:22px;
+    color:#333;
+}
+.mr-page .mr-page-seleced {
+    background-color:#49b6f4;
+    color:#fff;
+}
+.mr-page .mr-page-disabled {
+    color:#808080;
+    cursor:default;
+}
+.mr-hotle {
+    display: none;
+    padding:15px;
+}
+.mr-hotle-img {
+    float:left;
+    width:280px;
+    height:170px;
+}
+.mr-hotle-top {
+    float:right;
+    width:366px;
+    text-align:center;
+}
+.mr-hotle-name {
+    float:left;
+    width:154px;
+    font-size:16px;
+    color:#333;
+}
+.mr-hotle-fname {
+    font-size:18px;
+}
+.mr-hotle-score {
+    float:left;
+    width:120px;
+}
+.mr-hotle-price {
+    float:right;
+    margin-right:20px;
+    font-size:18px;
+    color:#ff7800;
+}
+.mr-hotle-image {
+    margin-top:35px;
+    width:366px;
+    height:82px;
+    overflow: hidden;
+}
+.mr-hotle-image img {
+    float:left;
+    margin-right:3px;
+    width:118px;
+    height:82px;
+}
+.mr-hotle-title {
+    margin-top:20px;
+    margin-bottom:10px;
+    line-height:36px;
+    font-size:20px;
+    border-bottom:1px solid #999;
+}
+.mr-hotle-list {
+    line-height:24px;
+}
+.mr-list-title {
+    float:left;
+    text-indent:8px;
+    font-weight:bold;
+    color:#333;
+}
+.mr-list-content {
+    float:right;
+    width:555px;
+}
+.mr-list-block {
+    margin-right:20px;
+}
+.mr-hotle-bar {
+    width:640px;
+    border-top:1px solid #ccc;
+    margin:8px 0 8px 8px;
+}
+.mr-evaluate-top {
+    padding:10px 0 20px 0;
+}
+.mr-evaluate-top1 {
+    margin-left:38px;
+    font-size:14px;
+}
+.mr-evaluate-top2 {
+    font-size:17px;
+    color:#ff7800;
+}
+.mr-evaluate-top3 {
+    font-size:14px;
+    color:#999;
+}
+.mr-evaluate-top4 {
+    margin-left:116px;
+}
+.mr-evaluate-top5 {
+    display: inline-block;
+    padding:0 5px;
+    line-height:24px;
+    margin-right:5px;
+    border:1px solid #ff7800;
+    color:#ff7800;
+}
+.mr-evaluate-nav {
+    line-height:40px;
+    background-color:#dad9d9;
+}
+.mr-nav-selcet {
+    margin-left:38px;
+    color:#333;
+}
+.mr-nav-selceted {
+    color:#ff7800;
+}
+.mr-evaluate-box li {
+    padding:20px 0;
+    border-bottom:1px solid #eee;
+}
+.mr-evaluate-box li:last-child {
+    border:0;
+}
+.mr-evaluate-left {
+    float:left;
+    width:95px;
+    text-align: center;
+}
+.mr-evaluate-left img {
+    margin:0 auto;
+    width:56px;
+    height:56px;
+    border-radius: 50%;
+}
+.mr-evaluate-name {
+    font-size:14px;
+}
+.mr-evaluate-right {
+    float:right;
+    width:555px;
+    line-height:24px;
+    color:#333;
+}
+.mr-evaluate-stars span {
+    vertical-align: middle;
+}
+.mr-evaluate-stars01 {
+    position:relative;
+    display: inline-block;
+    margin-right:30px;
+}
+.mr-evaluate-stars02 {
+    position:absolute;
+    top:0;
+    left:0;
+}
+.mr-evaluate-time {
+    color:#999;
+}
+/*星星图标*/
+.hotel-stars-icon {
+    height:14px;
+    width:76px;
+    background:url(../../img/hotel-stars-icon.png)  no-repeat;
+}
+.hotel-stars-icon02 {
+    background-position:0 0;
+}
+.hotel-stars-icon01 {
+    background-position:0 -14px;
+}
+.mr-evaluate-img img {
+    width:116px;
+    height:106px;
+    margin-top:10px;
+    margin-right:10px;
+}

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpCrdmtnMapper">
+
+    <sql id="cpCrdmtnBaseColumnSql">
+        cm_id_type,
+        cm_customer_idno,
+        cm_cardholder_no,
+        cm_mod_date,
+        cm_mtn_seq,
+        cm_desc,
+        cm_old_contents,
+        cm_new_contents,
+        cm_off_id,
+        cm_timestamp,
+        checksum
+    </sql>
+
+    <sql id="cpCrdmtnBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmIdType)">
+                    cm_id_type = #{map.cmIdType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmCustomerIdno)">
+                    AND cm_customer_idno = #{map.cmCustomerIdno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmCardholderNo)">
+                    AND cm_cardholder_no = #{map.cmCardholderNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmModDate)">
+                    AND cm_mod_date = #{map.cmModDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmMtnSeq)">
+                    AND cm_mtn_seq = #{map.cmMtnSeq}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmDesc)">
+                    AND cm_desc = #{map.cmDesc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmOldContents)">
+                    AND cm_old_contents = #{map.cmOldContents}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmNewContents)">
+                    AND cm_new_contents = #{map.cmNewContents}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmOffId)">
+                    AND cm_off_id = #{map.cmOffId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmTimestamp)">
+                    AND cm_timestamp = #{map.cmTimestamp}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpCrdmtn" parameterType="cn.happyworlds.imgmt.entity.CpCrdmtn">
+        INSERT INTO cp_crdmtn(
+        <include refid="cpCrdmtnBaseColumnSql"/>
+        )VALUES(
+            #{cmIdType},
+            #{cmCustomerIdno},
+            #{cmCardholderNo},
+            #{cmModDate},
+            #{cmMtnSeq},
+            #{cmDesc},
+            #{cmOldContents},
+            #{cmNewContents},
+            #{cmOffId},
+            #{cmTimestamp},
+            #{checksum}
+        )
+    </insert>
+        
+    <!--  
+    <delete id="deleteCpCrdmtnBy${table.pkColumn.variableSpellSqlName}" parameterType="${table.pkColumn.javaType}">
+        DELETE FROM cp_crdmtn WHERE ${table.pkColumn.sqlName} = #{${table.pkColumn.variableName}}
+    </delete>
+	-->
+    <select id="deleteCpCrdmtnByParams" parameterType="map">
+        DELETE FROM cp_crdmtn
+        <include refid="cpCrdmtnBaseWhereSql"/>
+    </select>
+
+ 
+    <update id="updateCpCrdmtn" parameterType="cn.happyworlds.imgmt.entity.CpCrdmtn">
+        UPDATE cp_crdmtn
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cmIdType)">
+                cm_id_type = #{cmIdType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cmCustomerIdno)">
+                cm_customer_idno = #{cmCustomerIdno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cmCardholderNo)">
+                cm_cardholder_no = #{cmCardholderNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cmModDate)">
+                cm_mod_date = #{cmModDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cmMtnSeq)">
+                cm_mtn_seq = #{cmMtnSeq} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cmDesc)">
+                cm_desc = #{cmDesc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cmOldContents)">
+                cm_old_contents = #{cmOldContents} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cmNewContents)">
+                cm_new_contents = #{cmNewContents} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cmOffId)">
+                cm_off_id = #{cmOffId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cmTimestamp)">
+                cm_timestamp = #{cmTimestamp} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE cm_cardholder_no = #{cmCardholderNo}
+    </update>
+
+    <update id="updateCpCrdmtnByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_crdmtn
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmIdType)">
+                    cm_id_type = #{map.cmIdType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmCustomerIdno)">
+                    cm_customer_idno = #{map.cmCustomerIdno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmCardholderNo)">
+                    cm_cardholder_no = #{map.cmCardholderNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmModDate)">
+                    cm_mod_date = #{map.cmModDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmMtnSeq)">
+                    cm_mtn_seq = #{map.cmMtnSeq} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmDesc)">
+                    cm_desc = #{map.cmDesc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmOldContents)">
+                    cm_old_contents = #{map.cmOldContents} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmNewContents)">
+                    cm_new_contents = #{map.cmNewContents} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmOffId)">
+                    cm_off_id = #{map.cmOffId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmTimestamp)">
+                    cm_timestamp = #{map.cmTimestamp} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmIdTypeCondition)">
+                    cm_id_type = #{map.cmIdTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmCustomerIdnoCondition)">
+                    AND cm_customer_idno = #{map.cmCustomerIdnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmCardholderNoCondition)">
+                    AND cm_cardholder_no = #{map.cmCardholderNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmModDateCondition)">
+                    AND cm_mod_date = #{map.cmModDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmMtnSeqCondition)">
+                    AND cm_mtn_seq = #{map.cmMtnSeqCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmDescCondition)">
+                    AND cm_desc = #{map.cmDescCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmOldContentsCondition)">
+                    AND cm_old_contents = #{map.cmOldContentsCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmNewContentsCondition)">
+                    AND cm_new_contents = #{map.cmNewContentsCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmOffIdCondition)">
+                    AND cm_off_id = #{map.cmOffIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cmTimestampCondition)">
+                    AND cm_timestamp = #{map.cmTimestampCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+<!-- 
+    <select id="searchCpCrdmtnBy${table.pkColumn.variableSpellSqlName}" parameterType="${table.pkColumn.javaType}" resultMap="cpCrdmtnMap">
+        SELECT
+        <include refid="cpCrdmtnBaseColumnSql"/>
+        FROM cp_crdmtn
+        WHERE ${table.pkColumn.sqlName} = #{${table.pkColumn.variableName}}
+    </select>
+-->
+    <select id="searchCpCrdmtnByParams" parameterType="map" resultMap="cpCrdmtnMap">
+        SELECT
+        <include refid="cpCrdmtnBaseColumnSql"/>
+        FROM cp_crdmtn
+        <include refid="cpCrdmtnBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpCrdmtn" id="cpCrdmtnMap">
+        <result column="cm_id_type" property="cmIdType"/>
+        <result column="cm_customer_idno" property="cmCustomerIdno"/>
+        <result column="cm_cardholder_no" property="cmCardholderNo"/>
+        <result column="cm_mod_date" property="cmModDate"/>
+        <result column="cm_mtn_seq" property="cmMtnSeq"/>
+        <result column="cm_desc" property="cmDesc"/>
+        <result column="cm_old_contents" property="cmOldContents"/>
+        <result column="cm_new_contents" property="cmNewContents"/>
+        <result column="cm_off_id" property="cmOffId"/>
+        <result column="cm_timestamp" property="cmTimestamp"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

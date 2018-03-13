@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpShiftMapper">
+
+    <sql id="cpShiftBaseColumnSql">
+        cp_shift_id,
+        cp_shift_date,
+        cp_shift_userno,
+        cp_shift_user,
+        cp_shift_posno,
+        cp_shift_yyme,
+        cp_shift_zhekou,
+        cp_shift_jybs,
+        cp_shift_tpbs,
+        cp_shift_tpze,
+        cp_shift_wxje,
+        cp_shift_zfbje,
+        cp_shift_xj,
+        cp_shift_ggkje,
+        cp_shift_xykje,
+        cp_shift_czkje,
+        cp_shift_zfxj,
+        cp_shift_wxcz,
+        cp_shift_xykcz,
+        cp_shift_zfbcz,
+        cp_shift_xjcz,
+        cp_shift_czcs,
+        cp_shift_czze,
+        cp_shift_xjsr,
+        cp_shift_czxj,
+        cp_shift_jbxj,
+        cp_shift_dbsy,
+        cp_shift_xbsy,
+        cp_shift_zbzg,
+        cp_shift_type,
+        cp_beiyong_one,
+        cp_beiyong_two,
+        cp_merchant_no
+    </sql>
+
+    <sql id="cpShiftBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftId)">
+                    cp_shift_id = #{map.cpShiftId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftDate)">
+                    AND cp_shift_date = #{map.cpShiftDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftUserno)">
+                    AND cp_shift_userno = #{map.cpShiftUserno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftUser)">
+                    AND cp_shift_user = #{map.cpShiftUser}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftPosno)">
+                    AND cp_shift_posno = #{map.cpShiftPosno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftYyme)">
+                    AND cp_shift_yyme = #{map.cpShiftYyme}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftZhekou)">
+                    AND cp_shift_zhekou = #{map.cpShiftZhekou}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftJybs)">
+                    AND cp_shift_jybs = #{map.cpShiftJybs}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftTpbs)">
+                    AND cp_shift_tpbs = #{map.cpShiftTpbs}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftTpze)">
+                    AND cp_shift_tpze = #{map.cpShiftTpze}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftWxje)">
+                    AND cp_shift_wxje = #{map.cpShiftWxje}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftZfbje)">
+                    AND cp_shift_zfbje = #{map.cpShiftZfbje}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXj)">
+                    AND cp_shift_xj = #{map.cpShiftXj}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftGgkje)">
+                    AND cp_shift_ggkje = #{map.cpShiftGgkje}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXykje)">
+                    AND cp_shift_xykje = #{map.cpShiftXykje}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftCzkje)">
+                    AND cp_shift_czkje = #{map.cpShiftCzkje}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftZfxj)">
+                    AND cp_shift_zfxj = #{map.cpShiftZfxj}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftWxcz)">
+                    AND cp_shift_wxcz = #{map.cpShiftWxcz}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXykcz)">
+                    AND cp_shift_xykcz = #{map.cpShiftXykcz}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftZfbcz)">
+                    AND cp_shift_zfbcz = #{map.cpShiftZfbcz}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXjcz)">
+                    AND cp_shift_xjcz = #{map.cpShiftXjcz}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftCzcs)">
+                    AND cp_shift_czcs = #{map.cpShiftCzcs}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftCzze)">
+                    AND cp_shift_czze = #{map.cpShiftCzze}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXjsr)">
+                    AND cp_shift_xjsr = #{map.cpShiftXjsr}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftCzxj)">
+                    AND cp_shift_czxj = #{map.cpShiftCzxj}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftJbxj)">
+                    AND cp_shift_jbxj = #{map.cpShiftJbxj}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftDbsy)">
+                    AND cp_shift_dbsy = #{map.cpShiftDbsy}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXbsy)">
+                    AND cp_shift_xbsy = #{map.cpShiftXbsy}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftZbzg)">
+                    AND cp_shift_zbzg = #{map.cpShiftZbzg}
+                </if>
+                <!--  -->
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftType)">
+                    AND cp_shift_type = #{map.cpShiftType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpBeiyongOne)">
+                    AND cp_beiyong_two = #{map.cpBeiyongOne}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpBeiyongTwo)">
+                    AND cp_beiyong_two = #{map.cpBeiyongTwo}
+                </if>
+                <!--  -->
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpMerchantNo)">
+                    AND cp_merchant_no = #{map.cpMerchantNo}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpShift" parameterType="cn.happyworlds.imgmt.entity.CpShift" keyProperty="id">
+        INSERT INTO cp_shift(
+        <include refid="cpShiftBaseColumnSql"/>
+        )VALUES(
+            #{cpShiftId},
+            #{cpShiftDate},
+            #{cpShiftUserno},
+            #{cpShiftUser},
+            #{cpShiftPosno},
+            #{cpShiftYyme},
+            #{cpShiftZhekou},
+            #{cpShiftJybs},
+            #{cpShiftTpbs},
+            #{cpShiftTpze},
+            #{cpShiftWxje},
+            #{cpShiftZfbje},
+            #{cpShiftXj},
+            #{cpShiftGgkje},
+            #{cpShiftXykje},
+            #{cpShiftCzkje},
+            #{cpShiftZfxj},
+            #{cpShiftWxcz},
+            #{cpShiftXykcz},
+            #{cpShiftZfbcz},
+            #{cpShiftXjcz},
+            #{cpShiftCzcs},
+            #{cpShiftCzze},
+            #{cpShiftXjsr},
+            #{cpShiftCzxj},
+            #{cpShiftJbxj},
+            #{cpShiftDbsy},
+            #{cpShiftXbsy},
+            #{cpShiftZbzg},
+            #{cpShiftType},
+            #{cpBeiyongOne},
+            #{cpBeiyongTwo},
+            #{cpMerchantNo}
+        )
+    </insert>
+        
+    <delete id="deleteCpShiftByCpShiftId" parameterType="Integer">
+        DELETE FROM cp_shift WHERE cp_shift_id = #{cpShiftId}
+    </delete>
+
+    <select id="deleteCpShiftByParams" parameterType="map">
+        DELETE FROM cp_shift
+        <include refid="cpShiftBaseWhereSql"/>
+    </select>
+
+
+    <update id="updateCpShiftByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_shift
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftDate)">
+                    cp_shift_date = #{map.cpShiftDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftUserno)">
+                    cp_shift_userno = #{map.cpShiftUserno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftUser)">
+                    cp_shift_user = #{map.cpShiftUser} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftPosno)">
+                    cp_shift_posno = #{map.cpShiftPosno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftYyme)">
+                    cp_shift_yyme = #{map.cpShiftYyme} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftZhekou)">
+                    cp_shift_zhekou = #{map.cpShiftZhekou} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftJybs)">
+                    cp_shift_jybs = #{map.cpShiftJybs} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftTpbs)">
+                    cp_shift_tpbs = #{map.cpShiftTpbs} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftTpze)">
+                    cp_shift_tpze = #{map.cpShiftTpze} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftWxje)">
+                    cp_shift_wxje = #{map.cpShiftWxje} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftZfbje)">
+                    cp_shift_zfbje = #{map.cpShiftZfbje} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXj)">
+                    cp_shift_xj = #{map.cpShiftXj} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftGgkje)">
+                    cp_shift_ggkje = #{map.cpShiftGgkje} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXykje)">
+                    cp_shift_xykje = #{map.cpShiftXykje} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftCzkje)">
+                    cp_shift_czkje = #{map.cpShiftCzkje} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftZfxj)">
+                    cp_shift_zfxj = #{map.cpShiftZfxj} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftWxcz)">
+                    cp_shift_wxcz = #{map.cpShiftWxcz} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXykcz)">
+                    cp_shift_xykcz = #{map.cpShiftXykcz} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftZfbcz)">
+                    cp_shift_zfbcz = #{map.cpShiftZfbcz} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXjcz)">
+                    cp_shift_xjcz = #{map.cpShiftXjcz} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftCzcs)">
+                    cp_shift_czcs = #{map.cpShiftCzcs} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftCzze)">
+                    cp_shift_czze = #{map.cpShiftCzze} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXjsr)">
+                    cp_shift_xjsr = #{map.cpShiftXjsr} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftCzxj)">
+                    cp_shift_czxj = #{map.cpShiftCzxj} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftJbxj)">
+                    cp_shift_jbxj = #{map.cpShiftJbxj} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftDbsy)">
+                    cp_shift_dbsy = #{map.cpShiftDbsy} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXbsy)">
+                    cp_shift_xbsy = #{map.cpShiftXbsy} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftZbzg)">
+                    cp_shift_zbzg = #{map.cpShiftZbzg}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftIdCondition)">
+                    cp_shift_id = #{map.cpShiftIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftDateCondition)">
+                    AND cp_shift_date = #{map.cpShiftDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftUsernoCondition)">
+                    AND cp_shift_userno = #{map.cpShiftUsernoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftUserCondition)">
+                    AND cp_shift_user = #{map.cpShiftUserCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftPosnoCondition)">
+                    AND cp_shift_posno = #{map.cpShiftPosnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftYymeCondition)">
+                    AND cp_shift_yyme = #{map.cpShiftYymeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftZhekouCondition)">
+                    AND cp_shift_zhekou = #{map.cpShiftZhekouCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftJybsCondition)">
+                    AND cp_shift_jybs = #{map.cpShiftJybsCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftTpbsCondition)">
+                    AND cp_shift_tpbs = #{map.cpShiftTpbsCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftTpzeCondition)">
+                    AND cp_shift_tpze = #{map.cpShiftTpzeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftWxjeCondition)">
+                    AND cp_shift_wxje = #{map.cpShiftWxjeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftZfbjeCondition)">
+                    AND cp_shift_zfbje = #{map.cpShiftZfbjeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXjCondition)">
+                    AND cp_shift_xj = #{map.cpShiftXjCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftGgkjeCondition)">
+                    AND cp_shift_ggkje = #{map.cpShiftGgkjeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXykjeCondition)">
+                    AND cp_shift_xykje = #{map.cpShiftXykjeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftCzkjeCondition)">
+                    AND cp_shift_czkje = #{map.cpShiftCzkjeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftZfxjCondition)">
+                    AND cp_shift_zfxj = #{map.cpShiftZfxjCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftWxczCondition)">
+                    AND cp_shift_wxcz = #{map.cpShiftWxczCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXykczCondition)">
+                    AND cp_shift_xykcz = #{map.cpShiftXykczCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftZfbczCondition)">
+                    AND cp_shift_zfbcz = #{map.cpShiftZfbczCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXjczCondition)">
+                    AND cp_shift_xjcz = #{map.cpShiftXjczCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftCzcsCondition)">
+                    AND cp_shift_czcs = #{map.cpShiftCzcsCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftCzzeCondition)">
+                    AND cp_shift_czze = #{map.cpShiftCzzeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXjsrCondition)">
+                    AND cp_shift_xjsr = #{map.cpShiftXjsrCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftCzxjCondition)">
+                    AND cp_shift_czxj = #{map.cpShiftCzxjCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftJbxjCondition)">
+                    AND cp_shift_jbxj = #{map.cpShiftJbxjCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftDbsyCondition)">
+                    AND cp_shift_dbsy = #{map.cpShiftDbsyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftXbsyCondition)">
+                    AND cp_shift_xbsy = #{map.cpShiftXbsyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpShiftZbzgCondition)">
+                    AND cp_shift_zbzg = #{map.cpShiftZbzgCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpShiftByCpShiftId" parameterType="Integer" resultMap="cpShiftMap">
+        SELECT
+        <include refid="cpShiftBaseColumnSql"/>
+        FROM cp_shift
+        WHERE cp_shift_id = #{cpShiftId}
+    </select>
+
+    <select id="searchCpShiftByParams" parameterType="map" resultMap="cpShiftMap">
+        SELECT
+        <include refid="cpShiftBaseColumnSql"/>
+        FROM cp_shift
+        <include refid="cpShiftBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+    <!-- 查询是否今天的ip号已经结班 -->
+    <select id="searchJieBan" parameterType="String" resultMap="cpShiftMap"> 
+    	 SELECT
+        <include refid="cpShiftBaseColumnSql"/>
+        FROM cp_shift c where c.cp_shift_type='2' and c.cp_shift_date like '%${day}%' and c.cp_shift_posno=#{posIp}
+    </select>
+    
+    <!-- ++++++++++++++++ 前班交班总额 -->
+    <select id="searchQianBan" parameterType="String" resultMap="cpShiftMap">
+    	select SUM(c.cp_shift_zfxj) as cp_beiyong_two  FROM cp_shift c 
+			WHERE  c.cp_shift_type='1' and c.cp_shift_date like '%${day}%' and c.cp_shift_posno=#{posIp}
+    </select>
+    
+    <!-- ++++++ 前班交班现金 -->
+    <select id="searchRefundXj" parameterType="String" resultMap="cpShiftMap">
+    	select SUM(cp_shift_xj) as 'cp_shift_xj' from cp_shift WHERE cp_shift_type='1' AND cp_shift_date LIKE '%${day}%' and cp_shift_posno=#{posIp}
+    </select>
+    
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpShift" id="cpShiftMap">
+        <id column="cp_shift_id" property="cpShiftId"/>
+        <result column="cp_shift_date" property="cpShiftDate"/>
+        <result column="cp_shift_userno" property="cpShiftUserno"/>
+        <result column="cp_shift_user" property="cpShiftUser"/>
+        <result column="cp_shift_posno" property="cpShiftPosno"/>
+        <result column="cp_shift_yyme" property="cpShiftYyme"/>
+        <result column="cp_shift_zhekou" property="cpShiftZhekou"/>
+        <result column="cp_shift_jybs" property="cpShiftJybs"/>
+        <result column="cp_shift_tpbs" property="cpShiftTpbs"/>
+        <result column="cp_shift_tpze" property="cpShiftTpze"/>
+        <result column="cp_shift_wxje" property="cpShiftWxje"/>
+        <result column="cp_shift_zfbje" property="cpShiftZfbje"/>
+        <result column="cp_shift_xj" property="cpShiftXj"/>
+        <result column="cp_shift_ggkje" property="cpShiftGgkje"/>
+        <result column="cp_shift_xykje" property="cpShiftXykje"/>
+        <result column="cp_shift_czkje" property="cpShiftCzkje"/>
+        <result column="cp_shift_zfxj" property="cpShiftZfxj"/>
+        <result column="cp_shift_wxcz" property="cpShiftWxcz"/>
+        <result column="cp_shift_xykcz" property="cpShiftXykcz"/>
+        <result column="cp_shift_zfbcz" property="cpShiftZfbcz"/>
+        <result column="cp_shift_xjcz" property="cpShiftXjcz"/>
+        <result column="cp_shift_czcs" property="cpShiftCzcs"/>
+        <result column="cp_shift_czze" property="cpShiftCzze"/>
+        <result column="cp_shift_xjsr" property="cpShiftXjsr"/>
+        <result column="cp_shift_czxj" property="cpShiftCzxj"/>
+        <result column="cp_shift_jbxj" property="cpShiftJbxj"/>
+        <result column="cp_shift_dbsy" property="cpShiftDbsy"/>
+        <result column="cp_shift_xbsy" property="cpShiftXbsy"/>
+        <result column="cp_shift_zbzg" property="cpShiftZbzg"/>
+        <result column="cp_shift_type" property="cpShiftType"/>
+        <result column="cp_beiyong_one" property="cpBeiyongOne"/>
+        <result column="cp_beiyong_two" property="cpBeiyongTwo"/>
+        <result column="cp_merchant_no" property="cpMerchantNo"/>
+    </resultMap>
+
+</mapper>

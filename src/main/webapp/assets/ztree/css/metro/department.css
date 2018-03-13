@@ -1,0 +1,144 @@
+			@charset "utf-8";
+			{
+				margin: 0;
+				padding: 0;
+			}
+			
+			li {
+				list-style: none;
+			}
+			
+			body {
+				font-family: "微软雅黑";
+				background: #eeeeee;
+			}
+			body h3{
+				font-size: 22px;
+				margin:20px 10px 20px;
+				padding:20px;
+				font-family: "微软雅黑";
+			}
+			
+			.row {
+				width: 960px;
+				margin: 20px auto;
+				position: Relative;
+				background: white;
+				-webkit-box-shadow: 0 0px 20px 3px #bcdccd;
+				-moz-box-shadow: 0 0px 20px 3px #bcdccd;
+				box-shadow: 0 0px 20px 3px #bcdccd;
+			}
+			.tip-img {
+				position: absolute;
+				left: -80px;
+				top: -12px;
+			}
+			
+			.content {
+				width: 960px;
+				margin: 0 auto;
+			}
+					
+			.main {
+				width: 900px;
+			}
+			
+			
+			.form-line {
+				margin: 50px auto 10px;
+			}
+			
+			.form-inline .line-input {
+				width: 290px;
+				height: 40px;
+				padding: 0;
+				border: lightblue 1px solid;
+				border-radius: 5px;
+				outline: none;
+				color: lightslategray;
+				text-indent: 5px;
+				display: inline-block;
+				font-size: 14px;
+				margin-left: 10px;
+				margin-bottom:10px;
+			}
+			.lable {
+				float: left;
+				width: 220px;
+			}			
+			.form-a {
+				display: inline-block;
+				color: black;
+				width: 80px;
+				font-size: 18px;
+				height: 40px;
+				font-family: 微软雅黑;
+			}
+			
+			.line-input:focus {
+				border-color: lightskyblue;
+			}
+			
+			input[type=checkbox] {
+				vertical-align: middle;
+			}
+			
+			#hr {
+				width: 800px;
+				color: white;
+				margin-bottom: 20px;
+				;
+				border-bottom: 2px dashed lightgrey;
+			}
+			
+			.clearfix {
+				content: '';
+				clear: both;
+				display: block;
+			}
+			
+			.fr {
+				float: right;
+				cursor: pointer;
+			}
+			
+			.tip-img {
+				height: 202px;
+				width: 78px;
+				background-image: url(../ztree/img/content-side-bg.png);
+			}
+			
+			.tip-img p {
+				width: 20px;
+				margin: 0 auto;
+				color: #fff;
+				font-size: 20px;
+				line-height: 30px;
+				margin-top: 40px;
+			}
+			.departinfo{
+				margin:20px;
+			}
+			.col-md-6{
+				margin-top: 10px;
+			}
+			ul.ztree{
+				margin-left: 110px;
+			}
+			.col-md-6{
+			margin-bottom:15px;
+			}
+			.col-md-6 label{
+				width: 90px;
+			}
+            .appreance{
+            border-radius:8px;
+            top:200px;
+            }
+            .btn-color{
+            background-color:#00A561;
+            border-radius:5px;
+            }
+           .btn-primary:hover{
+          background-color:#006F45;
+          }  

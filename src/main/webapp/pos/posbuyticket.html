@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=yes" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <link rel="stylesheet" type="text/css" href="css/reset.css"> 
+    <link rel="stylesheet" type="text/css" href="css/posbuyticket.css"> 
+    <script src="js/url.js"></script>
+	<title>pos购票</title>
+</head>
+<body>
+   <div class="header">
+       <div class="title">非实名制购票</div>
+       <div class="manage"><img src="image/manage.png"></div>
+   </div>
+    <div class="placeholder"></div>
+   <div class="content">
+       <div class="tip">点击选择</div>
+       <form>
+           <div class="label">票券种类：</div>
+           <select class="ticket">
+           </select>
+           <div class="label">游客类型：</div>
+           <select class="passenger">
+           </select>
+           <div class="per">单价：<span class="perprice">0.00</span>元</div>
+           <div class="cart-btn">加入购物车</div>
+           <div class="cart-tip">购物车</div>
+           <table class="cart-list">
+           <tbody>
+           </tbody>
+           </table>
+       </form>
+   </div>
+   <div class="footer">
+      <ul class="">
+         <li class="allpriceCon">合计：<span class="allPrice">540.00</span></li>
+          <li class="payBtnLi"><input type="button" name="" id="payBtn" value="结算"/></li>
+      </ul>
+   </div>
+  <div class="placeholder"></div> 
+
+<!-- 选择支付方式遮罩 -->
+<div class="mask hide"></div>
+<div class="paymask hide">
+  <div class="close clearfix"><img src="image/close.png"></div>
+  <div class="wxpay"><img src="image/pay1.png" class="paylogo"><span class="paytip">微信支付</span></div>
+  <div class="alipay"><img src="image/pay2.png" class="paylogo"><span class="paytip">支付宝支付</span></div>
+  <div class="pospay"><img src="image/pay3.png" class="paylogo"><span class="paytip">银联卡支付</span></div>
+  <div class="cashpay"><img src="image/pay5.png" class="paylogo"><span class="paytip">现金支付</span></div>
+</div>
+<!-- 现金支付收银遮罩 -->
+<div class="cashpaymask hide">
+  <div class="close clearfix"><img src="image/close.png"></div>
+  <div class="totalprice"><label>总价：</label><input type="text" name=""></div>
+  <div class="payamount"><label>实收：</label><input type="text" name=""></div>
+  <div class="change"><label>找零：</label><input type="text" name=""></div>
+  <button class="cashpayconfirm">确定</button>
+</div>
+<!-- 支付成功遮罩 -->
+<!-- <div class="successmask">
+  <div class="successtip">支付成功！</div>  
+  <button>确定</button>
+</div> -->
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/adapt.js"></script>
+<script src="js/posbuyticket.js"></script>
+<script src="js/layer.js"></script> 
+</body>
+</html>

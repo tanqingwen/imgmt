@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.MCityDictMapper">
+
+    <sql id="MCityDictBaseColumnSql">
+        city_id,
+        province_id,
+        city_name,
+        location_id,
+        region_cd,
+        zip_code,
+        checksum
+    </sql>
+
+    <sql id="MCityDictBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cityId)">
+                    city_id = #{map.cityId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.provinceId)">
+                    AND province_id = #{map.provinceId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cityName)">
+                    AND city_name = #{map.cityName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.locationId)">
+                    AND location_id = #{map.locationId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.regionCd)">
+                    AND region_cd = #{map.regionCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.zipCode)">
+                    AND zip_code = #{map.zipCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertMCityDict" parameterType="cn.happyworlds.imgmt.entity.MCityDict">
+        INSERT INTO m_city_dict(
+        <include refid="MCityDictBaseColumnSql"/>
+        )VALUES(
+            #{cityId},
+            #{provinceId},
+            #{cityName},
+            #{locationId},
+            #{regionCd},
+            #{zipCode},
+            #{checksum}
+        )
+    </insert>
+
+    
+    <delete id="deleteMCityDictByCityId" parameterType="String">
+        DELETE FROM m_city_dict WHERE city_id = #{cityId}
+    </delete>
+
+    <update id="updateMCityDict" parameterType="cn.happyworlds.imgmt.entity.MCityDict">
+        UPDATE m_city_dict
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(provinceId)">
+                province_id = #{provinceId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cityName)">
+                city_name = #{cityName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(locationId)">
+                location_id = #{locationId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(regionCd)">
+                region_cd = #{regionCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(zipCode)">
+                zip_code = #{zipCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum} ,
+            </if>
+        </set>
+        WHERE city_id = #{cityId}
+    </update>
+
+    <select id="searchMCityDictByCityId" parameterType="String" resultMap="MCityDictMap">
+        SELECT
+        <include refid="MCityDictBaseColumnSql"/>
+        FROM m_city_dict
+        WHERE city_id = #{cityId}
+    </select>
+
+    <select id="searchMCityDictByParams" parameterType="map" resultMap="MCityDictMap">
+        SELECT
+        <include refid="MCityDictBaseColumnSql"/>
+        FROM m_city_dict
+        <include refid="MCityDictBaseWhereSql"/>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.MCityDict" id="MCityDictMap">
+        <id column="city_id" property="cityId"/>
+        <result column="province_id" property="provinceId"/>
+        <result column="city_name" property="cityName"/>
+        <result column="location_id" property="locationId"/>
+        <result column="region_cd" property="regionCd"/>
+        <result column="zip_code" property="zipCode"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

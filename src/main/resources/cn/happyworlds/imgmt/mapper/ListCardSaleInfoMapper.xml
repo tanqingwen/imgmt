@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.ListCardSaleInfoMapper">
+
+    <sql id="cpBaseRecedeColumnSql">
+        CB_EMBOSSNAME,
+        RIGHT(ct_card_number,10) ct_card_number,
+        CB_IDNO,
+        <!-- concat(ct_post_time,ct_tran_time) as time, -->
+        ct_tran_time as time,
+        ct_tran_code,
+        sys_trxn_desc,
+        ct_tran_amount,
+        ct_card_amount,
+        ct_outstd_b4_post,
+        ct_outstd_after_post,
+        cb_recommender_no
+    </sql>
+    
+    
+    <select id="searchListCardSaleInfoNumnull" resultMap="ListCardSaleInfoMap">
+    	SELECT 
+    	<include refid="cpBaseRecedeColumnSql"/> 
+    	FROM cp_ceptrx ct,cp_trxcde cd,cp_crdtbl cb 
+    	WHERE CT_ACCOUNT_ID IN(
+    		SELECT CT_ACCOUNT_ID FROM cp_ceptrx WHERE 1=1 
+    		) 
+    	AND sys_trxn_cd = ct_tran_code AND cb.CB_CARDHOLDER_NO=ct.ct_card_number
+    	order by time DESC
+    </select>
+    
+    <select id="searchListCardSaleInfo" parameterType="String" resultMap="ListCardSaleInfoMap">
+    	SELECT 
+    	<include refid="cpBaseRecedeColumnSql"/> 
+    	FROM cp_ceptrx ct,cp_trxcde cd,cp_crdtbl cb 
+    	WHERE CT_ACCOUNT_ID IN(
+    		SELECT CT_ACCOUNT_ID FROM cp_ceptrx WHERE 1=1 AND RIGHT(ct_card_number,10)=#{ctCardNumber}
+    		) 
+    	AND sys_trxn_cd = ct_tran_code AND cb.CB_CARDHOLDER_NO=ct.ct_card_number
+    	order by time DESC
+    </select>
+    
+    <resultMap type="cn.happyworlds.imgmt.entity.ListCardSaleInfo" id="ListCardSaleInfoMap">
+        <id column="CB_EMBOSSNAME" property="cbEmbossname"/>
+        <result column="ct_card_number" property="ctCardNumber"/>
+        <result column="CB_IDNO" property="cbIdno"/>
+        <result column="time" property="ctPostTime"/>
+        <result column="ct_tran_code" property="ctTranCode"/>
+        <result column="sys_trxn_desc" property="sysTrxnDesc"/>
+        <result column="ct_tran_amount" property="ctTranAmount"/>
+        <result column="ct_card_amount" property="ctCardAmount"/>
+        <result column="ct_outstd_b4_post" property="ctOutstdB4Post"/>
+        <result column="ct_outstd_after_post" property="ctOutstdAfterPost"/>
+        <result column="cb_recommender_no" property="recommerderNo"/>
+    </resultMap>
+
+</mapper>

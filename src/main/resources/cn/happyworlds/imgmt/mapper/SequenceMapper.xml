@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.SequenceMapper">
+	<sql id="sequenceBaseColumnSql">
+        id,
+        name
+    </sql>
+
+    <sql id="sequenceBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.id)">
+                    id = #{map.id}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.name)">
+                    AND name = #{map.name}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <select id="searchCpCrdmtnToParamsMax" resultType="java.lang.Long">
+        SELECT max(cm_mtn_seq) 'cm_mtn_seq'
+        FROM cp_crdmtn
+    </select>
+    <select id="searchNextvalToCtTranId" parameterType="String" resultType="java.lang.Long">
+        select nextval(#{name}) from DUAL
+    </select>
+    
+    <select id="searchSerialToName" resultType="java.math.BigDecimal">
+        select name from serial
+    </select>
+    
+    <select id="truncateSerial">
+        truncate table serial
+    </select>
+    
+    <select id="searchNextserialToCtMessageId" parameterType="String" resultType="java.math.BigDecimal">
+        select nextserial(#{name}) from DUAL
+    </select>
+    
+    <select id="searchNexttkToTicketId" parameterType="String" resultType="java.lang.Long">
+        select nexttkval(#{name}) from DUAL
+    </select>
+    
+    <select id="searchIndaccseq" parameterType="String" resultType="java.lang.Long">
+    	select indaccseq(#{name}) from DUAL
+    </select>
+    
+    <resultMap type="cn.happyworlds.imgmt.entity.Sequence" id="sequenceMap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+</mapper>

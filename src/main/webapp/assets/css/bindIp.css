@@ -1,0 +1,235 @@
+@charset "utf-8";
+
+{
+margin
+:
+ 
+0;
+padding
+:
+ 
+0;
+}
+li {
+	list-style: none;
+}
+
+body {
+	font-family: "微软雅黑";
+	background: #eeeeee;
+}
+
+.edit, .delete, .check {
+	cursor: pointer;
+}
+
+.btnSty {
+	color: #FFFFFF;
+	float: right;
+}
+
+.btnSty:hover {
+	color: #FFFFFF;
+	outline: none;
+	border: none;
+}
+
+.venueBtn {
+	float: right;
+}
+
+.backStyle {
+	color: #333;
+}
+
+.row {
+	width: 960px;
+	margin: 20px auto;
+	position: Relative;
+	background: white;
+	-webkit-box-shadow: 0 0px 20px 3px #bcdccd;
+	-moz-box-shadow: 0 0px 20px 3px #bcdccd;
+	box-shadow: 0 0px 20px 3px #bcdccd;
+}
+a:hover{
+	color:#333;
+}
+.tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+
+.content {
+	width: 960px;
+	margin: 0 auto;
+}
+.box-footer{
+	border-top:none;
+}
+
+.main {
+	width: 900px;
+	margin: 0 auto;
+}
+
+.main h3 {
+	width: 100%;
+	height: 70px;
+	line-height: 70px;
+	font-family: "微软雅黑";
+}
+
+.form-line {
+	margin: 25px auto 10px 0;
+}
+
+.col-lg-6 .line-input {
+	width: 290px;
+	height: 40px;
+	padding: 0;
+	border: lightblue 1px solid;
+	border-radius: 5px;
+	outline: none;
+	color: lightslategray;
+	text-indent: 5px;
+	display: inline-block;
+	font-size: 14px;
+	margin-left: 10px;
+}
+
+.lable {
+	float: left;
+	width: 220px;
+}
+
+select {
+	width: 220px;
+	height: 40px;
+	border: lightblue 1px solid;
+	border-radius: 5px;
+	outline: none;
+	color: lightslategray;
+	text-indent: 5px;
+	font-weight: 500;
+	display: inline-block;
+	font-size: 14px;
+	padding: 1px 0;
+	margin-left: 8px;
+}
+
+select {
+	width: 290px;
+}
+
+.form-a {
+	display: inline-block;
+	color: black;
+	width: 80px;
+	font-size: 18px;
+	height: 40px;
+	line-height: 40px;
+	text-align: left;
+}
+
+.line-input:focus {
+	border-color: lightskyblue;
+}
+
+.btn-size {
+	width: 80px;
+	height: 40px;
+	background: #6db921;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	outline: none;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	font-weight: 500;
+}
+
+input[type=checkbox] {
+	vertical-align: middle;
+}
+
+#hr {
+	width: 800px;
+	color: white;
+	margin-bottom: 20px;;
+	border-bottom: 2px dashed lightgrey;
+}
+
+.clearfix {
+	content: '';
+	clear: both;
+	display: block;
+}
+
+.form-group .fontCol {
+	font-size: 16px;
+	font-weight: 700;
+	color: rgb(98, 98, 98)
+}
+
+.mag label {
+	width: 100px;
+	text-align: right;
+}
+
+.sureOrder input {
+	width: 275px;
+	height: 54px;
+	line-height: 54px;
+	background-color: #f1793D;
+	color: #FFFFFF;
+	outline: none;
+	border: none;
+	margin-top: 90px;
+	border-radius: 5px;
+}
+
+.checkList table th {
+	text-align: center;
+}
+
+.checkList table td {
+	text-align: center;
+}
+
+.checkList .check {
+	margin: 0 20px;
+}
+
+.edit, .delete, .check {
+	cursor: pointer;
+}
+
+.btnSty {
+	color: #FFFFFF;
+}
+
+.btnSty:hover {
+	color: #FFFFFF;
+	outline: none;
+	border: none;
+}
+
+.tip-img {
+	height: 202px;
+	width: 78px;
+	background-image: url(../app/img/content-side-bg.png);
+}
+
+.tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+
+.bindAdd {
+	float: right;
+}

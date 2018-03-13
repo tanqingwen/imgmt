@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.LegalHolidayMapper">
+
+    <sql id="legalHolidayBaseColumnSql">
+        holiday,
+        holiday_start,
+        holiday_end
+    </sql>
+
+    <sql id="legalHolidayBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.holiday)">
+                    holiday = #{map.holiday}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.holidayStart)">
+                    AND holiday_start = #{map.holidayStart}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.holidayEnd)">
+                    AND holiday_end = #{map.holidayEnd}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertLegalHoliday" parameterType="cn.happyworlds.imgmt.entity.LegalHoliday">
+        INSERT INTO legal_holiday(
+        <include refid="legalHolidayBaseColumnSql"/>
+        )VALUES(
+            #{holiday},
+            #{holidayStart},
+            #{holidayEnd}
+        )
+    </insert>
+        
+    <delete id="deleteLegalHolidayByHoliday" parameterType="String">
+        DELETE FROM legal_holiday WHERE holiday = #{holiday}
+    </delete>
+
+    <select id="deleteLegalHolidayByParams" parameterType="map">
+        DELETE FROM legal_holiday
+        <include refid="legalHolidayBaseWhereSql"/>
+    </select>
+
+    <update id="updateLegalHoliday" parameterType="cn.happyworlds.imgmt.entity.LegalHoliday">
+        UPDATE legal_holiday
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(holidayStart)">
+                holiday_start = #{holidayStart} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(holidayEnd)">
+                holiday_end = #{holidayEnd}
+            </if>
+        </set>
+        WHERE holiday = #{holiday}
+    </update>
+
+    <update id="updateLegalHolidayByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE legal_holiday
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.holidayStart)">
+                    holiday_start = #{map.holidayStart} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.holidayEnd)">
+                    holiday_end = #{map.holidayEnd}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.holidayCondition)">
+                    holiday = #{map.holidayCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.holidayStartCondition)">
+                    AND holiday_start = #{map.holidayStartCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.holidayEndCondition)">
+                    AND holiday_end = #{map.holidayEndCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchLegalHolidayByHoliday" parameterType="String" resultMap="legalHolidayMap">
+        SELECT
+        <include refid="legalHolidayBaseColumnSql"/>
+        FROM legal_holiday
+        WHERE holiday = #{holiday}
+    </select>
+
+    <select id="searchLegalHolidayByParams" parameterType="map" resultMap="legalHolidayMap">
+        SELECT
+        <include refid="legalHolidayBaseColumnSql"/>
+        FROM legal_holiday
+        <include refid="legalHolidayBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.LegalHoliday" id="legalHolidayMap">
+        <id column="holiday" property="holiday"/>
+        <result column="holiday_start" property="holidayStart"/>
+        <result column="holiday_end" property="holidayEnd"/>
+    </resultMap>
+
+</mapper>

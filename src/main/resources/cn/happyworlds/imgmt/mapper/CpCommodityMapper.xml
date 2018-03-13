@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpCommodityMapper">
+
+    <sql id="cpCommodityBaseColumnSql">
+        cc_type_id,
+        cc_type_desc,
+        cc_start_date,
+        cc_end_date,
+        cc_start_time,
+        cc_end_time,
+        cc_expire_period,
+        cc_user_type,
+        cc_recycle_type,
+        cc_type_status,
+        cc_type_user,
+        cc_acq_lists_id,
+        cc_list_price,
+        cc_discount_rate1,
+        cc_discount_price1,
+        cc_discount_rate2,
+        cc_discount_price2,
+        cc_ticket_des,
+        cc_ticket_type,
+        cc_ticket_pic,
+        cc_ticket_pic2,
+        cc_ticket_pic3,
+        cc_ticket_pic4,
+        checksum
+    </sql>
+
+    <sql id="cpCommodityBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTypeId)">
+                    cc_type_id = #{map.ccTypeId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTypeDesc)">
+                    AND cc_type_desc = #{map.ccTypeDesc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccStartDate)">
+                    AND cc_start_date = #{map.ccStartDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccEndDate)">
+                    AND cc_end_date = #{map.ccEndDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccStartTime)">
+                    AND cc_start_time = #{map.ccStartTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccEndTime)">
+                    AND cc_end_time = #{map.ccEndTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccExpirePeriod)">
+                    AND cc_expire_period = #{map.ccExpirePeriod}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccUserType)">
+                    AND cc_user_type = #{map.ccUserType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccRecycleType)">
+                    AND cc_recycle_type = #{map.ccRecycleType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTypeStatus)">
+                    AND cc_type_status = #{map.ccTypeStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTypeUser)">
+                    AND cc_type_user = #{map.ccTypeUser}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccAcqListsId)">
+                    AND cc_acq_lists_id = #{map.ccAcqListsId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccListPrice)">
+                    AND cc_list_price = #{map.ccListPrice}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccDiscountRate1)">
+                    AND cc_discount_rate1 = #{map.ccDiscountRate1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccDiscountPrice1)">
+                    AND cc_discount_price1 = #{map.ccDiscountPrice1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccDiscountRate2)">
+                    AND cc_discount_rate2 = #{map.ccDiscountRate2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccDiscountPrice2)">
+                    AND cc_discount_price2 = #{map.ccDiscountPrice2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketDes)">
+                    AND cc_ticket_des = #{map.ccTicketDes}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketType)">
+                    AND cc_ticket_type = #{map.ccTicketType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketPic)">
+                    AND cc_ticket_pic = #{map.ccTicketPic}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketPic2)">
+                    AND cc_ticket_pic2 = #{map.ccTicketPic2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketPic3)">
+                    AND cc_ticket_pic3 = #{map.ccTicketPic3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccViewId)">
+                    AND cc_ticket_pic4 = #{map.ccTicketPic4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpCommodity" parameterType="cn.happyworlds.imgmt.entity.CpCommodity">
+        INSERT INTO cp_commodity(
+        <include refid="cpCommodityBaseColumnSql"/>
+        )VALUES(
+            #{ccTypeId},
+            #{ccTypeDesc},
+            #{ccStartDate},
+            #{ccEndDate},
+            #{ccStartTime},
+            #{ccEndTime},
+            #{ccExpirePeriod},
+            #{ccUserType},
+            #{ccRecycleType},
+            #{ccTypeStatus},
+            #{ccTypeUser},
+            #{ccAcqListsId},
+            #{ccListPrice},
+            #{ccDiscountRate1},
+            #{ccDiscountPrice1},
+            #{ccDiscountRate2},
+            #{ccDiscountPrice2},
+            #{ccTicketDes},
+            #{ccTicketType},
+            #{ccTicketPic},
+            #{ccTicketPic2},
+            #{ccTicketPic3},
+            #{ccTicketPic4},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpCommodityByCcTypeId" parameterType="Integer">
+        DELETE FROM cp_commodity WHERE cc_type_id = #{ccTypeId}
+    </delete>
+
+    <select id="deleteCpCommodityByParams" parameterType="map">
+        DELETE FROM cp_commodity
+        <include refid="cpCommodityBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpCommodity" parameterType="cn.happyworlds.imgmt.entity.CpCommodity">
+        UPDATE cp_commodity
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccTypeDesc)">
+                cc_type_desc = #{ccTypeDesc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccStartDate)">
+                cc_start_date = #{ccStartDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccEndDate)">
+                cc_end_date = #{ccEndDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccStartTime)">
+                cc_start_time = #{ccStartTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccEndTime)">
+                cc_end_time = #{ccEndTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccExpirePeriod)">
+                cc_expire_period = #{ccExpirePeriod} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccUserType)">
+                cc_user_type = #{ccUserType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccRecycleType)">
+                cc_recycle_type = #{ccRecycleType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccTypeStatus)">
+                cc_type_status = #{ccTypeStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccTypeUser)">
+                cc_type_user = #{ccTypeUser} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccAcqListsId)">
+                cc_acq_lists_id = #{ccAcqListsId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccListPrice)">
+                cc_list_price = #{ccListPrice} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccDiscountRate1)">
+                cc_discount_rate1 = #{ccDiscountRate1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccDiscountPrice1)">
+                cc_discount_price1 = #{ccDiscountPrice1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccDiscountRate2)">
+                cc_discount_rate2 = #{ccDiscountRate2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccDiscountPrice2)">
+                cc_discount_price2 = #{ccDiscountPrice2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccTicketDes)">
+                cc_ticket_des = #{ccTicketDes} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccTicketType)">
+                cc_ticket_type = #{ccTicketType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccTicketPic)">
+                cc_ticket_pic = #{ccTicketPic} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccTicketPic2)">
+                cc_ticket_pic2 = #{ccTicketPic2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccTicketPic3)">
+                cc_ticket_pic3 = #{ccTicketPic3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ccTicketPic4)">
+                cc_ticket_pic4 = #{ccTicketPic4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE cc_type_id = #{ccTypeId}
+    </update>
+
+    <update id="updateCpCommodityByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_commodity
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTypeDesc)">
+                    cc_type_desc = #{map.ccTypeDesc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccStartDate)">
+                    cc_start_date = #{map.ccStartDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccEndDate)">
+                    cc_end_date = #{map.ccEndDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccStartTime)">
+                    cc_start_time = #{map.ccStartTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccEndTime)">
+                    cc_end_time = #{map.ccEndTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccExpirePeriod)">
+                    cc_expire_period = #{map.ccExpirePeriod} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccUserType)">
+                    cc_user_type = #{map.ccUserType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccRecycleType)">
+                    cc_recycle_type = #{map.ccRecycleType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTypeStatus)">
+                    cc_type_status = #{map.ccTypeStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTypeUser)">
+                    cc_type_user = #{map.ccTypeUser} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccAcqListsId)">
+                    cc_acq_lists_id = #{map.ccAcqListsId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccListPrice)">
+                    cc_list_price = #{map.ccListPrice} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccDiscountRate1)">
+                    cc_discount_rate1 = #{map.ccDiscountRate1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccDiscountPrice1)">
+                    cc_discount_price1 = #{map.ccDiscountPrice1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccDiscountRate2)">
+                    cc_discount_rate2 = #{map.ccDiscountRate2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccDiscountPrice2)">
+                    cc_discount_price2 = #{map.ccDiscountPrice2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketDes)">
+                    cc_ticket_des = #{map.ccTicketDes} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketType)">
+                    cc_ticket_type = #{map.ccTicketType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketPic)">
+                    cc_ticket_pic = #{map.ccTicketPic} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketPic2)">
+                    cc_ticket_pic2 = #{map.ccTicketPic2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketPic3)">
+                    cc_ticket_pic3 = #{map.ccTicketPic3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketPic4)">
+                    cc_ticket_pic4 = #{map.ccTicketPic4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTypeIdCondition)">
+                    cc_type_id = #{map.ccTypeIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTypeDescCondition)">
+                    AND cc_type_desc = #{map.ccTypeDescCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccStartDateCondition)">
+                    AND cc_start_date = #{map.ccStartDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccEndDateCondition)">
+                    AND cc_end_date = #{map.ccEndDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccStartTimeCondition)">
+                    AND cc_start_time = #{map.ccStartTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccEndTimeCondition)">
+                    AND cc_end_time = #{map.ccEndTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccExpirePeriodCondition)">
+                    AND cc_expire_period = #{map.ccExpirePeriodCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccUserTypeCondition)">
+                    AND cc_user_type = #{map.ccUserTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccRecycleTypeCondition)">
+                    AND cc_recycle_type = #{map.ccRecycleTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTypeStatusCondition)">
+                    AND cc_type_status = #{map.ccTypeStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTypeUserCondition)">
+                    AND cc_type_user = #{map.ccTypeUserCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccAcqListsIdCondition)">
+                    AND cc_acq_lists_id = #{map.ccAcqListsIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccListPriceCondition)">
+                    AND cc_list_price = #{map.ccListPriceCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccDiscountRate1Condition)">
+                    AND cc_discount_rate1 = #{map.ccDiscountRate1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccDiscountPrice1Condition)">
+                    AND cc_discount_price1 = #{map.ccDiscountPrice1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccDiscountRate2Condition)">
+                    AND cc_discount_rate2 = #{map.ccDiscountRate2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccDiscountPrice2Condition)">
+                    AND cc_discount_price2 = #{map.ccDiscountPrice2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketDesCondition)">
+                    AND cc_ticket_des = #{map.ccTicketDesCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketTypeCondition)">
+                    AND cc_ticket_type = #{map.ccTicketTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketPicCondition)">
+                    AND cc_ticket_pic = #{map.ccTicketPicCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketPic2Condition)">
+                    AND cc_ticket_pic2 = #{map.ccTicketPic2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketPic3Condition)">
+                    AND cc_ticket_pic3 = #{map.ccTicketPic3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ccTicketPic4Condition)">
+                    AND cc_ticket_pic4 = #{map.ccTicketPic4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpCommodityByCcTypeId" parameterType="Integer" resultMap="cpCommodityMap">
+        SELECT
+        <include refid="cpCommodityBaseColumnSql"/>
+        FROM cp_commodity
+        WHERE cc_type_id = #{ccTypeId}
+    </select>
+
+    <select id="searchCpCommodityByParams" parameterType="map" resultMap="cpCommodityMap">
+        SELECT
+        <include refid="cpCommodityBaseColumnSql"/>
+        FROM cp_commodity
+        <include refid="cpCommodityBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+	
+	 <!-- add by whb 新增商品获取商品最大值叠加1 start -->
+    <select id="searchMaxCpCommodityId" parameterType="String" resultMap="MaxCpCommodityId">
+    	select ifnull(max(cc_type_id)+1,'1000') cc_type_id from cp_commodity
+    </select>
+    <!-- add by Hugh 新增票种获取票种最大值叠加1 end -->
+    
+
+	<!-- add by Hugh 新增票种获取票种最大值叠加1返回值 start -->
+	<resultMap type="cn.happyworlds.imgmt.entity.CpCommodity" id="MaxCpCommodityId">
+		<id column="cc_type_id" property="ccTypeId"/>
+        <result column="cc_type_id" property="ccTypeId"/>
+	</resultMap>
+	
+	
+    <resultMap type="cn.happyworlds.imgmt.entity.CpCommodity" id="cpCommodityMap">
+        <id column="cc_type_id" property="ccTypeId"/>
+        <result column="cc_type_desc" property="ccTypeDesc"/>
+        <result column="cc_start_date" property="ccStartDate"/>
+        <result column="cc_end_date" property="ccEndDate"/>
+        <result column="cc_start_time" property="ccStartTime"/>
+        <result column="cc_end_time" property="ccEndTime"/>
+        <result column="cc_expire_period" property="ccExpirePeriod"/>
+        <result column="cc_user_type" property="ccUserType"/>
+        <result column="cc_recycle_type" property="ccRecycleType"/>
+        <result column="cc_type_status" property="ccTypeStatus"/>
+        <result column="cc_type_user" property="ccTypeUser"/>
+        <result column="cc_acq_lists_id" property="ccAcqListsId"/>
+        <result column="cc_list_price" property="ccListPrice"/>
+        <result column="cc_discount_rate1" property="ccDiscountRate1"/>
+        <result column="cc_discount_price1" property="ccDiscountPrice1"/>
+        <result column="cc_discount_rate2" property="ccDiscountRate2"/>
+        <result column="cc_discount_price2" property="ccDiscountPrice2"/>
+        <result column="cc_ticket_des" property="ccTicketDes"/>
+        <result column="cc_ticket_type" property="ccTicketType"/>
+        <result column="cc_ticket_pic" property="ccTicketPic"/>
+        <result column="cc_ticket_pic2" property="ccTicketPic2"/>
+        <result column="cc_ticket_pic3" property="ccTicketPic3"/>
+        <result column="cc_ticket_pic4" property="ccTicketPic4"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpSysprmMapper">
+
+    <sql id="cpSysprmBaseColumnSql">
+        sp_id,
+        sp_processing_date,
+        sp_processing_ddd,
+        sp_next_processing_date,
+        sp_next_processing_ddd,
+        sp_echo_interval,
+        sp_appl_apr_rtn_prd,
+        sp_appl_del_rtn_prd,
+        sp_appl_dec_rtn_prd,
+        sp_appl_can_rtn_prd,
+        sp_cur_auth_hist_rtn_prd,
+        sp_old_auth_hist_rtn_prd,
+        sp_memo_rtn_prd,
+        sp_excp_ac_post_ind,
+        sp_gst_rt,
+        sp_pmt_grace_period,
+        sp_ageing_date_ind,
+        sp_income_recognition,
+        sp_autopay_days,
+        sp_pay_due_days,
+        sp_review_days,
+        sp_lyt_pts_validity_prd,
+        sp_cust_crlmt_opt,
+        sp_cust_del_opt,
+        sp_cust_coll_opt,
+        sp_cr_shield_enrolment,
+        sp_date_display_format,
+        sp_language_ind,
+        sp_skip_stmt_gen_ind,
+        sp_renew_rev_mth,
+        sp_pin_ver_ind,
+        sp_verkey_len,
+        sp_prm_mod_date,
+        sp_prm_user_id,
+        sp_pnt_merged_cust_lvl,
+        sp_mc_payment_trxn_ind,
+        sp_daily_bos_ca_lmt,
+        sp_ipm_pre_edit_fg,
+        sp_final_refund_prd,
+        sp_int_rule,
+        sp_od_expiry_rev_day,
+        sp_od_penalty_age,
+        sp_daily_pos_ca_lmt,
+        sp_acct_limitation,
+        checksum
+    </sql>
+
+    <sql id="cpSysprmBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spId)">
+                    sp_id = #{map.spId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spProcessingDate)">
+                    AND sp_processing_date = #{map.spProcessingDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spProcessingDdd)">
+                    AND sp_processing_ddd = #{map.spProcessingDdd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spNextProcessingDate)">
+                    AND sp_next_processing_date = #{map.spNextProcessingDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spNextProcessingDdd)">
+                    AND sp_next_processing_ddd = #{map.spNextProcessingDdd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spEchoInterval)">
+                    AND sp_echo_interval = #{map.spEchoInterval}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spApplAprRtnPrd)">
+                    AND sp_appl_apr_rtn_prd = #{map.spApplAprRtnPrd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spApplDelRtnPrd)">
+                    AND sp_appl_del_rtn_prd = #{map.spApplDelRtnPrd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spApplDecRtnPrd)">
+                    AND sp_appl_dec_rtn_prd = #{map.spApplDecRtnPrd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spApplCanRtnPrd)">
+                    AND sp_appl_can_rtn_prd = #{map.spApplCanRtnPrd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spCurAuthHistRtnPrd)">
+                    AND sp_cur_auth_hist_rtn_prd = #{map.spCurAuthHistRtnPrd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spOldAuthHistRtnPrd)">
+                    AND sp_old_auth_hist_rtn_prd = #{map.spOldAuthHistRtnPrd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spMemoRtnPrd)">
+                    AND sp_memo_rtn_prd = #{map.spMemoRtnPrd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spExcpAcPostInd)">
+                    AND sp_excp_ac_post_ind = #{map.spExcpAcPostInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spGstRt)">
+                    AND sp_gst_rt = #{map.spGstRt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPmtGracePeriod)">
+                    AND sp_pmt_grace_period = #{map.spPmtGracePeriod}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spAgeingDateInd)">
+                    AND sp_ageing_date_ind = #{map.spAgeingDateInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spIncomeRecognition)">
+                    AND sp_income_recognition = #{map.spIncomeRecognition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spAutopayDays)">
+                    AND sp_autopay_days = #{map.spAutopayDays}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPayDueDays)">
+                    AND sp_pay_due_days = #{map.spPayDueDays}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spReviewDays)">
+                    AND sp_review_days = #{map.spReviewDays}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spLytPtsValidityPrd)">
+                    AND sp_lyt_pts_validity_prd = #{map.spLytPtsValidityPrd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spCustCrlmtOpt)">
+                    AND sp_cust_crlmt_opt = #{map.spCustCrlmtOpt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spCustDelOpt)">
+                    AND sp_cust_del_opt = #{map.spCustDelOpt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spCustCollOpt)">
+                    AND sp_cust_coll_opt = #{map.spCustCollOpt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spCrShieldEnrolment)">
+                    AND sp_cr_shield_enrolment = #{map.spCrShieldEnrolment}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spDateDisplayFormat)">
+                    AND sp_date_display_format = #{map.spDateDisplayFormat}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spLanguageInd)">
+                    AND sp_language_ind = #{map.spLanguageInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spSkipStmtGenInd)">
+                    AND sp_skip_stmt_gen_ind = #{map.spSkipStmtGenInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spRenewRevMth)">
+                    AND sp_renew_rev_mth = #{map.spRenewRevMth}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPinVerInd)">
+                    AND sp_pin_ver_ind = #{map.spPinVerInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spVerkeyLen)">
+                    AND sp_verkey_len = #{map.spVerkeyLen}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPrmModDate)">
+                    AND sp_prm_mod_date = #{map.spPrmModDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPrmUserId)">
+                    AND sp_prm_user_id = #{map.spPrmUserId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPntMergedCustLvl)">
+                    AND sp_pnt_merged_cust_lvl = #{map.spPntMergedCustLvl}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spMcPaymentTrxnInd)">
+                    AND sp_mc_payment_trxn_ind = #{map.spMcPaymentTrxnInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spDailyBosCaLmt)">
+                    AND sp_daily_bos_ca_lmt = #{map.spDailyBosCaLmt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spIpmPreEditFg)">
+                    AND sp_ipm_pre_edit_fg = #{map.spIpmPreEditFg}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spFinalRefundPrd)">
+                    AND sp_final_refund_prd = #{map.spFinalRefundPrd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spIntRule)">
+                    AND sp_int_rule = #{map.spIntRule}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spOdExpiryRevDay)">
+                    AND sp_od_expiry_rev_day = #{map.spOdExpiryRevDay}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spOdPenaltyAge)">
+                    AND sp_od_penalty_age = #{map.spOdPenaltyAge}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spDailyPosCaLmt)">
+                    AND sp_daily_pos_ca_lmt = #{map.spDailyPosCaLmt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spAcctLimitation)">
+                    AND sp_acct_limitation = #{map.spAcctLimitation}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpSysprm" parameterType="cn.happyworlds.imgmt.entity.CpSysprm">
+        INSERT INTO cp_sysprm(
+        <include refid="cpSysprmBaseColumnSql"/>
+        )VALUES(
+            #{spId},
+            #{spProcessingDate},
+            #{spProcessingDdd},
+            #{spNextProcessingDate},
+            #{spNextProcessingDdd},
+            #{spEchoInterval},
+            #{spApplAprRtnPrd},
+            #{spApplDelRtnPrd},
+            #{spApplDecRtnPrd},
+            #{spApplCanRtnPrd},
+            #{spCurAuthHistRtnPrd},
+            #{spOldAuthHistRtnPrd},
+            #{spMemoRtnPrd},
+            #{spExcpAcPostInd},
+            #{spGstRt},
+            #{spPmtGracePeriod},
+            #{spAgeingDateInd},
+            #{spIncomeRecognition},
+            #{spAutopayDays},
+            #{spPayDueDays},
+            #{spReviewDays},
+            #{spLytPtsValidityPrd},
+            #{spCustCrlmtOpt},
+            #{spCustDelOpt},
+            #{spCustCollOpt},
+            #{spCrShieldEnrolment},
+            #{spDateDisplayFormat},
+            #{spLanguageInd},
+            #{spSkipStmtGenInd},
+            #{spRenewRevMth},
+            #{spPinVerInd},
+            #{spVerkeyLen},
+            #{spPrmModDate},
+            #{spPrmUserId},
+            #{spPntMergedCustLvl},
+            #{spMcPaymentTrxnInd},
+            #{spDailyBosCaLmt},
+            #{spIpmPreEditFg},
+            #{spFinalRefundPrd},
+            #{spIntRule},
+            #{spOdExpiryRevDay},
+            #{spOdPenaltyAge},
+            #{spDailyPosCaLmt},
+            #{spAcctLimitation},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpSysprmBySpId" parameterType="String">
+        DELETE FROM cp_sysprm WHERE sp_id = #{spId}
+    </delete>
+
+    <select id="deleteCpSysprmByParams" parameterType="map">
+        DELETE FROM cp_sysprm
+        <include refid="cpSysprmBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpSysprm" parameterType="cn.happyworlds.imgmt.entity.CpSysprm">
+        UPDATE cp_sysprm
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spProcessingDate)">
+                sp_processing_date = #{spProcessingDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spProcessingDdd)">
+                sp_processing_ddd = #{spProcessingDdd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spNextProcessingDate)">
+                sp_next_processing_date = #{spNextProcessingDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spNextProcessingDdd)">
+                sp_next_processing_ddd = #{spNextProcessingDdd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spEchoInterval)">
+                sp_echo_interval = #{spEchoInterval} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spApplAprRtnPrd)">
+                sp_appl_apr_rtn_prd = #{spApplAprRtnPrd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spApplDelRtnPrd)">
+                sp_appl_del_rtn_prd = #{spApplDelRtnPrd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spApplDecRtnPrd)">
+                sp_appl_dec_rtn_prd = #{spApplDecRtnPrd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spApplCanRtnPrd)">
+                sp_appl_can_rtn_prd = #{spApplCanRtnPrd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spCurAuthHistRtnPrd)">
+                sp_cur_auth_hist_rtn_prd = #{spCurAuthHistRtnPrd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spOldAuthHistRtnPrd)">
+                sp_old_auth_hist_rtn_prd = #{spOldAuthHistRtnPrd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spMemoRtnPrd)">
+                sp_memo_rtn_prd = #{spMemoRtnPrd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spExcpAcPostInd)">
+                sp_excp_ac_post_ind = #{spExcpAcPostInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spGstRt)">
+                sp_gst_rt = #{spGstRt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spPmtGracePeriod)">
+                sp_pmt_grace_period = #{spPmtGracePeriod} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spAgeingDateInd)">
+                sp_ageing_date_ind = #{spAgeingDateInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spIncomeRecognition)">
+                sp_income_recognition = #{spIncomeRecognition} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spAutopayDays)">
+                sp_autopay_days = #{spAutopayDays} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spPayDueDays)">
+                sp_pay_due_days = #{spPayDueDays} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spReviewDays)">
+                sp_review_days = #{spReviewDays} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spLytPtsValidityPrd)">
+                sp_lyt_pts_validity_prd = #{spLytPtsValidityPrd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spCustCrlmtOpt)">
+                sp_cust_crlmt_opt = #{spCustCrlmtOpt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spCustDelOpt)">
+                sp_cust_del_opt = #{spCustDelOpt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spCustCollOpt)">
+                sp_cust_coll_opt = #{spCustCollOpt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spCrShieldEnrolment)">
+                sp_cr_shield_enrolment = #{spCrShieldEnrolment} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spDateDisplayFormat)">
+                sp_date_display_format = #{spDateDisplayFormat} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spLanguageInd)">
+                sp_language_ind = #{spLanguageInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spSkipStmtGenInd)">
+                sp_skip_stmt_gen_ind = #{spSkipStmtGenInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spRenewRevMth)">
+                sp_renew_rev_mth = #{spRenewRevMth} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spPinVerInd)">
+                sp_pin_ver_ind = #{spPinVerInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spVerkeyLen)">
+                sp_verkey_len = #{spVerkeyLen} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spPrmModDate)">
+                sp_prm_mod_date = #{spPrmModDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spPrmUserId)">
+                sp_prm_user_id = #{spPrmUserId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spPntMergedCustLvl)">
+                sp_pnt_merged_cust_lvl = #{spPntMergedCustLvl} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spMcPaymentTrxnInd)">
+                sp_mc_payment_trxn_ind = #{spMcPaymentTrxnInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spDailyBosCaLmt)">
+                sp_daily_bos_ca_lmt = #{spDailyBosCaLmt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spIpmPreEditFg)">
+                sp_ipm_pre_edit_fg = #{spIpmPreEditFg} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spFinalRefundPrd)">
+                sp_final_refund_prd = #{spFinalRefundPrd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spIntRule)">
+                sp_int_rule = #{spIntRule} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spOdExpiryRevDay)">
+                sp_od_expiry_rev_day = #{spOdExpiryRevDay} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spOdPenaltyAge)">
+                sp_od_penalty_age = #{spOdPenaltyAge} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spDailyPosCaLmt)">
+                sp_daily_pos_ca_lmt = #{spDailyPosCaLmt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(spAcctLimitation)">
+                sp_acct_limitation = #{spAcctLimitation} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE sp_id = #{spId}
+    </update>
+
+    <update id="updateCpSysprmByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_sysprm
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spProcessingDate)">
+                    sp_processing_date = #{map.spProcessingDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spProcessingDdd)">
+                    sp_processing_ddd = #{map.spProcessingDdd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spNextProcessingDate)">
+                    sp_next_processing_date = #{map.spNextProcessingDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spNextProcessingDdd)">
+                    sp_next_processing_ddd = #{map.spNextProcessingDdd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spEchoInterval)">
+                    sp_echo_interval = #{map.spEchoInterval} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spApplAprRtnPrd)">
+                    sp_appl_apr_rtn_prd = #{map.spApplAprRtnPrd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spApplDelRtnPrd)">
+                    sp_appl_del_rtn_prd = #{map.spApplDelRtnPrd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spApplDecRtnPrd)">
+                    sp_appl_dec_rtn_prd = #{map.spApplDecRtnPrd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spApplCanRtnPrd)">
+                    sp_appl_can_rtn_prd = #{map.spApplCanRtnPrd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spCurAuthHistRtnPrd)">
+                    sp_cur_auth_hist_rtn_prd = #{map.spCurAuthHistRtnPrd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spOldAuthHistRtnPrd)">
+                    sp_old_auth_hist_rtn_prd = #{map.spOldAuthHistRtnPrd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spMemoRtnPrd)">
+                    sp_memo_rtn_prd = #{map.spMemoRtnPrd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spExcpAcPostInd)">
+                    sp_excp_ac_post_ind = #{map.spExcpAcPostInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spGstRt)">
+                    sp_gst_rt = #{map.spGstRt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPmtGracePeriod)">
+                    sp_pmt_grace_period = #{map.spPmtGracePeriod} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spAgeingDateInd)">
+                    sp_ageing_date_ind = #{map.spAgeingDateInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spIncomeRecognition)">
+                    sp_income_recognition = #{map.spIncomeRecognition} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spAutopayDays)">
+                    sp_autopay_days = #{map.spAutopayDays} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPayDueDays)">
+                    sp_pay_due_days = #{map.spPayDueDays} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spReviewDays)">
+                    sp_review_days = #{map.spReviewDays} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spLytPtsValidityPrd)">
+                    sp_lyt_pts_validity_prd = #{map.spLytPtsValidityPrd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spCustCrlmtOpt)">
+                    sp_cust_crlmt_opt = #{map.spCustCrlmtOpt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spCustDelOpt)">
+                    sp_cust_del_opt = #{map.spCustDelOpt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spCustCollOpt)">
+                    sp_cust_coll_opt = #{map.spCustCollOpt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spCrShieldEnrolment)">
+                    sp_cr_shield_enrolment = #{map.spCrShieldEnrolment} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spDateDisplayFormat)">
+                    sp_date_display_format = #{map.spDateDisplayFormat} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spLanguageInd)">
+                    sp_language_ind = #{map.spLanguageInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spSkipStmtGenInd)">
+                    sp_skip_stmt_gen_ind = #{map.spSkipStmtGenInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spRenewRevMth)">
+                    sp_renew_rev_mth = #{map.spRenewRevMth} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPinVerInd)">
+                    sp_pin_ver_ind = #{map.spPinVerInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spVerkeyLen)">
+                    sp_verkey_len = #{map.spVerkeyLen} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPrmModDate)">
+                    sp_prm_mod_date = #{map.spPrmModDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPrmUserId)">
+                    sp_prm_user_id = #{map.spPrmUserId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPntMergedCustLvl)">
+                    sp_pnt_merged_cust_lvl = #{map.spPntMergedCustLvl} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spMcPaymentTrxnInd)">
+                    sp_mc_payment_trxn_ind = #{map.spMcPaymentTrxnInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spDailyBosCaLmt)">
+                    sp_daily_bos_ca_lmt = #{map.spDailyBosCaLmt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spIpmPreEditFg)">
+                    sp_ipm_pre_edit_fg = #{map.spIpmPreEditFg} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spFinalRefundPrd)">
+                    sp_final_refund_prd = #{map.spFinalRefundPrd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spIntRule)">
+                    sp_int_rule = #{map.spIntRule} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spOdExpiryRevDay)">
+                    sp_od_expiry_rev_day = #{map.spOdExpiryRevDay} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spOdPenaltyAge)">
+                    sp_od_penalty_age = #{map.spOdPenaltyAge} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spDailyPosCaLmt)">
+                    sp_daily_pos_ca_lmt = #{map.spDailyPosCaLmt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spAcctLimitation)">
+                    sp_acct_limitation = #{map.spAcctLimitation} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spIdCondition)">
+                    sp_id = #{map.spIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spProcessingDateCondition)">
+                    AND sp_processing_date = #{map.spProcessingDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spProcessingDddCondition)">
+                    AND sp_processing_ddd = #{map.spProcessingDddCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spNextProcessingDateCondition)">
+                    AND sp_next_processing_date = #{map.spNextProcessingDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spNextProcessingDddCondition)">
+                    AND sp_next_processing_ddd = #{map.spNextProcessingDddCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spEchoIntervalCondition)">
+                    AND sp_echo_interval = #{map.spEchoIntervalCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spApplAprRtnPrdCondition)">
+                    AND sp_appl_apr_rtn_prd = #{map.spApplAprRtnPrdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spApplDelRtnPrdCondition)">
+                    AND sp_appl_del_rtn_prd = #{map.spApplDelRtnPrdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spApplDecRtnPrdCondition)">
+                    AND sp_appl_dec_rtn_prd = #{map.spApplDecRtnPrdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spApplCanRtnPrdCondition)">
+                    AND sp_appl_can_rtn_prd = #{map.spApplCanRtnPrdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spCurAuthHistRtnPrdCondition)">
+                    AND sp_cur_auth_hist_rtn_prd = #{map.spCurAuthHistRtnPrdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spOldAuthHistRtnPrdCondition)">
+                    AND sp_old_auth_hist_rtn_prd = #{map.spOldAuthHistRtnPrdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spMemoRtnPrdCondition)">
+                    AND sp_memo_rtn_prd = #{map.spMemoRtnPrdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spExcpAcPostIndCondition)">
+                    AND sp_excp_ac_post_ind = #{map.spExcpAcPostIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spGstRtCondition)">
+                    AND sp_gst_rt = #{map.spGstRtCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPmtGracePeriodCondition)">
+                    AND sp_pmt_grace_period = #{map.spPmtGracePeriodCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spAgeingDateIndCondition)">
+                    AND sp_ageing_date_ind = #{map.spAgeingDateIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spIncomeRecognitionCondition)">
+                    AND sp_income_recognition = #{map.spIncomeRecognitionCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spAutopayDaysCondition)">
+                    AND sp_autopay_days = #{map.spAutopayDaysCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPayDueDaysCondition)">
+                    AND sp_pay_due_days = #{map.spPayDueDaysCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spReviewDaysCondition)">
+                    AND sp_review_days = #{map.spReviewDaysCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spLytPtsValidityPrdCondition)">
+                    AND sp_lyt_pts_validity_prd = #{map.spLytPtsValidityPrdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spCustCrlmtOptCondition)">
+                    AND sp_cust_crlmt_opt = #{map.spCustCrlmtOptCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spCustDelOptCondition)">
+                    AND sp_cust_del_opt = #{map.spCustDelOptCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spCustCollOptCondition)">
+                    AND sp_cust_coll_opt = #{map.spCustCollOptCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spCrShieldEnrolmentCondition)">
+                    AND sp_cr_shield_enrolment = #{map.spCrShieldEnrolmentCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spDateDisplayFormatCondition)">
+                    AND sp_date_display_format = #{map.spDateDisplayFormatCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spLanguageIndCondition)">
+                    AND sp_language_ind = #{map.spLanguageIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spSkipStmtGenIndCondition)">
+                    AND sp_skip_stmt_gen_ind = #{map.spSkipStmtGenIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spRenewRevMthCondition)">
+                    AND sp_renew_rev_mth = #{map.spRenewRevMthCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPinVerIndCondition)">
+                    AND sp_pin_ver_ind = #{map.spPinVerIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spVerkeyLenCondition)">
+                    AND sp_verkey_len = #{map.spVerkeyLenCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPrmModDateCondition)">
+                    AND sp_prm_mod_date = #{map.spPrmModDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPrmUserIdCondition)">
+                    AND sp_prm_user_id = #{map.spPrmUserIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spPntMergedCustLvlCondition)">
+                    AND sp_pnt_merged_cust_lvl = #{map.spPntMergedCustLvlCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spMcPaymentTrxnIndCondition)">
+                    AND sp_mc_payment_trxn_ind = #{map.spMcPaymentTrxnIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spDailyBosCaLmtCondition)">
+                    AND sp_daily_bos_ca_lmt = #{map.spDailyBosCaLmtCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spIpmPreEditFgCondition)">
+                    AND sp_ipm_pre_edit_fg = #{map.spIpmPreEditFgCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spFinalRefundPrdCondition)">
+                    AND sp_final_refund_prd = #{map.spFinalRefundPrdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spIntRuleCondition)">
+                    AND sp_int_rule = #{map.spIntRuleCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spOdExpiryRevDayCondition)">
+                    AND sp_od_expiry_rev_day = #{map.spOdExpiryRevDayCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spOdPenaltyAgeCondition)">
+                    AND sp_od_penalty_age = #{map.spOdPenaltyAgeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spDailyPosCaLmtCondition)">
+                    AND sp_daily_pos_ca_lmt = #{map.spDailyPosCaLmtCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.spAcctLimitationCondition)">
+                    AND sp_acct_limitation = #{map.spAcctLimitationCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpSysprmBySpId" parameterType="String" resultMap="cpSysprmMap">
+        SELECT
+        <include refid="cpSysprmBaseColumnSql"/>
+        FROM cp_sysprm
+        WHERE sp_id = #{spId}
+    </select>
+
+    <select id="searchCpSysprmByParams" parameterType="map" resultMap="cpSysprmMap">
+        SELECT
+        <include refid="cpSysprmBaseColumnSql"/>
+        FROM cp_sysprm
+        <include refid="cpSysprmBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpSysprm" id="cpSysprmMap">
+        <id column="sp_id" property="spId"/>
+        <result column="sp_processing_date" property="spProcessingDate"/>
+        <result column="sp_processing_ddd" property="spProcessingDdd"/>
+        <result column="sp_next_processing_date" property="spNextProcessingDate"/>
+        <result column="sp_next_processing_ddd" property="spNextProcessingDdd"/>
+        <result column="sp_echo_interval" property="spEchoInterval"/>
+        <result column="sp_appl_apr_rtn_prd" property="spApplAprRtnPrd"/>
+        <result column="sp_appl_del_rtn_prd" property="spApplDelRtnPrd"/>
+        <result column="sp_appl_dec_rtn_prd" property="spApplDecRtnPrd"/>
+        <result column="sp_appl_can_rtn_prd" property="spApplCanRtnPrd"/>
+        <result column="sp_cur_auth_hist_rtn_prd" property="spCurAuthHistRtnPrd"/>
+        <result column="sp_old_auth_hist_rtn_prd" property="spOldAuthHistRtnPrd"/>
+        <result column="sp_memo_rtn_prd" property="spMemoRtnPrd"/>
+        <result column="sp_excp_ac_post_ind" property="spExcpAcPostInd"/>
+        <result column="sp_gst_rt" property="spGstRt"/>
+        <result column="sp_pmt_grace_period" property="spPmtGracePeriod"/>
+        <result column="sp_ageing_date_ind" property="spAgeingDateInd"/>
+        <result column="sp_income_recognition" property="spIncomeRecognition"/>
+        <result column="sp_autopay_days" property="spAutopayDays"/>
+        <result column="sp_pay_due_days" property="spPayDueDays"/>
+        <result column="sp_review_days" property="spReviewDays"/>
+        <result column="sp_lyt_pts_validity_prd" property="spLytPtsValidityPrd"/>
+        <result column="sp_cust_crlmt_opt" property="spCustCrlmtOpt"/>
+        <result column="sp_cust_del_opt" property="spCustDelOpt"/>
+        <result column="sp_cust_coll_opt" property="spCustCollOpt"/>
+        <result column="sp_cr_shield_enrolment" property="spCrShieldEnrolment"/>
+        <result column="sp_date_display_format" property="spDateDisplayFormat"/>
+        <result column="sp_language_ind" property="spLanguageInd"/>
+        <result column="sp_skip_stmt_gen_ind" property="spSkipStmtGenInd"/>
+        <result column="sp_renew_rev_mth" property="spRenewRevMth"/>
+        <result column="sp_pin_ver_ind" property="spPinVerInd"/>
+        <result column="sp_verkey_len" property="spVerkeyLen"/>
+        <result column="sp_prm_mod_date" property="spPrmModDate"/>
+        <result column="sp_prm_user_id" property="spPrmUserId"/>
+        <result column="sp_pnt_merged_cust_lvl" property="spPntMergedCustLvl"/>
+        <result column="sp_mc_payment_trxn_ind" property="spMcPaymentTrxnInd"/>
+        <result column="sp_daily_bos_ca_lmt" property="spDailyBosCaLmt"/>
+        <result column="sp_ipm_pre_edit_fg" property="spIpmPreEditFg"/>
+        <result column="sp_final_refund_prd" property="spFinalRefundPrd"/>
+        <result column="sp_int_rule" property="spIntRule"/>
+        <result column="sp_od_expiry_rev_day" property="spOdExpiryRevDay"/>
+        <result column="sp_od_penalty_age" property="spOdPenaltyAge"/>
+        <result column="sp_daily_pos_ca_lmt" property="spDailyPosCaLmt"/>
+        <result column="sp_acct_limitation" property="spAcctLimitation"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

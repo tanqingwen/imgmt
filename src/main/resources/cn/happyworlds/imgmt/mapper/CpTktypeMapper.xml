@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpTktypeMapper">
+
+    <sql id="cpTktypeBaseColumnSql">
+        tt_type_id,
+        tt_type_desc,
+        tt_start_date,
+        tt_end_date,
+        tt_expire_period,
+        tt_user_type,
+        tt_recycle_type,
+        tt_type_status,
+        tt_type_user,
+        tt_acq_lists_id,
+        tt_list_price,
+        tt_discount_rate1,
+        tt_discount_price1,
+        tt_discount_rate2,
+        tt_discount_price2,
+        checksum,
+        tt_coupon_start_date,
+        tt_coupon_days,
+        tt_ticket_type
+    </sql>
+
+    <sql id="cpTktypeBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttTypeId)">
+                    tt_type_id = #{map.ttTypeId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttTypeDesc)">
+                    AND tt_type_desc = #{map.ttTypeDesc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttStartDate)">
+                    AND tt_start_date <![CDATA[ <=  ]]> #{map.ttStartDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttEndDate)">
+                    AND tt_end_date >= #{map.ttEndDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttExpirePeriod)">
+                    AND tt_expire_period = #{map.ttExpirePeriod}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttUserType)">
+                    AND tt_user_type = #{map.ttUserType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttRecycleType)">
+                    AND tt_recycle_type = #{map.ttRecycleType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttTypeStatus)">
+                    AND tt_type_status = #{map.ttTypeStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttTypeUser)">
+                    AND tt_type_user = #{map.ttTypeUser}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttAcqListsId)">
+                    AND tt_acq_lists_id = #{map.ttAcqListsId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttListPrice)">
+                    AND tt_list_price = #{map.ttListPrice}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttDiscountRate1)">
+                    AND tt_discount_rate1 = #{map.ttDiscountRate1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttDiscountPrice1)">
+                    AND tt_discount_price1 = #{map.ttDiscountPrice1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttDiscountRate2)">
+                    AND tt_discount_rate2 = #{map.ttDiscountRate2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttDiscountPrice2)">
+                    AND tt_discount_price2 = #{map.ttDiscountPrice2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttTicketType)">
+                    AND tt_ticket_type = #{map.ttTicketType}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpTktype" parameterType="cn.happyworlds.imgmt.entity.CpTktype">
+        INSERT INTO cp_tktype(
+        <include refid="cpTktypeBaseColumnSql"/>
+        )VALUES(
+            #{ttTypeId},
+            #{ttTypeDesc},
+            #{ttStartDate},
+            #{ttEndDate},
+            #{ttExpirePeriod},
+            #{ttUserType},
+            #{ttRecycleType},
+            #{ttTypeStatus},
+            #{ttTypeUser},
+            #{ttAcqListsId},
+            #{ttListPrice},
+            #{ttDiscountRate1},
+            #{ttDiscountPrice1},
+            #{ttDiscountRate2},
+            #{ttDiscountPrice2},
+            #{checksum},
+            #{couponDate},
+            #{couponDays},
+            #{ttTicketType}
+        )
+    </insert>
+        
+    <delete id="deleteCpTktypeByTtTypeId" parameterType="Integer">
+        DELETE FROM cp_tktype WHERE tt_type_id = #{ttTypeId}
+    </delete>
+
+    <select id="deleteCpTktypeByParams" parameterType="map">
+        DELETE FROM cp_tktype
+        <include refid="cpTktypeBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpTktype" parameterType="cn.happyworlds.imgmt.entity.CpTktype">
+        UPDATE cp_tktype
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ttTypeDesc)">
+                tt_type_desc = #{ttTypeDesc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ttStartDate)">
+                tt_start_date = #{ttStartDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ttEndDate)">
+                tt_end_date = #{ttEndDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ttExpirePeriod)">
+                tt_expire_period = #{ttExpirePeriod} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ttUserType)">
+                tt_user_type = #{ttUserType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ttRecycleType)">
+                tt_recycle_type = #{ttRecycleType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ttTypeStatus)">
+                tt_type_status = #{ttTypeStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ttTypeUser)">
+                tt_type_user = #{ttTypeUser} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ttAcqListsId)">
+                tt_acq_lists_id = #{ttAcqListsId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ttListPrice)">
+                tt_list_price = #{ttListPrice} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ttDiscountRate1)">
+                tt_discount_rate1 = #{ttDiscountRate1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ttDiscountPrice1)">
+                tt_discount_price1 = #{ttDiscountPrice1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ttDiscountRate2)">
+                tt_discount_rate2 = #{ttDiscountRate2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ttDiscountPrice2)">
+                tt_discount_price2 = #{ttDiscountPrice2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ttTicketType)">
+                tt_ticket_type = #{ttTicketType}
+            </if>
+        </set>
+        WHERE tt_type_id = #{ttTypeId}
+    </update>
+
+    <update id="updateCpTktypeByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_tktype
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttTypeDesc)">
+                    tt_type_desc = #{map.ttTypeDesc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttStartDate)">
+                    tt_start_date = #{map.ttStartDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttEndDate)">
+                    tt_end_date = #{map.ttEndDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttExpirePeriod)">
+                    tt_expire_period = #{map.ttExpirePeriod} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttUserType)">
+                    tt_user_type = #{map.ttUserType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttRecycleType)">
+                    tt_recycle_type = #{map.ttRecycleType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttTypeStatus)">
+                    tt_type_status = #{map.ttTypeStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttTypeUser)">
+                    tt_type_user = #{map.ttTypeUser} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttAcqListsId)">
+                    tt_acq_lists_id = #{map.ttAcqListsId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttListPrice)">
+                    tt_list_price = #{map.ttListPrice} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttDiscountRate1)">
+                    tt_discount_rate1 = #{map.ttDiscountRate1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttDiscountPrice1)">
+                    tt_discount_price1 = #{map.ttDiscountPrice1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttDiscountRate2)">
+                    tt_discount_rate2 = #{map.ttDiscountRate2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttDiscountPrice2)">
+                    tt_discount_price2 = #{map.ttDiscountPrice2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttTypeIdCondition)">
+                    tt_type_id = #{map.ttTypeIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttTypeDescCondition)">
+                    AND tt_type_desc = #{map.ttTypeDescCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttStartDateCondition)">
+                    AND tt_start_date = #{map.ttStartDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttEndDateCondition)">
+                    AND tt_end_date = #{map.ttEndDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttExpirePeriodCondition)">
+                    AND tt_expire_period = #{map.ttExpirePeriodCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttUserTypeCondition)">
+                    AND tt_user_type = #{map.ttUserTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttRecycleTypeCondition)">
+                    AND tt_recycle_type = #{map.ttRecycleTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttTypeStatusCondition)">
+                    AND tt_type_status = #{map.ttTypeStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttTypeUserCondition)">
+                    AND tt_type_user = #{map.ttTypeUserCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttAcqListsIdCondition)">
+                    AND tt_acq_lists_id = #{map.ttAcqListsIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttListPriceCondition)">
+                    AND tt_list_price = #{map.ttListPriceCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttDiscountRate1Condition)">
+                    AND tt_discount_rate1 = #{map.ttDiscountRate1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttDiscountPrice1Condition)">
+                    AND tt_discount_price1 = #{map.ttDiscountPrice1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttDiscountRate2Condition)">
+                    AND tt_discount_rate2 = #{map.ttDiscountRate2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ttDiscountPrice2Condition)">
+                    AND tt_discount_price2 = #{map.ttDiscountPrice2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpTktypeByTtTypeId" parameterType="Integer" resultMap="cpTktypeMap">
+        SELECT
+        <include refid="cpTktypeBaseColumnSql"/>
+        FROM cp_tktype
+        WHERE tt_type_id = #{ttTypeId}
+    </select>
+    
+    <select id="searchCpTktype" parameterType="String"  resultMap="cpTktypeMap">
+      SELECT
+        <include refid="cpTktypeBaseColumnSql"/>
+        FROM cp_tktype
+        WHERE tt_type_id = #{menpiao}
+    </select>
+    
+    <!-- add by Hugh 新增票种获取票种最大值叠加1 start -->
+    <select id="searchMaxTktypeId" parameterType="String" resultMap="MaxTktype">
+    	select ifnull(max(tt_type_id)+1,'1000') tt_type_id from cp_tktype where length(tt_type_id)=4
+    </select>
+    <!-- add by Hugh 新增票种获取票种最大值叠加1 end -->
+    
+
+	<!-- add by Hugh 新增票种获取票种最大值叠加1返回值 start -->
+	<resultMap type="cn.happyworlds.imgmt.entity.CpTktype" id="MaxTktype">
+		<id column="tt_type_id" property="ttTypeId"/>
+        <result column="tt_type_id" property="ttTypeId"/>
+	</resultMap>
+	<!-- add by Hugh 新增票种获取票种最大值叠加1返回值 end -->
+	
+    <select id="searchCpTktypeByParams" parameterType="map" resultMap="cpTktypeMap">
+        SELECT
+        <include refid="cpTktypeBaseColumnSql"/>
+        FROM cp_tktype
+        <include refid="cpTktypeBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+    
+    <resultMap type="cn.happyworlds.imgmt.entity.CpTktype" id="cpTktypeMap">
+        <id column="tt_type_id" property="ttTypeId"/>
+        <result column="tt_type_desc" property="ttTypeDesc"/>
+        <result column="tt_start_date" property="ttStartDate"/>
+        <result column="tt_end_date" property="ttEndDate"/>
+        <result column="tt_expire_period" property="ttExpirePeriod"/>
+        <result column="tt_user_type" property="ttUserType"/>
+        <result column="tt_recycle_type" property="ttRecycleType"/>
+        <result column="tt_type_status" property="ttTypeStatus"/>
+        <result column="tt_type_user" property="ttTypeUser"/>
+        <result column="tt_acq_lists_id" property="ttAcqListsId"/>
+        <result column="tt_list_price" property="ttListPrice"/>
+        <result column="tt_discount_rate1" property="ttDiscountRate1"/>
+        <result column="tt_discount_price1" property="ttDiscountPrice1"/>
+        <result column="tt_discount_rate2" property="ttDiscountRate2"/>
+        <result column="tt_discount_price2" property="ttDiscountPrice2"/>
+        <result column="checksum" property="checksum"/>
+        <result column="tt_coupon_start_date" property="couponDate" />
+        <result column="tt_coupon_days" property="couponDays"/>
+        <result column="tt_ticket_type" property="ttTicketType"/>
+    </resultMap>
+
+</mapper>

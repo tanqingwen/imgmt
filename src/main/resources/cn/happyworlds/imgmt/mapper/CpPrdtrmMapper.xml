@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpPrdtrmMapper">
+
+	<sql id="CpPrdtrmBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pt_terminal_id)">
+                    pt_terminal_id = #{map.pt_terminal_id}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pt_prodct_group)">
+                    AND pt_prodct_group = #{map.pt_prodct_group}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pt_time_interval)">
+                    AND pt_time_interval = #{map.pt_time_interval}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pt_discount)">
+                    AND pt_discount = #{map.pt_discount}
+                </if>
+            </where>
+        </if>
+    </sql>
+    
+	<insert id="insertCpPrdtrm" parameterType="cn.happyworlds.imgmt.entity.CpPrdtrm">
+        INSERT INTO cp_prdtrm VALUES(
+            #{pt_terminal_id},
+            #{pt_prodct_group},
+            #{pt_time_interval},
+            #{pt_discount},
+            #{pt_param1},
+            #{pt_param2},
+            #{pt_param3},
+            #{pt_param4},
+            #{pt_param5},
+            #{pt_param6},
+            #{pt_param7},
+            #{pt_param8}
+        )
+    </insert>
+
+	<delete id="deleteCpPrdtrmByParams" parameterType="map">
+        DELETE FROM cp_prdtrm
+        <include refid="CpPrdtrmBaseWhereSql"/>
+    </delete>
+   
+	<update id="updateCpPrdtrm" parameterType="cn.happyworlds.imgmt.entity.CpPrdtrm">
+        UPDATE cp_prdtrm
+        <set>
+        	pt_time_interval = #{pt_time_interval} ,
+            pt_discount = #{pt_discount} ,
+        </set>
+        WHERE pt_terminal_id = #{pt_terminal_id}
+        AND pt_prodct_group = #{pt_prodct_group}
+    </update>
+    
+    <select id="searchCpPrdtrmById" parameterType="String" resultMap="CpPrdtrmMap">
+        SELECT *
+        FROM cp_prdtrm
+        WHERE pt_terminal_id = #{pt_terminal_id}
+    </select>
+    
+    <select id="searchCpPrdtrmByParams" parameterType="map" resultMap="CpPrdtrmMap">
+        SELECT *
+        FROM cp_prdtrm
+        <include refid="CpPrdtrmBaseWhereSql"/>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpPrdtrm" id="CpPrdtrmMap">
+        <result column="pt_terminal_id" property="pt_terminal_id"/>
+        <result column="pt_prodct_group" property="pt_prodct_group"/>
+        <result column="pt_time_interval" property="pt_time_interval"/>
+        <result column="pt_discount" property="pt_discount"/>
+    </resultMap>
+
+</mapper>

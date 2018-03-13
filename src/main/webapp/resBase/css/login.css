@@ -1,0 +1,249 @@
+*{margin:0;padding: 0;}
+html{width:100%;height:100%;}
+.header{
+	width:100%;
+	height:80px;
+	background-image: url(../images/login_img/header_img.png);
+}
+.logo{
+	width:1200px;
+	height:80px;
+	margin:0 auto;
+}
+
+.main{
+	width:100%;
+	background-image:url(../images/login_img/window.png);
+	background-size:cover;
+	background-position: 50% 50%;
+}
+
+
+   @-webkit-keyframes delay{
+        0%{
+        	-webkit-transform:translate(400px,50px);
+        }
+        20%{
+          -webkit-transform:translate(25%,310px);
+          opacity: 0.6;
+        }
+        40%{
+            -webkit-transform:translate(35%,250px);
+            opacity: 0.4;
+        }
+         50%{
+            -webkit-transform:translate(45%,100px);
+            opacity: 0.7;
+        }
+          60%{
+            -webkit-transform:translate(60%,340px);
+             opacity: 0.6;
+        }
+        80%{
+            -webkit-transform:translate(500px,260px);
+             opacity: 0.4;
+        }
+       100%{
+       	 	-webkit-transform:translate(400px,50px);
+       }
+    }
+    
+    
+   @-webkit-keyframes delay2{
+        0%{
+        	-webkit-transform:translate(450px,430px);
+        }
+        20%{
+          -webkit-transform:translate(35%,110px);
+          opacity: 0.7;
+        }
+        40%{
+            -webkit-transform:translate(25%,280px);
+            opacity: 0.6;
+        }
+         50%{
+            -webkit-transform:translate(55%,400px);
+            opacity: 0.3;
+        }
+          60%{
+            -webkit-transform:translate(20%,250px);
+             opacity: 0.8;
+        }
+        80%{
+            -webkit-transform:translate(200px,50px);
+             opacity: 0.5;
+        }
+       100%{
+       	 	-webkit-transform:translate(450px,430px);
+       }
+    }
+    .delay{
+        width:300px;height:100px;
+        float:left;
+        -webkit-animation:delay 20s easy  infinite;
+        animation:delay 20s linear  infinite;
+    }
+	
+	
+	 .delay2{
+        width:300px;height:100px;
+        float:left;
+        -webkit-animation:delay2 15s linear  infinite;
+        animation:delay2 15s linear  infinite;
+    }
+	
+.footer{
+	width:100%;
+	height:100px;
+	position:absolute;
+	bottom: 0;
+
+}
+.login_form{
+	width:310px;
+	background:#849ba9;
+	opacity: 0.85;
+	margin-left:65%;
+}
+#login_form{
+	
+}
+
+.nc-login-content{
+	margin-top:50px;
+}
+.form-title{
+	width:310px;
+	height:100px;
+	padding-top:40px;
+	padding-left:30px;
+	padding-right:20px;
+}
+.form-title img{
+	margin-left:-26px;
+}
+.iptmarg{
+	margin-left:6px;
+	width: 180px;
+    height: 30px;
+    border: none;
+    border-bottom: 1px gainsboro solid;
+    outline: none;
+    color: white;
+    background: #849ba9;
+}
+.text{
+	width:180px;
+	height:30px;
+	border:none;
+	border-bottom: 1px gainsboro solid;
+	outline: none;
+	color:white;
+	background: #849ba9;
+}
+
+
+
+.forget{
+	text-decoration: none;
+	font-size:12px;
+	color:#90bde0;
+	position:relative;
+	right:50px;
+	display: inline;
+}
+.w50{
+	width:60px;
+	height:30px;
+}
+
+
+#demo-form-site dl{
+	padding-left:20px;
+	margin:5px 0;
+}
+#demo-form-site dl img{
+	vertical-align: middle;
+}
+#demo-form-site a{
+	text-decoration: none;
+	font-size:12px;
+}
+
+
+#submitBtn{
+	width:200px;
+	height:35px;
+	display: block;
+	line-height:35px;
+	text-align: center;
+	border-radius:50px;
+	background:#f3577c;
+	color:white;
+	font-family: "agency fb";
+	font-size:16px;
+	margin-left:33px;
+	margin-top:20px;
+}
+#submitBtn:hover{
+	background:deeppink;
+}
+.dt-last{
+	color:#f3577c;
+	font-family: "agency fb";
+	font-size:16px;
+	margin-right:20px;
+	margin-top:20px;
+	padding-right:5px;
+}
+.dt-last a{
+		color:#f3577c;
+		
+}
+.dt-last img{
+	width:100px;
+}
+
+/*页脚*/
+.shop{
+	width:320px;
+	height:20px;
+	margin:0 auto;
+	font-size:13px;
+	color:grey;
+	font-family: "微软雅黑";
+	padding:5px 0;
+}
+.shop a{
+	text-decoration: none;
+	color:gray;
+}
+.shop li{
+	float:left;
+	list-style: none;
+	border-right:1px solid gray;
+	padding:0 5px;
+}
+.shop li:last-child{
+	border:none;
+}
+.bq{
+	width:200px;
+	height:20px;
+	margin:0 auto;
+	font-family: "微软雅黑";
+	color:black;
+	font-size:13px;
+	padding-top:10px;
+}
+.shop_pic{
+	width:567px;
+	height:30px;
+	margin:0 auto;
+	padding-top:10px;
+}
+.shop_pic li{
+	float:left;
+	list-style: none;
+	padding:0 5px;
+}

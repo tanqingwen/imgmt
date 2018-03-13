@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.TSysStaffMapper">
+
+    <sql id="TSysStaffBaseColumnSql">
+        id,
+        password,
+        roles,
+        organizations,
+        status,
+        pwd_fail_cnt,
+        totp_key,
+        name,
+        email,
+        gender,
+        phoneNumber,
+        lastLoginAt,
+        createdAt,
+        updatedAt,
+        createdBy,
+        updatedBy
+    </sql>
+
+    <sql id="TSysStaffBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.id)">
+                    id = #{map.id}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.password)">
+                    AND password = #{map.password}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.roles)">
+                    AND roles = #{map.roles}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.organizations)">
+                    AND organizations = #{map.organizations}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.status)">
+                    AND status = #{map.status}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pwdFailCnt)">
+                    AND pwd_fail_cnt = #{map.pwdFailCnt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.totpKey)">
+                    AND totp_key = #{map.totpKey}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.name)">
+                    AND name = #{map.name}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.email)">
+                    AND email = #{map.email}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.gender)">
+                    AND gender = #{map.gender}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.phoneNumber)">
+                    AND phoneNumber = #{map.phoneNumber}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.lastLoginAt)">
+                    AND lastLoginAt = #{map.lastLoginAt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.createdAt)">
+                    AND createdAt = #{map.createdAt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.updatedAt)">
+                    AND updatedAt = #{map.updatedAt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.createdBy)">
+                    AND createdBy = #{map.createdBy}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.updatedBy)">
+                    AND updatedBy = #{map.updatedBy}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertTSysStaff" parameterType="cn.happyworlds.imgmt.entity.TSysStaff">
+        INSERT INTO t_sys_staff(
+        <include refid="TSysStaffBaseColumnSql"/>
+        )VALUES(
+            #{id},
+            #{password},
+            #{roles},
+            #{organizations},
+            #{status},
+            #{pwdFailCnt},
+            #{totpKey},
+            #{name},
+            #{email},
+            #{gender},
+            #{phoneNumber},
+            #{lastLoginAt},
+            #{createdAt},
+            #{updatedAt},
+            #{createdBy},
+            #{updatedBy}
+        )
+    </insert>
+
+    
+    <delete id="deleteTSysStaffById" parameterType="String">
+        DELETE FROM t_sys_staff WHERE id = #{id}
+    </delete>
+
+    <update id="updateTSysStaff" parameterType="cn.happyworlds.imgmt.entity.TSysStaff">
+        UPDATE t_sys_staff
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(password)">
+                password = #{password} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(roles)">
+                roles = #{roles} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(organizations)">
+                organizations = #{organizations} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(status)">
+                status = #{status} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(pwdFailCnt)">
+                pwd_fail_cnt = #{pwdFailCnt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(totpKey)">
+                totp_key = #{totpKey} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(name)">
+                name = #{name} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(email)">
+                email = #{email} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(gender)">
+                gender = #{gender} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(phoneNumber)">
+                phoneNumber = #{phoneNumber} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(lastLoginAt)">
+                lastLoginAt = #{lastLoginAt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(createdAt)">
+                createdAt = #{createdAt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(updatedAt)">
+                updatedAt = #{updatedAt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(createdBy)">
+                createdBy = #{createdBy} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(updatedBy)">
+                updatedBy = #{updatedBy} ,
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="searchTSysStaffById" parameterType="String" resultMap="TSysStaffMap">
+        SELECT
+        <include refid="TSysStaffBaseColumnSql"/>
+        FROM t_sys_staff
+        WHERE id = #{id}
+    </select>
+	
+	<!-- 员工邮箱查询 -->
+	<select id="searchTSysStaffByEmail" parameterType="String" resultMap="TSysStaffMap">
+        SELECT
+        <include refid="TSysStaffBaseColumnSql"/>
+        FROM t_sys_staff
+        WHERE email = #{email}
+    </select>
+    
+    <!-- 员工手机号查询 -->
+    <select id="searchTSysStaffByPhone" parameterType="String" resultMap="TSysStaffMap">
+        SELECT
+        <include refid="TSysStaffBaseColumnSql"/>
+        FROM t_sys_staff
+        WHERE phoneNumber = #{phoneNumber}
+    </select>
+    
+    <!-- 查询员工列表是否配置该角色选项 -->
+    <select id="searchTSysStaffByRoles" parameterType="String" resultMap="TSysStaffMap">
+        SELECT
+        <include refid="TSysStaffBaseColumnSql"/>
+        FROM t_sys_staff
+        WHERE find_in_set(#{phoneNumber},roles);
+    </select>
+    
+    <select id="searchTSysStaffByParams" parameterType="map" resultMap="TSysStaffMap">
+        SELECT
+        <include refid="TSysStaffBaseColumnSql"/>
+        FROM t_sys_staff
+        <include refid="TSysStaffBaseWhereSql"/>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.TSysStaff" id="TSysStaffMap">
+        <id column="id" property="id"/>
+        <result column="password" property="password"/>
+        <result column="roles" property="roles"/>
+        <result column="organizations" property="organizations"/>
+        <result column="status" property="status"/>
+        <result column="pwd_fail_cnt" property="pwdFailCnt"/>
+        <result column="totp_key" property="totpKey"/>
+        <result column="name" property="name"/>
+        <result column="email" property="email"/>
+        <result column="gender" property="gender"/>
+        <result column="phoneNumber" property="phoneNumber"/>
+        <result column="lastLoginAt" property="lastLoginAt"/>
+        <result column="createdAt" property="createdAt"/>
+        <result column="updatedAt" property="updatedAt"/>
+        <result column="createdBy" property="createdBy"/>
+        <result column="updatedBy" property="updatedBy"/>
+    </resultMap>
+
+</mapper>

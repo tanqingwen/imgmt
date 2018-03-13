@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.YwCardMappingMapper">
+
+    <sql id="ywCardMappingBaseColumnSql">
+        hw_card_id,
+        hw_type,
+        hw_member_id,
+        hw_member_name,
+        hw_order_id,
+        hw_guide_id,
+        hw_deposit_id,
+        hw_pay_sn,
+        hw_deposit_amount,
+        hw_state,
+        hw_activate_time,
+        hw_operator_id,
+        hw_terminal_id,
+        hw_card_count
+    </sql>
+
+    <sql id="ywCardMappingBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwCardId)">
+                    hw_card_id = #{map.hwCardId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwType)">
+                    AND hw_type = #{map.hwType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberId)">
+                    AND hw_member_id = #{map.hwMemberId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberName)">
+                    AND hw_member_name = #{map.hwMemberName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderId)">
+                    AND hw_order_id = #{map.hwOrderId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGuideId)">
+                    AND hw_guide_id = #{map.hwGuideId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositId)">
+                    AND hw_deposit_id = #{map.hwDepositId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPaySn)">
+                    AND hw_pay_sn = #{map.hwPaySn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositAmount)">
+                    AND hw_deposit_amount = #{map.hwDepositAmount}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwState)">
+                    AND hw_state = #{map.hwState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwActivateTime)">
+                    AND hw_activate_time = #{map.hwActivateTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOperatorId)">
+                    AND hw_operator_id = #{map.hwOperatorId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTerminalId)">
+                    AND hw_terminal_id = #{map.hwTerminalId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwCardCount)">
+                    AND hw_card_count = #{map.hwCardCount}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertYwCardMapping" parameterType="cn.happyworlds.imgmt.entity.YwCardMapping">
+        INSERT INTO yw_card_mapping(
+        <include refid="ywCardMappingBaseColumnSql"/>
+        )VALUES(
+            #{hwCardId},
+            #{hwType},
+            #{hwMemberId},
+            #{hwMemberName},
+            #{hwOrderId},
+            #{hwGuideId},
+            #{hwDepositId},
+            #{hwPaySn},
+            #{hwDepositAmount},
+            #{hwState},
+            #{hwActivateTime},
+            #{hwOperatorId},
+            #{hwTerminalId},
+            #{hwCardCount}
+        )
+    </insert>
+        
+    <delete id="deleteYwCardMappingByHwCardId" parameterType="String">
+        DELETE FROM yw_card_mapping WHERE hw_card_id = #{hwCardId}
+    </delete>
+
+    <select id="deleteYwCardMappingByParams" parameterType="map">
+        DELETE FROM yw_card_mapping
+        <include refid="ywCardMappingBaseWhereSql"/>
+    </select>
+
+    <update id="updateYwCardMapping" parameterType="cn.happyworlds.imgmt.entity.YwCardMapping">
+        UPDATE yw_card_mapping
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwType)">
+                hw_type = #{hwType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwMemberId)">
+                hw_member_id = #{hwMemberId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwMemberName)">
+                hw_member_name = #{hwMemberName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwOrderId)">
+                hw_order_id = #{hwOrderId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwGuideId)">
+                hw_guide_id = #{hwGuideId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwDepositId)">
+                hw_deposit_id = #{hwDepositId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwPaySn)">
+                hw_pay_sn = #{hwPaySn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwDepositAmount)">
+                hw_deposit_amount = #{hwDepositAmount} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwState)">
+                hw_state = #{hwState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwActivateTime)">
+                hw_activate_time = #{hwActivateTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwOperatorId)">
+                hw_operator_id = #{hwOperatorId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwTerminalId)">
+                hw_terminal_id = #{hwTerminalId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwCardCount)">
+                hw_card_count = #{hwCardCount}
+            </if>
+        </set>
+        WHERE hw_card_id = #{hwCardId}
+    </update>
+
+    <update id="updateYwCardMappingByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE yw_card_mapping
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwType)">
+                    hw_type = #{map.hwType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberId)">
+                    hw_member_id = #{map.hwMemberId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberName)">
+                    hw_member_name = #{map.hwMemberName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderId)">
+                    hw_order_id = #{map.hwOrderId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGuideId)">
+                    hw_guide_id = #{map.hwGuideId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositId)">
+                    hw_deposit_id = #{map.hwDepositId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPaySn)">
+                    hw_pay_sn = #{map.hwPaySn} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositAmount)">
+                    hw_deposit_amount = #{map.hwDepositAmount} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwState)">
+                    hw_state = #{map.hwState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwActivateTime)">
+                    hw_activate_time = #{map.hwActivateTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOperatorId)">
+                    hw_operator_id = #{map.hwOperatorId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTerminalId)">
+                    hw_terminal_id = #{map.hwTerminalId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwCardCount)">
+                    hw_card_count = #{map.hwCardCount}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwCardIdCondition)">
+                    hw_card_id = #{map.hwCardIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTypeCondition)">
+                    AND hw_type = #{map.hwTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberIdCondition)">
+                    AND hw_member_id = #{map.hwMemberIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberNameCondition)">
+                    AND hw_member_name = #{map.hwMemberNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderIdCondition)">
+                    AND hw_order_id = #{map.hwOrderIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGuideIdCondition)">
+                    AND hw_guide_id = #{map.hwGuideIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositIdCondition)">
+                    AND hw_deposit_id = #{map.hwDepositIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPaySnCondition)">
+                    AND hw_pay_sn = #{map.hwPaySnCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositAmountCondition)">
+                    AND hw_deposit_amount = #{map.hwDepositAmountCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwStateCondition)">
+                    AND hw_state = #{map.hwStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwActivateTimeCondition)">
+                    AND hw_activate_time = #{map.hwActivateTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOperatorIdCondition)">
+                    AND hw_operator_id = #{map.hwOperatorIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTerminalIdCondition)">
+                    AND hw_terminal_id = #{map.hwTerminalIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwCardCountCondition)">
+                    AND hw_card_count = #{map.hwCardCountCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchYwCardMappingByHwCardId" parameterType="String" resultMap="ywCardMappingMap">
+        SELECT
+        <include refid="ywCardMappingBaseColumnSql"/>
+        FROM yw_card_mapping
+        WHERE hw_card_id = #{hwCardId}
+    </select>
+    
+    <select id="searchYwCardMappingByHwMemberId" parameterType="String" resultMap="ywCardMappingMap">
+        SELECT
+        <include refid="ywCardMappingBaseColumnSql"/>
+        FROM yw_card_mapping
+        WHERE hw_member_id = #{hwMemberId}
+    </select>
+
+    <select id="searchYwCardMappingByParams" parameterType="map" resultMap="ywCardMappingMap">
+        SELECT
+        <include refid="ywCardMappingBaseColumnSql"/>
+        FROM yw_card_mapping
+        <include refid="ywCardMappingBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.YwCardMapping" id="ywCardMappingMap">
+        <id column="hw_card_id" property="hwCardId"/>
+        <result column="hw_type" property="hwType"/>
+        <result column="hw_member_id" property="hwMemberId"/>
+        <result column="hw_member_name" property="hwMemberName"/>
+        <result column="hw_order_id" property="hwOrderId"/>
+        <result column="hw_guide_id" property="hwGuideId"/>
+        <result column="hw_deposit_id" property="hwDepositId"/>
+        <result column="hw_pay_sn" property="hwPaySn"/>
+        <result column="hw_deposit_amount" property="hwDepositAmount"/>
+        <result column="hw_state" property="hwState"/>
+        <result column="hw_activate_time" property="hwActivateTime"/>
+        <result column="hw_operator_id" property="hwOperatorId"/>
+        <result column="hw_terminal_id" property="hwTerminalId"/>
+        <result column="hw_card_count" property="hwCardCount"/>
+    </resultMap>
+
+</mapper>

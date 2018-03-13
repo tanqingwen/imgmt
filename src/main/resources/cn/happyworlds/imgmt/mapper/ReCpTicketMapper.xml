@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.ReCpTicketMapper">
+
+    <sql id="cpTicketBaseColumnSql">
+        tk_ticket_id,
+        tk_card_no,
+        tk_ticket_type,
+        tk_effective_date,
+        tk_expire_date,
+        tk_active_date,
+        tk_retrive_date,
+        tk_status,
+        checksum
+        
+    </sql>
+
+    <sql id="cpTicketBaseWhereSql">
+        <if test="map!=null">
+               <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkTicketId)">
+                   AND tk_ticket_id = #{map.tkTicketId}
+               </if>
+               <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkCardNo)">
+                   AND tk_card_no = #{map.tkCardNo}
+               </if>
+               <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkTicketType)">
+                   AND tk_ticket_type = #{map.tkTicketType}
+               </if>
+               <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkEffectiveDate)">
+                   AND tk_effective_date = #{map.tkEffectiveDate}
+               </if>
+               <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkExpireDate)">
+                   AND tk_expire_date = #{map.tkExpireDate}
+               </if>
+               <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkActiveDate)">
+                   AND tk_active_date = #{map.tkActiveDate}
+               </if>
+               <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkRetriveDate)">
+                   AND tk_retrive_date = #{map.tkRetriveDate}
+               </if>
+               <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkStatus)">
+                   AND tk_status = #{map.tkStatus}
+               </if>
+               <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                   AND checksum = #{map.checksum}
+               </if>
+        </if>
+    </sql>
+
+    <select id="searchCpTicketAndCpTktypeConvert" parameterType="map" resultMap="cpTicketMap">
+        select * from cp_ticket,cp_tktype where 1=1 and tk_ticket_type=tt_type_id 
+        <include refid="cpTicketBaseWhereSql"/>
+        order by cp_ticket.TK_CARD_NO DESC
+    </select>
+    
+    <select id="searchCpTicketAndCpTktypeBack" parameterType="map" resultMap="cpTicketMap">
+    	select * from cp_ticket,cp_tktype where 1=1 and tk_ticket_type=tt_type_id  
+        <include refid="cpTicketBaseWhereSql"/>
+        order by cp_ticket.tk_ticket_id DESC
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpTicket" id="cpTicketMap">
+        <id column="tk_ticket_id" property="tkTicketId"/>
+        <result column="tk_card_no" property="tkCardNo"/>
+        <result column="tk_ticket_type" property="tkTicketType"/>
+        <result column="tk_effective_date" property="tkEffectiveDate"/>
+        <result column="tk_expire_date" property="tkExpireDate"/>
+        <result column="tk_active_date" property="tkActiveDate"/>
+        <result column="tk_retrive_date" property="tkRetriveDate"/>
+        <result column="tk_status" property="tkStatus"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

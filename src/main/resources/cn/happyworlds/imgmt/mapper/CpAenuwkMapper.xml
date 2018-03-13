@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpAenuwkMapper">
+
+    <sql id="cpAenuwkBaseColumnSql">
+        nu_ae_bin,
+        nu_ae_prod,
+        nu_ae_seq,
+        nu_ae_usage_ind,
+        checksum
+    </sql>
+
+    <sql id="cpAenuwkBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuAeBin)">
+                    nu_ae_bin = #{map.nuAeBin}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuAeProd)">
+                    AND nu_ae_prod = #{map.nuAeProd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuAeSeq)">
+                    AND nu_ae_seq = #{map.nuAeSeq}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuAeUsageInd)">
+                    AND nu_ae_usage_ind = #{map.nuAeUsageInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpAenuwk" parameterType="cn.happyworlds.imgmt.entity.CpAenuwk">
+        INSERT INTO cp_aenuwk(
+        <include refid="cpAenuwkBaseColumnSql"/>
+        )VALUES(
+            #{nuAeBin},
+            #{nuAeProd},
+            #{nuAeSeq},
+            #{nuAeUsageInd},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpAenuwkByNuAeBin" parameterType="Long">
+        DELETE FROM cp_aenuwk WHERE nu_ae_bin = #{nuAeBin}
+    </delete>
+
+    <select id="deleteCpAenuwkByParams" parameterType="map">
+        DELETE FROM cp_aenuwk
+        <include refid="cpAenuwkBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpAenuwk" parameterType="cn.happyworlds.imgmt.entity.CpAenuwk">
+        UPDATE cp_aenuwk
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(nuAeProd)">
+                nu_ae_prod = #{nuAeProd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(nuAeSeq)">
+                nu_ae_seq = #{nuAeSeq} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(nuAeUsageInd)">
+                nu_ae_usage_ind = #{nuAeUsageInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE nu_ae_bin = #{nuAeBin}
+    </update>
+
+    <update id="updateCpAenuwkByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_aenuwk
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuAeProd)">
+                    nu_ae_prod = #{map.nuAeProd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuAeSeq)">
+                    nu_ae_seq = #{map.nuAeSeq} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuAeUsageInd)">
+                    nu_ae_usage_ind = #{map.nuAeUsageInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuAeBinCondition)">
+                    nu_ae_bin = #{map.nuAeBinCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuAeProdCondition)">
+                    AND nu_ae_prod = #{map.nuAeProdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuAeSeqCondition)">
+                    AND nu_ae_seq = #{map.nuAeSeqCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuAeUsageIndCondition)">
+                    AND nu_ae_usage_ind = #{map.nuAeUsageIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpAenuwkByNuAeBin" parameterType="Long" resultMap="cpAenuwkMap">
+        SELECT
+        <include refid="cpAenuwkBaseColumnSql"/>
+        FROM cp_aenuwk
+        WHERE nu_ae_bin = #{nuAeBin}
+    </select>
+
+    <select id="searchCpAenuwkByParams" parameterType="map" resultMap="cpAenuwkMap">
+        SELECT
+        <include refid="cpAenuwkBaseColumnSql"/>
+        FROM cp_aenuwk
+        <include refid="cpAenuwkBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpAenuwk" id="cpAenuwkMap">
+        <id column="nu_ae_bin" property="nuAeBin"/>
+        <result column="nu_ae_prod" property="nuAeProd"/>
+        <result column="nu_ae_seq" property="nuAeSeq"/>
+        <result column="nu_ae_usage_ind" property="nuAeUsageInd"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

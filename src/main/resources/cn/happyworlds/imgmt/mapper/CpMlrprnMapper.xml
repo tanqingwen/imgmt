@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpMlrprnMapper">
+
+    <sql id="cpMlrprnBaseColumnSql">
+        ws_mlr_date,
+        ws_mlr_seq_no,
+        ws_mlr_action_type,
+        ws_mlr_product_group,
+        ws_mlr_branch_id,
+        ws_mlr_user_field_1,
+        ws_mlr_cardholder_no,
+        ws_mlr_pan,
+        ws_mlr_field0,
+        ws_mlr_field1,
+        ws_mlr_field2,
+        ws_mlr_field3,
+        ws_mlr_field4,
+        ws_mlr_field5,
+        ws_mlr_field6,
+        ws_mlr_field7,
+        ws_mlr_field8,
+        ws_mlr_field9,
+        ws_mlr_field10,
+        ws_mlr_field11,
+        ws_mlr_field12,
+        ws_mlr_fmt_addr_line1,
+        ws_mlr_fmt_addr_line2,
+        ws_mlr_fmt_addr_line3,
+        ws_mlr_fmt_addr_line4,
+        ws_mlr_fmt_addr_line5,
+        ws_mlr_fmt_addr_line6,
+        checksum
+    </sql>
+
+    <sql id="cpMlrprnBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrDate)">
+                    ws_mlr_date = #{map.wsMlrDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrSeqNo)">
+                    AND ws_mlr_seq_no = #{map.wsMlrSeqNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrActionType)">
+                    AND ws_mlr_action_type = #{map.wsMlrActionType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrProductGroup)">
+                    AND ws_mlr_product_group = #{map.wsMlrProductGroup}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrBranchId)">
+                    AND ws_mlr_branch_id = #{map.wsMlrBranchId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrUserField1)">
+                    AND ws_mlr_user_field_1 = #{map.wsMlrUserField1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrCardholderNo)">
+                    AND ws_mlr_cardholder_no = #{map.wsMlrCardholderNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrPan)">
+                    AND ws_mlr_pan = #{map.wsMlrPan}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField0)">
+                    AND ws_mlr_field0 = #{map.wsMlrField0}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField1)">
+                    AND ws_mlr_field1 = #{map.wsMlrField1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField2)">
+                    AND ws_mlr_field2 = #{map.wsMlrField2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField3)">
+                    AND ws_mlr_field3 = #{map.wsMlrField3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField4)">
+                    AND ws_mlr_field4 = #{map.wsMlrField4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField5)">
+                    AND ws_mlr_field5 = #{map.wsMlrField5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField6)">
+                    AND ws_mlr_field6 = #{map.wsMlrField6}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField7)">
+                    AND ws_mlr_field7 = #{map.wsMlrField7}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField8)">
+                    AND ws_mlr_field8 = #{map.wsMlrField8}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField9)">
+                    AND ws_mlr_field9 = #{map.wsMlrField9}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField10)">
+                    AND ws_mlr_field10 = #{map.wsMlrField10}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField11)">
+                    AND ws_mlr_field11 = #{map.wsMlrField11}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField12)">
+                    AND ws_mlr_field12 = #{map.wsMlrField12}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrFmtAddrLine1)">
+                    AND ws_mlr_fmt_addr_line1 = #{map.wsMlrFmtAddrLine1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrFmtAddrLine2)">
+                    AND ws_mlr_fmt_addr_line2 = #{map.wsMlrFmtAddrLine2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrFmtAddrLine3)">
+                    AND ws_mlr_fmt_addr_line3 = #{map.wsMlrFmtAddrLine3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrFmtAddrLine4)">
+                    AND ws_mlr_fmt_addr_line4 = #{map.wsMlrFmtAddrLine4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrFmtAddrLine5)">
+                    AND ws_mlr_fmt_addr_line5 = #{map.wsMlrFmtAddrLine5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrFmtAddrLine6)">
+                    AND ws_mlr_fmt_addr_line6 = #{map.wsMlrFmtAddrLine6}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpMlrprn" parameterType="cn.happyworlds.imgmt.entity.CpMlrprn">
+        INSERT INTO cp_mlrprn(
+        <include refid="cpMlrprnBaseColumnSql"/>
+        )VALUES(
+            #{wsMlrDate},
+            #{wsMlrSeqNo},
+            #{wsMlrActionType},
+            #{wsMlrProductGroup},
+            #{wsMlrBranchId},
+            #{wsMlrUserField1},
+            #{wsMlrCardholderNo},
+            #{wsMlrPan},
+            #{wsMlrField0},
+            #{wsMlrField1},
+            #{wsMlrField2},
+            #{wsMlrField3},
+            #{wsMlrField4},
+            #{wsMlrField5},
+            #{wsMlrField6},
+            #{wsMlrField7},
+            #{wsMlrField8},
+            #{wsMlrField9},
+            #{wsMlrField10},
+            #{wsMlrField11},
+            #{wsMlrField12},
+            #{wsMlrFmtAddrLine1},
+            #{wsMlrFmtAddrLine2},
+            #{wsMlrFmtAddrLine3},
+            #{wsMlrFmtAddrLine4},
+            #{wsMlrFmtAddrLine5},
+            #{wsMlrFmtAddrLine6},
+            #{checksum}
+        )
+    </insert>
+        
+       <!--   
+    <delete id="deleteCpMlrprnBy${table.pkColumn.variableSpellSqlName}" parameterType="${table.pkColumn.javaType}">
+        DELETE FROM cp_mlrprn WHERE ${table.pkColumn.sqlName} = #{${table.pkColumn.variableName}}
+    </delete>
+    	-->
+
+    <select id="deleteCpMlrprnByParams" parameterType="map">
+        DELETE FROM cp_mlrprn
+        <include refid="cpMlrprnBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpMlrprn" parameterType="cn.happyworlds.imgmt.entity.CpMlrprn">
+        UPDATE cp_mlrprn
+        <set>
+        </set>
+        WHERE $pkName = #{${table.pkColumn.variableName}}
+    </update>
+
+    <update id="updateCpMlrprnByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_mlrprn
+            <set>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrDateCondition)">
+                    ws_mlr_date = #{map.wsMlrDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrSeqNoCondition)">
+                    AND ws_mlr_seq_no = #{map.wsMlrSeqNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrActionTypeCondition)">
+                    AND ws_mlr_action_type = #{map.wsMlrActionTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrProductGroupCondition)">
+                    AND ws_mlr_product_group = #{map.wsMlrProductGroupCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrBranchIdCondition)">
+                    AND ws_mlr_branch_id = #{map.wsMlrBranchIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrUserField1Condition)">
+                    AND ws_mlr_user_field_1 = #{map.wsMlrUserField1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrCardholderNoCondition)">
+                    AND ws_mlr_cardholder_no = #{map.wsMlrCardholderNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrPanCondition)">
+                    AND ws_mlr_pan = #{map.wsMlrPanCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField0Condition)">
+                    AND ws_mlr_field0 = #{map.wsMlrField0Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField1Condition)">
+                    AND ws_mlr_field1 = #{map.wsMlrField1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField2Condition)">
+                    AND ws_mlr_field2 = #{map.wsMlrField2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField3Condition)">
+                    AND ws_mlr_field3 = #{map.wsMlrField3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField4Condition)">
+                    AND ws_mlr_field4 = #{map.wsMlrField4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField5Condition)">
+                    AND ws_mlr_field5 = #{map.wsMlrField5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField6Condition)">
+                    AND ws_mlr_field6 = #{map.wsMlrField6Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField7Condition)">
+                    AND ws_mlr_field7 = #{map.wsMlrField7Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField8Condition)">
+                    AND ws_mlr_field8 = #{map.wsMlrField8Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField9Condition)">
+                    AND ws_mlr_field9 = #{map.wsMlrField9Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField10Condition)">
+                    AND ws_mlr_field10 = #{map.wsMlrField10Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField11Condition)">
+                    AND ws_mlr_field11 = #{map.wsMlrField11Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrField12Condition)">
+                    AND ws_mlr_field12 = #{map.wsMlrField12Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrFmtAddrLine1Condition)">
+                    AND ws_mlr_fmt_addr_line1 = #{map.wsMlrFmtAddrLine1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrFmtAddrLine2Condition)">
+                    AND ws_mlr_fmt_addr_line2 = #{map.wsMlrFmtAddrLine2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrFmtAddrLine3Condition)">
+                    AND ws_mlr_fmt_addr_line3 = #{map.wsMlrFmtAddrLine3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrFmtAddrLine4Condition)">
+                    AND ws_mlr_fmt_addr_line4 = #{map.wsMlrFmtAddrLine4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrFmtAddrLine5Condition)">
+                    AND ws_mlr_fmt_addr_line5 = #{map.wsMlrFmtAddrLine5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.wsMlrFmtAddrLine6Condition)">
+                    AND ws_mlr_fmt_addr_line6 = #{map.wsMlrFmtAddrLine6Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+	<!--  
+    <select id="searchCpMlrprnBy${table.pkColumn.variableSpellSqlName}" parameterType="${table.pkColumn.javaType}" resultMap="cpMlrprnMap">
+        SELECT
+        <include refid="cpMlrprnBaseColumnSql"/>
+        FROM cp_mlrprn
+        WHERE ${table.pkColumn.sqlName} = #{${table.pkColumn.variableName}}
+    </select>
+	-->
+	
+    <select id="searchCpMlrprnByParams" parameterType="map" resultMap="cpMlrprnMap">
+        SELECT
+        <include refid="cpMlrprnBaseColumnSql"/>
+        FROM cp_mlrprn
+        <include refid="cpMlrprnBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpMlrprn" id="cpMlrprnMap">
+        <id column="$pkName" property="${table.pkColumn.variableName}"/>
+    </resultMap>
+
+</mapper>

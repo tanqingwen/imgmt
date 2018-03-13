@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpBlkmlcMapper">
+
+    <sql id="cpBlkmlcBaseColumnSql">
+        bm_card_no,
+        bm_org_id,
+        bm_product_code,
+        bm_account_id,
+        bm_acc_ref_no,
+        bm_card_name,
+        bm_reason_code,
+        bm_stage,
+        bm_in_time,
+        bm_out_time,
+        bm_black,
+        checksum
+    </sql>
+
+    <sql id="cpBlkmlcBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmCardNo)">
+                    bm_card_no = #{map.bmCardNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmOrgId)">
+                    AND bm_org_id = #{map.bmOrgId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmProductCode)">
+                    AND bm_product_code = #{map.bmProductCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmAccountId)">
+                    AND bm_account_id = #{map.bmAccountId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmAccRefNo)">
+                    AND bm_acc_ref_no = #{map.bmAccRefNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmCardName)">
+                    AND bm_card_name = #{map.bmCardName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmReasonCode)">
+                    AND bm_reason_code = #{map.bmReasonCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmStage)">
+                    AND bm_stage = #{map.bmStage}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmInTime)">
+                    AND bm_in_time = #{map.bmInTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmOutTime)">
+                    AND bm_out_time = #{map.bmOutTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmBlack)">
+                    AND bm_black = #{map.bmBlack}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpBlkmlc" parameterType="cn.happyworlds.imgmt.entity.CpBlkmlc">
+        INSERT INTO cp_blkmlc(
+        <include refid="cpBlkmlcBaseColumnSql"/>
+        )VALUES(
+            #{bmCardNo},
+            #{bmOrgId},
+            #{bmProductCode},
+            #{bmAccountId},
+            #{bmAccRefNo},
+            #{bmCardName},
+            #{bmReasonCode},
+            #{bmStage},
+            #{bmInTime},
+            #{bmOutTime},
+            #{bmBlack},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpBlkmlcByBmCardNo" parameterType="String">
+        DELETE FROM cp_blkmlc WHERE bm_card_no = #{bmCardNo}
+    </delete>
+
+    <select id="deleteCpBlkmlcByParams" parameterType="map">
+        DELETE FROM cp_blkmlc
+        <include refid="cpBlkmlcBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpBlkmlc" parameterType="cn.happyworlds.imgmt.entity.CpBlkmlc">
+        UPDATE cp_blkmlc
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(bmOrgId)">
+                bm_org_id = #{bmOrgId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(bmProductCode)">
+                bm_product_code = #{bmProductCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(bmAccountId)">
+                bm_account_id = #{bmAccountId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(bmAccRefNo)">
+                bm_acc_ref_no = #{bmAccRefNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(bmCardName)">
+                bm_card_name = #{bmCardName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(bmReasonCode)">
+                bm_reason_code = #{bmReasonCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(bmStage)">
+                bm_stage = #{bmStage} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(bmInTime)">
+                bm_in_time = #{bmInTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(bmOutTime)">
+                bm_out_time = #{bmOutTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(bmBlack)">
+                bm_black = #{bmBlack} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE bm_card_no = #{bmCardNo}
+    </update>
+
+    <update id="updateCpBlkmlcByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_blkmlc
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmOrgId)">
+                    bm_org_id = #{map.bmOrgId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmProductCode)">
+                    bm_product_code = #{map.bmProductCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmAccountId)">
+                    bm_account_id = #{map.bmAccountId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmAccRefNo)">
+                    bm_acc_ref_no = #{map.bmAccRefNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmCardName)">
+                    bm_card_name = #{map.bmCardName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmReasonCode)">
+                    bm_reason_code = #{map.bmReasonCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmStage)">
+                    bm_stage = #{map.bmStage} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmInTime)">
+                    bm_in_time = #{map.bmInTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmOutTime)">
+                    bm_out_time = #{map.bmOutTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmBlack)">
+                    bm_black = #{map.bmBlack} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmCardNoCondition)">
+                    bm_card_no = #{map.bmCardNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmOrgIdCondition)">
+                    AND bm_org_id = #{map.bmOrgIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmProductCodeCondition)">
+                    AND bm_product_code = #{map.bmProductCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmAccountIdCondition)">
+                    AND bm_account_id = #{map.bmAccountIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmAccRefNoCondition)">
+                    AND bm_acc_ref_no = #{map.bmAccRefNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmCardNameCondition)">
+                    AND bm_card_name = #{map.bmCardNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmReasonCodeCondition)">
+                    AND bm_reason_code = #{map.bmReasonCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmStageCondition)">
+                    AND bm_stage = #{map.bmStageCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmInTimeCondition)">
+                    AND bm_in_time = #{map.bmInTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmOutTimeCondition)">
+                    AND bm_out_time = #{map.bmOutTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bmBlackCondition)">
+                    AND bm_black = #{map.bmBlackCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpBlkmlcByBmCardNo" parameterType="String" resultMap="cpBlkmlcMap">
+        SELECT
+        <include refid="cpBlkmlcBaseColumnSql"/>
+        FROM cp_blkmlc
+        WHERE bm_card_no = #{bmCardNo}
+    </select>
+
+    <select id="searchCpBlkmlcByParams" parameterType="map" resultMap="cpBlkmlcMap">
+        SELECT
+        <include refid="cpBlkmlcBaseColumnSql"/>
+        FROM cp_blkmlc
+        <include refid="cpBlkmlcBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpBlkmlc" id="cpBlkmlcMap">
+        <id column="bm_card_no" property="bmCardNo"/>
+        <result column="bm_org_id" property="bmOrgId"/>
+        <result column="bm_product_code" property="bmProductCode"/>
+        <result column="bm_account_id" property="bmAccountId"/>
+        <result column="bm_acc_ref_no" property="bmAccRefNo"/>
+        <result column="bm_card_name" property="bmCardName"/>
+        <result column="bm_reason_code" property="bmReasonCode"/>
+        <result column="bm_stage" property="bmStage"/>
+        <result column="bm_in_time" property="bmInTime"/>
+        <result column="bm_out_time" property="bmOutTime"/>
+        <result column="bm_black" property="bmBlack"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

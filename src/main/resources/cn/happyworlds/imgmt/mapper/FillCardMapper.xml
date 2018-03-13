@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.FillCardMapper">
+
+	<sql id ="FillCardBaseColumnSql">
+		cl_old_card,
+		cl_new_card,
+		CB_EMBOSSNAME,
+		CB_IDNO,
+		cl_timestamp,
+		CT_FEE_AMOUNT
+	</sql>
+	
+	<sql id="FillCardBaseWhereSql">
+		<if test="map!=null">
+			<where>
+			    	 CB_CARDHOLDER_NO=cl_new_card and cl_old_card=ct_card_number and ct_tran_code ='SUPPL' and cl_reason ='AR' 
+				<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cl_auth_user_id)">
+                    AND cl_auth_user_id = #{map.cl_auth_user_id}
+                </if>
+				<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cl_timestampStart)">
+                    AND date_format(date(cl_timestamp),'%Y%m%d') &gt;= #{map.cl_timestampStart}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cl_timestampEnd)">
+                    AND date_format(date(cl_timestamp),'%Y%m%d') &lt;= #{map.cl_timestampEnd}
+                </if>
+				<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cl_old_card)">
+                    AND right(cl_old_card,6) = #{map.cl_old_card}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cl_new_card)">
+                    AND right(cl_new_card,6) = #{map.cl_new_card}
+                </if>
+              
+                order by cl_timestamp DESC
+			</where>
+		</if>
+	</sql>
+	
+	<sql id="FillChangeCardBaseWhereSql">
+		<if test="map!=null">
+			<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cl_timestampStart)">
+                AND date_format(date(cl_timestamp),'%Y%m%d') &gt;= #{map.cl_timestampStart}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cl_timestampEnd)">
+                AND date_format(date(cl_timestamp),'%Y%m%d') &lt;= #{map.cl_timestampEnd}
+            </if>
+			<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cl_old_card)">
+                AND right(cl_old_card,6) = #{map.cl_old_card}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cl_new_card)">
+                AND right(cl_new_card,6) = #{map.cl_new_card}
+            </if>
+		</if>
+	</sql>
+	
+	<select id="searchFillCardByParams" parameterType="map" resultMap="FillCardMap">
+        SELECT
+        <include refid="FillCardBaseColumnSql"/>
+        FROM cp_crdlnk,cp_crdtbl,cp_ceptrx
+        <include refid="FillCardBaseWhereSql"/>
+    </select>
+    
+    <select id="searchFillChangeCardByParams" parameterType="map" resultMap="FillCardMap">
+    	select 
+    	<include refid="FillCardBaseColumnSql"/> 
+    	from cp_crdlnk,cp_crdtbl,cp_ceptrx 
+    	where 1=1 
+    	and CB_CARDHOLDER_NO=cl_new_card 
+    	and cl_old_card=ct_card_number 
+    	and ct_tran_code = 'CHANGE' 
+    	and cl_reason = 'UC'  
+    	<include refid="FillChangeCardBaseWhereSql"/>
+    	order by cl_timestamp DESC 
+    </select>
+    
+    <resultMap type="cn.happyworlds.imgmt.entity.FillCard" id="FillCardMap">
+        <result column="cl_old_card" property="cl_old_card"/>
+        <result column="cl_new_card" property="cl_new_card"/>
+        <result column="CB_EMBOSSNAME" property="CB_EMBOSSNAME"/>
+        <result column="CB_IDNO" property="CB_IDNO"/>
+        <result column="cl_timestamp" property="cl_timestamp"/>
+        <result column="CT_FEE_AMOUNT" property="CT_FEE_AMOUNT"/>
+        <result column="cl_auth_user_id" property="cl_auth_user_id"/>
+    </resultMap>
+
+</mapper>

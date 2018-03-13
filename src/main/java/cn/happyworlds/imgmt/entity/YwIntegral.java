@@ -1,0 +1,209 @@
+package cn.happyworlds.imgmt.entity;
+
+import java.io.Serializable;
+
+/**
+ * 
+ * @author json
+ */
+public class YwIntegral implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+	/**
+	 *  ??ID,??
+	 */
+	private String hwIntegralId;
+	/**
+	 *  ??ID
+	 */
+	private String hwMemberId;
+	/**
+	 *  ?????1: ???2:???????3:???4:???5:???6:?
+???????
+	 */
+	private String hwIntegralType;
+	/**
+	 *  ???????????????
+	 */
+	private String hwProductFraction;
+	/**
+	 *  ????
+	 */
+	private String hwAvailableIntegral;
+	/**
+	 *  ?????
+	 */
+	private String hwExchangeIntegral;
+	/**
+	 *  ???????????????????????????????
+???
+	 */
+	private String hwExchangeDate;
+	/**
+	 *  ????ID???????????????
+	 */
+	private String hwExchangeRecord;
+	/**
+	 *  ???
+	 */
+	private String hwPeriodDate;
+	/**
+	 *  ???1:???2:?????3:????
+	 */
+	private String hwIntegralStatus;
+	/**
+	 * ??ID,??
+	 * @param hwIntegralId
+	 */
+	public void setHwIntegralId(String hwIntegralId){
+		this.hwIntegralId = hwIntegralId;
+	}
+	
+    /**
+     * ??ID,??
+     * @return
+     */	
+    public String getHwIntegralId(){
+    	return hwIntegralId;
+    }
+	/**
+	 * ??ID
+	 * @param hwMemberId
+	 */
+	public void setHwMemberId(String hwMemberId){
+		this.hwMemberId = hwMemberId;
+	}
+	
+    /**
+     * ??ID
+     * @return
+     */	
+    public String getHwMemberId(){
+    	return hwMemberId;
+    }
+	/**
+	 * ?????1: ???2:???????3:???4:???5:???6:?
+???????
+	 * @param hwIntegralType
+	 */
+	public void setHwIntegralType(String hwIntegralType){
+		this.hwIntegralType = hwIntegralType;
+	}
+	
+    /**
+     * ?????1: ???2:???????3:???4:???5:???6:?
+???????
+     * @return
+     */	
+    public String getHwIntegralType(){
+    	return hwIntegralType;
+    }
+	/**
+	 * ???????????????
+	 * @param hwProductFraction
+	 */
+	public void setHwProductFraction(String hwProductFraction){
+		this.hwProductFraction = hwProductFraction;
+	}
+	
+    /**
+     * ???????????????
+     * @return
+     */	
+    public String getHwProductFraction(){
+    	return hwProductFraction;
+    }
+	/**
+	 * ????
+	 * @param hwAvailableIntegral
+	 */
+	public void setHwAvailableIntegral(String hwAvailableIntegral){
+		this.hwAvailableIntegral = hwAvailableIntegral;
+	}
+	
+    /**
+     * ????
+     * @return
+     */	
+    public String getHwAvailableIntegral(){
+    	return hwAvailableIntegral;
+    }
+	/**
+	 * ?????
+	 * @param hwExchangeIntegral
+	 */
+	public void setHwExchangeIntegral(String hwExchangeIntegral){
+		this.hwExchangeIntegral = hwExchangeIntegral;
+	}
+	
+    /**
+     * ?????
+     * @return
+     */	
+    public String getHwExchangeIntegral(){
+    	return hwExchangeIntegral;
+    }
+	/**
+	 * ???????????????????????????????
+???
+	 * @param hwExchangeDate
+	 */
+	public void setHwExchangeDate(String hwExchangeDate){
+		this.hwExchangeDate = hwExchangeDate;
+	}
+	
+    /**
+     * ???????????????????????????????
+???
+     * @return
+     */	
+    public String getHwExchangeDate(){
+    	return hwExchangeDate;
+    }
+	/**
+	 * ????ID???????????????
+	 * @param hwExchangeRecord
+	 */
+	public void setHwExchangeRecord(String hwExchangeRecord){
+		this.hwExchangeRecord = hwExchangeRecord;
+	}
+	
+    /**
+     * ????ID???????????????
+     * @return
+     */	
+    public String getHwExchangeRecord(){
+    	return hwExchangeRecord;
+    }
+	/**
+	 * ???
+	 * @param hwPeriodDate
+	 */
+	public void setHwPeriodDate(String hwPeriodDate){
+		this.hwPeriodDate = hwPeriodDate;
+	}
+	
+    /**
+     * ???
+     * @return
+     */	
+    public String getHwPeriodDate(){
+    	return hwPeriodDate;
+    }
+	/**
+	 * ???1:???2:?????3:????
+	 * @param hwIntegralStatus
+	 */
+	public void setHwIntegralStatus(String hwIntegralStatus){
+		this.hwIntegralStatus = hwIntegralStatus;
+	}
+	
+    /**
+     * ???1:???2:?????3:????
+     * @return
+     */	
+    public String getHwIntegralStatus(){
+    	return hwIntegralStatus;
+    }
+}

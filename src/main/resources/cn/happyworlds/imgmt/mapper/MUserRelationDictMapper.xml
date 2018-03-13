@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.MUserRelationDictMapper">
+
+    <sql id="MUserRelationDictBaseColumnSql">
+        user_relation_id,
+        user_relation_desc,
+        checksum
+    </sql>
+
+    <sql id="MUserRelationDictBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userRelationId)">
+                    user_relation_id = #{map.userRelationId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userRelationDesc)">
+                    AND user_relation_desc = #{map.userRelationDesc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertMUserRelationDict" parameterType="cn.happyworlds.imgmt.entity.MUserRelationDict">
+        INSERT INTO m_user_relation_dict(
+        <include refid="MUserRelationDictBaseColumnSql"/>
+        )VALUES(
+            #{userRelationId},
+            #{userRelationDesc},
+            #{checksum}
+        )
+    </insert>
+
+    
+    <delete id="deleteMUserRelationDictByUserRelationId" parameterType="String">
+        DELETE FROM m_user_relation_dict WHERE user_relation_id = #{userRelationId}
+    </delete>
+
+    <update id="updateMUserRelationDict" parameterType="cn.happyworlds.imgmt.entity.MUserRelationDict">
+        UPDATE m_user_relation_dict
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(userRelationDesc)">
+                user_relation_desc = #{userRelationDesc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum} ,
+            </if>
+        </set>
+        WHERE user_relation_id = #{userRelationId}
+    </update>
+
+    <select id="searchMUserRelationDictByUserRelationId" parameterType="String" resultMap="MUserRelationDictMap">
+        SELECT
+        <include refid="MUserRelationDictBaseColumnSql"/>
+        FROM m_user_relation_dict
+        WHERE user_relation_id = #{userRelationId}
+    </select>
+
+    <select id="searchMUserRelationDictByParams" parameterType="map" resultMap="MUserRelationDictMap">
+        SELECT
+        <include refid="MUserRelationDictBaseColumnSql"/>
+        FROM m_user_relation_dict
+        <include refid="MUserRelationDictBaseWhereSql"/>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.MUserRelationDict" id="MUserRelationDictMap">
+        <id column="user_relation_id" property="userRelationId"/>
+        <result column="user_relation_desc" property="userRelationDesc"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

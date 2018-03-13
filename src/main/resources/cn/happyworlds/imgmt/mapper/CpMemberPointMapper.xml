@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpMemberPointMapper">
+
+    <sql id="cpMemberPointBaseColumnSql">
+        PO_ID,
+        PO_TYPE_ID,
+        PO_TYPE_NAME,
+        PO_NUMBER,
+        PO_DESCRIPTION,
+        PO_TEXT_ONE,
+        PO_TEXT_TWO,
+        PO_TEXT_THREE
+    </sql>
+
+    <sql id="cpMemberPointBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poId)">
+                    PO_ID = #{map.poId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poTypeId)">
+                    AND PO_TYPE_ID = #{map.poTypeId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poTypeName)">
+                    AND PO_TYPE_NAME = #{map.poTypeName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poNumber)">
+                    AND PO_NUMBER = #{map.poNumber}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poDescription)">
+                    AND PO_DESCRIPTION = #{map.poDescription}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poTextOne)">
+                    AND PO_TEXT_ONE = #{map.poTextOne}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poTextTwo)">
+                    AND PO_TEXT_TWO = #{map.poTextTwo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poTextThree)">
+                    AND PO_TEXT_THREE = #{map.poTextThree}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpMemberPoint" parameterType="cn.happyworlds.imgmt.entity.CpMemberPoint">
+        INSERT INTO cp_member_point(
+        <include refid="cpMemberPointBaseColumnSql"/>
+        )VALUES(
+            #{poId},
+            #{poTypeId},
+            #{poTypeName},
+            #{poNumber},
+            #{poDescription},
+            #{poTextOne},
+            #{poTextTwo},
+            #{poTextThree}
+        )
+    </insert>
+        
+    <delete id="deleteCpMemberPointByPoId" parameterType="String">
+        DELETE FROM cp_member_point WHERE PO_ID = #{poId}
+    </delete>
+
+    <select id="deleteCpMemberPointByParams" parameterType="map">
+        DELETE FROM cp_member_point
+        <include refid="cpMemberPointBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpMemberPoint" parameterType="cn.happyworlds.imgmt.entity.CpMemberPoint">
+        UPDATE cp_member_point
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(poTypeId)">
+                PO_TYPE_ID = #{poTypeId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(poTypeName)">
+                PO_TYPE_NAME = #{poTypeName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(poNumber)">
+                PO_NUMBER = #{poNumber} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(poDescription)">
+                PO_DESCRIPTION = #{poDescription} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(poTextOne)">
+                PO_TEXT_ONE = #{poTextOne} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(poTextTwo)">
+                PO_TEXT_TWO = #{poTextTwo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(poTextThree)">
+                PO_TEXT_THREE = #{poTextThree}
+            </if>
+        </set>
+        WHERE PO_ID = #{poId}
+    </update>
+
+    <update id="updateCpMemberPointByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_member_point
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poTypeId)">
+                    PO_TYPE_ID = #{map.poTypeId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poTypeName)">
+                    PO_TYPE_NAME = #{map.poTypeName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poNumber)">
+                    PO_NUMBER = #{map.poNumber} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poDescription)">
+                    PO_DESCRIPTION = #{map.poDescription} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poTextOne)">
+                    PO_TEXT_ONE = #{map.poTextOne} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poTextTwo)">
+                    PO_TEXT_TWO = #{map.poTextTwo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poTextThree)">
+                    PO_TEXT_THREE = #{map.poTextThree}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poIdCondition)">
+                    PO_ID = #{map.poIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poTypeIdCondition)">
+                    AND PO_TYPE_ID = #{map.poTypeIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poTypeNameCondition)">
+                    AND PO_TYPE_NAME = #{map.poTypeNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poNumberCondition)">
+                    AND PO_NUMBER = #{map.poNumberCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poDescriptionCondition)">
+                    AND PO_DESCRIPTION = #{map.poDescriptionCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poTextOneCondition)">
+                    AND PO_TEXT_ONE = #{map.poTextOneCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poTextTwoCondition)">
+                    AND PO_TEXT_TWO = #{map.poTextTwoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.poTextThreeCondition)">
+                    AND PO_TEXT_THREE = #{map.poTextThreeCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpMemberPointByPoId" parameterType="String" resultMap="cpMemberPointMap">
+        SELECT
+        <include refid="cpMemberPointBaseColumnSql"/>
+        FROM cp_member_point
+        WHERE PO_ID = #{poId}
+    </select>
+
+    <select id="searchCpMemberPointByParams" parameterType="map" resultMap="cpMemberPointMap">
+        SELECT
+        <include refid="cpMemberPointBaseColumnSql"/>
+        FROM cp_member_point
+        <include refid="cpMemberPointBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpMemberPoint" id="cpMemberPointMap">
+        <id column="PO_ID" property="poId"/>
+        <result column="PO_TYPE_ID" property="poTypeId"/>
+        <result column="PO_TYPE_NAME" property="poTypeName"/>
+        <result column="PO_NUMBER" property="poNumber"/>
+        <result column="PO_DESCRIPTION" property="poDescription"/>
+        <result column="PO_TEXT_ONE" property="poTextOne"/>
+        <result column="PO_TEXT_TWO" property="poTextTwo"/>
+        <result column="PO_TEXT_THREE" property="poTextThree"/>
+    </resultMap>
+
+</mapper>

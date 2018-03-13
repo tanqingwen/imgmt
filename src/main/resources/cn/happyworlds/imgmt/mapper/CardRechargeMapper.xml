@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CardRechargeMapper">
+
+	
+	<select id="seachCard" parameterType="map" resultMap="cardRe">
+      
+	   
+	   select sum(hw_money) 'type_sum',count(1) as 'type_count',hw_pay_type as 'pay_type' 
+       from yw_order where  hw_operator_id =#{map.userId} and hw_ip= #{map.posIp} and hw_order_addtime like #{map.day} and hw_type='2' and hw_Payment_status = 'Y' group by hw_pay_type
+	       
+	   
+	       
+    </select>
+	
+    <resultMap type="cn.happyworlds.imgmt.entity.CardRecharge" id="cardRe">
+        <result column="type_sum" property="typeSum"/>
+        <result column="type_count" property="typeCount"/>
+        <result column="pay_type" property="payType"/>
+    </resultMap>
+
+</mapper>

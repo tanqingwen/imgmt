@@ -1,0 +1,1359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpCeptrxMapper">
+
+    <sql id="cpCeptrxBaseColumnSql">
+        ct_branch_id,
+        ct_tran_id,
+        ct_message_id,
+        ct_customer_id,
+        ct_merchant_id,
+        ct_terminal_id,
+        ct_card_number,
+        ct_open_zone,
+        ct_tran_zone,
+        ct_tran_num,
+        ct_tran_time,
+        ct_deal_name,
+        ct_deal_addr,
+        ct_refno,
+        ct_db_cr,
+        ct_tran_amount,
+        ct_card_amount,
+        ct_fee_amount,
+        ct_vat_amount,
+        ct_description,
+        ct_currcode,
+        ct_exchange_rate,
+        ct_destination_ac,
+        ct_user_create,
+        ct_user_approve,
+        ct_approve_time,
+        ct_post_time,
+        ct_status,
+        ct_account_id,
+        ct_tran_code,
+        ct_od_amount,
+        ct_dc,
+        ct_acquire_bank,
+        ct_bank_fee,
+        ct_bank_vat,
+        ct_stmt_date,
+        ct_action_status,
+        ct_txrn_type,
+        cp_txfer_name,
+        ct_batch_no,
+        ct_approval_cd,
+        ct_bill_curr_cd,
+        ct_bill_curr_amt,
+        ct_mcc,
+        ct_tcc,
+        ct_org_post_date,
+        ct_org_trxn_id,
+        ct_dispute_date,
+        ct_resolution_date,
+        ct_resolution_ind,
+        ct_chgbak_refno,
+        ct_merc_name,
+        ct_merc_info,
+        ct_acq_member_id,
+        ct_pos_entry,
+        ct_proc_date,
+        ct_issuer_bin,
+        ct_acq_bin,
+        ct_trace_no,
+        ct_auth_curr,
+        ct_auth_resp,
+        ct_auth_amt,
+        ct_age_code_b4_post,
+        ct_outstd_b4_post,
+        ct_age_code_after_post,
+        ct_outstd_after_post,
+        ct_crd_acc_id,
+        ct_user_status1,
+        ct_user_status2,
+        ct_user_status3,
+        ct_user_amt1,
+        ct_user_amt2,
+        ct_user_amt3,
+        ct_user_amt4,
+        ct_user_cnt1,
+        ct_user_cnt2,
+        ct_user_cnt3,
+        ct_basic_supp_ind,
+        auth_flag,
+        first_time,
+        ct_txfer_name,
+        ct_txfer_status,
+        ct_print_status,
+        ct_reversal_flag,
+        ct_note,
+        checksum
+    </sql>
+
+    <sql id="cpCeptrxBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBranchId)">
+                    ct_branch_id = #{map.ctBranchId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranId)">
+                    AND ct_tran_id = #{map.ctTranId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctMessageId)">
+                    AND ct_message_id = #{map.ctMessageId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCustomerId)">
+                    AND ct_customer_id = #{map.ctCustomerId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctMerchantId)">
+                    AND ct_merchant_id = #{map.ctMerchantId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTerminalId)">
+                    AND ct_terminal_id = #{map.ctTerminalId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCardNumber)">
+                    AND ct_card_number = #{map.ctCardNumber}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOpenZone)">
+                    AND ct_open_zone = #{map.ctOpenZone}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranZone)">
+                    AND ct_tran_zone = #{map.ctTranZone}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranNum)">
+                    AND ct_tran_num = #{map.ctTranNum}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranTime)">
+                    AND ct_tran_time = #{map.ctTranTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDealName)">
+                    AND ct_deal_name = #{map.ctDealName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDealAddr)">
+                    AND ct_deal_addr = #{map.ctDealAddr}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctRefno)">
+                    AND ct_refno = #{map.ctRefno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDbCr)">
+                    AND ct_db_cr = #{map.ctDbCr}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranAmount)">
+                    AND ct_tran_amount = #{map.ctTranAmount}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCardAmount)">
+                    AND ct_card_amount = #{map.ctCardAmount}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctFeeAmount)">
+                    AND ct_fee_amount = #{map.ctFeeAmount}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctVatAmount)">
+                    AND ct_vat_amount = #{map.ctVatAmount}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDescription)">
+                    AND ct_description = #{map.ctDescription}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCurrcode)">
+                    AND ct_currcode = #{map.ctCurrcode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctExchangeRate)">
+                    AND ct_exchange_rate = #{map.ctExchangeRate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDestinationAc)">
+                    AND ct_destination_ac = #{map.ctDestinationAc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserCreate)">
+                    AND ct_user_create = #{map.ctUserCreate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserApprove)">
+                    AND ct_user_approve = #{map.ctUserApprove}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctApproveTime)">
+                    AND ct_approve_time = #{map.ctApproveTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctPostTime)">
+                    AND ct_post_time = #{map.ctPostTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctStatus)">
+                    AND ct_status = #{map.ctStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAccountId)">
+                    AND ct_account_id = #{map.ctAccountId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranCode)">
+                    AND ct_tran_code = #{map.ctTranCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOdAmount)">
+                    AND ct_od_amount = #{map.ctOdAmount}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDc)">
+                    AND ct_dc = #{map.ctDc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAcquireBank)">
+                    AND ct_acquire_bank = #{map.ctAcquireBank}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBankFee)">
+                    AND ct_bank_fee = #{map.ctBankFee}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBankVat)">
+                    AND ct_bank_vat = #{map.ctBankVat}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctStmtDate)">
+                    AND ct_stmt_date = #{map.ctStmtDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctActionStatus)">
+                    AND ct_action_status = #{map.ctActionStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTxrnType)">
+                    AND ct_txrn_type = #{map.ctTxrnType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpTxferName)">
+                    AND cp_txfer_name = #{map.cpTxferName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBatchNo)">
+                    AND ct_batch_no = #{map.ctBatchNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctApprovalCd)">
+                    AND ct_approval_cd = #{map.ctApprovalCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBillCurrCd)">
+                    AND ct_bill_curr_cd = #{map.ctBillCurrCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBillCurrAmt)">
+                    AND ct_bill_curr_amt = #{map.ctBillCurrAmt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctMcc)">
+                    AND ct_mcc = #{map.ctMcc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTcc)">
+                    AND ct_tcc = #{map.ctTcc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOrgPostDate)">
+                    AND ct_org_post_date = #{map.ctOrgPostDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOrgTrxnId)">
+                    AND ct_org_trxn_id = #{map.ctOrgTrxnId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDisputeDate)">
+                    AND ct_dispute_date = #{map.ctDisputeDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctResolutionDate)">
+                    AND ct_resolution_date = #{map.ctResolutionDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctResolutionInd)">
+                    AND ct_resolution_ind = #{map.ctResolutionInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctChgbakRefno)">
+                    AND ct_chgbak_refno = #{map.ctChgbakRefno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctMercName)">
+                    AND ct_merc_name = #{map.ctMercName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctMercInfo)">
+                    AND ct_merc_info = #{map.ctMercInfo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAcqMemberId)">
+                    AND ct_acq_member_id = #{map.ctAcqMemberId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctPosEntry)">
+                    AND ct_pos_entry = #{map.ctPosEntry}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctProcDate)">
+                    AND ct_proc_date = #{map.ctProcDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctIssuerBin)">
+                    AND ct_issuer_bin = #{map.ctIssuerBin}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAcqBin)">
+                    AND ct_acq_bin = #{map.ctAcqBin}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTraceNo)">
+                    AND ct_trace_no = #{map.ctTraceNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAuthCurr)">
+                    AND ct_auth_curr = #{map.ctAuthCurr}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAuthResp)">
+                    AND ct_auth_resp = #{map.ctAuthResp}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAuthAmt)">
+                    AND ct_auth_amt = #{map.ctAuthAmt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAgeCodeB4Post)">
+                    AND ct_age_code_b4_post = #{map.ctAgeCodeB4Post}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOutstdB4Post)">
+                    AND ct_outstd_b4_post = #{map.ctOutstdB4Post}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAgeCodeAfterPost)">
+                    AND ct_age_code_after_post = #{map.ctAgeCodeAfterPost}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOutstdAfterPost)">
+                    AND ct_outstd_after_post = #{map.ctOutstdAfterPost}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCrdAccId)">
+                    AND ct_crd_acc_id = #{map.ctCrdAccId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserStatus1)">
+                    AND ct_user_status1 = #{map.ctUserStatus1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserStatus2)">
+                    AND ct_user_status2 = #{map.ctUserStatus2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserStatus3)">
+                    AND ct_user_status3 = #{map.ctUserStatus3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserAmt1)">
+                    AND ct_user_amt1 = #{map.ctUserAmt1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserAmt2)">
+                    AND ct_user_amt2 = #{map.ctUserAmt2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserAmt3)">
+                    AND ct_user_amt3 = #{map.ctUserAmt3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserAmt4)">
+                    AND ct_user_amt4 = #{map.ctUserAmt4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserCnt1)">
+                    AND ct_user_cnt1 = #{map.ctUserCnt1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserCnt2)">
+                    AND ct_user_cnt2 = #{map.ctUserCnt2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserCnt3)">
+                    AND ct_user_cnt3 = #{map.ctUserCnt3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBasicSuppInd)">
+                    AND ct_basic_supp_ind = #{map.ctBasicSuppInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.authFlag)">
+                    AND auth_flag = #{map.authFlag}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.firstTime)">
+                    AND first_time = #{map.firstTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTxferName)">
+                    AND ct_txfer_name = #{map.ctTxferName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTxferStatus)">
+                    AND ct_txfer_status = #{map.ctTxferStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctPrintStatus)">
+                    AND ct_print_status = #{map.ctPrintStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctReversalFlag)">
+                    AND ct_reversal_flag = #{map.ctReversalFlag}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctNote)">
+                    AND ct_note = #{map.ctNote}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+                
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpCeptrx" parameterType="cn.happyworlds.imgmt.entity.CpCeptrx">
+        INSERT INTO cp_ceptrx(
+        <include refid="cpCeptrxBaseColumnSql"/>
+        )VALUES(
+            #{ctBranchId},
+            #{ctTranId},
+            #{ctMessageId},
+            #{ctCustomerId},
+            #{ctMerchantId},
+            #{ctTerminalId},
+            #{ctCardNumber},
+            #{ctOpenZone},
+            #{ctTranZone},
+            #{ctTranNum},
+            #{ctTranTime},
+            #{ctDealName},
+            #{ctDealAddr},
+            #{ctRefno},
+            #{ctDbCr},
+            #{ctTranAmount},
+            #{ctCardAmount},
+            #{ctFeeAmount},
+            #{ctVatAmount},
+            #{ctDescription},
+            #{ctCurrcode},
+            #{ctExchangeRate},
+            #{ctDestinationAc},
+            #{ctUserCreate},
+            #{ctUserApprove},
+            #{ctApproveTime},
+            #{ctPostTime},
+            #{ctStatus},
+            #{ctAccountId},
+            #{ctTranCode},
+            #{ctOdAmount},
+            #{ctDc},
+            #{ctAcquireBank},
+            #{ctBankFee},
+            #{ctBankVat},
+            #{ctStmtDate},
+            #{ctActionStatus},
+            #{ctTxrnType},
+            #{cpTxferName},
+            #{ctBatchNo},
+            #{ctApprovalCd},
+            #{ctBillCurrCd},
+            #{ctBillCurrAmt},
+            #{ctMcc},
+            #{ctTcc},
+            #{ctOrgPostDate},
+            #{ctOrgTrxnId},
+            #{ctDisputeDate},
+            #{ctResolutionDate},
+            #{ctResolutionInd},
+            #{ctChgbakRefno},
+            #{ctMercName},
+            #{ctMercInfo},
+            #{ctAcqMemberId},
+            #{ctPosEntry},
+            #{ctProcDate},
+            #{ctIssuerBin},
+            #{ctAcqBin},
+            #{ctTraceNo},
+            #{ctAuthCurr},
+            #{ctAuthResp},
+            #{ctAuthAmt},
+            #{ctAgeCodeB4Post},
+            #{ctOutstdB4Post},
+            #{ctAgeCodeAfterPost},
+            #{ctOutstdAfterPost},
+            #{ctCrdAccId},
+            #{ctUserStatus1},
+            #{ctUserStatus2},
+            #{ctUserStatus3},
+            #{ctUserAmt1},
+            #{ctUserAmt2},
+            #{ctUserAmt3},
+            #{ctUserAmt4},
+            #{ctUserCnt1},
+            #{ctUserCnt2},
+            #{ctUserCnt3},
+            #{ctBasicSuppInd},
+            #{authFlag},
+            #{firstTime},
+            #{ctTxferName},
+            #{ctTxferStatus},
+            #{ctPrintStatus},
+            #{ctReversalFlag},
+            #{ctNote},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpCeptrxByCtTranId" parameterType="Long">
+        DELETE FROM cp_ceptrx WHERE ct_tran_id = #{ctTranId}
+    </delete>
+
+    <select id="deleteCpCeptrxByParams" parameterType="map">
+        DELETE FROM cp_ceptrx
+        <include refid="cpCeptrxBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpCeptrx" parameterType="cn.happyworlds.imgmt.entity.CpCeptrx">
+        UPDATE cp_ceptrx
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctBranchId)">
+                ct_branch_id = #{ctBranchId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctMessageId)">
+                ct_message_id = #{ctMessageId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctCustomerId)">
+                ct_customer_id = #{ctCustomerId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctMerchantId)">
+                ct_merchant_id = #{ctMerchantId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctTerminalId)">
+                ct_terminal_id = #{ctTerminalId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctCardNumber)">
+                ct_card_number = #{ctCardNumber} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctOpenZone)">
+                ct_open_zone = #{ctOpenZone} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctTranZone)">
+                ct_tran_zone = #{ctTranZone} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctTranNum)">
+                ct_tran_num = #{ctTranNum} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctTranTime)">
+                ct_tran_time = #{ctTranTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctDealName)">
+                ct_deal_name = #{ctDealName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctDealAddr)">
+                ct_deal_addr = #{ctDealAddr} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctRefno)">
+                ct_refno = #{ctRefno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctDbCr)">
+                ct_db_cr = #{ctDbCr} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctTranAmount)">
+                ct_tran_amount = #{ctTranAmount} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctCardAmount)">
+                ct_card_amount = #{ctCardAmount} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctFeeAmount)">
+                ct_fee_amount = #{ctFeeAmount} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctVatAmount)">
+                ct_vat_amount = #{ctVatAmount} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctDescription)">
+                ct_description = #{ctDescription} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctCurrcode)">
+                ct_currcode = #{ctCurrcode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctExchangeRate)">
+                ct_exchange_rate = #{ctExchangeRate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctDestinationAc)">
+                ct_destination_ac = #{ctDestinationAc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctUserCreate)">
+                ct_user_create = #{ctUserCreate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctUserApprove)">
+                ct_user_approve = #{ctUserApprove} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctApproveTime)">
+                ct_approve_time = #{ctApproveTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctPostTime)">
+                ct_post_time = #{ctPostTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctStatus)">
+                ct_status = #{ctStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctAccountId)">
+                ct_account_id = #{ctAccountId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctTranCode)">
+                ct_tran_code = #{ctTranCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctOdAmount)">
+                ct_od_amount = #{ctOdAmount} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctDc)">
+                ct_dc = #{ctDc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctAcquireBank)">
+                ct_acquire_bank = #{ctAcquireBank} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctBankFee)">
+                ct_bank_fee = #{ctBankFee} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctBankVat)">
+                ct_bank_vat = #{ctBankVat} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctStmtDate)">
+                ct_stmt_date = #{ctStmtDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctActionStatus)">
+                ct_action_status = #{ctActionStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctTxrnType)">
+                ct_txrn_type = #{ctTxrnType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cpTxferName)">
+                cp_txfer_name = #{cpTxferName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctBatchNo)">
+                ct_batch_no = #{ctBatchNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctApprovalCd)">
+                ct_approval_cd = #{ctApprovalCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctBillCurrCd)">
+                ct_bill_curr_cd = #{ctBillCurrCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctBillCurrAmt)">
+                ct_bill_curr_amt = #{ctBillCurrAmt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctMcc)">
+                ct_mcc = #{ctMcc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctTcc)">
+                ct_tcc = #{ctTcc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctOrgPostDate)">
+                ct_org_post_date = #{ctOrgPostDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctOrgTrxnId)">
+                ct_org_trxn_id = #{ctOrgTrxnId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctDisputeDate)">
+                ct_dispute_date = #{ctDisputeDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctResolutionDate)">
+                ct_resolution_date = #{ctResolutionDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctResolutionInd)">
+                ct_resolution_ind = #{ctResolutionInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctChgbakRefno)">
+                ct_chgbak_refno = #{ctChgbakRefno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctMercName)">
+                ct_merc_name = #{ctMercName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctMercInfo)">
+                ct_merc_info = #{ctMercInfo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctAcqMemberId)">
+                ct_acq_member_id = #{ctAcqMemberId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctPosEntry)">
+                ct_pos_entry = #{ctPosEntry} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctProcDate)">
+                ct_proc_date = #{ctProcDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctIssuerBin)">
+                ct_issuer_bin = #{ctIssuerBin} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctAcqBin)">
+                ct_acq_bin = #{ctAcqBin} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctTraceNo)">
+                ct_trace_no = #{ctTraceNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctAuthCurr)">
+                ct_auth_curr = #{ctAuthCurr} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctAuthResp)">
+                ct_auth_resp = #{ctAuthResp} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctAuthAmt)">
+                ct_auth_amt = #{ctAuthAmt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctAgeCodeB4Post)">
+                ct_age_code_b4_post = #{ctAgeCodeB4Post} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctOutstdB4Post)">
+                ct_outstd_b4_post = #{ctOutstdB4Post} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctAgeCodeAfterPost)">
+                ct_age_code_after_post = #{ctAgeCodeAfterPost} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctOutstdAfterPost)">
+                ct_outstd_after_post = #{ctOutstdAfterPost} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctCrdAccId)">
+                ct_crd_acc_id = #{ctCrdAccId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctUserStatus1)">
+                ct_user_status1 = #{ctUserStatus1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctUserStatus2)">
+                ct_user_status2 = #{ctUserStatus2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctUserStatus3)">
+                ct_user_status3 = #{ctUserStatus3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctUserAmt1)">
+                ct_user_amt1 = #{ctUserAmt1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctUserAmt2)">
+                ct_user_amt2 = #{ctUserAmt2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctUserAmt3)">
+                ct_user_amt3 = #{ctUserAmt3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctUserAmt4)">
+                ct_user_amt4 = #{ctUserAmt4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctUserCnt1)">
+                ct_user_cnt1 = #{ctUserCnt1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctUserCnt2)">
+                ct_user_cnt2 = #{ctUserCnt2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctUserCnt3)">
+                ct_user_cnt3 = #{ctUserCnt3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctBasicSuppInd)">
+                ct_basic_supp_ind = #{ctBasicSuppInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(authFlag)">
+                auth_flag = #{authFlag} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(firstTime)">
+                first_time = #{firstTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctTxferName)">
+                ct_txfer_name = #{ctTxferName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctTxferStatus)">
+                ct_txfer_status = #{ctTxferStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctPrintStatus)">
+                ct_print_status = #{ctPrintStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctReversalFlag)">
+                ct_reversal_flag = #{ctReversalFlag} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctNote)">
+                ct_note = #{ctNote} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+            
+        </set>
+        WHERE ct_tran_id = #{ctTranId}
+    </update>
+
+    <update id="updateCpCeptrxByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_ceptrx
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBranchId)">
+                    ct_branch_id = #{map.ctBranchId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctMessageId)">
+                    ct_message_id = #{map.ctMessageId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCustomerId)">
+                    ct_customer_id = #{map.ctCustomerId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctMerchantId)">
+                    ct_merchant_id = #{map.ctMerchantId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTerminalId)">
+                    ct_terminal_id = #{map.ctTerminalId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCardNumber)">
+                    ct_card_number = #{map.ctCardNumber} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOpenZone)">
+                    ct_open_zone = #{map.ctOpenZone} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranZone)">
+                    ct_tran_zone = #{map.ctTranZone} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranNum)">
+                    ct_tran_num = #{map.ctTranNum} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranTime)">
+                    ct_tran_time = #{map.ctTranTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDealName)">
+                    ct_deal_name = #{map.ctDealName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDealAddr)">
+                    ct_deal_addr = #{map.ctDealAddr} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctRefno)">
+                    ct_refno = #{map.ctRefno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDbCr)">
+                    ct_db_cr = #{map.ctDbCr} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranAmount)">
+                    ct_tran_amount = #{map.ctTranAmount} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCardAmount)">
+                    ct_card_amount = #{map.ctCardAmount} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctFeeAmount)">
+                    ct_fee_amount = #{map.ctFeeAmount} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctVatAmount)">
+                    ct_vat_amount = #{map.ctVatAmount} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDescription)">
+                    ct_description = #{map.ctDescription} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCurrcode)">
+                    ct_currcode = #{map.ctCurrcode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctExchangeRate)">
+                    ct_exchange_rate = #{map.ctExchangeRate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDestinationAc)">
+                    ct_destination_ac = #{map.ctDestinationAc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserCreate)">
+                    ct_user_create = #{map.ctUserCreate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserApprove)">
+                    ct_user_approve = #{map.ctUserApprove} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctApproveTime)">
+                    ct_approve_time = #{map.ctApproveTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctPostTime)">
+                    ct_post_time = #{map.ctPostTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctStatus)">
+                    ct_status = #{map.ctStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAccountId)">
+                    ct_account_id = #{map.ctAccountId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranCode)">
+                    ct_tran_code = #{map.ctTranCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOdAmount)">
+                    ct_od_amount = #{map.ctOdAmount} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDc)">
+                    ct_dc = #{map.ctDc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAcquireBank)">
+                    ct_acquire_bank = #{map.ctAcquireBank} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBankFee)">
+                    ct_bank_fee = #{map.ctBankFee} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBankVat)">
+                    ct_bank_vat = #{map.ctBankVat} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctStmtDate)">
+                    ct_stmt_date = #{map.ctStmtDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctActionStatus)">
+                    ct_action_status = #{map.ctActionStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTxrnType)">
+                    ct_txrn_type = #{map.ctTxrnType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpTxferName)">
+                    cp_txfer_name = #{map.cpTxferName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBatchNo)">
+                    ct_batch_no = #{map.ctBatchNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctApprovalCd)">
+                    ct_approval_cd = #{map.ctApprovalCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBillCurrCd)">
+                    ct_bill_curr_cd = #{map.ctBillCurrCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBillCurrAmt)">
+                    ct_bill_curr_amt = #{map.ctBillCurrAmt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctMcc)">
+                    ct_mcc = #{map.ctMcc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTcc)">
+                    ct_tcc = #{map.ctTcc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOrgPostDate)">
+                    ct_org_post_date = #{map.ctOrgPostDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOrgTrxnId)">
+                    ct_org_trxn_id = #{map.ctOrgTrxnId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDisputeDate)">
+                    ct_dispute_date = #{map.ctDisputeDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctResolutionDate)">
+                    ct_resolution_date = #{map.ctResolutionDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctResolutionInd)">
+                    ct_resolution_ind = #{map.ctResolutionInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctChgbakRefno)">
+                    ct_chgbak_refno = #{map.ctChgbakRefno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctMercName)">
+                    ct_merc_name = #{map.ctMercName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctMercInfo)">
+                    ct_merc_info = #{map.ctMercInfo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAcqMemberId)">
+                    ct_acq_member_id = #{map.ctAcqMemberId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctPosEntry)">
+                    ct_pos_entry = #{map.ctPosEntry} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctProcDate)">
+                    ct_proc_date = #{map.ctProcDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctIssuerBin)">
+                    ct_issuer_bin = #{map.ctIssuerBin} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAcqBin)">
+                    ct_acq_bin = #{map.ctAcqBin} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTraceNo)">
+                    ct_trace_no = #{map.ctTraceNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAuthCurr)">
+                    ct_auth_curr = #{map.ctAuthCurr} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAuthResp)">
+                    ct_auth_resp = #{map.ctAuthResp} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAuthAmt)">
+                    ct_auth_amt = #{map.ctAuthAmt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAgeCodeB4Post)">
+                    ct_age_code_b4_post = #{map.ctAgeCodeB4Post} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOutstdB4Post)">
+                    ct_outstd_b4_post = #{map.ctOutstdB4Post} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAgeCodeAfterPost)">
+                    ct_age_code_after_post = #{map.ctAgeCodeAfterPost} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOutstdAfterPost)">
+                    ct_outstd_after_post = #{map.ctOutstdAfterPost} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCrdAccId)">
+                    ct_crd_acc_id = #{map.ctCrdAccId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserStatus1)">
+                    ct_user_status1 = #{map.ctUserStatus1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserStatus2)">
+                    ct_user_status2 = #{map.ctUserStatus2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserStatus3)">
+                    ct_user_status3 = #{map.ctUserStatus3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserAmt1)">
+                    ct_user_amt1 = #{map.ctUserAmt1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserAmt2)">
+                    ct_user_amt2 = #{map.ctUserAmt2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserAmt3)">
+                    ct_user_amt3 = #{map.ctUserAmt3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserAmt4)">
+                    ct_user_amt4 = #{map.ctUserAmt4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserCnt1)">
+                    ct_user_cnt1 = #{map.ctUserCnt1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserCnt2)">
+                    ct_user_cnt2 = #{map.ctUserCnt2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserCnt3)">
+                    ct_user_cnt3 = #{map.ctUserCnt3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBasicSuppInd)">
+                    ct_basic_supp_ind = #{map.ctBasicSuppInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.authFlag)">
+                    auth_flag = #{map.authFlag} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.firstTime)">
+                    first_time = #{map.firstTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTxferName)">
+                    ct_txfer_name = #{map.ctTxferName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTxferStatus)">
+                    ct_txfer_status = #{map.ctTxferStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctPrintStatus)">
+                    ct_print_status = #{map.ctPrintStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctReversalFlag)">
+                    ct_reversal_flag = #{map.ctReversalFlag} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctNote)">
+                    ct_note = #{map.ctNote} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+                
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBranchIdCondition)">
+                    ct_branch_id = #{map.ctBranchIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranIdCondition)">
+                    AND ct_tran_id = #{map.ctTranIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctMessageIdCondition)">
+                    AND ct_message_id = #{map.ctMessageIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCustomerIdCondition)">
+                    AND ct_customer_id = #{map.ctCustomerIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctMerchantIdCondition)">
+                    AND ct_merchant_id = #{map.ctMerchantIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTerminalIdCondition)">
+                    AND ct_terminal_id = #{map.ctTerminalIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCardNumberCondition)">
+                    AND ct_card_number = #{map.ctCardNumberCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOpenZoneCondition)">
+                    AND ct_open_zone = #{map.ctOpenZoneCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranZoneCondition)">
+                    AND ct_tran_zone = #{map.ctTranZoneCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranNumCondition)">
+                    AND ct_tran_num = #{map.ctTranNumCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranTimeCondition)">
+                    AND ct_tran_time = #{map.ctTranTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDealNameCondition)">
+                    AND ct_deal_name = #{map.ctDealNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDealAddrCondition)">
+                    AND ct_deal_addr = #{map.ctDealAddrCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctRefnoCondition)">
+                    AND ct_refno = #{map.ctRefnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDbCrCondition)">
+                    AND ct_db_cr = #{map.ctDbCrCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranAmountCondition)">
+                    AND ct_tran_amount = #{map.ctTranAmountCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCardAmountCondition)">
+                    AND ct_card_amount = #{map.ctCardAmountCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctFeeAmountCondition)">
+                    AND ct_fee_amount = #{map.ctFeeAmountCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctVatAmountCondition)">
+                    AND ct_vat_amount = #{map.ctVatAmountCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDescriptionCondition)">
+                    AND ct_description = #{map.ctDescriptionCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCurrcodeCondition)">
+                    AND ct_currcode = #{map.ctCurrcodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctExchangeRateCondition)">
+                    AND ct_exchange_rate = #{map.ctExchangeRateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDestinationAcCondition)">
+                    AND ct_destination_ac = #{map.ctDestinationAcCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserCreateCondition)">
+                    AND ct_user_create = #{map.ctUserCreateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserApproveCondition)">
+                    AND ct_user_approve = #{map.ctUserApproveCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctApproveTimeCondition)">
+                    AND ct_approve_time = #{map.ctApproveTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctPostTimeCondition)">
+                    AND ct_post_time = #{map.ctPostTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctStatusCondition)">
+                    AND ct_status = #{map.ctStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAccountIdCondition)">
+                    AND ct_account_id = #{map.ctAccountIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranCodeCondition)">
+                    AND ct_tran_code = #{map.ctTranCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOdAmountCondition)">
+                    AND ct_od_amount = #{map.ctOdAmountCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDcCondition)">
+                    AND ct_dc = #{map.ctDcCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAcquireBankCondition)">
+                    AND ct_acquire_bank = #{map.ctAcquireBankCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBankFeeCondition)">
+                    AND ct_bank_fee = #{map.ctBankFeeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBankVatCondition)">
+                    AND ct_bank_vat = #{map.ctBankVatCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctStmtDateCondition)">
+                    AND ct_stmt_date = #{map.ctStmtDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctActionStatusCondition)">
+                    AND ct_action_status = #{map.ctActionStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTxrnTypeCondition)">
+                    AND ct_txrn_type = #{map.ctTxrnTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpTxferNameCondition)">
+                    AND cp_txfer_name = #{map.cpTxferNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBatchNoCondition)">
+                    AND ct_batch_no = #{map.ctBatchNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctApprovalCdCondition)">
+                    AND ct_approval_cd = #{map.ctApprovalCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBillCurrCdCondition)">
+                    AND ct_bill_curr_cd = #{map.ctBillCurrCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBillCurrAmtCondition)">
+                    AND ct_bill_curr_amt = #{map.ctBillCurrAmtCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctMccCondition)">
+                    AND ct_mcc = #{map.ctMccCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTccCondition)">
+                    AND ct_tcc = #{map.ctTccCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOrgPostDateCondition)">
+                    AND ct_org_post_date = #{map.ctOrgPostDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOrgTrxnIdCondition)">
+                    AND ct_org_trxn_id = #{map.ctOrgTrxnIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDisputeDateCondition)">
+                    AND ct_dispute_date = #{map.ctDisputeDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctResolutionDateCondition)">
+                    AND ct_resolution_date = #{map.ctResolutionDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctResolutionIndCondition)">
+                    AND ct_resolution_ind = #{map.ctResolutionIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctChgbakRefnoCondition)">
+                    AND ct_chgbak_refno = #{map.ctChgbakRefnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctMercNameCondition)">
+                    AND ct_merc_name = #{map.ctMercNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctMercInfoCondition)">
+                    AND ct_merc_info = #{map.ctMercInfoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAcqMemberIdCondition)">
+                    AND ct_acq_member_id = #{map.ctAcqMemberIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctPosEntryCondition)">
+                    AND ct_pos_entry = #{map.ctPosEntryCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctProcDateCondition)">
+                    AND ct_proc_date = #{map.ctProcDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctIssuerBinCondition)">
+                    AND ct_issuer_bin = #{map.ctIssuerBinCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAcqBinCondition)">
+                    AND ct_acq_bin = #{map.ctAcqBinCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTraceNoCondition)">
+                    AND ct_trace_no = #{map.ctTraceNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAuthCurrCondition)">
+                    AND ct_auth_curr = #{map.ctAuthCurrCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAuthRespCondition)">
+                    AND ct_auth_resp = #{map.ctAuthRespCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAuthAmtCondition)">
+                    AND ct_auth_amt = #{map.ctAuthAmtCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAgeCodeB4PostCondition)">
+                    AND ct_age_code_b4_post = #{map.ctAgeCodeB4PostCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOutstdB4PostCondition)">
+                    AND ct_outstd_b4_post = #{map.ctOutstdB4PostCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctAgeCodeAfterPostCondition)">
+                    AND ct_age_code_after_post = #{map.ctAgeCodeAfterPostCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctOutstdAfterPostCondition)">
+                    AND ct_outstd_after_post = #{map.ctOutstdAfterPostCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCrdAccIdCondition)">
+                    AND ct_crd_acc_id = #{map.ctCrdAccIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserStatus1Condition)">
+                    AND ct_user_status1 = #{map.ctUserStatus1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserStatus2Condition)">
+                    AND ct_user_status2 = #{map.ctUserStatus2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserStatus3Condition)">
+                    AND ct_user_status3 = #{map.ctUserStatus3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserAmt1Condition)">
+                    AND ct_user_amt1 = #{map.ctUserAmt1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserAmt2Condition)">
+                    AND ct_user_amt2 = #{map.ctUserAmt2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserAmt3Condition)">
+                    AND ct_user_amt3 = #{map.ctUserAmt3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserAmt4Condition)">
+                    AND ct_user_amt4 = #{map.ctUserAmt4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserCnt1Condition)">
+                    AND ct_user_cnt1 = #{map.ctUserCnt1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserCnt2Condition)">
+                    AND ct_user_cnt2 = #{map.ctUserCnt2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserCnt3Condition)">
+                    AND ct_user_cnt3 = #{map.ctUserCnt3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctBasicSuppIndCondition)">
+                    AND ct_basic_supp_ind = #{map.ctBasicSuppIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.authFlagCondition)">
+                    AND auth_flag = #{map.authFlagCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.firstTimeCondition)">
+                    AND first_time = #{map.firstTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTxferNameCondition)">
+                    AND ct_txfer_name = #{map.ctTxferNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTxferStatusCondition)">
+                    AND ct_txfer_status = #{map.ctTxferStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctPrintStatusCondition)">
+                    AND ct_print_status = #{map.ctPrintStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctReversalFlagCondition)">
+                    AND ct_reversal_flag = #{map.ctReversalFlagCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctNoteCondition)">
+                    AND ct_note = #{map.ctNoteCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+                
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpCeptrxByCtTranId" parameterType="Long" resultMap="cpCeptrxMap">
+        SELECT
+        <include refid="cpCeptrxBaseColumnSql"/>
+        FROM cp_ceptrx
+        WHERE ct_tran_id = #{ctTranId}
+    </select>
+
+    <select id="searchCpCeptrxByParams" parameterType="map" resultMap="cpCeptrxMap">
+        SELECT
+        <include refid="cpCeptrxBaseColumnSql"/>
+        FROM cp_ceptrx
+        <include refid="cpCeptrxBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpCeptrx" id="cpCeptrxMap">
+        <id column="ct_tran_id" property="ctTranId"/>
+        <result column="ct_branch_id" property="ctBranchId"/>
+        <result column="ct_message_id" property="ctMessageId"/>
+        <result column="ct_customer_id" property="ctCustomerId"/>
+        <result column="ct_merchant_id" property="ctMerchantId"/>
+        <result column="ct_terminal_id" property="ctTerminalId"/>
+        <result column="ct_card_number" property="ctCardNumber"/>
+        <result column="ct_open_zone" property="ctOpenZone"/>
+        <result column="ct_tran_zone" property="ctTranZone"/>
+        <result column="ct_tran_num" property="ctTranNum"/>
+        <result column="ct_tran_time" property="ctTranTime"/>
+        <result column="ct_deal_name" property="ctDealName"/>
+        <result column="ct_deal_addr" property="ctDealAddr"/>
+        <result column="ct_refno" property="ctRefno"/>
+        <result column="ct_db_cr" property="ctDbCr"/>
+        <result column="ct_tran_amount" property="ctTranAmount"/>
+        <result column="ct_card_amount" property="ctCardAmount"/>
+        <result column="ct_fee_amount" property="ctFeeAmount"/>
+        <result column="ct_vat_amount" property="ctVatAmount"/>
+        <result column="ct_description" property="ctDescription"/>
+        <result column="ct_currcode" property="ctCurrcode"/>
+        <result column="ct_exchange_rate" property="ctExchangeRate"/>
+        <result column="ct_destination_ac" property="ctDestinationAc"/>
+        <result column="ct_user_create" property="ctUserCreate"/>
+        <result column="ct_user_approve" property="ctUserApprove"/>
+        <result column="ct_approve_time" property="ctApproveTime"/>
+        <result column="ct_post_time" property="ctPostTime"/>
+        <result column="ct_status" property="ctStatus"/>
+        <result column="ct_account_id" property="ctAccountId"/>
+        <result column="ct_tran_code" property="ctTranCode"/>
+        <result column="ct_od_amount" property="ctOdAmount"/>
+        <result column="ct_dc" property="ctDc"/>
+        <result column="ct_acquire_bank" property="ctAcquireBank"/>
+        <result column="ct_bank_fee" property="ctBankFee"/>
+        <result column="ct_bank_vat" property="ctBankVat"/>
+        <result column="ct_stmt_date" property="ctStmtDate"/>
+        <result column="ct_action_status" property="ctActionStatus"/>
+        <result column="ct_txrn_type" property="ctTxrnType"/>
+        <result column="cp_txfer_name" property="cpTxferName"/>
+        <result column="ct_batch_no" property="ctBatchNo"/>
+        <result column="ct_approval_cd" property="ctApprovalCd"/>
+        <result column="ct_bill_curr_cd" property="ctBillCurrCd"/>
+        <result column="ct_bill_curr_amt" property="ctBillCurrAmt"/>
+        <result column="ct_mcc" property="ctMcc"/>
+        <result column="ct_tcc" property="ctTcc"/>
+        <result column="ct_org_post_date" property="ctOrgPostDate"/>
+        <result column="ct_org_trxn_id" property="ctOrgTrxnId"/>
+        <result column="ct_dispute_date" property="ctDisputeDate"/>
+        <result column="ct_resolution_date" property="ctResolutionDate"/>
+        <result column="ct_resolution_ind" property="ctResolutionInd"/>
+        <result column="ct_chgbak_refno" property="ctChgbakRefno"/>
+        <result column="ct_merc_name" property="ctMercName"/>
+        <result column="ct_merc_info" property="ctMercInfo"/>
+        <result column="ct_acq_member_id" property="ctAcqMemberId"/>
+        <result column="ct_pos_entry" property="ctPosEntry"/>
+        <result column="ct_proc_date" property="ctProcDate"/>
+        <result column="ct_issuer_bin" property="ctIssuerBin"/>
+        <result column="ct_acq_bin" property="ctAcqBin"/>
+        <result column="ct_trace_no" property="ctTraceNo"/>
+        <result column="ct_auth_curr" property="ctAuthCurr"/>
+        <result column="ct_auth_resp" property="ctAuthResp"/>
+        <result column="ct_auth_amt" property="ctAuthAmt"/>
+        <result column="ct_age_code_b4_post" property="ctAgeCodeB4Post"/>
+        <result column="ct_outstd_b4_post" property="ctOutstdB4Post"/>
+        <result column="ct_age_code_after_post" property="ctAgeCodeAfterPost"/>
+        <result column="ct_outstd_after_post" property="ctOutstdAfterPost"/>
+        <result column="ct_crd_acc_id" property="ctCrdAccId"/>
+        <result column="ct_user_status1" property="ctUserStatus1"/>
+        <result column="ct_user_status2" property="ctUserStatus2"/>
+        <result column="ct_user_status3" property="ctUserStatus3"/>
+        <result column="ct_user_amt1" property="ctUserAmt1"/>
+        <result column="ct_user_amt2" property="ctUserAmt2"/>
+        <result column="ct_user_amt3" property="ctUserAmt3"/>
+        <result column="ct_user_amt4" property="ctUserAmt4"/>
+        <result column="ct_user_cnt1" property="ctUserCnt1"/>
+        <result column="ct_user_cnt2" property="ctUserCnt2"/>
+        <result column="ct_user_cnt3" property="ctUserCnt3"/>
+        <result column="ct_basic_supp_ind" property="ctBasicSuppInd"/>
+        <result column="auth_flag" property="authFlag"/>
+        <result column="first_time" property="firstTime"/>
+        <result column="ct_txfer_name" property="ctTxferName"/>
+        <result column="ct_txfer_status" property="ctTxferStatus"/>
+        <result column="ct_print_status" property="ctPrintStatus"/>
+        <result column="ct_reversal_flag" property="ctReversalFlag"/>
+        <result column="ct_note" property="ctNote"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

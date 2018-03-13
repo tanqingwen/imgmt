@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpMemberShipMapper">
+
+    <sql id="cpMemberShipBaseColumnSql">
+        ME_GRADE_ID,
+        ME_GRADE_CODE,
+        ME_GRADE_DESC,
+        ME_BIN,
+        ME_DESCRIPTION,
+        ME_GRADE_STATUS,
+        ME_CRAD_BRAND,
+        ME_REGULATION
+    </sql>
+
+    <sql id="cpMemberShipBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meGradeId)">
+                    ME_GRADE_ID = #{map.meGradeId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meGradeCode)">
+                    AND ME_GRADE_CODE = #{map.meGradeCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meGradeDesc)">
+                    AND ME_GRADE_DESC = #{map.meGradeDesc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meBin)">
+                    AND ME_BIN = #{map.meBin}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meDescription)">
+                    AND ME_DESCRIPTION = #{map.meDescription}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meGradeStatus)">
+                    AND ME_GRADE_STATUS = #{map.meGradeStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meCradBrand)">
+                    AND ME_CRAD_BRAND = #{map.meCradBrand}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meRegulation)">
+                    AND ME_REGULATION = #{map.meRegulation}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpMemberShip" parameterType="cn.happyworlds.imgmt.entity.CpMemberShip">
+        INSERT INTO cp_member_ship(
+        <include refid="cpMemberShipBaseColumnSql"/>
+        )VALUES(
+            #{meGradeId},
+            #{meGradeCode},
+            #{meGradeDesc},
+            #{meBin},
+            #{meDescription},
+            #{meGradeStatus},
+            #{meCradBrand},
+            #{meRegulation}
+        )
+    </insert>
+        
+    <delete id="deleteCpMemberShipByMeGradeId" parameterType="String">
+        DELETE FROM cp_member_ship WHERE ME_GRADE_ID = #{meGradeId}
+    </delete>
+
+    <select id="deleteCpMemberShipByParams" parameterType="map">
+        DELETE FROM cp_member_ship
+        <include refid="cpMemberShipBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpMemberShip" parameterType="cn.happyworlds.imgmt.entity.CpMemberShip">
+        UPDATE cp_member_ship
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(meGradeCode)">
+                ME_GRADE_CODE = #{meGradeCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(meGradeDesc)">
+                ME_GRADE_DESC = #{meGradeDesc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(meBin)">
+                ME_BIN = #{meBin} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(meDescription)">
+                ME_DESCRIPTION = #{meDescription} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(meGradeStatus)">
+                ME_GRADE_STATUS = #{meGradeStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(meCradBrand)">
+                ME_CRAD_BRAND = #{meCradBrand} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(meRegulation)">
+                ME_REGULATION = #{meRegulation}
+            </if>
+        </set>
+        WHERE ME_GRADE_ID = #{meGradeId}
+    </update>
+
+    <update id="updateCpMemberShipByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_member_ship
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meGradeCode)">
+                    ME_GRADE_CODE = #{map.meGradeCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meGradeDesc)">
+                    ME_GRADE_DESC = #{map.meGradeDesc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meBin)">
+                    ME_BIN = #{map.meBin} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meDescription)">
+                    ME_DESCRIPTION = #{map.meDescription} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meGradeStatus)">
+                    ME_GRADE_STATUS = #{map.meGradeStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meCradBrand)">
+                    ME_CRAD_BRAND = #{map.meCradBrand} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meRegulation)">
+                    ME_REGULATION = #{map.meRegulation}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meGradeIdCondition)">
+                    ME_GRADE_ID = #{map.meGradeIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meGradeCodeCondition)">
+                    AND ME_GRADE_CODE = #{map.meGradeCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meGradeDescCondition)">
+                    AND ME_GRADE_DESC = #{map.meGradeDescCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meBinCondition)">
+                    AND ME_BIN = #{map.meBinCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meDescriptionCondition)">
+                    AND ME_DESCRIPTION = #{map.meDescriptionCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meGradeStatusCondition)">
+                    AND ME_GRADE_STATUS = #{map.meGradeStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meCradBrandCondition)">
+                    AND ME_CRAD_BRAND = #{map.meCradBrandCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.meRegulationCondition)">
+                    AND ME_REGULATION = #{map.meRegulationCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpMemberShipByMeGradeDesc" parameterType="String" resultMap="cpMemberShipMap">
+        SELECT
+        <include refid="cpMemberShipBaseColumnSql"/>
+        FROM cp_member_ship
+        WHERE ME_GRADE_DESC = #{meGradeDesc}
+    </select>
+    
+    <select id="searchCpMemberShipByMeGradeId" parameterType="String" resultMap="cpMemberShipMap">
+        SELECT
+        <include refid="cpMemberShipBaseColumnSql"/>
+        FROM cp_member_ship
+        WHERE ME_GRADE_ID = #{meGradeId}
+    </select>
+
+    <select id="searchCpMemberShipByParams" parameterType="map" resultMap="cpMemberShipMap">
+        SELECT
+        <include refid="cpMemberShipBaseColumnSql"/>
+        FROM cp_member_ship
+        <include refid="cpMemberShipBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpMemberShip" id="cpMemberShipMap">
+        <id column="ME_GRADE_ID" property="meGradeId"/>
+        <result column="ME_GRADE_CODE" property="meGradeCode"/>
+        <result column="ME_GRADE_DESC" property="meGradeDesc"/>
+        <result column="ME_BIN" property="meBin"/>
+        <result column="ME_DESCRIPTION" property="meDescription"/>
+        <result column="ME_GRADE_STATUS" property="meGradeStatus"/>
+        <result column="ME_CRAD_BRAND" property="meCradBrand"/>
+        <result column="ME_REGULATION" property="meRegulation"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpAcqgrpMapper">
+
+    <sql id="cpAcqgrpBaseColumnSql">
+        al_group_id,
+        al_desc,
+        checksum,
+        status
+    </sql>
+
+    <sql id="cpAcqgrpBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.alGroupId)">
+                    al_group_id = #{map.alGroupId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.alDesc)">
+                    AND al_desc = #{map.alDesc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.status)">
+                    AND status = #{map.status}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpAcqgrp" parameterType="cn.happyworlds.imgmt.entity.CpAcqgrp">
+        INSERT INTO cp_acqgrp(
+        <include refid="cpAcqgrpBaseColumnSql"/>
+        )VALUES(
+            #{alGroupId},
+            #{alDesc},
+            #{checksum},
+            #{status}
+        )
+    </insert>
+        
+    <delete id="deleteCpAcqgrpByAlGroupId" parameterType="Long">
+        DELETE FROM cp_acqgrp WHERE al_group_id = #{alGroupId}
+    </delete>
+
+    <select id="deleteCpAcqgrpByParams" parameterType="map">
+        DELETE FROM cp_acqgrp
+        <include refid="cpAcqgrpBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpAcqgrp" parameterType="cn.happyworlds.imgmt.entity.CpAcqgrp">
+        UPDATE cp_acqgrp
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(alDesc)">
+                al_desc = #{alDesc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(status)">
+                status = #{status}
+            </if>
+        </set>
+        WHERE al_group_id = #{alGroupId}
+    </update>
+
+    <update id="updateCpAcqgrpByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_acqgrp
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.alDesc)">
+                    al_desc = #{map.alDesc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.status)">
+                    status = #{map.status}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.alGroupIdCondition)">
+                    al_group_id = #{map.alGroupIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.alDescCondition)">
+                    AND al_desc = #{map.alDescCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.statusCondition)">
+                    AND status = #{map.statusCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpAcqgrpByAlGroupId" parameterType="Long" resultMap="cpAcqgrpMap">
+        SELECT
+        <include refid="cpAcqgrpBaseColumnSql"/>
+        FROM cp_acqgrp
+        WHERE al_group_id = #{alGroupId}
+    </select>
+
+    <select id="searchCpAcqgrpByParams" parameterType="map" resultMap="cpAcqgrpMap">
+        SELECT
+        <include refid="cpAcqgrpBaseColumnSql"/>
+        FROM cp_acqgrp
+        <include refid="cpAcqgrpBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpAcqgrp" id="cpAcqgrpMap">
+        <id column="al_group_id" property="alGroupId"/>
+        <result column="al_desc" property="alDesc"/>
+        <result column="checksum" property="checksum"/>
+        <result column="status" property="status"/>
+    </resultMap>
+    
+    
+      <!-- add by Hugh 新增场馆组获取场馆组最大值叠加1 start -->
+    <select id="searchMaxGroupId" parameterType="String" resultMap="MaxGroup">
+    	select ifnull(max(al_group_id)+1,'1000') al_group_id from cp_acqgrp where length(al_group_id)=4
+    </select>
+    
+    <!-- add by Hugh 新增场馆组获取场馆组最大值叠加1返回值 start -->
+	<resultMap type="cn.happyworlds.imgmt.entity.CpAcqgrp" id="MaxGroup">
+		<id column="al_group_id" property="alGroupId"/>
+        <result column="al_group_id" property="alGroupId"/>
+	</resultMap>
+	<!-- add by Hugh 新增场馆组获取场馆组最大值叠加1返回值 end -->
+
+</mapper>

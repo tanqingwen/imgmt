@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.YwChargeMapper">
+
+    <sql id="ywChargeBaseColumnSql">
+        hw_sn,
+        hw_orderid,
+        hw_chargeamount,
+        hw_paytype,
+        hw_tradesn,
+        hw_addtime,
+        hw_paystate,
+        hw_operator_id,
+        hw_cardhosternumber,
+        hw_cardserialno,
+        hw_identityno,
+        hw_identityname,
+        hw_paytime
+    </sql>
+
+    <sql id="ywChargeBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwSn)">
+                    hw_sn = #{map.hwSn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderId)">
+                    AND hw_orderid = #{map.hwOrderId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwChargeAmount)">
+                    AND hw_chargeamount = #{map.hwChargeAmount}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayType)">
+                    AND hw_paytype = #{map.hwPayType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTradeSn)">
+                    AND hw_tradesn = #{map.hwTradeSn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAddTime)">
+                    AND hw_addtime = #{map.hwAddTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayState)">
+                    AND hw_paystate = #{map.hwPayState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOperatorId)">
+                    AND hw_operatorid = #{map.hwOperatorId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwCardHosterNumber)">
+                    AND hw_cardhosternumber = #{map.hwCardHosterNumber}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwCardSerialNo)">
+                    AND hw_cardserialno = #{map.hwCardSerialNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwIdentityNo)">
+                    AND hw_identityno = #{map.hwIdentityNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwIdentityName)">
+                    AND hw_identityname = #{map.hwIdentityName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayTime)">
+                    AND hw_paytime = #{map.hwPayTime}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertYwCharge" parameterType="cn.happyworlds.imgmt.entity.YwCharge">
+        INSERT INTO yw_charge(
+        <include refid="ywChargeBaseColumnSql"/>
+        )VALUES(
+            #{hwSn},
+            #{hwOrderId},
+            #{hwChargeAmount},
+            #{hwPayType},
+            #{hwTradeSn},
+            #{hwAddTime},
+            #{hwPayState},
+            #{hwOperatorId},
+            #{hwCardHosterNumber},
+            #{hwCardSerialNo},
+            #{hwIdentityNo},
+            #{hwIdentityName},
+            #{hwPayTime}
+        )
+    </insert>
+        
+    <delete id="deleteYwChargeByHwSn" parameterType="String">
+        DELETE FROM yw_charge WHERE hw_sn = #{hwSn}
+    </delete>
+
+    <select id="deleteYwChargeByParams" parameterType="map">
+        DELETE FROM yw_charge
+        <include refid="ywChargeBaseWhereSql"/>
+    </select>
+
+    <update id="updateYwCharge" parameterType="cn.happyworlds.imgmt.entity.YwCharge">
+        UPDATE yw_charge
+        <set>
+ 			 	<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwSn)">
+                    hw_sn = #{hwSn},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwOrderId)">
+                    hw_orderid = #{hwOrderId},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwChargeAmount)">
+                    hw_chargeamount = #{hwChargeAmount},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwPayType)">
+                    hw_paytype = #{hwPayType},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwTradeSn)">
+                    hw_tradesn = #{hwTradeSn},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwAddTime)">
+                    hw_addtime = #{hwAddTime},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwPayState)">
+                    hw_paystate = #{hwPayState},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwOperatorId)">
+                    hw_operatorid = #{hwOperatorId},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwCardHosterNumber)">
+                    hw_cardhosternumber = #{hwCardHosterNumber},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwCardSerialNo)">
+                    hw_cardserialno = #{hwCardSerialNo},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwIdentityNo)">
+                    hw_identityno = #{hwIdentityNo},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwIdentityName)">
+                    hw_identityname = #{hwIdentityName},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwPayTime)">
+                    hw_paytime = #{hwPayTime}
+                </if>
+        </set>
+        WHERE hw_sn = #{hwSn}
+    </update>
+
+    <update id="updateYwChargeByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE yw_charge
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwSn)">
+                    hw_sn = #{map.hwSn},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderId)">
+                    hw_orderid = #{map.hwOrderId},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwChargeAmount)">
+                    hw_chargeamount = #{map.hwChargeAmount},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayType)">
+                    hw_paytype = #{map.hwPayType},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTradeSn)">
+                    hw_tradesn = #{map.hwTradeSn},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAddTime)">
+                    hw_addtime = #{map.hwAddTime},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayState)">
+                    hw_paystate = #{map.hwPayState},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOperatorId)">
+                    hw_operatorid = #{map.hwOperatorId},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwCardHosterNumber)">
+                    hw_cardhosternumber = #{map.hwCardHosterNumber},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwCardSerialNo)">
+                    hw_cardserialno = #{map.hwCardSerialNo},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwIdentityNo)">
+                    hw_identityno = #{map.hwIdentityNo},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwIdentityName)">
+                    hw_identityname = #{map.hwIdentityName},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayTime)">
+                    hw_paytime = #{map.hwPayTime}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwSn)">
+                    hw_sn = #{map.hwSn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderId)">
+                    AND hw_orderid = #{map.hwOrderId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwChargeAmount)">
+                    AND hw_chargeamount = #{map.hwChargeAmount}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayType)">
+                    AND hw_paytype = #{map.hwPayType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTradeSn)">
+                    AND hw_tradesn = #{map.hwTradeSn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAddTime)">
+                    AND hw_addtime = #{map.hwAddTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayState)">
+                    AND hw_paystate = #{map.hwPayState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOperatorId)">
+                    AND hw_operatorid = #{map.hwOperatorId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwCardHosterNumber)">
+                    AND hw_cardhosternumber = #{map.hwCardHosterNumber}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwCardSerialNo)">
+                    AND hw_cardserialno = #{map.hwCardSerialNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwIdentityNo)">
+                    AND hw_identityno = #{map.hwIdentityNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwIdentityName)">
+                    AND hw_identityname = #{map.hwIdentityName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayTime)">
+                    AND hw_paytime = #{map.hwPayTime}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchYwChargeByHwSn" parameterType="String" resultMap="ywChargeMap">
+        SELECT
+        <include refid="ywChargeBaseColumnSql"/>
+        FROM yw_charge
+        WHERE hw_sn = #{hwSn}
+    </select>
+
+    <select id="searchYwChargeByParams" parameterType="map" resultMap="ywChargeMap">
+        SELECT
+        <include refid="ywChargeBaseColumnSql"/>
+        FROM yw_charge
+        <include refid="ywChargeBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.YwCharge" id="ywChargeMap">
+        <id column="hw_sn" property="hwSn"/>
+        <result column="hw_orderid" property="hwOrderId"/>
+        <result column="hw_chargeamount" property="hwChargeAmount"/>
+        <result column="hw_paytype" property="hwPayType"/>
+        <result column="hw_tradesn" property="hwTradeSn"/>
+        <result column="hw_addtime" property="hwAddTime"/>
+        <result column="hw_paystate" property="hwPayState"/>
+        <result column="hw_operatorid" property="hwOperatorId"/>
+        <result column="hw_cardhosternumber" property="hwCardHosterNumber"/>
+        <result column="hw_cardSerialno" property="hwCardSerialNo"/>
+        <result column="hw_identityno" property="hwIdentityNo"/>
+        <result column="hw_identityname" property="hwIdentityName"/>
+        <result column="hw_paytime" property="hwPayTime"/>
+    </resultMap>
+
+</mapper>

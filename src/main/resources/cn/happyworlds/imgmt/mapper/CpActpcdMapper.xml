@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpActpcdMapper">
+
+    <sql id="cpActpcdBaseColumnSql">
+        sys_acct_type_code,
+        sys_acct_type_desc,
+        checksum
+    </sql>
+
+    <sql id="cpActpcdBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAcctTypeCode)">
+                    sys_acct_type_code = #{map.sysAcctTypeCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAcctTypeDesc)">
+                    AND sys_acct_type_desc = #{map.sysAcctTypeDesc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpActpcd" parameterType="cn.happyworlds.imgmt.entity.CpActpcd">
+        INSERT INTO cp_actpcd(
+        <include refid="cpActpcdBaseColumnSql"/>
+        )VALUES(
+            #{sysAcctTypeCode},
+            #{sysAcctTypeDesc},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpActpcdBySysAcctTypeCode" parameterType="String">
+        DELETE FROM cp_actpcd WHERE sys_acct_type_code = #{sysAcctTypeCode}
+    </delete>
+
+    <select id="deleteCpActpcdByParams" parameterType="map">
+        DELETE FROM cp_actpcd
+        <include refid="cpActpcdBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpActpcd" parameterType="cn.happyworlds.imgmt.entity.CpActpcd">
+        UPDATE cp_actpcd
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysAcctTypeDesc)">
+                sys_acct_type_desc = #{sysAcctTypeDesc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE sys_acct_type_code = #{sysAcctTypeCode}
+    </update>
+
+    <update id="updateCpActpcdByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_actpcd
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAcctTypeDesc)">
+                    sys_acct_type_desc = #{map.sysAcctTypeDesc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAcctTypeCodeCondition)">
+                    sys_acct_type_code = #{map.sysAcctTypeCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAcctTypeDescCondition)">
+                    AND sys_acct_type_desc = #{map.sysAcctTypeDescCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpActpcdBySysAcctTypeCode" parameterType="String" resultMap="cpActpcdMap">
+        SELECT
+        <include refid="cpActpcdBaseColumnSql"/>
+        FROM cp_actpcd
+        WHERE sys_acct_type_code = #{sysAcctTypeCode}
+    </select>
+
+    <select id="searchCpActpcdByParams" parameterType="map" resultMap="cpActpcdMap">
+        SELECT
+        <include refid="cpActpcdBaseColumnSql"/>
+        FROM cp_actpcd
+        <include refid="cpActpcdBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpActpcd" id="cpActpcdMap">
+        <id column="sys_acct_type_code" property="sysAcctTypeCode"/>
+        <result column="sys_acct_type_desc" property="sysAcctTypeDesc"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

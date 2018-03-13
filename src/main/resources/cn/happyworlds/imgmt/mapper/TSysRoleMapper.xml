@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.TSysRoleMapper">
+
+    <sql id="TSysRoleBaseColumnSql">
+        id,
+        name,
+        functions,
+        status,
+        remark,
+        createdAt,
+        updatedAt,
+        createdBy,
+        updatedBy
+    </sql>
+
+    <sql id="TSysRoleBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.id)">
+                    id = #{map.id}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.name)">
+                    AND name = #{map.name}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.functions)">
+                    AND functions = #{map.functions}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.status)">
+                    AND status = #{map.status}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.remark)">
+                    AND remark = #{map.remark}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.createdAt)">
+                    AND createdAt = #{map.createdAt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.updatedAt)">
+                    AND updatedAt = #{map.updatedAt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.createdBy)">
+                    AND createdBy = #{map.createdBy}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.updatedBy)">
+                    AND updatedBy = #{map.updatedBy}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertTSysRole" parameterType="cn.happyworlds.imgmt.entity.TSysRole">
+        INSERT INTO t_sys_role(
+        <include refid="TSysRoleBaseColumnSql"/>
+        )VALUES(
+            #{id},
+            #{name},
+            #{functions},
+            #{status},
+            #{remark},
+            #{createdAt},
+            #{updatedAt},
+            #{createdBy},
+            #{updatedBy}
+        )
+    </insert>
+
+    
+    <delete id="deleteTSysRoleById" parameterType="String">
+        DELETE FROM t_sys_role WHERE id = #{id}
+    </delete>
+
+    <update id="updateTSysRole" parameterType="cn.happyworlds.imgmt.entity.TSysRole">
+        UPDATE t_sys_role
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(name)">
+                name = #{name} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(functions)">
+                functions = #{functions} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(status)">
+                status = #{status} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(remark)">
+                remark = #{remark} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(createdAt)">
+                createdAt = #{createdAt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(updatedAt)">
+                updatedAt = #{updatedAt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(createdBy)">
+                createdBy = #{createdBy} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(updatedBy)">
+                updatedBy = #{updatedBy} ,
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="searchTSysRoleById" parameterType="String" resultMap="TSysRoleMap">
+        SELECT
+        <include refid="TSysRoleBaseColumnSql"/>
+        FROM t_sys_role
+        WHERE id = #{id}
+    </select>
+    
+    <!-- 根据角色名查询 -->
+    <select id="searchTSysRoleByIdAndName" parameterType="String" resultMap="TSysRoleMap">
+        SELECT
+        <include refid="TSysRoleBaseColumnSql"/>
+        FROM t_sys_role
+        WHERE name = #{name}
+    </select>
+
+    <select id="searchTSysRoleByParams" parameterType="map" resultMap="TSysRoleMap">
+        SELECT
+        <include refid="TSysRoleBaseColumnSql"/>
+        FROM t_sys_role
+        <include refid="TSysRoleBaseWhereSql"/>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.TSysRole" id="TSysRoleMap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="functions" property="functions"/>
+        <result column="status" property="status"/>
+        <result column="remark" property="remark"/>
+        <result column="createdAt" property="createdAt"/>
+        <result column="updatedAt" property="updatedAt"/>
+        <result column="createdBy" property="createdBy"/>
+        <result column="updatedBy" property="updatedBy"/>
+    </resultMap>
+
+</mapper>

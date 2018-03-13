@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.YwRefundMapper">
+
+    <sql id="ywRefundBaseColumnSql">
+        hw_id,
+        hw_member_id,
+        hw_mobile_phone,
+        hw_refund_amount,
+        hw_bank_cardno,
+        hw_name,
+        hw_bank,
+        hw_refund_type,
+        hw_apply_time,
+        hw_execute_time,
+        hw_state,
+        hw_abnormal_info
+    </sql>
+
+    <sql id="ywRefundBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwId)">
+                    hw_id = #{map.hwId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberId)">
+                    AND hw_member_id = #{map.hwMemberId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMobilePhone)">
+                    AND hw_mobile_phone = #{map.hwMobilePhone}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwRefundAmount)">
+                    AND hw_refund_amount = #{map.hwRefundAmount}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwBankCardno)">
+                    AND hw_bank_cardno = #{map.hwBankCardno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwName)">
+                    AND hw_name = #{map.hwName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwBank)">
+                    AND hw_bank = #{map.hwBank}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwRefundType)">
+                    AND hw_refund_type = #{map.hwRefundType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwApplyTime)">
+                    AND hw_apply_time = #{map.hwApplyTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwExecuteTime)">
+                    AND hw_execute_time = #{map.hwExecuteTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwState)">
+                    AND hw_state = #{map.hwState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAbnormalInfo)">
+                    AND hw_abnormal_info = #{map.hwAbnormalInfo}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertYwRefund" parameterType="cn.happyworlds.imgmt.entity.YwRefund">
+        INSERT INTO yw_refund(
+        <include refid="ywRefundBaseColumnSql"/>
+        )VALUES(
+            #{hwId},
+            #{hwMemberId},
+            #{hwMobilePhone},
+            #{hwRefundAmount},
+            #{hwBankCardno},
+            #{hwName},
+            #{hwBank},
+            #{hwRefundType},
+            #{hwApplyTime},
+            #{hwExecuteTime},
+            #{hwState},
+            #{hwAbnormalInfo}
+        )
+    </insert>
+        
+    <delete id="deleteYwRefundByHwId" parameterType="Integer">
+        DELETE FROM yw_refund WHERE hw_id = #{hwId}
+    </delete>
+
+    <select id="deleteYwRefundByParams" parameterType="map">
+        DELETE FROM yw_refund
+        <include refid="ywRefundBaseWhereSql"/>
+    </select>
+
+    <update id="updateYwRefund" parameterType="cn.happyworlds.imgmt.entity.YwRefund">
+        UPDATE yw_refund
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwMemberId)">
+                hw_member_id = #{hwMemberId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwMobilePhone)">
+                hw_mobile_phone = #{hwMobilePhone} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwRefundAmount)">
+                hw_refund_amount = #{hwRefundAmount} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwBankCardno)">
+                hw_bank_cardno = #{hwBankCardno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwName)">
+                hw_name = #{hwName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwBank)">
+                hw_bank = #{hwBank} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwRefundType)">
+                hw_refund_type = #{hwRefundType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwApplyTime)">
+                hw_apply_time = #{hwApplyTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwExecuteTime)">
+                hw_execute_time = #{hwExecuteTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwState)">
+                hw_state = #{hwState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwAbnormalInfo)">
+                hw_abnormal_info = #{hwAbnormalInfo}
+            </if>
+        </set>
+        WHERE hw_id = #{hwId}
+    </update>
+
+    <update id="updateYwRefundByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE yw_refund
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberId)">
+                    hw_member_id = #{map.hwMemberId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMobilePhone)">
+                    hw_mobile_phone = #{map.hwMobilePhone} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwRefundAmount)">
+                    hw_refund_amount = #{map.hwRefundAmount} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwBankCardno)">
+                    hw_bank_cardno = #{map.hwBankCardno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwName)">
+                    hw_name = #{map.hwName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwBank)">
+                    hw_bank = #{map.hwBank} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwRefundType)">
+                    hw_refund_type = #{map.hwRefundType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwApplyTime)">
+                    hw_apply_time = #{map.hwApplyTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwExecuteTime)">
+                    hw_execute_time = #{map.hwExecuteTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwState)">
+                    hw_state = #{map.hwState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAbnormalInfo)">
+                    hw_abnormal_info = #{map.hwAbnormalInfo}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwIdCondition)">
+                    hw_id = #{map.hwIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberIdCondition)">
+                    AND hw_member_id = #{map.hwMemberIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMobilePhoneCondition)">
+                    AND hw_mobile_phone = #{map.hwMobilePhoneCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwRefundAmountCondition)">
+                    AND hw_refund_amount = #{map.hwRefundAmountCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwBankCardnoCondition)">
+                    AND hw_bank_cardno = #{map.hwBankCardnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwNameCondition)">
+                    AND hw_name = #{map.hwNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwBankCondition)">
+                    AND hw_bank = #{map.hwBankCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwRefundTypeCondition)">
+                    AND hw_refund_type = #{map.hwRefundTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwApplyTimeCondition)">
+                    AND hw_apply_time = #{map.hwApplyTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwExecuteTimeCondition)">
+                    AND hw_execute_time = #{map.hwExecuteTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwStateCondition)">
+                    AND hw_state = #{map.hwStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAbnormalInfoCondition)">
+                    AND hw_abnormal_info = #{map.hwAbnormalInfoCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchYwRefundByHwId" parameterType="Integer" resultMap="ywRefundMap">
+        SELECT
+        <include refid="ywRefundBaseColumnSql"/>
+        FROM yw_refund
+        WHERE hw_id = #{hwId}
+    </select>
+
+    <select id="searchYwRefundByParams" parameterType="map" resultMap="ywRefundMap">
+        SELECT
+        <include refid="ywRefundBaseColumnSql"/>
+        FROM yw_refund
+        <include refid="ywRefundBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.YwRefund" id="ywRefundMap">
+        <id column="hw_id" property="hwId"/>
+        <result column="hw_member_id" property="hwMemberId"/>
+        <result column="hw_mobile_phone" property="hwMobilePhone"/>
+        <result column="hw_refund_amount" property="hwRefundAmount"/>
+        <result column="hw_bank_cardno" property="hwBankCardno"/>
+        <result column="hw_name" property="hwName"/>
+        <result column="hw_bank" property="hwBank"/>
+        <result column="hw_refund_type" property="hwRefundType"/>
+        <result column="hw_apply_time" property="hwApplyTime"/>
+        <result column="hw_execute_time" property="hwExecuteTime"/>
+        <result column="hw_state" property="hwState"/>
+        <result column="hw_abnormal_info" property="hwAbnormalInfo"/>
+    </resultMap>
+
+</mapper>

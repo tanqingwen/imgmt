@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.SerialMapper">
+
+    <sql id="serialBaseColumnSql">
+        id,
+        name
+    </sql>
+
+    <sql id="serialBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.id)">
+                    id = #{map.id}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.name)">
+                    AND name = #{map.name}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertSerial" parameterType="cn.happyworlds.imgmt.entity.Serial">
+        INSERT INTO serial(
+        <include refid="serialBaseColumnSql"/>
+        )VALUES(
+            #{id},
+            #{name}
+        )
+    </insert>
+        
+    <delete id="deleteSerialById" parameterType="Integer">
+        DELETE FROM serial WHERE id = #{id}
+    </delete>
+
+    <select id="deleteSerialByParams" parameterType="map">
+        DELETE FROM serial
+        <include refid="serialBaseWhereSql"/>
+    </select>
+
+    <update id="updateSerial" parameterType="cn.happyworlds.imgmt.entity.Serial">
+        UPDATE serial
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(name)">
+                name = #{name}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateSerialByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE serial
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.name)">
+                    name = #{map.name}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idCondition)">
+                    id = #{map.idCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nameCondition)">
+                    AND name = #{map.nameCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchSerialById" parameterType="Integer" resultMap="serialMap">
+        SELECT
+        <include refid="serialBaseColumnSql"/>
+        FROM serial
+        WHERE id = #{id}
+    </select>
+
+    <select id="searchSerialByParams" parameterType="map" resultMap="serialMap">
+        SELECT
+        <include refid="serialBaseColumnSql"/>
+        FROM serial
+        <include refid="serialBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+ 
+	<!--dual  -->  
+	<select id="searchNextSerialByParams" parameterType="map" resultMap="serialMap">
+        select nextserial(select name from serial) from dual
+    </select>	
+	
+	
+    <resultMap type="cn.happyworlds.imgmt.entity.Serial" id="serialMap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+</mapper>

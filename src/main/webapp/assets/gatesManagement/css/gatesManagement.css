@@ -1,0 +1,192 @@
+
+.content{
+	padding-bottom: 40px;
+}
+.content-wrapper{
+	padding-bottom: 20px;
+}
+.tip-img{
+    height: 202px;
+    width: 78px;
+    background-image: url(../img/content-side-bg.png);
+}
+.tip-img p{
+    width: 20px;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 20px;
+    line-height: 30px;
+    margin-top: 40px;
+}
+.merchantUpdate .tip-img{
+    height: 260px;
+    width: 78px;
+    background-image: url(../img/side.png);
+}
+
+.submit-group{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    padding: 0;
+    
+}
+.marginBottom{
+  margin-bottom:20px;
+}
+select {
+    /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+    border: solid 1px #000;
+
+    /*很关键：将默认的select选择框样式清除*/
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+
+    /*在选择框的最右侧中间显示小箭头图片*/
+    background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+
+
+    /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+    padding-right: 14px;
+}
+select::-ms-expand {
+    display: none;
+}
+.form-group select{
+    width: 290px;
+    display: inline-block;
+    border: 1px solid lightblue;
+    height: 40px;
+    border-radius: 5px;
+        text-indent: 10px;
+ 
+}
+.form-group select:focus{
+	border: 1px solid #3c8dbc;
+	outline: none;
+}
+.form-group>div{
+	display: flex;
+	align-items: center;
+}
+.form-horizontal h3{
+    margin-bottom: 25px;
+}
+.form-group .input-group{
+   /*  width: 170px; */
+     display: -webkit-inline-box;
+     
+    
+}
+.input-group .input-group-addon{
+	background-color: rgb(238,238,238);
+	border-radius: 4px 0 0 4px;
+	width: 50px;
+    height: 40px;
+    line-height: 29px;
+    display:block;
+}
+.color-red{
+    color: red !important;
+}
+label{
+	display:inline-block;
+    width: 13em;
+    text-align: right;
+    margin-right: 8px;
+    font-weight: 700;
+    font-size: 14px;
+}
+.btn-size{
+     background-color: #00a65a;
+ }
+.ly-input-group{
+    width: 220px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.site-manage-title{
+    display: flex;
+    justify-content: space-between;
+}
+.add-btn{
+    display: flex;
+    align-items: center;
+    color: rgb(71,159,222);
+    background-color: #fff;
+    font-size: 24px;
+}
+.add-btn:hover,.add-btn:focus,.add-btn:active:focus{
+    color: rgb(71,159,222);
+}
+.add-btn:active{
+	box-shadow: none;
+}
+.icon-add{
+    height: 24px;
+    line-height: 22px;
+}
+.form-horizontal .has-feedback .form-control-feedback {
+    right: 23px;
+    top: 5px;
+}
+.bv-form .help-block {
+    margin-bottom: 0;
+    text-align: right;
+}
+.merchantAdd .form-group .input-group{
+	width:220px;
+	display:inline-block;
+	vertical-align:middle;
+}
+.merchantAdd .form-group select{
+	width:220px;
+}
+.venueAddNew .ly-input-group{
+    width: 290px;
+}
+ .public label{    
+			width: 8em;
+			text-align:right;
+			height:40px;
+			line-height:40px;
+			float:left;
+			vertical-align:middle;
+			display:inline;
+			}
+		.public .input-group{width:290px;} 
+		.public .form-group .col-md-6:last-of-type label{
+			width:8em;
+		}
+		.public .form-group .col-md-6:first-of-type label{
+			width: 8em;
+		}
+		.public .col-lg-6{
+			padding: 0 15px;
+		}
+		.public .ly-input-group select{
+		    width: 100px;
+		}
+		 .public .form-control{width:290px;} 
+		.public .form-horizontal .has-feedback .form-control-feedback{
+			top:1px;
+			right:30px;
+			}
+				
+		.public .has-feedback label~.form-control-feedback{
+			 top:0;
+		 }
+		 .public .help-block{
+		  	text-align:right;
+		  	}
+		  .publicAdd  .form-control{width:290px;} 
+           .publicAdd  .form-horizontal .has-feedback .form-control-feedback{
+				top:1px;
+				right:30px;
+				}
+		  	.fr{
+		  		float:right;
+		  	}
+		  	.input-group input{width:240px;}

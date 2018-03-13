@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpPosprmMapper">
+
+    <sql id="cpPosprmBaseColumnSql">
+        pp_brand,
+        pp_version,
+        pp_type,
+        pp_seq,
+        pp_tag_name,
+        pp_tag_seq,
+        pp_tag_length,
+        pp_tag_data,
+        pp_tag_default,
+        pp_disp_seq,
+        pp_disp_ind,
+        checksum
+    </sql>
+
+    <sql id="cpPosprmBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppBrand)">
+                    pp_brand = #{map.ppBrand}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppVersion)">
+                    AND pp_version = #{map.ppVersion}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppType)">
+                    AND pp_type = #{map.ppType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppSeq)">
+                    AND pp_seq = #{map.ppSeq}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTagName)">
+                    AND pp_tag_name = #{map.ppTagName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTagSeq)">
+                    AND pp_tag_seq = #{map.ppTagSeq}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTagLength)">
+                    AND pp_tag_length = #{map.ppTagLength}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTagData)">
+                    AND pp_tag_data = #{map.ppTagData}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTagDefault)">
+                    AND pp_tag_default = #{map.ppTagDefault}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppDispSeq)">
+                    AND pp_disp_seq = #{map.ppDispSeq}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppDispInd)">
+                    AND pp_disp_ind = #{map.ppDispInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpPosprm" parameterType="cn.happyworlds.imgmt.entity.CpPosprm">
+        INSERT INTO cp_posprm(
+        <include refid="cpPosprmBaseColumnSql"/>
+        )VALUES(
+            #{ppBrand},
+            #{ppVersion},
+            #{ppType},
+            #{ppSeq},
+            #{ppTagName},
+            #{ppTagSeq},
+            #{ppTagLength},
+            #{ppTagData},
+            #{ppTagDefault},
+            #{ppDispSeq},
+            #{ppDispInd},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpPosprmByPpBrand" parameterType="String">
+        DELETE FROM cp_posprm WHERE pp_brand = #{ppBrand}
+    </delete>
+
+    <select id="deleteCpPosprmByParams" parameterType="map">
+        DELETE FROM cp_posprm
+        <include refid="cpPosprmBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpPosprm" parameterType="cn.happyworlds.imgmt.entity.CpPosprm">
+        UPDATE cp_posprm
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ppVersion)">
+                pp_version = #{ppVersion} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ppType)">
+                pp_type = #{ppType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ppSeq)">
+                pp_seq = #{ppSeq} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ppTagName)">
+                pp_tag_name = #{ppTagName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ppTagSeq)">
+                pp_tag_seq = #{ppTagSeq} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ppTagLength)">
+                pp_tag_length = #{ppTagLength} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ppTagData)">
+                pp_tag_data = #{ppTagData} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ppTagDefault)">
+                pp_tag_default = #{ppTagDefault} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ppDispSeq)">
+                pp_disp_seq = #{ppDispSeq} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ppDispInd)">
+                pp_disp_ind = #{ppDispInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE pp_brand = #{ppBrand}
+    </update>
+
+    <update id="updateCpPosprmByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_posprm
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppVersion)">
+                    pp_version = #{map.ppVersion} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppType)">
+                    pp_type = #{map.ppType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppSeq)">
+                    pp_seq = #{map.ppSeq} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTagName)">
+                    pp_tag_name = #{map.ppTagName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTagSeq)">
+                    pp_tag_seq = #{map.ppTagSeq} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTagLength)">
+                    pp_tag_length = #{map.ppTagLength} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTagData)">
+                    pp_tag_data = #{map.ppTagData} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTagDefault)">
+                    pp_tag_default = #{map.ppTagDefault} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppDispSeq)">
+                    pp_disp_seq = #{map.ppDispSeq} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppDispInd)">
+                    pp_disp_ind = #{map.ppDispInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppBrandCondition)">
+                    pp_brand = #{map.ppBrandCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppVersionCondition)">
+                    AND pp_version = #{map.ppVersionCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTypeCondition)">
+                    AND pp_type = #{map.ppTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppSeqCondition)">
+                    AND pp_seq = #{map.ppSeqCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTagNameCondition)">
+                    AND pp_tag_name = #{map.ppTagNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTagSeqCondition)">
+                    AND pp_tag_seq = #{map.ppTagSeqCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTagLengthCondition)">
+                    AND pp_tag_length = #{map.ppTagLengthCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTagDataCondition)">
+                    AND pp_tag_data = #{map.ppTagDataCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppTagDefaultCondition)">
+                    AND pp_tag_default = #{map.ppTagDefaultCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppDispSeqCondition)">
+                    AND pp_disp_seq = #{map.ppDispSeqCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ppDispIndCondition)">
+                    AND pp_disp_ind = #{map.ppDispIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpPosprmByPpBrand" parameterType="String" resultMap="cpPosprmMap">
+        SELECT
+        <include refid="cpPosprmBaseColumnSql"/>
+        FROM cp_posprm
+        WHERE pp_brand = #{ppBrand}
+    </select>
+
+    <select id="searchCpPosprmByParams" parameterType="map" resultMap="cpPosprmMap">
+        SELECT
+        <include refid="cpPosprmBaseColumnSql"/>
+        FROM cp_posprm
+        <include refid="cpPosprmBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+ 	
+ 	<select id="findAllCpPosprmPpBrand" resultMap="cpPosprmMap">
+ 		SELECT   distinct(pp_brand) pp_brand 	FROM cp_posprm
+ 	</select>
+	
+    <resultMap type="cn.happyworlds.imgmt.entity.CpPosprm" id="cpPosprmMap">
+        <id column="pp_brand" property="ppBrand"/>
+        <result column="pp_version" property="ppVersion"/>
+        <result column="pp_type" property="ppType"/>
+        <result column="pp_seq" property="ppSeq"/>
+        <result column="pp_tag_name" property="ppTagName"/>
+        <result column="pp_tag_seq" property="ppTagSeq"/>
+        <result column="pp_tag_length" property="ppTagLength"/>
+        <result column="pp_tag_data" property="ppTagData"/>
+        <result column="pp_tag_default" property="ppTagDefault"/>
+        <result column="pp_disp_seq" property="ppDispSeq"/>
+        <result column="pp_disp_ind" property="ppDispInd"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

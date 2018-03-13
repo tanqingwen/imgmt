@@ -1,0 +1,47 @@
+@charset "utf-8";
+html {
+ 	width: 100%;
+ 	overflow-x: hidden;
+ 	overflow-x: -moz-hidden-unscrollable;
+ 	font-size: 20px;
+ 	min-width: 320px;
+ 	max-width: 640px;
+ 	margin: 0 auto;
+ }
+.header{
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	background: #00A65A;
+	color: #fff;
+	text-align: center;
+}
+.placeholder{
+	height: 3.6rem;
+}
+.title{
+	font-size: 1.5rem;
+	padding: .8rem;
+	display: inline-block;
+}
+.pre{
+	position: absolute;
+	top:0;
+	left:0;
+	font-size: 1rem;
+	margin:.8rem 1rem;
+}
+.content ul li{
+	width: 40%;
+	height: 10%;
+	margin: 3rem auto;
+	text-align: center;
+	font-size: 1.5rem;
+}
+.shift1{
+	color:#44A0DF;
+}
+.shift2{
+	color:#F7AB00;
+}

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.MIdtypeDictMapper">
+
+    <sql id="MIdtypeDictBaseColumnSql">
+        idtype_id,
+        idtype_desc,
+        idtype_form,
+        idtype_length,
+        checksum
+    </sql>
+
+    <sql id="MIdtypeDictBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idtypeId)">
+                    idtype_id = #{map.idtypeId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idtypeDesc)">
+                    AND idtype_desc = #{map.idtypeDesc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idtypeForm)">
+                    AND idtype_form = #{map.idtypeForm}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idtypeLength)">
+                    AND idtype_length = #{map.idtypeLength}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertMIdtypeDict" parameterType="cn.happyworlds.imgmt.entity.MIdtypeDict">
+        INSERT INTO m_idtype_dict(
+        <include refid="MIdtypeDictBaseColumnSql"/>
+        )VALUES(
+            #{idtypeId},
+            #{idtypeDesc},
+            #{idtypeForm},
+            #{idtypeLength},
+            #{checksum}
+        )
+    </insert>
+
+    
+    <delete id="deleteMIdtypeDictByIdtypeId" parameterType="String">
+        DELETE FROM m_idtype_dict WHERE idtype_id = #{idtypeId}
+    </delete>
+
+    <update id="updateMIdtypeDict" parameterType="cn.happyworlds.imgmt.entity.MIdtypeDict">
+        UPDATE m_idtype_dict
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(idtypeDesc)">
+                idtype_desc = #{idtypeDesc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(idtypeForm)">
+                idtype_form = #{idtypeForm} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(idtypeLength)">
+                idtype_length = #{idtypeLength} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum} ,
+            </if>
+        </set>
+        WHERE idtype_id = #{idtypeId}
+    </update>
+
+    <select id="searchMIdtypeDictByIdtypeId" parameterType="String" resultMap="MIdtypeDictMap">
+        SELECT
+        <include refid="MIdtypeDictBaseColumnSql"/>
+        FROM m_idtype_dict
+        WHERE idtype_id = #{idtypeId}
+    </select>
+
+    <select id="searchMIdtypeDictByParams" parameterType="map" resultMap="MIdtypeDictMap">
+        SELECT
+        <include refid="MIdtypeDictBaseColumnSql"/>
+        FROM m_idtype_dict
+        <include refid="MIdtypeDictBaseWhereSql"/>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.MIdtypeDict" id="MIdtypeDictMap">
+        <id column="idtype_id" property="idtypeId"/>
+        <result column="idtype_desc" property="idtypeDesc"/>
+        <result column="idtype_form" property="idtypeForm"/>
+        <result column="idtype_length" property="idtypeLength"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

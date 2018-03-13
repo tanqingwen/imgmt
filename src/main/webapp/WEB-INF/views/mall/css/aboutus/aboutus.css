@@ -1,0 +1,237 @@
+.bg-about{
+	width:100%;
+	background:#F5F5F5;
+}
+.aboutus-top{
+	position:relative;
+	overflow: hidden;
+}
+.aboutus-deer{
+	position: absolute;
+	height:50%;
+	width: 40%;
+	top:25%;
+	left:25%;
+	background:url(../../img/aboutus/aboutus-deer.png) no-repeat;
+	background-size:contain;
+	animation:aboutus-deer 1s;
+	-moz-animation:aboutus-deer 1s; /* Firefox */
+	-webkit-animation:aboutus-deer 1s; /* Safari and Chrome */
+	-o-animation:aboutus-deer 1s; /* Opera */
+	}
+	@keyframes aboutus-deer{
+	0%{background:url(../../img/aboutus/aboutus-deer.png) no-repeat;left:5%; top:25%}
+	}
+	-webkit-@keyframes aboutus-deer
+	{
+	0%{background:url(../../img/aboutus/aboutus-deer.png) no-repeat;left:15%; top:25%}
+	}
+	-ms-@keyframes aboutus-deer
+	{
+	0%{background:url(../../img/aboutus/aboutus-deer.png) no-repeat;left:25%; top:25%}
+	}
+	-moz-@keyframes aboutus-deer
+	{
+	0%{background:url(../../img/aboutus/aboutus-deer.png) no-repeat;left:58%; top:37%}
+	}
+	-o-@keyframes aboutus-deer
+	{
+	0%{background:url(../../img/aboutus/aboutus-deer.png) no-repeat;left:58%; top:37%}
+	}
+	
+
+.aboutus-lion{
+	position: absolute;
+	height:35%;
+	width:40%;
+	top:55%;
+	left:45%;
+	z-index:4;
+	background:url(../../img/aboutus/about-lion.png) no-repeat;
+	background-size:contain;
+	animation:aboutus-lion 1.5s;
+	-moz-animation:aboutus-lion 1.5s; /* Firefox */
+	-webkit-animation:aboutus-lion 1.5s; /* Safari and Chrome */
+	-o-animation:aboutus-lion 1.5s; /* Opera */
+	}
+	@keyframes aboutus-lion{
+	0%{background:url(../../img/aboutus/about-lion.png) no-repeat;left:45%; top:110%}
+	}
+	-webkit-@keyframes aboutus-lion
+	{
+	0%{background:url(../../img/aboutus/about-lion.png) no-repeat;left:45%; top:110%}
+	}
+	-ms-@keyframes aboutus-lion
+	{
+	0%{background:url(../../img/aboutus/about-lion.png) no-repeat;left:45%; top:70%}
+	}
+	-moz-@keyframes aboutus-lion
+	{
+	0%{background:url(../../img/aboutus/about-lion.png) no-repeat;left:45%; top:70%}
+	}
+	-o-@keyframes aboutus-lion
+	{
+	0%{background:url(../../img/aboutus/about-lion.png) no-repeat;left:45%; top:80%}
+	}
+	
+	
+
+.aboutus-title{
+	position: absolute;
+	height:44%;
+	width: 30%;
+	top:17%;
+	left:45%;
+	background:url(../../img/aboutus/aboutus-title.png) no-repeat;
+	background-size:cover;
+	animation:aboutus-title 1s;
+	-moz-animation:aboutus-title 1s; /* Firefox */
+	-webkit-animation:aboutus-title 1s; /* Safari and Chrome */
+	-o-animation:aboutus-title 1s; /* Opera */
+	}
+	@keyframes aboutus-title{
+	0%{background:url(../../img/aboutus/aboutus-title.png) no-repeat;left:45%; top:-10%}
+	}
+	-webkit-@keyframes aboutus-lion
+	{
+	0%{background:url(../../img/aboutus/aboutus-title.png) no-repeat;left:45%; top:-10%}
+	}
+	-ms-@keyframes aboutus-lion
+	{
+	0%{background:url(../../img/aboutus/aboutus-title.png) no-repeat;left:45%; top:-10%}
+	}
+	-moz-@keyframes aboutus-lion
+	{
+	0%{background:url(../../img/aboutus/aboutus-title.png) no-repeat;left:45%; top:-10%}
+	}
+	-o-@keyframes aboutus-lion
+	{
+	0%{background:url(../../img/aboutus/aboutus-title.png) no-repeat;left:45%; top:-10%}
+	}
+	
+
+.about-nav{
+	width:1000px;
+	height:55px;
+	margin:0 auto;
+}
+.about-nav li{
+	float:left;
+}
+.about-nav li a{
+	display: block;
+	width:250px;
+	height:55px;
+	font-size:14px;
+	background:#e8e8e8;
+	text-align: center;
+	line-height:55px;
+	color:#333333;
+	font-family: "微软雅黑";
+}
+.about-nav li a:hover{
+	background:#06a9f3;
+	color:white;
+}
+
+.corporate-style{
+	width: 1000px;
+	margin:0 auto;
+	padding-bottom: 20px;
+}
+
+.corporate-style h5{
+	width:1000px;
+	height:40px;
+	line-height:40px;
+	color:#999999;
+	border-bottom: 1px solid lightgray;
+	margin-bottom: 20px;;
+}
+.corporate-nav{
+	width:1000px;
+	height:320px;
+	position:relative;
+}
+.corporate-nav ul li{
+	float:left;
+}
+.corporate-nav li a{
+	width:498px;
+	height:55px;
+	line-height:55px;
+	font-size:18px;
+	display: block;
+	background:#F5F5F5;
+}
+.corporate-nav li a strong{
+	display: block;
+	text-align: center;
+}
+.corporate-nav li a p{
+	font-size:14px;
+	width:100%;
+	height:210px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding-bottom: 10px;
+}
+.corporate-active{
+	width:498px;
+	height:55px;
+	line-height:55px;
+	display: block;
+	border-top:3px solid #06a9f3;
+	border-bottom: none;
+	border-left:1px solid #06a9f3;
+	border-right:1px solid #06a9f3;
+	color:#06A9F3;
+}
+.nocorporate-active{
+	width:498px;
+	height:55px;
+	line-height:55px;
+	display: block;
+	border-top:none;
+	border-bottom: 1px solid #06a9f3;
+	border-left:none;
+	border-right:none;
+	color:#999999;
+	background:#333333;
+}
+.active-message{
+	width:1000px;
+
+	text-indent: 20px;
+	color:#999999;
+	line-height:35px;
+	position:absolute;
+	top:50px;
+	left:0;
+	display: block;
+}
+.active-message h3{
+	text-align: left;
+	margin:15px 0;
+	font-size:16px;
+	color:#666666;
+}
+
+.noctive-message{
+	width:1000px;
+
+	text-indent: 20px;
+	color:#999999;
+	line-height:35px;
+	position:absolute;
+	top:50px;
+	left:0;
+	display: none;
+}
+
+.noactive-message h3{
+	text-align: left;
+	margin:15px 0;
+	font-size:16px;
+	color:#666666;
+}

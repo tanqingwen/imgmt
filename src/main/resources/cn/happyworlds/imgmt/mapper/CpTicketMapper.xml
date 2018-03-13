@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpTicketMapper">
+
+    <sql id="cpTicketBaseColumnSql">
+        tk_ticket_id,
+        tk_card_no,
+        tk_ticket_type,
+        tk_effective_date,
+        tk_expire_date,
+        tk_active_date,
+        tk_retrive_date,
+        checksum,
+        tk_status
+    </sql>
+
+    <sql id="cpTicketBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkTicketId)">
+                    tk_ticket_id = #{map.tkTicketId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkCardNo)">
+                    AND tk_card_no = #{map.tkCardNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkTicketType)">
+                    AND tk_ticket_type = #{map.tkTicketType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkEffectiveDate)">
+                    AND tk_effective_date = #{map.tkEffectiveDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkExpireDate)">
+                    AND tk_expire_date = #{map.tkExpireDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkActiveDate)">
+                    AND tk_active_date = #{map.tkActiveDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkRetriveDate)">
+                    AND tk_retrive_date = #{map.tkRetriveDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkStatus)">
+                    AND tk_status = #{map.tkStatus}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpTicket" parameterType="cn.happyworlds.imgmt.entity.CpTicket">
+        INSERT INTO cp_ticket(
+        <include refid="cpTicketBaseColumnSql"/>
+        )VALUES(
+            #{tkTicketId},
+            #{tkCardNo},
+            #{tkTicketType},
+            #{tkEffectiveDate},
+            #{tkExpireDate},
+            #{tkActiveDate},
+            #{tkRetriveDate},
+            #{checksum},
+            #{tkStatus}
+        )
+    </insert>
+        
+    <delete id="deleteCpTicketByTkTicketId" parameterType="Integer">
+        DELETE FROM cp_ticket WHERE tk_ticket_id = #{tkTicketId}
+    </delete>
+
+    <select id="deleteCpTicketByParams" parameterType="map">
+        DELETE FROM cp_ticket
+        <include refid="cpTicketBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpTicket" parameterType="cn.happyworlds.imgmt.entity.CpTicket">
+        UPDATE cp_ticket
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tkCardNo)">
+                tk_card_no = #{tkCardNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tkTicketType)">
+                tk_ticket_type = #{tkTicketType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tkEffectiveDate)">
+                tk_effective_date = #{tkEffectiveDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tkExpireDate)">
+                tk_expire_date = #{tkExpireDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tkActiveDate)">
+                tk_active_date = #{tkActiveDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tkRetriveDate)">
+                tk_retrive_date = #{tkRetriveDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum},
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tkStatus)">
+                tk_status = #{tkStatus}
+            </if>
+        </set>
+        WHERE tk_ticket_id = #{tkTicketId}
+    </update>
+
+    <update id="updateCpTicketByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_ticket
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkCardNo)">
+                    tk_card_no = #{map.tkCardNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkTicketType)">
+                    tk_ticket_type = #{map.tkTicketType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkEffectiveDate)">
+                    tk_effective_date = #{map.tkEffectiveDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkExpireDate)">
+                    tk_expire_date = #{map.tkExpireDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkActiveDate)">
+                    tk_active_date = #{map.tkActiveDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkRetriveDate)">
+                    tk_retrive_date = #{map.tkRetriveDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkStatus)">
+                    tk_status = #{map.tkStatus}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkTicketIdCondition)">
+                    tk_ticket_id = #{map.tkTicketIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkCardNoCondition)">
+                    AND tk_card_no = #{map.tkCardNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkTicketTypeCondition)">
+                    AND tk_ticket_type = #{map.tkTicketTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkEffectiveDateCondition)">
+                    AND tk_effective_date = #{map.tkEffectiveDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkExpireDateCondition)">
+                    AND tk_expire_date = #{map.tkExpireDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkActiveDateCondition)">
+                    AND tk_active_date = #{map.tkActiveDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkRetriveDateCondition)">
+                    AND tk_retrive_date = #{map.tkRetriveDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkStatusCondition)">
+                    AND tk_status = #{map.tkStatusCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpTicketByTkTicketId" parameterType="Long" resultMap="cpTicketMap">
+        SELECT
+        <include refid="cpTicketBaseColumnSql"/>
+        FROM cp_ticket
+        WHERE tk_ticket_id = #{tkTicketId}
+    </select>
+
+    <select id="searchCpTicketByParams" parameterType="map" resultMap="cpTicketMap">
+        SELECT
+        <include refid="cpTicketBaseColumnSql"/>
+        FROM cp_ticket
+        <include refid="cpTicketBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpTicket" id="cpTicketMap">
+        <id column="tk_ticket_id" property="tkTicketId"/>
+        <result column="tk_card_no" property="tkCardNo"/>
+        <result column="tk_ticket_type" property="tkTicketType"/>
+        <result column="tk_effective_date" property="tkEffectiveDate"/>
+        <result column="tk_expire_date" property="tkExpireDate"/>
+        <result column="tk_active_date" property="tkActiveDate"/>
+        <result column="tk_retrive_date" property="tkRetriveDate"/>
+        <result column="checksum" property="checksum"/>
+        <result column="tk_status" property="tkStatus"/>
+    </resultMap>
+
+</mapper>

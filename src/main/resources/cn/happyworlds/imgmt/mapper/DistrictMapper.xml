@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.DistrictMapper">
+
+    <sql id="districtBaseColumnSql">
+        id,
+        name,
+        parent_id,
+        initial,
+        initials,
+        pinyin,
+        suffix,
+        code,
+        ordera
+    </sql>
+
+    <sql id="districtBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.id)">
+                    id = #{map.id}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.name)">
+                    AND name = #{map.name}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.parentId)">
+                    AND parent_id = #{map.parentId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.initial)">
+                    AND initial = #{map.initial}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.initials)">
+                    AND initials = #{map.initials}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pinyin)">
+                    AND pinyin = #{map.pinyin}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.suffix)">
+                    AND suffix = #{map.suffix}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.code)">
+                    AND code = #{map.code}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ordera)">
+                    AND ordera = #{map.ordera}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertDistrict" parameterType="cn.happyworlds.imgmt.entity.District">
+        INSERT INTO district(
+        <include refid="districtBaseColumnSql"/>
+        )VALUES(
+            #{id},
+            #{name},
+            #{parentId},
+            #{initial},
+            #{initials},
+            #{pinyin},
+            #{suffix},
+            #{code},
+            #{ordera}
+        )
+    </insert>
+        
+    <delete id="deleteDistrictById" parameterType="Integer">
+        DELETE FROM district WHERE id = #{id}
+    </delete>
+
+    <select id="deleteDistrictByParams" parameterType="map">
+        DELETE FROM district
+        <include refid="districtBaseWhereSql"/>
+    </select>
+
+    <update id="updateDistrict" parameterType="cn.happyworlds.imgmt.entity.District">
+        UPDATE district
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(name)">
+                name = #{name} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(parentId)">
+                parent_id = #{parentId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(initial)">
+                initial = #{initial} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(initials)">
+                initials = #{initials} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(pinyin)">
+                pinyin = #{pinyin} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(suffix)">
+                suffix = #{suffix} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(code)">
+                code = #{code} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ordera)">
+                ordera = #{ordera}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateDistrictByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE district
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.name)">
+                    name = #{map.name} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.parentId)">
+                    parent_id = #{map.parentId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.initial)">
+                    initial = #{map.initial} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.initials)">
+                    initials = #{map.initials} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pinyin)">
+                    pinyin = #{map.pinyin} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.suffix)">
+                    suffix = #{map.suffix} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.code)">
+                    code = #{map.code} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ordera)">
+                    ordera = #{map.ordera}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idCondition)">
+                    id = #{map.idCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nameCondition)">
+                    AND name = #{map.nameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.parentIdCondition)">
+                    AND parent_id = #{map.parentIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.initialCondition)">
+                    AND initial = #{map.initialCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.initialsCondition)">
+                    AND initials = #{map.initialsCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pinyinCondition)">
+                    AND pinyin = #{map.pinyinCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.suffixCondition)">
+                    AND suffix = #{map.suffixCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.codeCondition)">
+                    AND code = #{map.codeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.orderaCondition)">
+                    AND ordera = #{map.orderaCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchDistrictByCode" parameterType="String" resultMap="districtMap">
+        SELECT
+        <include refid="districtBaseColumnSql"/>
+        FROM district
+        WHERE code = #{code}
+    </select>
+
+    <select id="searchDistrictByParams" parameterType="map" resultMap="districtMap">
+        SELECT
+        <include refid="districtBaseColumnSql"/>
+        FROM district
+        <include refid="districtBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ordera_BY)">
+                ordera BY #{map.ordera_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.District" id="districtMap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="initial" property="initial"/>
+        <result column="initials" property="initials"/>
+        <result column="pinyin" property="pinyin"/>
+        <result column="suffix" property="suffix"/>
+        <result column="code" property="code"/>
+        <result column="ordera" property="ordera"/>
+    </resultMap>
+
+</mapper>

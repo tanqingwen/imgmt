@@ -1,0 +1,133 @@
+.main-left ,.main-right{
+    float:left;
+    margin-left:20px;
+    background-color:#fff;
+}
+.main-left {
+    width:250px;
+    border:1px solid #ebebeb;
+}
+.main-right {
+    width:680px;
+}
+.main-left-top {
+    padding:20px;
+}
+.head-portrait {
+    float:left;
+    width:60px;
+    height:60px;
+    margin-right:25px;
+    border-radius:50%;
+}
+.main-left-info {
+    float:left;
+    width:120px;
+}
+.main-left-name {
+    width:100%;
+    line-height:30px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size:14px;
+    color:#333;
+}
+.main-left-operation {
+    margin-top:6px;
+}
+.main-left-operation span {
+    display: block;
+    float:left;
+    height:24px;
+    padding:0 8px;
+    border-left:1px solid #e5e5e5;
+}
+/*小图标*/
+.main-left-icon {
+    display: inline-block;
+    margin-top:2px;
+    background:url(../../img/personal_center_icon.png)  no-repeat;
+}
+.sex-icon{height:14px;width:14px;background-position:0 -22px;}
+.sex-selected-icon{height:14px;width:15px;background-position:-16px -22px;}
+.set-icon{height:20px;width:20px;background-position:-74px 0;}
+.bell-icon{height:20px;width:20px;background-position:-22px 0;}
+.gear-icon{height:20px;width:20px;background-position:0 0;}
+.notice-icon{height:20px;width:20px;background-position:-96px 0;}
+.crown-icon{height:20px;width:28px;background-position:-44px 0;}
+.rights-icon{height:20px;width:28px;background-position:-116px 0;}
+.main-left-content {
+    padding-left:20px;
+    line-height:34px;
+    border-top:1px solid #ebebeb;
+}
+.main-left-title {
+    font-size:14px;
+    color:#333;
+}
+.main-left-list {
+    float:left;
+    width:5px;
+    height:5px;
+    margin:14px 10px;
+    border-radius:50%;
+    background-color:#cacaca;
+}
+.main-left-message {
+    float:left;
+}
+.main-left-message a {
+    color:#525252;
+}
+.main-right-title {
+    padding:15px 20px;
+    font-size:14px;
+    color:#000;
+}
+.mr-content{
+    padding:0 20px;
+}
+.mr-content li {
+    padding:20px 0;
+    border-top:1px solid #e6e6e6;
+    color:#b2b2b2;
+}
+.mr-content li:last-child {
+    border-bottom:1px solid #e6e6e6;
+    margin-bottom:20px;
+}
+.mr-notice-icon {
+    float:left;
+    background:url(../../img/notice-icon.png)  no-repeat;
+}
+.notice-icon03{
+    height:50px;width:50px;background-position:0 0;
+}
+.notice-icon02{
+    height:50px;width:50px;background-position:-50px 0;
+}
+.notice-icon01{
+    height:50px;width:50px;background-position:-100px 0;
+}
+.mr-content-text {
+    float:left;
+    width:450px;
+    line-height:25px;
+    margin-left:10px;
+    font-size:14px;
+}
+.mr-centent-title {
+    color:#333;
+}
+.mr-centent-info {
+    width:450px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.mr-centent-right {
+    float:right;
+    line-height:25px;
+    margin-right:20px;
+}

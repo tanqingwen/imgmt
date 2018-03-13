@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.ShiftingMapper">
+
+ 
+
+    <select id="searchShifting" parameterType="map" resultMap="shifting">
+       select hw_ticketname as 'ticket_name',count(hw_prodct_group) as 'ticket_count',sum(hw_unit_price) as 'ticket_sum', hw_prodct_group as 'ticket_id',sum(hw_unit_price-hw_amount) as 'ticket_discount' from yw_orderitem 
+       where hw_order_id in 
+       (	
+       select hw_order_id from yw_order where
+       
+        <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userId)">
+       	 	hw_operator_id =#{map.userId} and
+        </if>
+        <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ip)">
+       	 	hw_ip =#{map.ip} and
+        </if>
+        
+         hw_order_addtime like '%${map.day}%' and hw_Payment_status='Y'
+       ) group by hw_prodct_group,hw_ticketname;
+    </select>
+    <!-- 查看交班结班数据添加根据时间验证sql -->
+    <select id="searchShifting2" parameterType="map" resultMap="shifting">
+       select hw_ticketname as 'ticket_name',count(hw_prodct_group) as 'ticket_count',sum(hw_unit_price) as 'ticket_sum', hw_prodct_group as 'ticket_id',sum(hw_unit_price-hw_amount) as 'ticket_discount' from yw_orderitem 
+       where hw_order_id in 
+       (select hw_order_id from yw_order where
+        <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userId)">
+       	 	hw_operator_id =#{map.userId} and
+        </if>
+        <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ip)">
+       	 	hw_ip =#{map.ip} and
+        </if>
+        <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.jbzqsj)">
+       	 	hw_order_addtime <![CDATA[<=]]> #{map.jbzqsj} and 
+        </if>
+        
+         hw_order_addtime like '%${map.day}%' and hw_Payment_status='Y') group by hw_prodct_group,hw_ticketname;
+    </select>
+    
+    
+	
+	
+	<select id="searchMoney" parameterType="map" resultMap="shifting">
+		<!-- select hw_pay_type 'pay_type',sum(hw_money) as 'pay_money' from yw_order where 
+		<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userId)">
+       	 	hw_operator_id =#{map.userId} and
+        </if>
+        <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ip)">
+       	 	hw_ip =#{map.ip} and
+        </if>
+        
+			hw_order_addtime like '%${map.day}%' and hw_Payment_status='Y' AND hw_type !='4' group by hw_pay_type; -->
+    <!-- 修改的sql -->
+		select sum(o.hw_amount) as 'pay_money',y.hw_pay_type as 'pay_type'  from yw_orderitem o left join yw_order y 
+		ON o.hw_order_id=y.hw_order_id where o.hw_status != 'R' and  
+		<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userId)">
+			y.hw_operator_id=#{map.userId} and
+  		</if>
+		<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ip)">
+			y.hw_ip=#{map.ip}  and 
+		</if>
+		y.hw_Payment_status='Y' AND y.hw_order_addtime LIKE '%${map.day}%'
+		group by y.hw_pay_type;
+		
+    </select>
+    
+    
+    <!--  //根据ip和当日时间查询 每种支付方式的净利润并做统计 -->
+    <select id="searchMoneyType" parameterType="map" resultMap="shifting">
+		select sum(o.hw_amount) as 'pay_money',y.hw_pay_type as 'pay_type' from yw_orderitem o left join yw_order y ON o.hw_order_id=y.hw_order_id 
+		where o.hw_status != 'R' 
+		<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userId)">
+       	 	hw_operator_id =#{map.userId} and
+        </if>
+		<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ip)">
+       	 	hw_ip =#{map.ip} and
+        </if>
+		    and y.hw_Payment_status='Y' AND y.hw_order_addtime LIKE '%${map.day}%' group by y.hw_pay_type 
+    </select>
+    
+    
+	
+	
+	<select id="searchCount" parameterType="String" resultMap="payCountY">
+		
+ 		select  count(1) as 'pay_y' from yw_order where 
+ 		
+ 		<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(userId)">
+       	 	hw_operator_id =#{userId} and
+        </if>
+        <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ip)">
+       	 	hw_ip =#{ip} and
+        </if>
+        
+ 		 hw_order_addtime like '%${day}%' and hw_Payment_status='Y';
+	</select>
+	
+	
+	<select id="searchTicketCash" parameterType="String" resultMap="cashMoney">
+		select sum(hw_money) as 'pay_money' from yw_order  where 
+		<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(userId)">
+       	 	hw_operator_id =#{userId} and
+        </if>
+        <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ip)">
+       	 	hw_ip =#{ip} and
+        </if>
+        
+		 hw_order_addtime like '%${day}%' and hw_Payment_status='Y' and hw_pay_type like '%cash%';
+		
+	</select>
+	
+	
+	<select id="searchCardCash" parameterType="String" resultMap="cashMoney">
+		
+		select sum(hw_chargeamount) as 'pay_money' from yw_charge where 
+		<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(userId)">
+       	 	hw_operator_id =#{userId} and
+        </if>
+        
+		    hw_paytime like '%${day}%' and hw_paytype='cash' and hw_paystate='1';
+	</select>
+	
+	
+	<select id="searchTicketRefund" parameterType="String" resultMap="ticketRefund">
+		
+		select count(1) as 'ticket_refund',sum(hw_money) as 'ticket_refund_sum' from yw_order 
+		where  
+		<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(userId)">
+       	 	hw_operator_id =#{userId} and
+        </if> 
+        <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ip)">
+       	 	hw_ip =#{ip} and
+        </if> 
+		
+		hw_order_addtime like '%${day}%'  and hw_type='4'
+	</select>
+	
+	<select id="searchTotalRefund" parameterType="map" resultMap="totalRefund">
+		select a.hw_operator_id as 'operator_id',sum(a.hw_money) as 'operator_money' from (select * from yw_order where hw_order_addtime like '%${map.day}%' and 
+		hw_Payment_status='Y' and hw_pay_type='cash' and hw_ip=#{map.posIp} and 
+		hw_operator_id != #{map.userId} order by hw_order_addtime) a group by a.hw_operator_id 
+	</select>
+	
+	<resultMap type="cn.happyworlds.imgmt.entity.Shifting" id="totalRefund">
+        <result column="operator_id" property="operatorId"/>
+        <result column="operator_money" property="operatorMoney"/>
+	</resultMap>
+	
+	<resultMap type="cn.happyworlds.imgmt.entity.Shifting" id="ticketRefund">
+        <result column="ticket_refund" property="ticketRefund"/>
+        <result column="ticket_refund_sum" property="ticketRefundSum"/>
+	</resultMap>
+	
+	<resultMap type="cn.happyworlds.imgmt.entity.Shifting" id="cashMoney">
+        <result column="pay_money" property="payMoney"/>
+	</resultMap>
+		
+	<resultMap type="cn.happyworlds.imgmt.entity.Shifting" id="payCountY">
+        <result column="pay_y" property="payY"/>
+	</resultMap>
+	
+    <resultMap type="cn.happyworlds.imgmt.entity.Shifting" id="shifting">
+        <result column="ticket_name" property="ticketName"/>
+        <result column="ticket_count" property="ticketCount"/>
+        <result column="ticket_sum" property="ticketSum"/>
+        <result column="ticket_id" property="ticketId"/>
+        <result column="pay_type" property="payType"/>
+        <result column="pay_money" property="payMoney"/>
+        <result column="ticket_discount" property="ticketDiscount"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.AppTicketMapper">
+
+    <sql id="appTicketBaseColumnSql">
+        ticket_id,
+        ticket_time_id,
+        ticket_address_id,
+        ticket_age_id,
+        ticket_status,
+        ticket_starttime,
+        ticket_sendtime,
+        ticket_edittime,
+        mobile_number
+    </sql>
+
+    <sql id="appTicketBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketId)">
+                    ticket_id = #{map.ticketId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketTimeId)">
+                    AND ticket_time_id = #{map.ticketTimeId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketAddressId)">
+                    AND ticket_address_id = #{map.ticketAddressId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketAgeId)">
+                    AND ticket_age_id = #{map.ticketAgeId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketStatus)">
+                    AND ticket_status = #{map.ticketStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketStarttime)">
+                    AND ticket_starttime = #{map.ticketStarttime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketSendtime)">
+                    AND ticket_sendtime = #{map.ticketSendtime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketEdittime)">
+                    AND ticket_edittime = #{map.ticketEdittime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mobileNumber)">
+                    AND mobile_number = #{map.mobileNumber}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertAppTicket" parameterType="cn.happyworlds.imgmt.entity.AppTicket">
+        INSERT INTO app_tickets(
+        <include refid="appTicketBaseColumnSql"/>
+        )VALUES(
+            #{ticketId},
+            #{ticketTimeId},
+            #{ticketAddressId},
+            #{ticketAgeId},
+            #{ticketStatus},
+            #{ticketStarttime},
+            #{ticketSendtime},
+            #{ticketEdittime},
+            #{mobileNumber}
+        )
+    </insert>
+        
+    <delete id="deleteAppTicketByTicketId" parameterType="String">
+        DELETE FROM app_tickets WHERE ticket_id = #{ticketId}
+    </delete>
+
+    <select id="deleteAppTicketByParams" parameterType="map">
+        DELETE FROM app_tickets
+        <include refid="appTicketBaseWhereSql"/>
+    </select>
+
+    <update id="updateAppTicket" parameterType="cn.happyworlds.imgmt.entity.AppTicket">
+        UPDATE app_tickets
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ticketTimeId)">
+                ticket_time_id = #{ticketTimeId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ticketAddressId)">
+                ticket_address_id = #{ticketAddressId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ticketAgeId)">
+                ticket_age_id = #{ticketAgeId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ticketStatus)">
+                ticket_status = #{ticketStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ticketStarttime)">
+                ticket_starttime = #{ticketStarttime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ticketSendtime)">
+                ticket_sendtime = #{ticketSendtime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ticketEdittime)">
+                ticket_edittime = #{ticketEdittime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mobileNumber)">
+                mobile_number = #{mobileNumber}
+            </if>
+        </set>
+        WHERE ticket_id = #{ticketId}
+    </update>
+
+    <update id="updateAppTicketByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE app_tickets
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketTimeId)">
+                    ticket_time_id = #{map.ticketTimeId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketAddressId)">
+                    ticket_address_id = #{map.ticketAddressId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketAgeId)">
+                    ticket_age_id = #{map.ticketAgeId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketStatus)">
+                    ticket_status = #{map.ticketStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketStarttime)">
+                    ticket_starttime = #{map.ticketStarttime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketSendtime)">
+                    ticket_sendtime = #{map.ticketSendtime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketEdittime)">
+                    ticket_edittime = #{map.ticketEdittime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mobileNumber)">
+                    mobile_number = #{map.mobileNumber}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketIdCondition)">
+                    ticket_id = #{map.ticketIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketTimeIdCondition)">
+                    AND ticket_time_id = #{map.ticketTimeIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketAddressIdCondition)">
+                    AND ticket_address_id = #{map.ticketAddressIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketAgeIdCondition)">
+                    AND ticket_age_id = #{map.ticketAgeIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketStatusCondition)">
+                    AND ticket_status = #{map.ticketStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketStarttimeCondition)">
+                    AND ticket_starttime = #{map.ticketStarttimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketSendtimeCondition)">
+                    AND ticket_sendtime = #{map.ticketSendtimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketEdittimeCondition)">
+                    AND ticket_edittime = #{map.ticketEdittimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mobileNumberCondition)">
+                    AND mobile_number = #{map.mobileNumberCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchAppTicketByTicketId" parameterType="String" resultMap="appTicketMap">
+        SELECT
+        <include refid="appTicketBaseColumnSql"/>
+        FROM app_tickets
+        WHERE ticket_id = #{ticketId}
+    </select>
+
+    <select id="searchAppTicketByParams" parameterType="map" resultMap="appTicketMap">
+        SELECT
+        <include refid="appTicketBaseColumnSql"/>
+        FROM app_tickets
+        <include refid="appTicketBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                 mobile_number is not null and ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.AppTicket" id="appTicketMap">
+        <id column="ticket_id" property="ticketId"/>
+        <result column="ticket_time_id" property="ticketTimeId"/>
+        <result column="ticket_address_id" property="ticketAddressId"/>
+        <result column="ticket_age_id" property="ticketAgeId"/>
+        <result column="ticket_status" property="ticketStatus"/>
+        <result column="ticket_starttime" property="ticketStarttime"/>
+        <result column="ticket_sendtime" property="ticketSendtime"/>
+        <result column="ticket_edittime" property="ticketEdittime"/>
+        <result column="mobile_number" property="mobileNumber"/>
+    </resultMap>
+
+</mapper>

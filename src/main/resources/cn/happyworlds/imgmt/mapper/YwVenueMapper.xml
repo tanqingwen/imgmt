@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.YwVenueMapper">
+
+    <sql id="ywVenueBaseColumnSql">
+        hw_venue_id,
+        hw_venue_name,
+        hw_venue_note,
+		hw_venue_introduce,
+        hw_venue_pic1,
+        hw_venue_pic2,
+        hw_venus_pos,
+        hw_gate_number,
+        hw_gate_id,
+        hw_open_time,
+        hw_leader,
+        hw_contract_phone,
+        hw_addtime
+    </sql>
+
+    <sql id="ywVenueBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenueId)">
+                    hw_venue_id = #{map.hwVenueId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenueName)">
+                    AND hw_venue_name = #{map.hwVenueName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenueNote)">
+                    AND hw_venue_note = #{map.hwVenueNote}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenueIntroduce)">
+                    AND hw_venue_introduce = #{map.hwVenueIntroduce}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenuePic1)">
+                    AND hw_venue_pic1 = #{map.hwVenuePic1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenuePic2)">
+                    AND hw_venue_pic2 = #{map.hwVenuePic2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenusPos)">
+                    AND hw_venus_pos = #{map.hwVenusPos}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateNumber)">
+                    AND hw_gate_number = #{map.hwGateNumber}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateId)">
+                    AND hw_gate_id = #{map.hwGateId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOpenTime)">
+                    AND hw_open_time = #{map.hwOpenTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwLeader)">
+                    AND hw_leader = #{map.hwLeader}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwContractPhone)">
+                    AND hw_contract_phone = #{map.hwContractPhone}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAddtime)">
+                    AND hw_addtime = #{map.hwAddtime}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertYwVenue" parameterType="cn.happyworlds.imgmt.entity.YwVenue">
+        INSERT INTO yw_venue(
+        <include refid="ywVenueBaseColumnSql"/>
+        )VALUES(
+            #{hwVenueId},
+            #{hwVenueName},
+            #{hwVenueNote},
+            #{hwVenueIntroduce},
+            #{hwVenuePic1},
+            #{hwVenuePic2},
+            #{hwVenusPos},
+            #{hwGateNumber},
+            #{hwGateId},
+            #{hwOpenTime},
+            #{hwLeader},
+            #{hwContractPhone},
+            #{hwAddtime}
+        )
+    </insert>
+        
+    <delete id="deleteYwVenueByHwVenueId" parameterType="String">
+        DELETE FROM yw_venue WHERE hw_venue_id = #{hwVenueId}
+    </delete>
+
+    <select id="deleteYwVenueByParams" parameterType="map">
+        DELETE FROM yw_venue
+        <include refid="ywVenueBaseWhereSql"/>
+    </select>
+
+    <update id="updateYwVenue" parameterType="cn.happyworlds.imgmt.entity.YwVenue">
+        UPDATE yw_venue
+        <set>
+                hw_venue_name = #{hwVenueName} ,
+                hw_venue_note = #{hwVenueNote} ,
+                hw_venue_introduce = #{hwVenueIntroduce} ,
+                hw_venue_pic1 = #{hwVenuePic1} ,
+                hw_venue_pic2 = #{hwVenuePic2} ,
+                hw_venus_pos = #{hwVenusPos} ,
+                hw_gate_number = #{hwGateNumber} ,
+                hw_gate_id = #{hwGateId} ,
+                hw_open_time = #{hwOpenTime} ,
+                hw_leader = #{hwLeader} ,
+                hw_contract_phone = #{hwContractPhone} ,
+                hw_addtime = #{hwAddtime}
+        </set>
+        WHERE hw_venue_id = #{hwVenueId}
+    </update>
+    <update id="updateYwVenueByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE yw_venue
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenueName)">
+                    hw_venue_name = #{map.hwVenueName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenueNote)">
+                    hw_venue_note = #{map.hwVenueNote} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwVenueIntroduce)">
+	                hw_venue_introduce = #{hwVenueIntroduce} ,
+	            </if>
+	            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwVenuePic1)">
+	                hw_venue_pic1 = #{hwVenuePic1} ,
+	            </if>
+	            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwVenuePic2)">
+	                hw_venue_pic2 = #{hwVenuePic2} ,
+	            </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenusPos)">
+                    hw_venus_pos = #{map.hwVenusPos} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateNumber)">
+                    hw_gate_number = #{map.hwGateNumber} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateId)">
+                    hw_gate_id = #{map.hwGateId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOpenTime)">
+                    hw_open_time = #{map.hwOpenTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwLeader)">
+                    hw_leader = #{map.hwLeader} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwContractPhone)">
+                    hw_contract_phone = #{map.hwContractPhone} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAddtime)">
+                    hw_addtime = #{map.hwAddtime}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenueIdCondition)">
+                    hw_venue_id = #{map.hwVenueIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenueNameCondition)">
+                    AND hw_venue_name = #{map.hwVenueNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenueNoteCondition)">
+                    AND hw_venue_note = #{map.hwVenueNoteCondition}
+                </if>
+                 <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenueIntroduceCondition)">
+                    AND hw_venue_introduce = #{map.hwVenueIntroduceCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenuePic1Condition)">
+                    AND hw_venue_pic1 = #{map.hwVenuePic1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenuePic2Condition)">
+                    AND hw_venue_pic2 = #{map.hwVenuePic2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenusPosCondition)">
+                    AND hw_venus_pos = #{map.hwVenusPosCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateNumberCondition)">
+                    AND hw_gate_number = #{map.hwGateNumberCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateIdCondition)">
+                    AND hw_gate_id = #{map.hwGateIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOpenTimeCondition)">
+                    AND hw_open_time = #{map.hwOpenTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwLeaderCondition)">
+                    AND hw_leader = #{map.hwLeaderCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwContractPhoneCondition)">
+                    AND hw_contract_phone = #{map.hwContractPhoneCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAddtimeCondition)">
+                    AND hw_addtime = #{map.hwAddtimeCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchYwVenueByHwVenueId" parameterType="String" resultMap="ywVenueMap">
+        SELECT
+        <include refid="ywVenueBaseColumnSql"/>
+        FROM yw_venue
+        WHERE hw_venue_id = #{hwVenueId}
+    </select>
+
+    <select id="searchYwVenueByParams" parameterType="map" resultMap="ywVenueMap">
+        SELECT *
+        FROM yw_venue
+        <include refid="ywVenueBaseWhereSql"/>
+    </select>
+    <!-- 
+    <select id="searchCpPrdtrmByParams" parameterType="map" resultMap="CpPrdtrmMap">
+        SELECT *
+        FROM cp_prdtrm
+        <include refid="CpPrdtrmBaseWhereSql"/>
+    </select> -->
+
+    <resultMap type="cn.happyworlds.imgmt.entity.YwVenue" id="ywVenueMap">
+        <id column="hw_venue_id" property="hwVenueId"/>
+        <result column="hw_venue_name" property="hwVenueName"/>
+        <result column="hw_venue_note" property="hwVenueNote"/>
+        <result column="hw_venue_introduce" property="hwVenueIntroduce"/>
+        <result column="hw_venue_pic1" property="hwVenuePic1"/>
+        <result column="hw_venue_pic2" property="hwVenuePic2"/>
+        <result column="hw_venus_pos" property="hwVenusPos"/>
+        <result column="hw_gate_number" property="hwGateNumber"/>
+        <result column="hw_gate_id" property="hwGateId"/>
+        <result column="hw_open_time" property="hwOpenTime"/>
+        <result column="hw_leader" property="hwLeader"/>
+        <result column="hw_contract_phone" property="hwContractPhone"/>
+        <result column="hw_addtime" property="hwAddtime"/>
+    </resultMap>
+
+</mapper>

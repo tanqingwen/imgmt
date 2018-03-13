@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.MProvinceDictMapper">
+
+    <sql id="MProvinceDictBaseColumnSql">
+        province_id,
+        alpha_ctry_cd,
+        province_name,
+        location_id,
+        region_cd,
+        zip_code,
+        checksum
+    </sql>
+
+    <sql id="MProvinceDictBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.provinceId)">
+                    province_id = #{map.provinceId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.alphaCtryCd)">
+                    AND alpha_ctry_cd = #{map.alphaCtryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.provinceName)">
+                    AND province_name = #{map.provinceName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.locationId)">
+                    AND location_id = #{map.locationId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.regionCd)">
+                    AND region_cd = #{map.regionCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.zipCode)">
+                    AND zip_code = #{map.zipCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertMProvinceDict" parameterType="cn.happyworlds.imgmt.entity.MProvinceDict">
+        INSERT INTO m_province_dict(
+        <include refid="MProvinceDictBaseColumnSql"/>
+        )VALUES(
+            #{provinceId},
+            #{alphaCtryCd},
+            #{provinceName},
+            #{locationId},
+            #{regionCd},
+            #{zipCode},
+            #{checksum}
+        )
+    </insert>
+
+    
+    <delete id="deleteMProvinceDictByProvinceId" parameterType="String">
+        DELETE FROM m_province_dict WHERE province_id = #{provinceId}
+    </delete>
+
+    <update id="updateMProvinceDict" parameterType="cn.happyworlds.imgmt.entity.MProvinceDict">
+        UPDATE m_province_dict
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(alphaCtryCd)">
+                alpha_ctry_cd = #{alphaCtryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(provinceName)">
+                province_name = #{provinceName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(locationId)">
+                location_id = #{locationId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(regionCd)">
+                region_cd = #{regionCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(zipCode)">
+                zip_code = #{zipCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum} ,
+            </if>
+        </set>
+        WHERE province_id = #{provinceId}
+    </update>
+
+    <select id="searchMProvinceDictByProvinceId" parameterType="String" resultMap="MProvinceDictMap">
+        SELECT
+        <include refid="MProvinceDictBaseColumnSql"/>
+        FROM m_province_dict
+        WHERE province_id = #{provinceId}
+    </select>
+
+    <select id="searchMProvinceDictByParams" parameterType="map" resultMap="MProvinceDictMap">
+        SELECT
+        <include refid="MProvinceDictBaseColumnSql"/>
+        FROM m_province_dict
+        <include refid="MProvinceDictBaseWhereSql"/>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.MProvinceDict" id="MProvinceDictMap">
+        <id column="province_id" property="provinceId"/>
+        <result column="alpha_ctry_cd" property="alphaCtryCd"/>
+        <result column="province_name" property="provinceName"/>
+        <result column="location_id" property="locationId"/>
+        <result column="region_cd" property="regionCd"/>
+        <result column="zip_code" property="zipCode"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

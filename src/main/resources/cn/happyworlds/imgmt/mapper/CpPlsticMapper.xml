@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpPlsticMapper">
+
+    <sql id="cpPlsticBaseColumnSql">
+        pc_cardholder_no,
+        pc_cardholder_name,
+        pc_oplastic_cd,
+        pc_nplastic_cd,
+        pc_oplastic_date,
+        pc_nplastic_date,
+        pc_action,
+        pc_off_id,
+        pc_timestamp,
+        checksum
+    </sql>
+
+    <sql id="cpPlsticBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcCardholderNo)">
+                    pc_cardholder_no = #{map.pcCardholderNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcCardholderName)">
+                    AND pc_cardholder_name = #{map.pcCardholderName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcOplasticCd)">
+                    AND pc_oplastic_cd = #{map.pcOplasticCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcNplasticCd)">
+                    AND pc_nplastic_cd = #{map.pcNplasticCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcOplasticDate)">
+                    AND pc_oplastic_date = #{map.pcOplasticDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcNplasticDate)">
+                    AND pc_nplastic_date = #{map.pcNplasticDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcAction)">
+                    AND pc_action = #{map.pcAction}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcOffId)">
+                    AND pc_off_id = #{map.pcOffId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcTimestamp)">
+                    AND pc_timestamp = #{map.pcTimestamp}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpPlstic" parameterType="cn.happyworlds.imgmt.entity.CpPlstic">
+        INSERT INTO cp_plstic(
+        <include refid="cpPlsticBaseColumnSql"/>
+        )VALUES(
+            #{pcCardholderNo},
+            #{pcCardholderName},
+            #{pcOplasticCd},
+            #{pcNplasticCd},
+            #{pcOplasticDate},
+            #{pcNplasticDate},
+            #{pcAction},
+            #{pcOffId},
+            #{pcTimestamp},
+            #{checksum}
+        )
+    </insert>
+        
+    <select id="deleteCpPlsticByParams" parameterType="map">
+        DELETE FROM cp_plstic
+        <include refid="cpPlsticBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpPlstic" parameterType="cn.happyworlds.imgmt.entity.CpPlstic">
+        UPDATE cp_plstic
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(pcCardholderName)">
+                pc_cardholder_name = #{pcCardholderName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(pcOplasticCd)">
+                pc_oplastic_cd = #{pcOplasticCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(pcNplasticCd)">
+                pc_nplastic_cd = #{pcNplasticCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(pcOplasticDate)">
+                pc_oplastic_date = #{pcOplasticDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(pcNplasticDate)">
+                pc_nplastic_date = #{pcNplasticDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(pcAction)">
+                pc_action = #{pcAction} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(pcOffId)">
+                pc_off_id = #{pcOffId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(pcTimestamp)">
+                pc_timestamp = #{pcTimestamp} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE pc_cardholder_no = #{pcCardholderNo}
+    </update>
+
+    <update id="updateCpPlsticByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_plstic
+            <set>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcCardholderNoCondition)">
+                    pc_cardholder_no = #{map.pcCardholderNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcCardholderNameCondition)">
+                    AND pc_cardholder_name = #{map.pcCardholderNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcOplasticCdCondition)">
+                    AND pc_oplastic_cd = #{map.pcOplasticCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcNplasticCdCondition)">
+                    AND pc_nplastic_cd = #{map.pcNplasticCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcOplasticDateCondition)">
+                    AND pc_oplastic_date = #{map.pcOplasticDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcNplasticDateCondition)">
+                    AND pc_nplastic_date = #{map.pcNplasticDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcActionCondition)">
+                    AND pc_action = #{map.pcActionCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcOffIdCondition)">
+                    AND pc_off_id = #{map.pcOffIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pcTimestampCondition)">
+                    AND pc_timestamp = #{map.pcTimestampCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpPlsticByParams" parameterType="map" resultMap="cpPlsticMap">
+        SELECT
+        <include refid="cpPlsticBaseColumnSql"/>
+        FROM cp_plstic
+        <include refid="cpPlsticBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpPlstic" id="cpPlsticMap">
+        <id column="pc_cardholder_no" property="pcCardholderNo"/>
+        <result column="pc_cardholder_name" property="pcCardholderName"/>
+        <result column="pc_oplastic_cd" property="pcOplasticCd"/>
+        <result column="pc_nplastic_cd" property="pcNplasticCd"/>
+        <result column="pc_oplastic_date" property="pcOplasticDate"/>
+        <result column="pc_nplastic_date" property="pcNplasticDate"/>
+        <result column="pc_action" property="pcAction"/>
+        <result column="pc_off_id" property="pcOffId"/>
+        <result column="pc_timestamp" property="pcTimestamp"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

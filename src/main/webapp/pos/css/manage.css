@@ -1,0 +1,78 @@
+@charset "utf-8";
+html {
+ 	width: 100%;
+ 	overflow-x: hidden;
+ 	overflow-x: -moz-hidden-unscrollable;
+ 	font-size: 20px;
+ 	min-width: 320px;
+ 	max-width: 640px;
+ 	margin: 0 auto;
+ }
+.pull-right {
+	float: right;
+}
+label {
+	display: block;
+	height: 2rem;
+	line-height: 2rem;
+	color: #313131;
+	font-size: .8rem;
+}
+/*管理页面*/
+.header{
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	background: #00A65A;
+	color: #fff;
+	text-align: center;
+}
+.placeholder{
+	height: 4rem;
+}
+.title{
+	font-size: 1.5rem;
+	padding: .8rem;
+	display: inline-block;
+}
+.logout{
+	position: absolute;
+	top:0;
+	right:0;
+	font-size: .8rem;
+	margin:1rem .5rem;
+}
+.pre{
+	position: absolute;
+	top:0;
+	left:0;
+	font-size: 1rem;
+	margin:1rem 1rem;
+}
+/*list开始*/
+.listUl{
+/*	width: 100%;*/
+	color: #333;
+	
+}
+.listUl li{
+	width: 32%;
+	float: left;
+	text-align: center;	
+	padding: 2rem 0;
+	background-color: #FFFFFF;
+}
+.listUl li:nth-of-type(2n){
+	/*border-right: 1px solid #ADADAD;
+	border-left: 1px solid #ADADAD;*/
+	margin: 0 1px;
+}
+.listUl li img{
+	height: 4rem;
+	width: 4rem;
+	margin: 0 auto;
+}
+.LogoutLogin a{
+	color: #fff;
+}

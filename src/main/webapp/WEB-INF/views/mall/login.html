@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/login-index.css"/>
+		<title>个人中心-登录</title>
+	</head>
+	<body>
+		<div class="login-index">
+			<div class="login-sign">
+					<a >
+						<strong class="active-sign">普通登录</strong>
+						<div class="active-login" >
+							<ul>
+								<li>
+									<span class="icon-user"></span>
+									<input type="text" class="account" placeholder="请输入用户名" />
+								</li>
+								
+								<li>
+									<span class="icon-pwd"></span>
+									<input type="text" class="password" placeholder="请输入密码" />
+								</li>
+								
+								<li>
+									<input type="checkbox"  /><span class="remember">记住密码</span>
+									<a href="javascript:void(0)" class="forget">忘记密码</a>
+								</li>
+								
+								<li>
+									<button type="button" class="sign-in">登录</button>
+								</li>
+								
+								<li>
+									<button type="button" class="free-registration">免费注册</button>
+								</li>
+								
+								<li >
+								<img src="img/images/quike-login.png" >	
+								</li>
+							</ul>
+					<div class="quike">
+						<ul>
+							<li><a href="javascript:void(0)">
+								<img src="img/images/login-wx.png">
+							</a></li>
+							<li><a href="javascript:void(0)">
+								<img src="img/images/login-wb.png">
+							</a></li>
+							<li><a href="javascript:void(0)">
+								<img src="img/images/login-zfb.png">
+							</a></li>
+								<div class="clearfix"></div>	
+						</ul>
+					</div>
+						</div>
+					</a>
+					<a >
+						<strong class="noactive-sign">手机动态密码登录</strong>
+						<div class="noactive-login" style="display:none;" >
+							<ul>
+								<li>
+									<input type="text" class="password" placeholder="请输入验证码" />
+								</li>
+								
+							
+								<li>
+									<button type="button" class="sign-in">登录</button>
+								</li>
+								
+							</ul>
+						</div>
+					</a>
+
+					<div class="clearfix"></div>			
+			</div>
+		</div>
+		<script src="js/jquery-3.1.1.min.js" type="text/javascript" ></script>
+		<script type="text/javascript">
+			$(function(){
+				$(".active-sign").on('click',function(){
+					$(".active-sign").removeClass(".noactive-sign");
+					$(".noactive-login").css("display","none");
+					$(".active-login").css("display","block");
+					$(".noactive-sign").css({
+						"background":"#f5f5f5",
+						"border-bottom":"3px #dddddd solid",
+					});
+					$(".active-sign").css({
+						"background":"white",
+						"border-bottom":"none"
+					});
+				})
+				
+
+				$(".noactive-sign").on('click',function(){
+					$(".active-login").css("display","none");
+					$(".noactive-login").css("display","block");
+					$(".active-sign").css({
+						"background":"#f5f5f5",
+						"border-bottom":"3px #dddddd solid",
+					});
+					$(".noactive-sign").css({
+						"background":"white",
+						"border-bottom":"none"
+					});
+				})				
+			})
+		</script>
+	</body>
+</html>

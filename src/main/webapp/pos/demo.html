@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<button class="btn">调用</button>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	/**
+ * 
+ * @param operNo    操作员号
+ * @param businessId  业务类型  必填
+ * @param amount    金额（12位，分为单位，不足左补0）  必填
+ * @param transCheck  交易唯一标识
+ */
+$.ajax({
+	url:'http://192.168.1.155:8078/app/update/order/state1',
+	data:{'orderId':'234354'},
+	dataType:'JSON',
+	contentType:'application/x-www-form-urlencoded',
+	type:'POST',
+	success:function(data){
+         console.log(data);
+	}
+});
+</script>
+</body>
+</html>

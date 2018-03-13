@@ -1,0 +1,422 @@
+/*鐞涖劍鐗搁弽宄扮础*/
+.table {
+	font-size: 16px;
+		margin-top: 15px;
+}
+
+.table>thead>tr>th {
+	font-weight: 700;
+	color: rgb(49, 49, 49);
+	border-color: #c9c9c9;
+	font-size: 14px;
+	vertical-align: center;
+}
+
+.table>thead>tr>th,
+.table>tbody>tr>td {
+	border-width: 1px;
+	border-color: #dcdcdc;
+	font-size:14px;
+	text-align:left;
+	
+}
+
+.table>thead>tr>th:last-of-type,
+.table>tbody>tr>td:last-of-type {
+	text-align: right;
+}
+
+.table>tbody>tr>td {
+color:#333;
+}
+
+.table>tbody>tr>td span {
+	margin-right: 10px;
+}
+
+.table>tbody>tr>td span:last-of-type {
+	margin-right: 0;
+}
+
+.table>tbody {
+	border-bottom: 1px solid rgb(201, 201, 201);
+}
+ 
+.label-holder{
+	width: 100px;
+	text-align:right;
+}
+
+/*===============================缂佺喕顓搁幎銉ㄣ�冨Ο鈥虫健=====================================================*/
+/*闁拷缁併劎绮虹拋锟�*/
+.refund-tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+.refund-tip-img p {
+	line-height: 25px;
+}
+.refund-tip-img {
+	height: 202px;
+	width: 78px;
+	background-image: url(../images/content-side-refund.png);
+}
+.ticketcount-select{
+	width: 290px;
+	height: 40px;
+	padding: 0;
+	border: lightblue 1px solid;
+	border-radius: 5px;
+	outline: none;
+	color: lightslategray;
+	text-indent: 5px;
+	display: inline-block;
+	font-size: 14px;
+	
+
+}
+/*娴兼艾鎲抽崡鈩冪Х鐠愬湱绮虹拋锟�*/
+.consume-select{
+	width: 290px;
+	height: 40px;
+	padding: 0;
+	border: lightblue 1px solid;
+	border-radius: 5px;
+	outline: none;
+	color: lightslategray;
+	text-indent: 5px;
+	display: inline-block;
+	font-size: 14px;
+
+	
+}
+.consumecount-tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+
+.consumecount-tip-img {
+	height: 280px;
+	width: 78px;
+	
+}
+
+.consumption .consumecount-tip-img{
+	background-image: url(../images/content.side-consumecount.png);
+}
+.form-inline .form-control{width:290px;}
+.consumption label{width:100px; text-align:right;}
+/*娴兼艾鎲抽崡鈥冲帠閸婅偐绮虹拋锟�*/
+.recharge-select{
+	width: 290px;
+	height: 40px;
+	padding: 0;
+	border: lightblue 1px solid;
+	border-radius: 5px;
+	outline: none;
+	color: lightslategray;
+	text-indent: 5px;
+	display: inline-block;
+	font-size: 14px;
+	
+}
+.recharge-tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+
+.recharge-tip-img {
+	height: 280px;
+	width: 78px;
+	background-image: url(../images/content-side-recharge.png);
+}
+
+
+/*娴兼艾鎲抽崡鈩冨剰閸愮數绮虹拋锟�*/
+.cardinfo-select{
+	width: 290px;
+	height: 40px;
+	padding: 0;
+	border: lightblue 1px solid;
+	border-radius: 5px;
+	outline: none;
+	color: lightslategray;
+	text-indent: 5px;
+	display: inline-block;
+		
+}
+.cardinfo-tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+
+.cardinfo-tip-img {
+	height: 280px;
+	width: 78px;
+	background-image: url(../images/content-side-situation.png);
+}
+.cardinfo-tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+/*鐠愩垹濮熼幎銉ㄣ�冪紒鐔活吀*/
+.finacialchart-select{
+		width: 290px;
+	height: 40px;
+	padding: 0;
+	border: lightblue 1px solid;
+	border-radius: 5px;
+	outline: none;
+	color: lightslategray;
+	text-indent: 5px;
+	display: inline-block;
+	font-size: 14px;
+	
+}
+.finacialchart-tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+
+.finacialchart-tip-img {
+	height: 260px;
+	width: 78px;
+	background-image: url(../images/content-side-finacialchart.png);
+}
+.finacialchart-tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+
+/*娴兼艾鎲抽崡鈩冨床閸椻�蹭繆閹垳绮虹拋锟�*/
+.changeCard label{
+	width:100px;
+	text-align:right;
+	}
+.returnTicket label{
+	width:100px;
+	text-align:right;
+	}
+
+.changecard-tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+
+.changecard-tip-img {
+	height: 280px;
+	width: 78px;
+	background-image: url(../images/content-side-changecard.png);
+}
+.changecard-tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+/*閹躲儴銆冩稉瀣祰*/
+.chartdownload-tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+
+.chartdownload-tip-img {
+	height: 260px;
+	width: 78px;
+	background-image: url(../images/content-side-chartdownload.png);
+}
+.chartdownload-tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+/*娴兼艾鎲抽幙宥勭稊*/
+.handlecount-tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+
+.handlecount-tip-img {
+	height: 280px;
+	width: 78px;
+	background-image: url(../images/content-side-handlecount.png);
+}
+.handlecount-tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+
+
+/*===============================娴兼艾鎲崇粻锛勬倞濡�虫健=====================================================*/
+/*娴兼艾鎲崇粻锛勬倞*/
+.membermanage-tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+
+.membermanage-tip-img {
+	height: 202px;
+	width: 78px;
+	background-image: url(../images/content-side-bg.png);
+}
+.membermanage-tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+
+/*===============================缁併劌鍩滅粻锛勬倞濡�虫健=====================================================*/
+/*缁併劌鍩滅粻锛勬倞*/
+.ticketmanage-tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+
+.ticketmanage-tip-img {
+	height: 250px;
+	width: 78px;
+	background-image: url(../images/content-side-bg.png);
+}
+.ticketmanage-tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+
+/*===============================娑撴艾濮熺粻锛勬倞濡�虫健=====================================================*/
+/*閸楋紕澧栨禍銈嗘鐠囷附鍎�*/
+.cardbusinessinfo-tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+
+.cardbusinessinfo-tip-img {
+	height: 250px;
+	width: 78px;
+	background-image: url(../images/content-side-card.png);
+}
+.cardbusinessinfo-tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+.marginTop{margin-top:20px;}
+/*娴兼艾鎲抽崡鈥蹭繆閹垱鐓＄拠锟�*/
+.membercardinfo-tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+
+.membercardinfo-tip-img {
+	height: 285px;
+	width: 78px;
+	background-image: url(../images/content-side-membercard.png);
+}
+.membercardinfo-tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+/*鐠併垹宕熼弻銉嚄*/
+.orderquery-tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+
+.orderquery-tip-img {
+	height: 202px;
+	width: 78px;
+	background-image: url(../images/content-side-order.png);
+}
+.orderquery-tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+/*鐠愵厾銈ㄦ穱鈩冧紖閺屻儴顕�*/
+.ticketinfo-tip-img {
+	position: absolute;
+	left: -80px;
+	top: -12px;
+}
+
+.ticketinfo-tip-img {
+	height: 250px;
+	width: 78px;
+	background-image: url(../images/content-side-ticket.png);
+}
+.ticketinfo-tip-img p {
+	width: 20px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 40px;
+}
+.input-group .input-group-addon{
+	border:lightblue 1px solid;
+	border-right:none;
+	border-bottom-left-radius:5px;
+	border-top-left-radius:5px;
+	}
+.MembershipCard label{
+	width:100px;
+	text-align:right;
+	}
+	.form-inline .input-group>.form-control{width:250px;}
+.returnTicket .form-inline .input-group>.dateWidth{
+	width:250px;
+	}
+	.mermberUse label{
+		width:100px;
+		text-align:right;
+	}
+	.financialList label{
+	width:100px;
+		text-align:right;
+		}

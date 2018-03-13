@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.AclUserMapper">
+
+    <sql id="aclUserBaseColumnSql">
+        user_id,
+        user_name,
+        user_passwd,
+        status,
+        dep_name,
+        occupation,
+        email_id,
+        contact_no,
+        password_cre_time,
+        password_exp_time,
+        fail_count,
+        modify_time,
+        modify_by,
+        com_port
+    </sql>
+
+    <sql id="aclUserBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userId)">
+                    user_id = #{map.userId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userName)">
+                    AND user_name = #{map.userName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userPasswd)">
+                    AND user_passwd = #{map.userPasswd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.status)">
+                    AND status = #{map.status}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.depName)">
+                    AND dep_name = #{map.depName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.occupation)">
+                    AND occupation = #{map.occupation}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.emailId)">
+                    AND email_id = #{map.emailId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.contactNo)">
+                    AND contact_no = #{map.contactNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.passwordCreTime)">
+                    AND password_cre_time = #{map.passwordCreTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.passwordExpTime)">
+                    AND password_exp_time = #{map.passwordExpTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.failCount)">
+                    AND fail_count = #{map.failCount}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyTime)">
+                    AND modify_time = #{map.modifyTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyBy)">
+                    AND modify_by = #{map.modifyBy}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.comPort)">
+                    AND com_port = #{map.comPort}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertAclUser" parameterType="cn.happyworlds.imgmt.entity.AclUser">
+        INSERT INTO acl_user(
+        <include refid="aclUserBaseColumnSql"/>
+        )VALUES(
+            #{userId},
+            #{userName},
+            #{userPasswd},
+            #{status},
+            #{depName},
+            #{occupation},
+            #{emailId},
+            #{contactNo},
+            #{passwordCreTime},
+            #{passwordExpTime},
+            #{failCount},
+            #{modifyTime},
+            #{modifyBy},
+            #{comPort}
+        )
+    </insert>
+        
+    <delete id="deleteAclUserByUserId" parameterType="String">
+        DELETE FROM acl_user WHERE user_id = #{userId}
+    </delete>
+
+    <select id="deleteAclUserByParams" parameterType="map">
+        DELETE FROM acl_user
+        <include refid="aclUserBaseWhereSql"/>
+    </select>
+
+    <update id="updateAclUser" parameterType="cn.happyworlds.imgmt.entity.AclUser">
+        UPDATE acl_user
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(userName)">
+                user_name = #{userName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(userPasswd)">
+                user_passwd = #{userPasswd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(status)">
+                status = #{status} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(depName)">
+                dep_name = #{depName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(occupation)">
+                occupation = #{occupation} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(emailId)">
+                email_id = #{emailId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(contactNo)">
+                contact_no = #{contactNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(passwordCreTime)">
+                password_cre_time = #{passwordCreTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(passwordExpTime)">
+                password_exp_time = #{passwordExpTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(failCount)">
+                fail_count = #{failCount} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(modifyTime)">
+                modify_time = #{modifyTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(modifyBy)">
+                modify_by = #{modifyBy} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(comPort)">
+                com_port = #{comPort}
+            </if>
+        </set>
+        WHERE user_id = #{userId}
+    </update>
+
+    <update id="updateAclUserByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE acl_user
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userName)">
+                    user_name = #{map.userName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userPasswd)">
+                    user_passwd = #{map.userPasswd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.status)">
+                    status = #{map.status} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.depName)">
+                    dep_name = #{map.depName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.occupation)">
+                    occupation = #{map.occupation} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.emailId)">
+                    email_id = #{map.emailId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.contactNo)">
+                    contact_no = #{map.contactNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.passwordCreTime)">
+                    password_cre_time = #{map.passwordCreTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.passwordExpTime)">
+                    password_exp_time = #{map.passwordExpTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.failCount)">
+                    fail_count = #{map.failCount} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyTime)">
+                    modify_time = #{map.modifyTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyBy)">
+                    modify_by = #{map.modifyBy} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.comPort)">
+                    com_port = #{map.comPort}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userIdCondition)">
+                    user_id = #{map.userIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userNameCondition)">
+                    AND user_name = #{map.userNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userPasswdCondition)">
+                    AND user_passwd = #{map.userPasswdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.statusCondition)">
+                    AND status = #{map.statusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.depNameCondition)">
+                    AND dep_name = #{map.depNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.occupationCondition)">
+                    AND occupation = #{map.occupationCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.emailIdCondition)">
+                    AND email_id = #{map.emailIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.contactNoCondition)">
+                    AND contact_no = #{map.contactNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.passwordCreTimeCondition)">
+                    AND password_cre_time = #{map.passwordCreTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.passwordExpTimeCondition)">
+                    AND password_exp_time = #{map.passwordExpTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.failCountCondition)">
+                    AND fail_count = #{map.failCountCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyTimeCondition)">
+                    AND modify_time = #{map.modifyTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyByCondition)">
+                    AND modify_by = #{map.modifyByCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.comPortCondition)">
+                    AND com_port = #{map.comPortCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchAclUserByUserId" parameterType="String" resultMap="aclUserMap">
+        SELECT
+        <include refid="aclUserBaseColumnSql"/>
+        FROM acl_user
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="searchAclUserByParams" parameterType="map" resultMap="aclUserMap">
+        SELECT
+        <include refid="aclUserBaseColumnSql"/>
+        FROM acl_user
+        <include refid="aclUserBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.AclUser" id="aclUserMap">
+        <id column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_passwd" property="userPasswd"/>
+        <result column="status" property="status"/>
+        <result column="dep_name" property="depName"/>
+        <result column="occupation" property="occupation"/>
+        <result column="email_id" property="emailId"/>
+        <result column="contact_no" property="contactNo"/>
+        <result column="password_cre_time" property="passwordCreTime"/>
+        <result column="password_exp_time" property="passwordExpTime"/>
+        <result column="fail_count" property="failCount"/>
+        <result column="modify_time" property="modifyTime"/>
+        <result column="modify_by" property="modifyBy"/>
+        <result column="com_port" property="comPort"/>
+    </resultMap>
+
+</mapper>

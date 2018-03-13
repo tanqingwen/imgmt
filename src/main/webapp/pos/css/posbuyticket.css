@@ -1,0 +1,254 @@
+@charset "utf-8";
+html {
+ 	width: 100%;
+ 	overflow-x: hidden;
+ 	overflow-x: -moz-hidden-unscrollable;
+ 	font-size: 20px;
+ 	min-width: 320px;
+ 	max-width: 640px;
+ 	margin: 0 auto;
+ }
+.header{
+	position: fixed;
+	top:0;
+	left: 0;
+	width: 100%;
+	background: #00A65A;
+	color: #fff;
+	text-align: center;
+}
+.placeholder{
+	height: 4rem;
+}
+.title{
+	font-size: 1.5rem;
+	padding: .8rem;
+	display: inline-block;
+}
+.manage{
+	position: absolute;
+	top:0;
+	right:0;
+	width: 2rem;
+	height: 2rem;
+	margin:1rem .5rem;
+}
+.tip{
+    padding: .5rem;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	font-weight: 700;
+	border-bottom: 1px solid #ccc;
+}
+form{
+	margin: .5rem;
+}
+form .label{
+	font-size: 1rem;
+	margin: .5rem 0;
+}
+form select{
+	width: 19rem;
+	height: 2rem;
+	border: 1px solid #ccc;
+	border-radius: .5rem;
+	outline: none;
+}
+.per{
+	display: inline-block;
+	font-size: 1rem;
+	margin:1rem 0;
+	line-height: 2rem;
+	width: 65%;
+}
+form .cart-btn{
+	display: inline-block;
+	height: 1rem;
+	line-height: 1rem;
+	background: #ED6827;
+	color:#fff;
+	font-size: 1rem;
+	border-radius:0.3rem;
+	padding: .5rem;
+}
+.cart-tip{
+	font-size: 1rem;
+	line-height: 3rem;
+	border-bottom: 1px solid #ccc;
+	font-weight: 700;
+}
+table{
+  width: 100%;
+  margin:0 auto;
+  border-collapse: collapse; 
+  text-align: center;
+/*   border:1px solid #ccc; */
+}
+td{
+	font-size: .8rem;
+/*	line-height: 3rem;*/
+	margin:0 1rem; 
+}
+tr{
+	line-height: 3rem;
+    padding: 1rem 0;
+	border-bottom: 1px solid #ccc;
+}
+[class^="amount"]{
+	display: inline-block;
+	margin:0 .5rem; 
+}
+.minus,.plus{
+	display: inline-block;
+	width: 1.5rem;
+	height: 1.5rem;
+	line-height:1.5rem; 
+	border:1px solid #00B7ED;
+	border-radius: 100%;
+	text-align: center;
+}
+.footer{
+	z-index: 10;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}
+.footer ul li {
+ 	float: left;
+ 	height: 3rem;
+ 	line-height: 3rem;
+ }
+ .allpriceCon {
+ 	width: 70%;
+ 	height: 100%;
+ 	text-align: center;
+ 	font-size: 1rem;
+ 	background-color: #333333;
+ 	color: #fff;
+ }
+ 
+ .payBtnLi {
+ 	width: 30%;
+ 	background-color: #00A65A;
+ 	text-align: center;
+ }
+ 
+ .payBtnLi input {
+ 	width: 100%;
+ 	height: 100%;
+ 	outline: none;
+ 	border: none;
+ 	display: block;
+ 	background-color:#00A65A;
+ 	color: #FFFFFF;
+ 	font-size: 1.2rem;
+ }
+.mask{
+	z-index:100;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #272822;
+	opacity: 0.7;
+}
+.paymask,.cashpaymask, .successmask{
+	z-index: 1000;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: #fff;
+	width: 100%;
+	padding-bottom: 2rem;
+}
+.hide{
+	display: none;
+}
+.paylogo{
+	width: 2rem;
+	height:2rem;
+	display:inline-block;
+	vertical-align: middle; 
+	margin: .5rem;
+}
+.wxpay,.alipay,.pospay,.cashpay{
+	width: 50%;
+	margin: .5rem auto;
+	border: 1px solid #ccc;
+}
+.paytip{
+	line-height: 2rem;
+	font-size: 1rem;
+	margin-left: 1rem;
+}
+/*.close{
+   float: right;
+}*/
+.close img{
+   float: right;
+	width: 2rem;
+	height: 2rem;
+	margin:.5rem;
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+.cashpaymask{
+	text-align: center;
+}
+.totalprice,.payamount,.change{
+	width: 50%;
+	margin: .5rem auto;
+    vertical-align: middle;
+}
+.totalprice{
+border:2px solid #44A0DF;	    
+}
+.payamount{
+border:2px solid #F7AA00;	
+}
+.change{
+border:2px solid #6FBA2C;	
+}
+label{
+	display: inline-block;
+    color: #fff;
+    height: 2.1rem;
+    line-height: 2rem;
+    width: 30%;
+    font-size: .8rem;
+    padding: 0 .5rem;
+}
+.totalprice label{
+	background: #44A0DF;
+}
+.payamount label{
+	background: #F7AA00;
+}
+.change label{
+  background: #6FBA2C;	
+}
+.change input,.payamount input,.totalprice input{
+	width: 60%;
+	height: 2rem;
+	outline:none;
+}
+.cashpaymask button{
+	display: inline-block;
+	background: #F1793D;
+	color: #fff;
+	width: 5rem;
+	height: 2rem;
+	font-size: .8rem;
+	border-radius:.3rem;
+}

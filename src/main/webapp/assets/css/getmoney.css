@@ -1,0 +1,78 @@
+.container {
+	width: 900px;
+	margin: auto;
+	height: auto;
+	font-size: 18px;
+	color: #626262;
+	overflow-x:hidden;
+}
+
+.row {
+	margin-top: 40px;
+}
+
+.BindContent {
+	-webkit-box-shadow: 0 0px 20px 3px #bcdccd;
+	-moz-box-shadow: 0 0px 20px 3px #bcdccd;
+	box-shadow:  0 0px 20px 3px #bcdccd;
+	background-color:#fff;
+}
+
+.contentInner {
+	width: 95%;
+	margin: 0 auto;
+}
+
+
+/*.lebelT img{width: 50px;height: auto;}*/
+
+.BindHeader {
+	height: 80px;
+	line-height: 80px;
+	border-bottom: 2px dashed #45a0e0;
+}
+
+.headPad {
+	margin-bottom: 20px;
+}
+
+
+.scanInput {
+	height: 80px;
+	margin-top: 10px;
+	padding-left: 0px;
+}
+
+.BindContent {
+	margin-left: 1%;
+	margin-top: 10px; 
+	min-height:790px;
+}
+
+h3{
+	width:100%;
+	height:70px;
+	line-height:70px;
+}
+.banbiehao{
+	text-align: left;
+	font-size:18px;
+	color:#626262;
+	margin:0;padding:0;
+}
+.banbiehao h4{
+	height:50px;
+	line-height:50px;
+}
+.banbiehao span{
+	margin-left:15px;
+}
+.banbiehao i{
+	font-style:normal;
+	margin-left:50px;
+}
+.clearfix{
+	content:'';
+	clear:both;
+	display: inline-block;
+}

@@ -1,0 +1,178 @@
+.container {
+	
+	margin: auto;
+	height: auto;
+	font-size: 18px;
+	color: #626262;
+}
+
+.row {
+	margin-top: 40px;
+}
+
+.bounceContent {
+	-webkit-box-shadow: 0 0px 20px 3px #bcdccd;
+	-moz-box-shadow: 0 0px 20px 3px #bcdccd;
+	box-shadow: 0 0px 20px 3px #bcdccd;
+}
+a{
+	color:#333;
+}
+
+.bounceInner {
+	width: 95%;
+	margin: 0 auto;
+}
+
+#orderNum {
+	width: 400px;
+}
+
+.bounceHead {
+	margin-bottom: 30px;
+}
+
+.bounceHead h3 {
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 2px dashed #45a0e0;
+}
+
+#checkOrder {
+	display: block;
+	padding: 6px 10px;
+	width: 100%;
+	height: 100%;
+	border: none;
+	background-color: #45a0e0;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+#checkOrder:hover{color: #FFFBFB;}
+
+.input-group-addon {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	color: #FFFFFF;
+	background-color:
+}
+
+.bounceBack {
+	height: 34px;
+	line-height: 34px;
+	color: #45a0e0;
+}
+
+.checkTitle h3 {
+	height: 34px;
+	line-height: 34px;
+	border-bottom: 2px dashed #f8ac01;
+	margin-bottom: 30px;
+}
+
+.checkList table {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+input[type=checkbox] {
+	border-radius: 100%;
+}
+
+.bounceBtn {
+	width: 100px;
+	height: 40px;
+	background-color: #00a65a;
+	color: #FFFFFF;
+}
+.bounceBtn:hover{color: #FFFBFB;}
+
+.btnMargin {
+	margin-top: 120px;
+	margin-bottom: 50px;
+}
+.btn{
+	
+	border-radius:5px;
+}
+.mark1 {
+
+	width: 740px;
+	height: 480px;
+	z-index: 999;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin: -250px 0 0 -370px;
+	background: white;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.mark1 span {
+	float: right;
+}
+
+.markbox {
+	position: fixed;
+	top: 0px;
+	filter: alpha(opacity=8);
+	background-color: rgb(3, 3, 3);
+	z-index: 998;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	opacity: 0.8;
+	-moz-opacity: 0.8;
+	transition: opacity 0.5s;
+	display: none;
+}
+
+.close {
+	height: 60px;
+	width: 60px;
+	text-align: center;
+	line-height: 60px;
+	margin-right: 30px;
+}
+
+#closedimg {
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.all {
+	margin: 200px auto 150px;
+}
+
+.all label {
+	vertical-align: middle;
+	background-color: rgb(247, 171, 0);
+	border: 1px solid #f7ac00;
+	color: #FFFFFF;
+	height: 40px;
+	padding: 0;
+	line-height: 40px;
+	margin-left: 230px;
+	width: 70px;
+}
+.bounceSure{height: 40px;line-height: 40px;}
+.bounceSure button {
+	width: 250px;
+	height: 40px;line-height: 30px;
+	background-color: #45a0e0;
+	color: #FFFFFF;
+	font-size: 18px;
+}
+.bounceSure button:hover{color: #FFFBFB;}
+
+.clearMargin {
+	padding-left: 0;
+}
+
+.clearMargin input {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	height: 40px;line-height: 40px;
+}

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpGateipMapper">
+
+    <sql id="cpGateipBaseColumnSql">
+        ga_id,
+        ga_ip,
+        ga_tm,
+        ga_state
+    </sql>
+
+    <sql id="cpGateipBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.gaId)">
+                    ga_id = #{map.gaId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.gaIp)">
+                    AND ga_ip = #{map.gaIp}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.gaTm)">
+                    AND ga_tm = #{map.gaTm}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.gaState)">
+                    AND ga_state = #{map.gaState}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpGateip" parameterType="cn.happyworlds.imgmt.entity.CpGateip">
+        INSERT INTO cp_gateip(
+        <include refid="cpGateipBaseColumnSql"/>
+        )VALUES(
+            #{gaId},
+            #{gaIp},
+            #{gaTm},
+            #{gaState}
+        )
+    </insert>
+        
+    <delete id="deleteCpGateipByGaId" parameterType="Integer">
+        DELETE FROM cp_gateip WHERE ga_id = #{gaId}
+    </delete>
+
+    <select id="deleteCpGateipByParams" parameterType="map">
+        DELETE FROM cp_gateip
+        <include refid="cpGateipBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpGateip" parameterType="cn.happyworlds.imgmt.entity.CpGateip">
+        UPDATE cp_gateip
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(gaIp)">
+                ga_ip = #{gaIp} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(gaTm)">
+                ga_tm = #{gaTm} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(gaState)">
+                ga_state = #{gaState}
+            </if>
+        </set>
+        WHERE ga_id = #{gaId}
+    </update>
+
+    <update id="updateCpGateipByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_gateip
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.gaIp)">
+                    ga_ip = #{map.gaIp} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.gaTm)">
+                    ga_tm = #{map.gaTm} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.gaState)">
+                    ga_state = #{map.gaState}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.gaIdCondition)">
+                    ga_id = #{map.gaIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.gaIpCondition)">
+                    AND ga_ip = #{map.gaIpCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.gaTmCondition)">
+                    AND ga_tm = #{map.gaTmCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.gaStateCondition)">
+                    AND ga_state = #{map.gaStateCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpGateipByGaId" parameterType="Integer" resultMap="cpGateipMap">
+        SELECT
+        <include refid="cpGateipBaseColumnSql"/>
+        FROM cp_gateip
+        WHERE ga_id = #{gaId}
+    </select>
+
+    <select id="searchCpGateipByParams" parameterType="map" resultMap="cpGateipMap">
+        SELECT
+        <include refid="cpGateipBaseColumnSql"/>
+        FROM cp_gateip
+        <include refid="cpGateipBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+    
+    <!-- add by Hugh 新增闸机IP获取闸机IP最大值叠加1 start -->
+    <select id="searchMaxGateIpId" parameterType="String" resultMap="MaxGateIpId">
+    	select ifnull(max(ga_id)+1,'100') ga_id from cp_gateip
+    </select>
+    <!-- add by Hugh 新增闸机IP获取闸机IP最大值叠加1 end -->
+
+	<!-- add by Hugh 新增闸机IP获取闸机IP最大值叠加1返回值 start -->
+	<resultMap type="cn.happyworlds.imgmt.entity.CpGateip" id="MaxGateIpId">
+		<id column="ga_id" property="gaId"/>
+        <result column="ga_id" property="gaId"/>
+	</resultMap>
+	<!-- add by Hugh 新增闸机IP获取闸机IP最大值叠加1返回值 end -->
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpGateip" id="cpGateipMap">
+        <id column="ga_id" property="gaId"/>
+        <result column="ga_ip" property="gaIp"/>
+        <result column="ga_tm" property="gaTm"/>
+        <result column="ga_state" property="gaState"/>
+    </resultMap>
+
+</mapper>

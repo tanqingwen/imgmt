@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.FinancialStatementMapper">
+
+    <sql id="financialStatementBaseColumnSql">
+        level,
+        subject_code,
+        subject_name,
+        classes,
+        currency,
+        money,
+        postil
+    </sql>
+
+    <sql id="financialStatementBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.level)">
+                    level = #{map.level}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.subjectCode)">
+                    AND subject_code = #{map.subjectCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.subjectName)">
+                    AND subject_name = #{map.subjectName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.classes)">
+                    AND classes = #{map.classes}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.currency)">
+                    AND currency = #{map.currency}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.money)">
+                    AND money = #{map.money}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.postil)">
+                    AND postil = #{map.postil}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertFinancialStatement" parameterType="cn.happyworlds.imgmt.entity.FinancialStatement">
+        INSERT INTO financial_statement(
+        <include refid="financialStatementBaseColumnSql"/>
+        )VALUES(
+            #{level},
+            #{subjectCode},
+            #{subjectName},
+            #{classes},
+            #{currency},
+            #{money},
+            #{postil}
+        )
+    </insert>
+        
+    <delete id="deleteFinancialStatementBySubjectCode" parameterType="String">
+        DELETE FROM financial_statement WHERE subject_code = #{subjectCode}
+    </delete>
+
+    <select id="deleteFinancialStatementByParams" parameterType="map">
+        DELETE FROM financial_statement
+        <include refid="financialStatementBaseWhereSql"/>
+    </select>
+
+    <update id="updateFinancialStatement" parameterType="cn.happyworlds.imgmt.entity.FinancialStatement">
+        UPDATE financial_statement
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(level)">
+                level = #{level} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(subjectName)">
+                subject_name = #{subjectName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(classes)">
+                classes = #{classes} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(currency)">
+                currency = #{currency} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(money)">
+                money = #{money} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(postil)">
+                postil = #{postil}
+            </if>
+        </set>
+        WHERE subject_code = #{subjectCode}
+    </update>
+
+    <update id="updateFinancialStatementByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE financial_statement
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.level)">
+                    level = #{map.level} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.subjectName)">
+                    subject_name = #{map.subjectName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.classes)">
+                    classes = #{map.classes} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.currency)">
+                    currency = #{map.currency} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.money)">
+                    money = #{map.money} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.postil)">
+                    postil = #{map.postil}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.levelCondition)">
+                    level = #{map.levelCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.subjectCodeCondition)">
+                    AND subject_code = #{map.subjectCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.subjectNameCondition)">
+                    AND subject_name = #{map.subjectNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.classesCondition)">
+                    AND classes = #{map.classesCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.currencyCondition)">
+                    AND currency = #{map.currencyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.moneyCondition)">
+                    AND money = #{map.moneyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.postilCondition)">
+                    AND postil = #{map.postilCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchFinancialStatementBySubjectCode" parameterType="String" resultMap="financialStatementMap">
+        SELECT
+        <include refid="financialStatementBaseColumnSql"/>
+        FROM financial_statement
+        WHERE subject_code = #{subjectCode}
+    </select>
+
+    <select id="searchFinancialStatementByParams" parameterType="map" resultMap="financialStatementMap">
+        SELECT
+        <include refid="financialStatementBaseColumnSql"/>
+        FROM financial_statement
+        <include refid="financialStatementBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.FinancialStatement" id="financialStatementMap">
+        <id column="subject_code" property="subjectCode"/>
+        <result column="level" property="level"/>
+        <result column="subject_name" property="subjectName"/>
+        <result column="classes" property="classes"/>
+        <result column="currency" property="currency"/>
+        <result column="money" property="money"/>
+        <result column="postil" property="postil"/>
+    </resultMap>
+
+</mapper>

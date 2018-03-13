@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.YwIntegralMapper">
+
+    <sql id="ywIntegralBaseColumnSql">
+        hw_integral_id,
+        hw_member_id,
+        hw_integral_type,
+        hw_product_fraction,
+        hw_available_integral,
+        hw_exchange_integral,
+        hw_exchange_date,
+        hw_exchange_record,
+        hw_period_date,
+        hw_integral_status
+    </sql>
+
+    <sql id="ywIntegralBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwIntegralId)">
+                    hw_integral_id = #{map.hwIntegralId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberId)">
+                    AND hw_member_id = #{map.hwMemberId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwIntegralType)">
+                    AND hw_integral_type = #{map.hwIntegralType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwProductFraction)">
+                    AND hw_available_integral = #{map.hwProductFraction}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAvailableIntegral)">
+                    AND hw_available_integral = #{map.hwAvailableIntegral}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwExchangeIntegral)">
+                    AND hw_exchange_integral = #{map.hwExchangeIntegral}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwExchangeDate)">
+                    AND hw_exchange_date = #{map.hwExchangeDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwExchangeRecord)">
+                    AND hw_exchange_record = #{map.hwExchangeRecord}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPeriodDate)">
+                    AND hw_period_date = #{map.hwPeriodDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwIntegralStatus)">
+                    AND hw_integral_status = #{map.hwIntegralStatus}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertYwIntegral" parameterType="cn.happyworlds.imgmt.entity.YwIntegral">
+        INSERT INTO yw_integral(
+        <include refid="ywIntegralBaseColumnSql"/>
+        )VALUES(
+            #{hwIntegralId},
+            #{hwMemberId},
+            #{hwIntegralType},
+            #{hwProductFraction},
+            #{hwAvailableIntegral},
+            #{hwExchangeIntegral},
+            #{hwExchangeDate},
+            #{hwExchangeRecord},
+            #{hwPeriodDate},
+            #{hwIntegralStatus}
+        )
+    </insert>
+        
+    <delete id="deleteYwIntegralByHwIntegralId" parameterType="String">
+        DELETE FROM yw_integral WHERE hw_integral_id = #{hwIntegralId}
+    </delete>
+
+    <select id="deleteYwIntegralByParams" parameterType="map">
+        DELETE FROM yw_integral
+        <include refid="ywIntegralBaseWhereSql"/>
+    </select>
+
+    <update id="updateYwIntegral" parameterType="cn.happyworlds.imgmt.entity.YwIntegral">
+        UPDATE yw_integral
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwMemberId)">
+                hw_member_id = #{hwMemberId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwIntegralType)">
+                hw_integral_type = #{hwIntegralType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwProductFraction)">
+                hw_product_fraction = #{hwProductFraction} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwAvailableIntegral)">
+                hw_available_integral = #{hwAvailableIntegral} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwExchangeIntegral)">
+                hw_exchange_integral = #{hwExchangeIntegral} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwExchangeDate)">
+                hw_exchange_date = #{hwExchangeDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwExchangeRecord)">
+                hw_exchange_record = #{hwExchangeRecord} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwPeriodDate)">
+                hw_period_date = #{hwPeriodDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwIntegralStatus)">
+                hw_integral_status = #{hwIntegralStatus}
+            </if>
+        </set>
+        WHERE hw_integral_id = #{hwIntegralId}
+    </update>
+
+    <update id="updateYwIntegralByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE yw_integral
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberId)">
+                    hw_member_id = #{map.hwMemberId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwIntegralType)">
+                    hw_integral_type = #{map.hwIntegralType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwProductFraction)">
+                    hw_product_fraction = #{map.hwProductFraction} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAvailableIntegral)">
+                    hw_available_integral = #{map.hwAvailableIntegral} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwExchangeIntegral)">
+                    hw_exchange_integral = #{map.hwExchangeIntegral} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwExchangeDate)">
+                    hw_exchange_date = #{map.hwExchangeDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwExchangeRecord)">
+                    hw_exchange_record = #{map.hwExchangeRecord} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPeriodDate)">
+                    hw_period_date = #{map.hwPeriodDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwIntegralStatus)">
+                    hw_integral_status = #{map.hwIntegralStatus}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwIntegralIdCondition)">
+                    hw_integral_id = #{map.hwIntegralIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberIdCondition)">
+                    AND hw_member_id = #{map.hwMemberIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwIntegralTypeCondition)">
+                    AND hw_integral_type = #{map.hwIntegralTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwProductFractionCondition)">
+                    AND hw_product_fraction = #{map.hwProductFractionCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAvailableIntegralCondition)">
+                    AND hw_available_integral = #{map.hwAvailableIntegralCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwExchangeIntegralCondition)">
+                    AND hw_exchange_integral = #{map.hwExchangeIntegralCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwExchangeDateCondition)">
+                    AND hw_exchange_date = #{map.hwExchangeDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwExchangeRecordCondition)">
+                    AND hw_exchange_record = #{map.hwExchangeRecordCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPeriodDateCondition)">
+                    AND hw_period_date = #{map.hwPeriodDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwIntegralStatusCondition)">
+                    AND hw_integral_status = #{map.hwIntegralStatusCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchYwIntegralByHwIntegralId" parameterType="String" resultMap="ywIntegralMap">
+        SELECT
+        <include refid="ywIntegralBaseColumnSql"/>
+        FROM yw_integral
+        WHERE hw_integral_id = #{hwIntegralId}
+    </select>
+
+    <select id="searchYwIntegralByParams" parameterType="map" resultMap="ywIntegralMap">
+        SELECT
+        <include refid="ywIntegralBaseColumnSql"/>
+        FROM yw_integral
+        <include refid="ywIntegralBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.YwIntegral" id="ywIntegralMap">
+        <id column="hw_integral_id" property="hwIntegralId"/>
+        <result column="hw_member_id" property="hwMemberId"/>
+        <result column="hw_integral_type" property="hwIntegralType"/>
+        <result column="hw_product_fraction" property="hwProductFraction"/>
+        <result column="hw_available_integral" property="hwAvailableIntegral"/>
+        <result column="hw_exchange_integral" property="hwExchangeIntegral"/>
+        <result column="hw_exchange_date" property="hwExchangeDate"/>
+        <result column="hw_exchange_record" property="hwExchangeRecord"/>
+        <result column="hw_period_date" property="hwPeriodDate"/>
+        <result column="hw_integral_status" property="hwIntegralStatus"/>
+    </resultMap>
+
+</mapper>

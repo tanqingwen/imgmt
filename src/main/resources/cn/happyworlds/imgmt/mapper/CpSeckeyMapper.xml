@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpSeckeyMapper">
+
+    <sql id="cpSeckeyBaseColumnSql">
+        sk_prodct_group,
+        sk_value,
+        sk_key,
+        sk_desc,
+        sk_mod_date,
+        sk_user_id,
+        checksum
+    </sql>
+
+    <sql id="cpSeckeyBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.skProdctGroup)">
+                    sk_prodct_group = #{map.skProdctGroup}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.skValue)">
+                    AND sk_value = #{map.skValue}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.skKey)">
+                    AND sk_key = #{map.skKey}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.skDesc)">
+                    AND sk_desc = #{map.skDesc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.skModDate)">
+                    AND sk_mod_date = #{map.skModDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.skUserId)">
+                    AND sk_user_id = #{map.skUserId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpSeckey" parameterType="cn.happyworlds.imgmt.entity.CpSeckey">
+        INSERT INTO cp_seckey(
+        <include refid="cpSeckeyBaseColumnSql"/>
+        )VALUES(
+            #{skProdctGroup},
+            #{skValue},
+            #{skKey},
+            #{skDesc},
+            #{skModDate},
+            #{skUserId},
+            #{checksum}
+        )
+    </insert>
+        
+    <!--      
+    <delete id="deleteCpSeckeyBy${table.pkColumn.variableSpellSqlName}" parameterType="${table.pkColumn.javaType}">
+        DELETE FROM cp_seckey WHERE ${table.pkColumn.sqlName} = #{${table.pkColumn.variableName}}
+    </delete>
+	-->
+
+    <select id="deleteCpSeckeyByParams" parameterType="map">
+        DELETE FROM cp_seckey
+        <include refid="cpSeckeyBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpSeckey" parameterType="cn.happyworlds.imgmt.entity.CpSeckey">
+        UPDATE cp_seckey
+        <set>
+        </set>
+        WHERE $pkName = #{${table.pkColumn.variableName}}
+    </update>
+
+    <update id="updateCpSeckeyByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_seckey
+            <set>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.skProdctGroupCondition)">
+                    sk_prodct_group = #{map.skProdctGroupCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.skValueCondition)">
+                    AND sk_value = #{map.skValueCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.skKeyCondition)">
+                    AND sk_key = #{map.skKeyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.skDescCondition)">
+                    AND sk_desc = #{map.skDescCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.skModDateCondition)">
+                    AND sk_mod_date = #{map.skModDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.skUserIdCondition)">
+                    AND sk_user_id = #{map.skUserIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+	  
+    <select id="searchCpSeckeyByProdct" parameterType="String" resultMap="cpSeckeyMap">
+        SELECT
+        <include refid="cpSeckeyBaseColumnSql"/>
+        FROM cp_seckey
+        WHERE sk_prodct_group = #{skProdctGroup}
+    </select>
+
+    <select id="searchCpSeckeyByParams" parameterType="map" resultMap="cpSeckeyMap">
+        SELECT
+        <include refid="cpSeckeyBaseColumnSql"/>
+        FROM cp_seckey
+        <include refid="cpSeckeyBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpSeckey" id="cpSeckeyMap">
+        <!--
+        <id column="$pkName" property="${table.pkColumn.variableName}"/>
+        -->
+        <id column="sk_prodct_group" property="skProdctGroup"/>
+        <result column="sk_value" property="skValue"/>
+        <result column="sk_key" property="skKey"/>
+        <result column="sk_desc" property="skDesc"/>
+        <result column="sk_mod_date" property="skModDate"/>
+        <result column="sk_user_id" property="skUserId"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

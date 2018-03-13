@@ -1,0 +1,1901 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpCrdtblMapper">
+
+    <sql id="cpCrdtblBaseColumnSql">
+        CB_CARDHOLDER_NO,
+        CB_BASIC_SUPP_IND,
+        CB_ID_TYPE,
+        CB_IDNO,
+        CB_BSC_ID_TYPE,
+        CB_BASIC_CUSTOMER_IDNO,
+        CB_BASIC_CARDHOLDER_NO,
+        CB_INDIVIDUAL_ACCTNO,
+        CB_SEPARATE_STMT_IND,
+        CB_EMBOSSNAME,
+        CB_BILL_CYCLE,
+        CB_AUTOPAY_IND,
+        CB_AUTOPAY_BANK_BRANCH,
+        CB_AUTOPAY_BANK_ACCNO,
+        CB_AUTOPAY_ACCNAME,
+        CB_FRGN_AUTOPAY_IND,
+        CB_AUTOPAY_FRGN_BANK_BRANCH,
+        CB_AUTOPAY_FRGN_BANK_ACCNO,
+        CB_AUTOPAY_FRGN_ACCNAME,
+        CB_PIN_GEN_IND,
+        CB_CURR_BANK_REL,
+        CB_CENTRE_CD,
+        CB_SOURCE_CD,
+        CB_RECOMMENDER_NO,
+        CB_RECOMMENDER_NAME,
+        CB_MICROFILM_NO,
+        CB_ANNIV_DATE,
+        CB_CARD_PRDCT_GROUP,
+        CB_FEE_CD,
+        CB_CREDIT_GUARANTEE,
+        CB_RENEWAL_FLAG,
+        CB_SUSPEND_DATE,
+        CB_BANKRUPTCY_DATE,
+        CB_CANCEL_DATE,
+        CB_LEGAL_DATE,
+        CB_FRAUD_DATE,
+        CB_RESERVE_DATE,
+        CB_REINSTATE_DATE,
+        CB_EXPIRY_CCYYMM,
+        CB_PLASTIC_CD,
+        CB_PLASTIC_DATE,
+        CB_4DBC,
+        CB_NEW_EXPIRY_CCYYMM,
+        CB_NEW_PLASTIC_CD,
+        CB_NEW_PLASTIC_DATE,
+        CB_NEW_4DBC,
+        CB_XREF_IND,
+        CB_XREF_ACCNO,
+        CB_USER_FIELD_NUM1,
+        CB_USER_FIELD_NUM2,
+        CB_USER_FIELD_NUM3,
+        CB_USER_FIELD_NUM4,
+        CB_USER_CODE_1,
+        CB_USER_CODE_2,
+        CB_USER_CODE_3,
+        CB_USER_CODE_4,
+        CB_USER_DATE_1,
+        CB_USER_DATE_2,
+        CB_USER_AMT_1,
+        CB_USER_AMT_2,
+        CB_USER_FIELD_1,
+        CB_USER_FIELD_2,
+        CB_USER_FIELD_3,
+        CB_MOD_DATE,
+        CB_MOD_USER,
+        CB_PIN_OFFSET,
+        CB_PVKI,
+        CB_CIC_CANCEL,
+        CB_CRSHLD_IND,
+        CB_CRSHLD_ENROL_DATE,
+        CB_CRSHLD_TERMINATE_DATE,
+        CB_CORPORATE_ID,
+        CB_SIC,
+        CB_RELATIONSHIP,
+        CB_FRAUD_FLAG1,
+        CB_FRAUD_FLAG2,
+        CB_FIRST_USE_DATE,
+        CB_FIRST_USE_TIME,
+        CB_FIRST_USE_IND,
+        CB_OLD_ID_TYPE,
+        CB_OLD_CUSTOMER_IDNO,
+        CB_CIF_FLAG,
+        CB_DCMS_FLAG,
+        CB_CAF_REFRESH_FLAG,
+        CB_CAF_UPDATE_FLAG,
+        CB_CAF_PIN_FLAG,
+        CB_CAF_TAG_FLAG,
+        CB_CARD_COLL_METHOD,
+        CB_CARD_DELIVERY_ADDR,
+        CB_BILL_ADDR_CD,
+        CB_RWDS_ACCNO,
+        CB_LEGAL_ADDR_CD,
+        CB_LAST_RENEW_FEE_YEAR,
+        CB_STATUS_CD,
+        CB_MONITOR_CD,
+        CB_COLLECT_CD,
+        CB_EMPLOYEE_ID,
+        CB_INDACC_RULE,
+        CB_INDACC_NO1,
+        CB_INDACC_RULE1,
+        CB_INDACC_NO2,
+        CB_INDACC_RULE2,
+        CB_INDACC_NO3,
+        CB_INDACC_RULE3,
+        CB_INDACC_NO4,
+        CB_INDACC_RULE4,
+        CB_INDACC_NO5,
+        CB_INDACC_RULE5,
+        CB_INDACC_NO6,
+        CB_INDACC_RULE6,
+        CB_INDACC_NO7,
+        CB_INDACC_RULE7,
+        CB_INDACC_NO8,
+        CB_INDACC_RULE8,
+        CB_INDACC_NO9,
+        CB_INDACC_RULE9,
+        CB_PVV,
+        CB_PVV_OFFSET,
+        CB_CVKI,
+        CHECKSUM
+    </sql>
+
+    <sql id="cpCrdtblBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardholderNo)">
+                    CB_CARDHOLDER_NO = #{map.cbCardholderNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBasicSuppInd)">
+                    AND CB_BASIC_SUPP_IND = #{map.cbBasicSuppInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdType)">
+                    AND CB_ID_TYPE = #{map.cbIdType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdno)">
+                    AND CB_IDNO = #{map.cbIdno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBscIdType)">
+                    AND CB_BSC_ID_TYPE = #{map.cbBscIdType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBasicCustomerIdno)">
+                    AND CB_BASIC_CUSTOMER_IDNO = #{map.cbBasicCustomerIdno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBasicCardholderNo)">
+                    AND CB_BASIC_CARDHOLDER_NO = #{map.cbBasicCardholderNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndividualAcctno)">
+                    AND CB_INDIVIDUAL_ACCTNO = #{map.cbIndividualAcctno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSeparateStmtInd)">
+                    AND CB_SEPARATE_STMT_IND = #{map.cbSeparateStmtInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEmbossname)">
+                    AND CB_EMBOSSNAME = #{map.cbEmbossname}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBillCycle)">
+                    AND CB_BILL_CYCLE = #{map.cbBillCycle}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayInd)">
+                    AND CB_AUTOPAY_IND = #{map.cbAutopayInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayBankBranch)">
+                    AND CB_AUTOPAY_BANK_BRANCH = #{map.cbAutopayBankBranch}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayBankAccno)">
+                    AND CB_AUTOPAY_BANK_ACCNO = #{map.cbAutopayBankAccno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayAccname)">
+                    AND CB_AUTOPAY_ACCNAME = #{map.cbAutopayAccname}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFrgnAutopayInd)">
+                    AND CB_FRGN_AUTOPAY_IND = #{map.cbFrgnAutopayInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayFrgnBankBranch)">
+                    AND CB_AUTOPAY_FRGN_BANK_BRANCH = #{map.cbAutopayFrgnBankBranch}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayFrgnBankAccno)">
+                    AND CB_AUTOPAY_FRGN_BANK_ACCNO = #{map.cbAutopayFrgnBankAccno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayFrgnAccname)">
+                    AND CB_AUTOPAY_FRGN_ACCNAME = #{map.cbAutopayFrgnAccname}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPinGenInd)">
+                    AND CB_PIN_GEN_IND = #{map.cbPinGenInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCurrBankRel)">
+                    AND CB_CURR_BANK_REL = #{map.cbCurrBankRel}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCentreCd)">
+                    AND CB_CENTRE_CD = #{map.cbCentreCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSourceCd)">
+                    AND CB_SOURCE_CD = #{map.cbSourceCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRecommenderNo)">
+                    AND CB_RECOMMENDER_NO = #{map.cbRecommenderNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRecommenderName)">
+                    AND CB_RECOMMENDER_NAME = #{map.cbRecommenderName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMicrofilmNo)">
+                    AND CB_MICROFILM_NO = #{map.cbMicrofilmNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAnnivDate)">
+                    AND CB_ANNIV_DATE = #{map.cbAnnivDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardPrdctGroup)">
+                    AND CB_CARD_PRDCT_GROUP = #{map.cbCardPrdctGroup}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFeeCd)">
+                    AND CB_FEE_CD = #{map.cbFeeCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCreditGuarantee)">
+                    AND CB_CREDIT_GUARANTEE = #{map.cbCreditGuarantee}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRenewalFlag)">
+                    AND CB_RENEWAL_FLAG = #{map.cbRenewalFlag}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSuspendDate)">
+                    AND CB_SUSPEND_DATE = #{map.cbSuspendDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBankruptcyDate)">
+                    AND CB_BANKRUPTCY_DATE = #{map.cbBankruptcyDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCancelDate)">
+                    AND CB_CANCEL_DATE = #{map.cbCancelDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLegalDate)">
+                    AND CB_LEGAL_DATE = #{map.cbLegalDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFraudDate)">
+                    AND CB_FRAUD_DATE = #{map.cbFraudDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbReserveDate)">
+                    AND CB_RESERVE_DATE = #{map.cbReserveDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbReinstateDate)">
+                    AND CB_REINSTATE_DATE = #{map.cbReinstateDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbExpiryCcyymm)">
+                    AND CB_EXPIRY_CCYYMM = #{map.cbExpiryCcyymm}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPlasticCd)">
+                    AND CB_PLASTIC_CD = #{map.cbPlasticCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPlasticDate)">
+                    AND CB_PLASTIC_DATE = #{map.cbPlasticDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cb4dbc)">
+                    AND CB_4DBC = #{map.cb4dbc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNewExpiryCcyymm)">
+                    AND CB_NEW_EXPIRY_CCYYMM = #{map.cbNewExpiryCcyymm}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNewPlasticCd)">
+                    AND CB_NEW_PLASTIC_CD = #{map.cbNewPlasticCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNewPlasticDate)">
+                    AND CB_NEW_PLASTIC_DATE = #{map.cbNewPlasticDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNew4dbc)">
+                    AND CB_NEW_4DBC = #{map.cbNew4dbc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbXrefInd)">
+                    AND CB_XREF_IND = #{map.cbXrefInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbXrefAccno)">
+                    AND CB_XREF_ACCNO = #{map.cbXrefAccno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserFieldNum1)">
+                    AND CB_USER_FIELD_NUM1 = #{map.cbUserFieldNum1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserFieldNum2)">
+                    AND CB_USER_FIELD_NUM2 = #{map.cbUserFieldNum2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserFieldNum3)">
+                    AND CB_USER_FIELD_NUM3 = #{map.cbUserFieldNum3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserFieldNum4)">
+                    AND CB_USER_FIELD_NUM4 = #{map.cbUserFieldNum4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode1)">
+                    AND CB_USER_CODE_1 = #{map.cbUserCode1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode2)">
+                    AND CB_USER_CODE_2 = #{map.cbUserCode2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode3)">
+                    AND CB_USER_CODE_3 = #{map.cbUserCode3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode4)">
+                    AND CB_USER_CODE_4 = #{map.cbUserCode4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserDate1)">
+                    AND CB_USER_DATE_1 = #{map.cbUserDate1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserDate2)">
+                    AND CB_USER_DATE_2 = #{map.cbUserDate2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserAmt1)">
+                    AND CB_USER_AMT_1 = #{map.cbUserAmt1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserAmt2)">
+                    AND CB_USER_AMT_2 = #{map.cbUserAmt2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserField1)">
+                    AND CB_USER_FIELD_1 = #{map.cbUserField1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserField2)">
+                    AND CB_USER_FIELD_2 = #{map.cbUserField2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserField3)">
+                    AND CB_USER_FIELD_3 = #{map.cbUserField3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbModDate)">
+                    AND CB_MOD_DATE = #{map.cbModDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbModUser)">
+                    AND CB_MOD_USER = #{map.cbModUser}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPinOffset)">
+                    AND CB_PIN_OFFSET = #{map.cbPinOffset}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPvki)">
+                    AND CB_PVKI = #{map.cbPvki}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCicCancel)">
+                    AND CB_CIC_CANCEL = #{map.cbCicCancel}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrshldInd)">
+                    AND CB_CRSHLD_IND = #{map.cbCrshldInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrshldEnrolDate)">
+                    AND CB_CRSHLD_ENROL_DATE = #{map.cbCrshldEnrolDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrshldTerminateDate)">
+                    AND CB_CRSHLD_TERMINATE_DATE = #{map.cbCrshldTerminateDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCorporateId)">
+                    AND CB_CORPORATE_ID = #{map.cbCorporateId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSic)">
+                    AND CB_SIC = #{map.cbSic}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelationship)">
+                    AND CB_RELATIONSHIP = #{map.cbRelationship}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFraudFlag1)">
+                    AND CB_FRAUD_FLAG1 = #{map.cbFraudFlag1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFraudFlag2)">
+                    AND CB_FRAUD_FLAG2 = #{map.cbFraudFlag2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFirstUseDate)">
+                    AND CB_FIRST_USE_DATE = #{map.cbFirstUseDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFirstUseTime)">
+                    AND CB_FIRST_USE_TIME = #{map.cbFirstUseTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFirstUseInd)">
+                    AND CB_FIRST_USE_IND = #{map.cbFirstUseInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOldIdType)">
+                    AND CB_OLD_ID_TYPE = #{map.cbOldIdType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOldCustomerIdno)">
+                    AND CB_OLD_CUSTOMER_IDNO = #{map.cbOldCustomerIdno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCifFlag)">
+                    AND CB_CIF_FLAG = #{map.cbCifFlag}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbDcmsFlag)">
+                    AND CB_DCMS_FLAG = #{map.cbDcmsFlag}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCafRefreshFlag)">
+                    AND CB_CAF_REFRESH_FLAG = #{map.cbCafRefreshFlag}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCafUpdateFlag)">
+                    AND CB_CAF_UPDATE_FLAG = #{map.cbCafUpdateFlag}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCafPinFlag)">
+                    AND CB_CAF_PIN_FLAG = #{map.cbCafPinFlag}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCafTagFlag)">
+                    AND CB_CAF_TAG_FLAG = #{map.cbCafTagFlag}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardCollMethod)">
+                    AND CB_CARD_COLL_METHOD = #{map.cbCardCollMethod}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardDeliveryAddr)">
+                    AND CB_CARD_DELIVERY_ADDR = #{map.cbCardDeliveryAddr}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBillAddrCd)">
+                    AND CB_BILL_ADDR_CD = #{map.cbBillAddrCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRwdsAccno)">
+                    AND CB_RWDS_ACCNO = #{map.cbRwdsAccno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLegalAddrCd)">
+                    AND CB_LEGAL_ADDR_CD = #{map.cbLegalAddrCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLastRenewFeeYear)">
+                    AND CB_LAST_RENEW_FEE_YEAR = #{map.cbLastRenewFeeYear}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbStatusCd)">
+                    AND CB_STATUS_CD = #{map.cbStatusCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMonitorCd)">
+                    AND CB_MONITOR_CD = #{map.cbMonitorCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCollectCd)">
+                    AND CB_COLLECT_CD = #{map.cbCollectCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEmployeeId)">
+                    AND CB_EMPLOYEE_ID = #{map.cbEmployeeId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule)">
+                    AND CB_INDACC_RULE = #{map.cbIndaccRule}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo1)">
+                    AND CB_INDACC_NO1 = #{map.cbIndaccNo1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule1)">
+                    AND CB_INDACC_RULE1 = #{map.cbIndaccRule1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo2)">
+                    AND CB_INDACC_NO2 = #{map.cbIndaccNo2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule2)">
+                    AND CB_INDACC_RULE2 = #{map.cbIndaccRule2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo3)">
+                    AND CB_INDACC_NO3 = #{map.cbIndaccNo3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule3)">
+                    AND CB_INDACC_RULE3 = #{map.cbIndaccRule3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo4)">
+                    AND CB_INDACC_NO4 = #{map.cbIndaccNo4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule4)">
+                    AND CB_INDACC_RULE4 = #{map.cbIndaccRule4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo5)">
+                    AND CB_INDACC_NO5 = #{map.cbIndaccNo5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule5)">
+                    AND CB_INDACC_RULE5 = #{map.cbIndaccRule5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo6)">
+                    AND CB_INDACC_NO6 = #{map.cbIndaccNo6}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule6)">
+                    AND CB_INDACC_RULE6 = #{map.cbIndaccRule6}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo7)">
+                    AND CB_INDACC_NO7 = #{map.cbIndaccNo7}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule7)">
+                    AND CB_INDACC_RULE7 = #{map.cbIndaccRule7}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo8)">
+                    AND CB_INDACC_NO8 = #{map.cbIndaccNo8}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule8)">
+                    AND CB_INDACC_RULE8 = #{map.cbIndaccRule8}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo9)">
+                    AND CB_INDACC_NO9 = #{map.cbIndaccNo9}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule9)">
+                    AND CB_INDACC_RULE9 = #{map.cbIndaccRule9}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPvv)">
+                    AND CB_PVV = #{map.cbPvv}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPvvOffset)">
+                    AND CB_PVV_OFFSET = #{map.cbPvvOffset}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCvki)">
+                    AND CB_CVKI = #{map.cbCvki}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND CHECKSUM = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpCrdtbl" parameterType="cn.happyworlds.imgmt.entity.CpCrdtbl">
+        INSERT INTO cp_crdtbl(
+        <include refid="cpCrdtblBaseColumnSql"/>
+        )VALUES(
+            #{cbCardholderNo},
+            #{cbBasicSuppInd},
+            #{cbIdType},
+            #{cbIdno},
+            #{cbBscIdType},
+            #{cbBasicCustomerIdno},
+            #{cbBasicCardholderNo},
+            #{cbIndividualAcctno},
+            #{cbSeparateStmtInd},
+            #{cbEmbossname},
+            #{cbBillCycle},
+            #{cbAutopayInd},
+            #{cbAutopayBankBranch},
+            #{cbAutopayBankAccno},
+            #{cbAutopayAccname},
+            #{cbFrgnAutopayInd},
+            #{cbAutopayFrgnBankBranch},
+            #{cbAutopayFrgnBankAccno},
+            #{cbAutopayFrgnAccname},
+            #{cbPinGenInd},
+            #{cbCurrBankRel},
+            #{cbCentreCd},
+            #{cbSourceCd},
+            #{cbRecommenderNo},
+            #{cbRecommenderName},
+            #{cbMicrofilmNo},
+            #{cbAnnivDate},
+            #{cbCardPrdctGroup},
+            #{cbFeeCd},
+            #{cbCreditGuarantee},
+            #{cbRenewalFlag},
+            #{cbSuspendDate},
+            #{cbBankruptcyDate},
+            #{cbCancelDate},
+            #{cbLegalDate},
+            #{cbFraudDate},
+            #{cbReserveDate},
+            #{cbReinstateDate},
+            #{cbExpiryCcyymm},
+            #{cbPlasticCd},
+            #{cbPlasticDate},
+            #{cb4dbc},
+            #{cbNewExpiryCcyymm},
+            #{cbNewPlasticCd},
+            #{cbNewPlasticDate},
+            #{cbNew4dbc},
+            #{cbXrefInd},
+            #{cbXrefAccno},
+            #{cbUserFieldNum1},
+            #{cbUserFieldNum2},
+            #{cbUserFieldNum3},
+            #{cbUserFieldNum4},
+            #{cbUserCode1},
+            #{cbUserCode2},
+            #{cbUserCode3},
+            #{cbUserCode4},
+            #{cbUserDate1},
+            #{cbUserDate2},
+            #{cbUserAmt1},
+            #{cbUserAmt2},
+            #{cbUserField1},
+            #{cbUserField2},
+            #{cbUserField3},
+            #{cbModDate},
+            #{cbModUser},
+            #{cbPinOffset},
+            #{cbPvki},
+            #{cbCicCancel},
+            #{cbCrshldInd},
+            #{cbCrshldEnrolDate},
+            #{cbCrshldTerminateDate},
+            #{cbCorporateId},
+            #{cbSic},
+            #{cbRelationship},
+            #{cbFraudFlag1},
+            #{cbFraudFlag2},
+            #{cbFirstUseDate},
+            #{cbFirstUseTime},
+            #{cbFirstUseInd},
+            #{cbOldIdType},
+            #{cbOldCustomerIdno},
+            #{cbCifFlag},
+            #{cbDcmsFlag},
+            #{cbCafRefreshFlag},
+            #{cbCafUpdateFlag},
+            #{cbCafPinFlag},
+            #{cbCafTagFlag},
+            #{cbCardCollMethod},
+            #{cbCardDeliveryAddr},
+            #{cbBillAddrCd},
+            #{cbRwdsAccno},
+            #{cbLegalAddrCd},
+            #{cbLastRenewFeeYear},
+            #{cbStatusCd},
+            #{cbMonitorCd},
+            #{cbCollectCd},
+            #{cbEmployeeId},
+            #{cbIndaccRule},
+            #{cbIndaccNo1},
+            #{cbIndaccRule1},
+            #{cbIndaccNo2},
+            #{cbIndaccRule2},
+            #{cbIndaccNo3},
+            #{cbIndaccRule3},
+            #{cbIndaccNo4},
+            #{cbIndaccRule4},
+            #{cbIndaccNo5},
+            #{cbIndaccRule5},
+            #{cbIndaccNo6},
+            #{cbIndaccRule6},
+            #{cbIndaccNo7},
+            #{cbIndaccRule7},
+            #{cbIndaccNo8},
+            #{cbIndaccRule8},
+            #{cbIndaccNo9},
+            #{cbIndaccRule9},
+            #{cbPvv},
+            #{cbPvvOffset},
+            #{cbCvki},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpCrdtblByCbCardholderNo" parameterType="String">
+        DELETE FROM cp_crdtbl WHERE CB_CARDHOLDER_NO = #{cbCardholderNo}
+    </delete>
+
+    <select id="deleteCpCrdtblByParams" parameterType="map">
+        DELETE FROM cp_crdtbl
+        <include refid="cpCrdtblBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpCrdtbl" parameterType="cn.happyworlds.imgmt.entity.CpCrdtbl">
+        UPDATE cp_crdtbl
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbBasicSuppInd)">
+                CB_BASIC_SUPP_IND = #{cbBasicSuppInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIdType)">
+                CB_ID_TYPE = #{cbIdType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIdno)">
+                CB_IDNO = #{cbIdno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbBscIdType)">
+                CB_BSC_ID_TYPE = #{cbBscIdType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbBasicCustomerIdno)">
+                CB_BASIC_CUSTOMER_IDNO = #{cbBasicCustomerIdno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbBasicCardholderNo)">
+                CB_BASIC_CARDHOLDER_NO = #{cbBasicCardholderNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndividualAcctno)">
+                CB_INDIVIDUAL_ACCTNO = #{cbIndividualAcctno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSeparateStmtInd)">
+                CB_SEPARATE_STMT_IND = #{cbSeparateStmtInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbEmbossname)">
+                CB_EMBOSSNAME = #{cbEmbossname} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbBillCycle)">
+                CB_BILL_CYCLE = #{cbBillCycle} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAutopayInd)">
+                CB_AUTOPAY_IND = #{cbAutopayInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAutopayBankBranch)">
+                CB_AUTOPAY_BANK_BRANCH = #{cbAutopayBankBranch} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAutopayBankAccno)">
+                CB_AUTOPAY_BANK_ACCNO = #{cbAutopayBankAccno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAutopayAccname)">
+                CB_AUTOPAY_ACCNAME = #{cbAutopayAccname} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbFrgnAutopayInd)">
+                CB_FRGN_AUTOPAY_IND = #{cbFrgnAutopayInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAutopayFrgnBankBranch)">
+                CB_AUTOPAY_FRGN_BANK_BRANCH = #{cbAutopayFrgnBankBranch} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAutopayFrgnBankAccno)">
+                CB_AUTOPAY_FRGN_BANK_ACCNO = #{cbAutopayFrgnBankAccno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAutopayFrgnAccname)">
+                CB_AUTOPAY_FRGN_ACCNAME = #{cbAutopayFrgnAccname} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPinGenInd)">
+                CB_PIN_GEN_IND = #{cbPinGenInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCurrBankRel)">
+                CB_CURR_BANK_REL = #{cbCurrBankRel} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCentreCd)">
+                CB_CENTRE_CD = #{cbCentreCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSourceCd)">
+                CB_SOURCE_CD = #{cbSourceCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRecommenderNo)">
+                CB_RECOMMENDER_NO = #{cbRecommenderNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRecommenderName)">
+                CB_RECOMMENDER_NAME = #{cbRecommenderName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMicrofilmNo)">
+                CB_MICROFILM_NO = #{cbMicrofilmNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbAnnivDate)">
+                CB_ANNIV_DATE = #{cbAnnivDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCardPrdctGroup)">
+                CB_CARD_PRDCT_GROUP = #{cbCardPrdctGroup} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbFeeCd)">
+                CB_FEE_CD = #{cbFeeCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCreditGuarantee)">
+                CB_CREDIT_GUARANTEE = #{cbCreditGuarantee} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRenewalFlag)">
+                CB_RENEWAL_FLAG = #{cbRenewalFlag} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSuspendDate)">
+                CB_SUSPEND_DATE = #{cbSuspendDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbBankruptcyDate)">
+                CB_BANKRUPTCY_DATE = #{cbBankruptcyDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCancelDate)">
+                CB_CANCEL_DATE = #{cbCancelDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbLegalDate)">
+                CB_LEGAL_DATE = #{cbLegalDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbFraudDate)">
+                CB_FRAUD_DATE = #{cbFraudDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbReserveDate)">
+                CB_RESERVE_DATE = #{cbReserveDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbReinstateDate)">
+                CB_REINSTATE_DATE = #{cbReinstateDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbExpiryCcyymm)">
+                CB_EXPIRY_CCYYMM = #{cbExpiryCcyymm} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPlasticCd)">
+                CB_PLASTIC_CD = #{cbPlasticCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPlasticDate)">
+                CB_PLASTIC_DATE = #{cbPlasticDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cb4dbc)">
+                CB_4DBC = #{cb4dbc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNewExpiryCcyymm)">
+                CB_NEW_EXPIRY_CCYYMM = #{cbNewExpiryCcyymm} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNewPlasticCd)">
+                CB_NEW_PLASTIC_CD = #{cbNewPlasticCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNewPlasticDate)">
+                CB_NEW_PLASTIC_DATE = #{cbNewPlasticDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbNew4dbc)">
+                CB_NEW_4DBC = #{cbNew4dbc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbXrefInd)">
+                CB_XREF_IND = #{cbXrefInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbXrefAccno)">
+                CB_XREF_ACCNO = #{cbXrefAccno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserFieldNum1)">
+                CB_USER_FIELD_NUM1 = #{cbUserFieldNum1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserFieldNum2)">
+                CB_USER_FIELD_NUM2 = #{cbUserFieldNum2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserFieldNum3)">
+                CB_USER_FIELD_NUM3 = #{cbUserFieldNum3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserFieldNum4)">
+                CB_USER_FIELD_NUM4 = #{cbUserFieldNum4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserCode1)">
+                CB_USER_CODE_1 = #{cbUserCode1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserCode2)">
+                CB_USER_CODE_2 = #{cbUserCode2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserCode3)">
+                CB_USER_CODE_3 = #{cbUserCode3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserCode4)">
+                CB_USER_CODE_4 = #{cbUserCode4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserDate1)">
+                CB_USER_DATE_1 = #{cbUserDate1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserDate2)">
+                CB_USER_DATE_2 = #{cbUserDate2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserAmt1)">
+                CB_USER_AMT_1 = #{cbUserAmt1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserAmt2)">
+                CB_USER_AMT_2 = #{cbUserAmt2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserField1)">
+                CB_USER_FIELD_1 = #{cbUserField1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserField2)">
+                CB_USER_FIELD_2 = #{cbUserField2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbUserField3)">
+                CB_USER_FIELD_3 = #{cbUserField3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbModDate)">
+                CB_MOD_DATE = #{cbModDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbModUser)">
+                CB_MOD_USER = #{cbModUser} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPinOffset)">
+                CB_PIN_OFFSET = #{cbPinOffset} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPvki)">
+                CB_PVKI = #{cbPvki} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCicCancel)">
+                CB_CIC_CANCEL = #{cbCicCancel} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCrshldInd)">
+                CB_CRSHLD_IND = #{cbCrshldInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCrshldEnrolDate)">
+                CB_CRSHLD_ENROL_DATE = #{cbCrshldEnrolDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCrshldTerminateDate)">
+                CB_CRSHLD_TERMINATE_DATE = #{cbCrshldTerminateDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCorporateId)">
+                CB_CORPORATE_ID = #{cbCorporateId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbSic)">
+                CB_SIC = #{cbSic} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRelationship)">
+                CB_RELATIONSHIP = #{cbRelationship} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbFraudFlag1)">
+                CB_FRAUD_FLAG1 = #{cbFraudFlag1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbFraudFlag2)">
+                CB_FRAUD_FLAG2 = #{cbFraudFlag2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbFirstUseDate)">
+                CB_FIRST_USE_DATE = #{cbFirstUseDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbFirstUseTime)">
+                CB_FIRST_USE_TIME = #{cbFirstUseTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbFirstUseInd)">
+                CB_FIRST_USE_IND = #{cbFirstUseInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOldIdType)">
+                CB_OLD_ID_TYPE = #{cbOldIdType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbOldCustomerIdno)">
+                CB_OLD_CUSTOMER_IDNO = #{cbOldCustomerIdno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCifFlag)">
+                CB_CIF_FLAG = #{cbCifFlag} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbDcmsFlag)">
+                CB_DCMS_FLAG = #{cbDcmsFlag} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCafRefreshFlag)">
+                CB_CAF_REFRESH_FLAG = #{cbCafRefreshFlag} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCafUpdateFlag)">
+                CB_CAF_UPDATE_FLAG = #{cbCafUpdateFlag} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCafPinFlag)">
+                CB_CAF_PIN_FLAG = #{cbCafPinFlag} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCafTagFlag)">
+                CB_CAF_TAG_FLAG = #{cbCafTagFlag} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCardCollMethod)">
+                CB_CARD_COLL_METHOD = #{cbCardCollMethod} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCardDeliveryAddr)">
+                CB_CARD_DELIVERY_ADDR = #{cbCardDeliveryAddr} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbBillAddrCd)">
+                CB_BILL_ADDR_CD = #{cbBillAddrCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRwdsAccno)">
+                CB_RWDS_ACCNO = #{cbRwdsAccno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbLegalAddrCd)">
+                CB_LEGAL_ADDR_CD = #{cbLegalAddrCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbLastRenewFeeYear)">
+                CB_LAST_RENEW_FEE_YEAR = #{cbLastRenewFeeYear} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbStatusCd)">
+                CB_STATUS_CD = #{cbStatusCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbMonitorCd)">
+                CB_MONITOR_CD = #{cbMonitorCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCollectCd)">
+                CB_COLLECT_CD = #{cbCollectCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbEmployeeId)">
+                CB_EMPLOYEE_ID = #{cbEmployeeId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccRule)">
+                CB_INDACC_RULE = #{cbIndaccRule} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccNo1)">
+                CB_INDACC_NO1 = #{cbIndaccNo1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccRule1)">
+                CB_INDACC_RULE1 = #{cbIndaccRule1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccNo2)">
+                CB_INDACC_NO2 = #{cbIndaccNo2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccRule2)">
+                CB_INDACC_RULE2 = #{cbIndaccRule2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccNo3)">
+                CB_INDACC_NO3 = #{cbIndaccNo3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccRule3)">
+                CB_INDACC_RULE3 = #{cbIndaccRule3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccNo4)">
+                CB_INDACC_NO4 = #{cbIndaccNo4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccRule4)">
+                CB_INDACC_RULE4 = #{cbIndaccRule4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccNo5)">
+                CB_INDACC_NO5 = #{cbIndaccNo5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccRule5)">
+                CB_INDACC_RULE5 = #{cbIndaccRule5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccNo6)">
+                CB_INDACC_NO6 = #{cbIndaccNo6} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccRule6)">
+                CB_INDACC_RULE6 = #{cbIndaccRule6} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccNo7)">
+                CB_INDACC_NO7 = #{cbIndaccNo7} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccRule7)">
+                CB_INDACC_RULE7 = #{cbIndaccRule7} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccNo8)">
+                CB_INDACC_NO8 = #{cbIndaccNo8} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccRule8)">
+                CB_INDACC_RULE8 = #{cbIndaccRule8} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccNo9)">
+                CB_INDACC_NO9 = #{cbIndaccNo9} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIndaccRule9)">
+                CB_INDACC_RULE9 = #{cbIndaccRule9} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPvv)">
+                CB_PVV = #{cbPvv} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbPvvOffset)">
+                CB_PVV_OFFSET = #{cbPvvOffset} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCvki)">
+                CB_CVKI = #{cbCvki} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                CHECKSUM = #{checksum}
+            </if>
+        </set>
+        WHERE CB_CARDHOLDER_NO = #{cbCardholderNo}
+    </update>
+
+    <update id="updateCpCrdtblByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_crdtbl
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBasicSuppInd)">
+                    CB_BASIC_SUPP_IND = #{map.cbBasicSuppInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdType)">
+                    CB_ID_TYPE = #{map.cbIdType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdno)">
+                    CB_IDNO = #{map.cbIdno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBscIdType)">
+                    CB_BSC_ID_TYPE = #{map.cbBscIdType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBasicCustomerIdno)">
+                    CB_BASIC_CUSTOMER_IDNO = #{map.cbBasicCustomerIdno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBasicCardholderNo)">
+                    CB_BASIC_CARDHOLDER_NO = #{map.cbBasicCardholderNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndividualAcctno)">
+                    CB_INDIVIDUAL_ACCTNO = #{map.cbIndividualAcctno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSeparateStmtInd)">
+                    CB_SEPARATE_STMT_IND = #{map.cbSeparateStmtInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEmbossname)">
+                    CB_EMBOSSNAME = #{map.cbEmbossname} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBillCycle)">
+                    CB_BILL_CYCLE = #{map.cbBillCycle} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayInd)">
+                    CB_AUTOPAY_IND = #{map.cbAutopayInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayBankBranch)">
+                    CB_AUTOPAY_BANK_BRANCH = #{map.cbAutopayBankBranch} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayBankAccno)">
+                    CB_AUTOPAY_BANK_ACCNO = #{map.cbAutopayBankAccno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayAccname)">
+                    CB_AUTOPAY_ACCNAME = #{map.cbAutopayAccname} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFrgnAutopayInd)">
+                    CB_FRGN_AUTOPAY_IND = #{map.cbFrgnAutopayInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayFrgnBankBranch)">
+                    CB_AUTOPAY_FRGN_BANK_BRANCH = #{map.cbAutopayFrgnBankBranch} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayFrgnBankAccno)">
+                    CB_AUTOPAY_FRGN_BANK_ACCNO = #{map.cbAutopayFrgnBankAccno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayFrgnAccname)">
+                    CB_AUTOPAY_FRGN_ACCNAME = #{map.cbAutopayFrgnAccname} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPinGenInd)">
+                    CB_PIN_GEN_IND = #{map.cbPinGenInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCurrBankRel)">
+                    CB_CURR_BANK_REL = #{map.cbCurrBankRel} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCentreCd)">
+                    CB_CENTRE_CD = #{map.cbCentreCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSourceCd)">
+                    CB_SOURCE_CD = #{map.cbSourceCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRecommenderNo)">
+                    CB_RECOMMENDER_NO = #{map.cbRecommenderNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRecommenderName)">
+                    CB_RECOMMENDER_NAME = #{map.cbRecommenderName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMicrofilmNo)">
+                    CB_MICROFILM_NO = #{map.cbMicrofilmNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAnnivDate)">
+                    CB_ANNIV_DATE = #{map.cbAnnivDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardPrdctGroup)">
+                    CB_CARD_PRDCT_GROUP = #{map.cbCardPrdctGroup} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFeeCd)">
+                    CB_FEE_CD = #{map.cbFeeCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCreditGuarantee)">
+                    CB_CREDIT_GUARANTEE = #{map.cbCreditGuarantee} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRenewalFlag)">
+                    CB_RENEWAL_FLAG = #{map.cbRenewalFlag} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSuspendDate)">
+                    CB_SUSPEND_DATE = #{map.cbSuspendDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBankruptcyDate)">
+                    CB_BANKRUPTCY_DATE = #{map.cbBankruptcyDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCancelDate)">
+                    CB_CANCEL_DATE = #{map.cbCancelDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLegalDate)">
+                    CB_LEGAL_DATE = #{map.cbLegalDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFraudDate)">
+                    CB_FRAUD_DATE = #{map.cbFraudDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbReserveDate)">
+                    CB_RESERVE_DATE = #{map.cbReserveDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbReinstateDate)">
+                    CB_REINSTATE_DATE = #{map.cbReinstateDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbExpiryCcyymm)">
+                    CB_EXPIRY_CCYYMM = #{map.cbExpiryCcyymm} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPlasticCd)">
+                    CB_PLASTIC_CD = #{map.cbPlasticCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPlasticDate)">
+                    CB_PLASTIC_DATE = #{map.cbPlasticDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cb4dbc)">
+                    CB_4DBC = #{map.cb4dbc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNewExpiryCcyymm)">
+                    CB_NEW_EXPIRY_CCYYMM = #{map.cbNewExpiryCcyymm} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNewPlasticCd)">
+                    CB_NEW_PLASTIC_CD = #{map.cbNewPlasticCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNewPlasticDate)">
+                    CB_NEW_PLASTIC_DATE = #{map.cbNewPlasticDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNew4dbc)">
+                    CB_NEW_4DBC = #{map.cbNew4dbc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbXrefInd)">
+                    CB_XREF_IND = #{map.cbXrefInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbXrefAccno)">
+                    CB_XREF_ACCNO = #{map.cbXrefAccno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserFieldNum1)">
+                    CB_USER_FIELD_NUM1 = #{map.cbUserFieldNum1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserFieldNum2)">
+                    CB_USER_FIELD_NUM2 = #{map.cbUserFieldNum2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserFieldNum3)">
+                    CB_USER_FIELD_NUM3 = #{map.cbUserFieldNum3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserFieldNum4)">
+                    CB_USER_FIELD_NUM4 = #{map.cbUserFieldNum4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode1)">
+                    CB_USER_CODE_1 = #{map.cbUserCode1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode2)">
+                    CB_USER_CODE_2 = #{map.cbUserCode2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode3)">
+                    CB_USER_CODE_3 = #{map.cbUserCode3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode4)">
+                    CB_USER_CODE_4 = #{map.cbUserCode4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserDate1)">
+                    CB_USER_DATE_1 = #{map.cbUserDate1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserDate2)">
+                    CB_USER_DATE_2 = #{map.cbUserDate2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserAmt1)">
+                    CB_USER_AMT_1 = #{map.cbUserAmt1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserAmt2)">
+                    CB_USER_AMT_2 = #{map.cbUserAmt2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserField1)">
+                    CB_USER_FIELD_1 = #{map.cbUserField1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserField2)">
+                    CB_USER_FIELD_2 = #{map.cbUserField2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserField3)">
+                    CB_USER_FIELD_3 = #{map.cbUserField3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbModDate)">
+                    CB_MOD_DATE = #{map.cbModDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbModUser)">
+                    CB_MOD_USER = #{map.cbModUser} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPinOffset)">
+                    CB_PIN_OFFSET = #{map.cbPinOffset} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPvki)">
+                    CB_PVKI = #{map.cbPvki} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCicCancel)">
+                    CB_CIC_CANCEL = #{map.cbCicCancel} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrshldInd)">
+                    CB_CRSHLD_IND = #{map.cbCrshldInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrshldEnrolDate)">
+                    CB_CRSHLD_ENROL_DATE = #{map.cbCrshldEnrolDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrshldTerminateDate)">
+                    CB_CRSHLD_TERMINATE_DATE = #{map.cbCrshldTerminateDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCorporateId)">
+                    CB_CORPORATE_ID = #{map.cbCorporateId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSic)">
+                    CB_SIC = #{map.cbSic} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelationship)">
+                    CB_RELATIONSHIP = #{map.cbRelationship} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFraudFlag1)">
+                    CB_FRAUD_FLAG1 = #{map.cbFraudFlag1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFraudFlag2)">
+                    CB_FRAUD_FLAG2 = #{map.cbFraudFlag2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFirstUseDate)">
+                    CB_FIRST_USE_DATE = #{map.cbFirstUseDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFirstUseTime)">
+                    CB_FIRST_USE_TIME = #{map.cbFirstUseTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFirstUseInd)">
+                    CB_FIRST_USE_IND = #{map.cbFirstUseInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOldIdType)">
+                    CB_OLD_ID_TYPE = #{map.cbOldIdType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOldCustomerIdno)">
+                    CB_OLD_CUSTOMER_IDNO = #{map.cbOldCustomerIdno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCifFlag)">
+                    CB_CIF_FLAG = #{map.cbCifFlag} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbDcmsFlag)">
+                    CB_DCMS_FLAG = #{map.cbDcmsFlag} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCafRefreshFlag)">
+                    CB_CAF_REFRESH_FLAG = #{map.cbCafRefreshFlag} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCafUpdateFlag)">
+                    CB_CAF_UPDATE_FLAG = #{map.cbCafUpdateFlag} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCafPinFlag)">
+                    CB_CAF_PIN_FLAG = #{map.cbCafPinFlag} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCafTagFlag)">
+                    CB_CAF_TAG_FLAG = #{map.cbCafTagFlag} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardCollMethod)">
+                    CB_CARD_COLL_METHOD = #{map.cbCardCollMethod} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardDeliveryAddr)">
+                    CB_CARD_DELIVERY_ADDR = #{map.cbCardDeliveryAddr} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBillAddrCd)">
+                    CB_BILL_ADDR_CD = #{map.cbBillAddrCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRwdsAccno)">
+                    CB_RWDS_ACCNO = #{map.cbRwdsAccno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLegalAddrCd)">
+                    CB_LEGAL_ADDR_CD = #{map.cbLegalAddrCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLastRenewFeeYear)">
+                    CB_LAST_RENEW_FEE_YEAR = #{map.cbLastRenewFeeYear} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbStatusCd)">
+                    CB_STATUS_CD = #{map.cbStatusCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMonitorCd)">
+                    CB_MONITOR_CD = #{map.cbMonitorCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCollectCd)">
+                    CB_COLLECT_CD = #{map.cbCollectCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEmployeeId)">
+                    CB_EMPLOYEE_ID = #{map.cbEmployeeId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule)">
+                    CB_INDACC_RULE = #{map.cbIndaccRule} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo1)">
+                    CB_INDACC_NO1 = #{map.cbIndaccNo1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule1)">
+                    CB_INDACC_RULE1 = #{map.cbIndaccRule1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo2)">
+                    CB_INDACC_NO2 = #{map.cbIndaccNo2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule2)">
+                    CB_INDACC_RULE2 = #{map.cbIndaccRule2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo3)">
+                    CB_INDACC_NO3 = #{map.cbIndaccNo3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule3)">
+                    CB_INDACC_RULE3 = #{map.cbIndaccRule3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo4)">
+                    CB_INDACC_NO4 = #{map.cbIndaccNo4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule4)">
+                    CB_INDACC_RULE4 = #{map.cbIndaccRule4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo5)">
+                    CB_INDACC_NO5 = #{map.cbIndaccNo5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule5)">
+                    CB_INDACC_RULE5 = #{map.cbIndaccRule5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo6)">
+                    CB_INDACC_NO6 = #{map.cbIndaccNo6} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule6)">
+                    CB_INDACC_RULE6 = #{map.cbIndaccRule6} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo7)">
+                    CB_INDACC_NO7 = #{map.cbIndaccNo7} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule7)">
+                    CB_INDACC_RULE7 = #{map.cbIndaccRule7} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo8)">
+                    CB_INDACC_NO8 = #{map.cbIndaccNo8} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule8)">
+                    CB_INDACC_RULE8 = #{map.cbIndaccRule8} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo9)">
+                    CB_INDACC_NO9 = #{map.cbIndaccNo9} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule9)">
+                    CB_INDACC_RULE9 = #{map.cbIndaccRule9} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPvv)">
+                    CB_PVV = #{map.cbPvv} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPvvOffset)">
+                    CB_PVV_OFFSET = #{map.cbPvvOffset} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCvki)">
+                    CB_CVKI = #{map.cbCvki} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    CHECKSUM = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardholderNoCondition)">
+                    CB_CARDHOLDER_NO = #{map.cbCardholderNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBasicSuppIndCondition)">
+                    AND CB_BASIC_SUPP_IND = #{map.cbBasicSuppIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdTypeCondition)">
+                    AND CB_ID_TYPE = #{map.cbIdTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdnoCondition)">
+                    AND CB_IDNO = #{map.cbIdnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBscIdTypeCondition)">
+                    AND CB_BSC_ID_TYPE = #{map.cbBscIdTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBasicCustomerIdnoCondition)">
+                    AND CB_BASIC_CUSTOMER_IDNO = #{map.cbBasicCustomerIdnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBasicCardholderNoCondition)">
+                    AND CB_BASIC_CARDHOLDER_NO = #{map.cbBasicCardholderNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndividualAcctnoCondition)">
+                    AND CB_INDIVIDUAL_ACCTNO = #{map.cbIndividualAcctnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSeparateStmtIndCondition)">
+                    AND CB_SEPARATE_STMT_IND = #{map.cbSeparateStmtIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEmbossnameCondition)">
+                    AND CB_EMBOSSNAME = #{map.cbEmbossnameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBillCycleCondition)">
+                    AND CB_BILL_CYCLE = #{map.cbBillCycleCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayIndCondition)">
+                    AND CB_AUTOPAY_IND = #{map.cbAutopayIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayBankBranchCondition)">
+                    AND CB_AUTOPAY_BANK_BRANCH = #{map.cbAutopayBankBranchCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayBankAccnoCondition)">
+                    AND CB_AUTOPAY_BANK_ACCNO = #{map.cbAutopayBankAccnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayAccnameCondition)">
+                    AND CB_AUTOPAY_ACCNAME = #{map.cbAutopayAccnameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFrgnAutopayIndCondition)">
+                    AND CB_FRGN_AUTOPAY_IND = #{map.cbFrgnAutopayIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayFrgnBankBranchCondition)">
+                    AND CB_AUTOPAY_FRGN_BANK_BRANCH = #{map.cbAutopayFrgnBankBranchCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayFrgnBankAccnoCondition)">
+                    AND CB_AUTOPAY_FRGN_BANK_ACCNO = #{map.cbAutopayFrgnBankAccnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAutopayFrgnAccnameCondition)">
+                    AND CB_AUTOPAY_FRGN_ACCNAME = #{map.cbAutopayFrgnAccnameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPinGenIndCondition)">
+                    AND CB_PIN_GEN_IND = #{map.cbPinGenIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCurrBankRelCondition)">
+                    AND CB_CURR_BANK_REL = #{map.cbCurrBankRelCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCentreCdCondition)">
+                    AND CB_CENTRE_CD = #{map.cbCentreCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSourceCdCondition)">
+                    AND CB_SOURCE_CD = #{map.cbSourceCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRecommenderNoCondition)">
+                    AND CB_RECOMMENDER_NO = #{map.cbRecommenderNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRecommenderNameCondition)">
+                    AND CB_RECOMMENDER_NAME = #{map.cbRecommenderNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMicrofilmNoCondition)">
+                    AND CB_MICROFILM_NO = #{map.cbMicrofilmNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbAnnivDateCondition)">
+                    AND CB_ANNIV_DATE = #{map.cbAnnivDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardPrdctGroupCondition)">
+                    AND CB_CARD_PRDCT_GROUP = #{map.cbCardPrdctGroupCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFeeCdCondition)">
+                    AND CB_FEE_CD = #{map.cbFeeCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCreditGuaranteeCondition)">
+                    AND CB_CREDIT_GUARANTEE = #{map.cbCreditGuaranteeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRenewalFlagCondition)">
+                    AND CB_RENEWAL_FLAG = #{map.cbRenewalFlagCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSuspendDateCondition)">
+                    AND CB_SUSPEND_DATE = #{map.cbSuspendDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBankruptcyDateCondition)">
+                    AND CB_BANKRUPTCY_DATE = #{map.cbBankruptcyDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCancelDateCondition)">
+                    AND CB_CANCEL_DATE = #{map.cbCancelDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLegalDateCondition)">
+                    AND CB_LEGAL_DATE = #{map.cbLegalDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFraudDateCondition)">
+                    AND CB_FRAUD_DATE = #{map.cbFraudDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbReserveDateCondition)">
+                    AND CB_RESERVE_DATE = #{map.cbReserveDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbReinstateDateCondition)">
+                    AND CB_REINSTATE_DATE = #{map.cbReinstateDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbExpiryCcyymmCondition)">
+                    AND CB_EXPIRY_CCYYMM = #{map.cbExpiryCcyymmCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPlasticCdCondition)">
+                    AND CB_PLASTIC_CD = #{map.cbPlasticCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPlasticDateCondition)">
+                    AND CB_PLASTIC_DATE = #{map.cbPlasticDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cb4dbcCondition)">
+                    AND CB_4DBC = #{map.cb4dbcCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNewExpiryCcyymmCondition)">
+                    AND CB_NEW_EXPIRY_CCYYMM = #{map.cbNewExpiryCcyymmCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNewPlasticCdCondition)">
+                    AND CB_NEW_PLASTIC_CD = #{map.cbNewPlasticCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNewPlasticDateCondition)">
+                    AND CB_NEW_PLASTIC_DATE = #{map.cbNewPlasticDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbNew4dbcCondition)">
+                    AND CB_NEW_4DBC = #{map.cbNew4dbcCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbXrefIndCondition)">
+                    AND CB_XREF_IND = #{map.cbXrefIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbXrefAccnoCondition)">
+                    AND CB_XREF_ACCNO = #{map.cbXrefAccnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserFieldNum1Condition)">
+                    AND CB_USER_FIELD_NUM1 = #{map.cbUserFieldNum1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserFieldNum2Condition)">
+                    AND CB_USER_FIELD_NUM2 = #{map.cbUserFieldNum2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserFieldNum3Condition)">
+                    AND CB_USER_FIELD_NUM3 = #{map.cbUserFieldNum3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserFieldNum4Condition)">
+                    AND CB_USER_FIELD_NUM4 = #{map.cbUserFieldNum4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode1Condition)">
+                    AND CB_USER_CODE_1 = #{map.cbUserCode1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode2Condition)">
+                    AND CB_USER_CODE_2 = #{map.cbUserCode2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode3Condition)">
+                    AND CB_USER_CODE_3 = #{map.cbUserCode3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserCode4Condition)">
+                    AND CB_USER_CODE_4 = #{map.cbUserCode4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserDate1Condition)">
+                    AND CB_USER_DATE_1 = #{map.cbUserDate1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserDate2Condition)">
+                    AND CB_USER_DATE_2 = #{map.cbUserDate2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserAmt1Condition)">
+                    AND CB_USER_AMT_1 = #{map.cbUserAmt1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserAmt2Condition)">
+                    AND CB_USER_AMT_2 = #{map.cbUserAmt2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserField1Condition)">
+                    AND CB_USER_FIELD_1 = #{map.cbUserField1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserField2Condition)">
+                    AND CB_USER_FIELD_2 = #{map.cbUserField2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbUserField3Condition)">
+                    AND CB_USER_FIELD_3 = #{map.cbUserField3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbModDateCondition)">
+                    AND CB_MOD_DATE = #{map.cbModDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbModUserCondition)">
+                    AND CB_MOD_USER = #{map.cbModUserCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPinOffsetCondition)">
+                    AND CB_PIN_OFFSET = #{map.cbPinOffsetCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPvkiCondition)">
+                    AND CB_PVKI = #{map.cbPvkiCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCicCancelCondition)">
+                    AND CB_CIC_CANCEL = #{map.cbCicCancelCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrshldIndCondition)">
+                    AND CB_CRSHLD_IND = #{map.cbCrshldIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrshldEnrolDateCondition)">
+                    AND CB_CRSHLD_ENROL_DATE = #{map.cbCrshldEnrolDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCrshldTerminateDateCondition)">
+                    AND CB_CRSHLD_TERMINATE_DATE = #{map.cbCrshldTerminateDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCorporateIdCondition)">
+                    AND CB_CORPORATE_ID = #{map.cbCorporateIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbSicCondition)">
+                    AND CB_SIC = #{map.cbSicCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRelationshipCondition)">
+                    AND CB_RELATIONSHIP = #{map.cbRelationshipCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFraudFlag1Condition)">
+                    AND CB_FRAUD_FLAG1 = #{map.cbFraudFlag1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFraudFlag2Condition)">
+                    AND CB_FRAUD_FLAG2 = #{map.cbFraudFlag2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFirstUseDateCondition)">
+                    AND CB_FIRST_USE_DATE = #{map.cbFirstUseDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFirstUseTimeCondition)">
+                    AND CB_FIRST_USE_TIME = #{map.cbFirstUseTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbFirstUseIndCondition)">
+                    AND CB_FIRST_USE_IND = #{map.cbFirstUseIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOldIdTypeCondition)">
+                    AND CB_OLD_ID_TYPE = #{map.cbOldIdTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbOldCustomerIdnoCondition)">
+                    AND CB_OLD_CUSTOMER_IDNO = #{map.cbOldCustomerIdnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCifFlagCondition)">
+                    AND CB_CIF_FLAG = #{map.cbCifFlagCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbDcmsFlagCondition)">
+                    AND CB_DCMS_FLAG = #{map.cbDcmsFlagCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCafRefreshFlagCondition)">
+                    AND CB_CAF_REFRESH_FLAG = #{map.cbCafRefreshFlagCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCafUpdateFlagCondition)">
+                    AND CB_CAF_UPDATE_FLAG = #{map.cbCafUpdateFlagCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCafPinFlagCondition)">
+                    AND CB_CAF_PIN_FLAG = #{map.cbCafPinFlagCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCafTagFlagCondition)">
+                    AND CB_CAF_TAG_FLAG = #{map.cbCafTagFlagCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardCollMethodCondition)">
+                    AND CB_CARD_COLL_METHOD = #{map.cbCardCollMethodCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardDeliveryAddrCondition)">
+                    AND CB_CARD_DELIVERY_ADDR = #{map.cbCardDeliveryAddrCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbBillAddrCdCondition)">
+                    AND CB_BILL_ADDR_CD = #{map.cbBillAddrCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRwdsAccnoCondition)">
+                    AND CB_RWDS_ACCNO = #{map.cbRwdsAccnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLegalAddrCdCondition)">
+                    AND CB_LEGAL_ADDR_CD = #{map.cbLegalAddrCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLastRenewFeeYearCondition)">
+                    AND CB_LAST_RENEW_FEE_YEAR = #{map.cbLastRenewFeeYearCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbStatusCdCondition)">
+                    AND CB_STATUS_CD = #{map.cbStatusCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbMonitorCdCondition)">
+                    AND CB_MONITOR_CD = #{map.cbMonitorCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCollectCdCondition)">
+                    AND CB_COLLECT_CD = #{map.cbCollectCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEmployeeIdCondition)">
+                    AND CB_EMPLOYEE_ID = #{map.cbEmployeeIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRuleCondition)">
+                    AND CB_INDACC_RULE = #{map.cbIndaccRuleCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo1Condition)">
+                    AND CB_INDACC_NO1 = #{map.cbIndaccNo1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule1Condition)">
+                    AND CB_INDACC_RULE1 = #{map.cbIndaccRule1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo2Condition)">
+                    AND CB_INDACC_NO2 = #{map.cbIndaccNo2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule2Condition)">
+                    AND CB_INDACC_RULE2 = #{map.cbIndaccRule2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo3Condition)">
+                    AND CB_INDACC_NO3 = #{map.cbIndaccNo3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule3Condition)">
+                    AND CB_INDACC_RULE3 = #{map.cbIndaccRule3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo4Condition)">
+                    AND CB_INDACC_NO4 = #{map.cbIndaccNo4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule4Condition)">
+                    AND CB_INDACC_RULE4 = #{map.cbIndaccRule4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo5Condition)">
+                    AND CB_INDACC_NO5 = #{map.cbIndaccNo5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule5Condition)">
+                    AND CB_INDACC_RULE5 = #{map.cbIndaccRule5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo6Condition)">
+                    AND CB_INDACC_NO6 = #{map.cbIndaccNo6Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule6Condition)">
+                    AND CB_INDACC_RULE6 = #{map.cbIndaccRule6Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo7Condition)">
+                    AND CB_INDACC_NO7 = #{map.cbIndaccNo7Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule7Condition)">
+                    AND CB_INDACC_RULE7 = #{map.cbIndaccRule7Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo8Condition)">
+                    AND CB_INDACC_NO8 = #{map.cbIndaccNo8Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule8Condition)">
+                    AND CB_INDACC_RULE8 = #{map.cbIndaccRule8Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccNo9Condition)">
+                    AND CB_INDACC_NO9 = #{map.cbIndaccNo9Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIndaccRule9Condition)">
+                    AND CB_INDACC_RULE9 = #{map.cbIndaccRule9Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPvvCondition)">
+                    AND CB_PVV = #{map.cbPvvCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbPvvOffsetCondition)">
+                    AND CB_PVV_OFFSET = #{map.cbPvvOffsetCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCvkiCondition)">
+                    AND CB_CVKI = #{map.cbCvkiCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND CHECKSUM = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpCrdtblByCbCardholderNo" parameterType="String" resultMap="cpCrdtblMap">
+        SELECT
+        <include refid="cpCrdtblBaseColumnSql"/>
+        FROM cp_crdtbl
+        WHERE CB_CARDHOLDER_NO = #{cbCardholderNo}
+    </select>
+    
+    <select id="searchCpCrdtblByCbSourceCd" parameterType="map" resultMap="cpCrdtblMap">
+        SELECT
+        <include refid="cpCrdtblBaseColumnSql"/>
+        FROM cp_crdtbl
+       <include refid="cpCrdtblBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+	
+	<select id="searchCpCrdtblByCbIdno" parameterType="String" resultMap="cpCrdtblMap">
+        SELECT
+        <include refid="cpCrdtblBaseColumnSql"/>
+        FROM cp_crdtbl
+        WHERE CB_IDNO = #{cbIdno} and CB_PLASTIC_CD = 'U'
+    </select>
+    
+    <select id="searchCpCrdtblByCbRecommenderNo" parameterType="String" resultMap="cpCrdtblMap">
+        SELECT
+        <include refid="cpCrdtblBaseColumnSql"/>
+        FROM cp_crdtbl
+        WHERE CB_RECOMMENDER_NO = #{cbRecommenderNo}
+    </select>
+    
+    <select id="searchCpCrdtblByParams" parameterType="map" resultMap="cpCrdtblMap">
+        SELECT
+        <include refid="cpCrdtblBaseColumnSql"/>
+        FROM cp_crdtbl
+        <include refid="cpCrdtblBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+    <select id="searchMaxCrdNo"  resultType="String">
+    	 <!--  
+    	 SELECT max(substring(CB_CARDHOLDER_NO,7)) CB_CARDHOLDER_NO FROM cp_crdtbl;
+    	 select max(cb_cardholder_no) cb_cardholder_no from cp_crdtbl;
+    	 -->
+    	 select ifnull(substring(CONVERT(max(cb_cardholder_no),SIGNED)+1,'7'),'0000000001') cb_cardholder_no from cp_crdtbl
+    </select>
+    <select id="searchAvailableNumber"  resultType="Integer">
+    	 SELECT  COUNT(CB_CARDHOLDER_NO) FROM CP_CRDTBL  WHERE CB_PLASTIC_CD ='P';
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpCrdtbl" id="cpCrdtblMap">
+        <id column="CB_CARDHOLDER_NO" property="cbCardholderNo"/>
+        <result column="CB_BASIC_SUPP_IND" property="cbBasicSuppInd"/>
+        <result column="CB_ID_TYPE" property="cbIdType"/>
+        <result column="CB_IDNO" property="cbIdno"/>
+        <result column="CB_BSC_ID_TYPE" property="cbBscIdType"/>
+        <result column="CB_BASIC_CUSTOMER_IDNO" property="cbBasicCustomerIdno"/>
+        <result column="CB_BASIC_CARDHOLDER_NO" property="cbBasicCardholderNo"/>
+        <result column="CB_INDIVIDUAL_ACCTNO" property="cbIndividualAcctno"/>
+        <result column="CB_SEPARATE_STMT_IND" property="cbSeparateStmtInd"/>
+        <result column="CB_EMBOSSNAME" property="cbEmbossname"/>
+        <result column="CB_BILL_CYCLE" property="cbBillCycle"/>
+        <result column="CB_AUTOPAY_IND" property="cbAutopayInd"/>
+        <result column="CB_AUTOPAY_BANK_BRANCH" property="cbAutopayBankBranch"/>
+        <result column="CB_AUTOPAY_BANK_ACCNO" property="cbAutopayBankAccno"/>
+        <result column="CB_AUTOPAY_ACCNAME" property="cbAutopayAccname"/>
+        <result column="CB_FRGN_AUTOPAY_IND" property="cbFrgnAutopayInd"/>
+        <result column="CB_AUTOPAY_FRGN_BANK_BRANCH" property="cbAutopayFrgnBankBranch"/>
+        <result column="CB_AUTOPAY_FRGN_BANK_ACCNO" property="cbAutopayFrgnBankAccno"/>
+        <result column="CB_AUTOPAY_FRGN_ACCNAME" property="cbAutopayFrgnAccname"/>
+        <result column="CB_PIN_GEN_IND" property="cbPinGenInd"/>
+        <result column="CB_CURR_BANK_REL" property="cbCurrBankRel"/>
+        <result column="CB_CENTRE_CD" property="cbCentreCd"/>
+        <result column="CB_SOURCE_CD" property="cbSourceCd"/>
+        <result column="CB_RECOMMENDER_NO" property="cbRecommenderNo"/>
+        <result column="CB_RECOMMENDER_NAME" property="cbRecommenderName"/>
+        <result column="CB_MICROFILM_NO" property="cbMicrofilmNo"/>
+        <result column="CB_ANNIV_DATE" property="cbAnnivDate"/>
+        <result column="CB_CARD_PRDCT_GROUP" property="cbCardPrdctGroup"/>
+        <result column="CB_FEE_CD" property="cbFeeCd"/>
+        <result column="CB_CREDIT_GUARANTEE" property="cbCreditGuarantee"/>
+        <result column="CB_RENEWAL_FLAG" property="cbRenewalFlag"/>
+        <result column="CB_SUSPEND_DATE" property="cbSuspendDate"/>
+        <result column="CB_BANKRUPTCY_DATE" property="cbBankruptcyDate"/>
+        <result column="CB_CANCEL_DATE" property="cbCancelDate"/>
+        <result column="CB_LEGAL_DATE" property="cbLegalDate"/>
+        <result column="CB_FRAUD_DATE" property="cbFraudDate"/>
+        <result column="CB_RESERVE_DATE" property="cbReserveDate"/>
+        <result column="CB_REINSTATE_DATE" property="cbReinstateDate"/>
+        <result column="CB_EXPIRY_CCYYMM" property="cbExpiryCcyymm"/>
+        <result column="CB_PLASTIC_CD" property="cbPlasticCd"/>
+        <result column="CB_PLASTIC_DATE" property="cbPlasticDate"/>
+        <result column="CB_4DBC" property="cb4dbc"/>
+        <result column="CB_NEW_EXPIRY_CCYYMM" property="cbNewExpiryCcyymm"/>
+        <result column="CB_NEW_PLASTIC_CD" property="cbNewPlasticCd"/>
+        <result column="CB_NEW_PLASTIC_DATE" property="cbNewPlasticDate"/>
+        <result column="CB_NEW_4DBC" property="cbNew4dbc"/>
+        <result column="CB_XREF_IND" property="cbXrefInd"/>
+        <result column="CB_XREF_ACCNO" property="cbXrefAccno"/>
+        <result column="CB_USER_FIELD_NUM1" property="cbUserFieldNum1"/>
+        <result column="CB_USER_FIELD_NUM2" property="cbUserFieldNum2"/>
+        <result column="CB_USER_FIELD_NUM3" property="cbUserFieldNum3"/>
+        <result column="CB_USER_FIELD_NUM4" property="cbUserFieldNum4"/>
+        <result column="CB_USER_CODE_1" property="cbUserCode1"/>
+        <result column="CB_USER_CODE_2" property="cbUserCode2"/>
+        <result column="CB_USER_CODE_3" property="cbUserCode3"/>
+        <result column="CB_USER_CODE_4" property="cbUserCode4"/>
+        <result column="CB_USER_DATE_1" property="cbUserDate1"/>
+        <result column="CB_USER_DATE_2" property="cbUserDate2"/>
+        <result column="CB_USER_AMT_1" property="cbUserAmt1"/>
+        <result column="CB_USER_AMT_2" property="cbUserAmt2"/>
+        <result column="CB_USER_FIELD_1" property="cbUserField1"/>
+        <result column="CB_USER_FIELD_2" property="cbUserField2"/>
+        <result column="CB_USER_FIELD_3" property="cbUserField3"/>
+        <result column="CB_MOD_DATE" property="cbModDate"/>
+        <result column="CB_MOD_USER" property="cbModUser"/>
+        <result column="CB_PIN_OFFSET" property="cbPinOffset"/>
+        <result column="CB_PVKI" property="cbPvki"/>
+        <result column="CB_CIC_CANCEL" property="cbCicCancel"/>
+        <result column="CB_CRSHLD_IND" property="cbCrshldInd"/>
+        <result column="CB_CRSHLD_ENROL_DATE" property="cbCrshldEnrolDate"/>
+        <result column="CB_CRSHLD_TERMINATE_DATE" property="cbCrshldTerminateDate"/>
+        <result column="CB_CORPORATE_ID" property="cbCorporateId"/>
+        <result column="CB_SIC" property="cbSic"/>
+        <result column="CB_RELATIONSHIP" property="cbRelationship"/>
+        <result column="CB_FRAUD_FLAG1" property="cbFraudFlag1"/>
+        <result column="CB_FRAUD_FLAG2" property="cbFraudFlag2"/>
+        <result column="CB_FIRST_USE_DATE" property="cbFirstUseDate"/>
+        <result column="CB_FIRST_USE_TIME" property="cbFirstUseTime"/>
+        <result column="CB_FIRST_USE_IND" property="cbFirstUseInd"/>
+        <result column="CB_OLD_ID_TYPE" property="cbOldIdType"/>
+        <result column="CB_OLD_CUSTOMER_IDNO" property="cbOldCustomerIdno"/>
+        <result column="CB_CIF_FLAG" property="cbCifFlag"/>
+        <result column="CB_DCMS_FLAG" property="cbDcmsFlag"/>
+        <result column="CB_CAF_REFRESH_FLAG" property="cbCafRefreshFlag"/>
+        <result column="CB_CAF_UPDATE_FLAG" property="cbCafUpdateFlag"/>
+        <result column="CB_CAF_PIN_FLAG" property="cbCafPinFlag"/>
+        <result column="CB_CAF_TAG_FLAG" property="cbCafTagFlag"/>
+        <result column="CB_CARD_COLL_METHOD" property="cbCardCollMethod"/>
+        <result column="CB_CARD_DELIVERY_ADDR" property="cbCardDeliveryAddr"/>
+        <result column="CB_BILL_ADDR_CD" property="cbBillAddrCd"/>
+        <result column="CB_RWDS_ACCNO" property="cbRwdsAccno"/>
+        <result column="CB_LEGAL_ADDR_CD" property="cbLegalAddrCd"/>
+        <result column="CB_LAST_RENEW_FEE_YEAR" property="cbLastRenewFeeYear"/>
+        <result column="CB_STATUS_CD" property="cbStatusCd"/>
+        <result column="CB_MONITOR_CD" property="cbMonitorCd"/>
+        <result column="CB_COLLECT_CD" property="cbCollectCd"/>
+        <result column="CB_EMPLOYEE_ID" property="cbEmployeeId"/>
+        <result column="CB_INDACC_RULE" property="cbIndaccRule"/>
+        <result column="CB_INDACC_NO1" property="cbIndaccNo1"/>
+        <result column="CB_INDACC_RULE1" property="cbIndaccRule1"/>
+        <result column="CB_INDACC_NO2" property="cbIndaccNo2"/>
+        <result column="CB_INDACC_RULE2" property="cbIndaccRule2"/>
+        <result column="CB_INDACC_NO3" property="cbIndaccNo3"/>
+        <result column="CB_INDACC_RULE3" property="cbIndaccRule3"/>
+        <result column="CB_INDACC_NO4" property="cbIndaccNo4"/>
+        <result column="CB_INDACC_RULE4" property="cbIndaccRule4"/>
+        <result column="CB_INDACC_NO5" property="cbIndaccNo5"/>
+        <result column="CB_INDACC_RULE5" property="cbIndaccRule5"/>
+        <result column="CB_INDACC_NO6" property="cbIndaccNo6"/>
+        <result column="CB_INDACC_RULE6" property="cbIndaccRule6"/>
+        <result column="CB_INDACC_NO7" property="cbIndaccNo7"/>
+        <result column="CB_INDACC_RULE7" property="cbIndaccRule7"/>
+        <result column="CB_INDACC_NO8" property="cbIndaccNo8"/>
+        <result column="CB_INDACC_RULE8" property="cbIndaccRule8"/>
+        <result column="CB_INDACC_NO9" property="cbIndaccNo9"/>
+        <result column="CB_INDACC_RULE9" property="cbIndaccRule9"/>
+        <result column="CB_PVV" property="cbPvv"/>
+        <result column="CB_PVV_OFFSET" property="cbPvvOffset"/>
+        <result column="CB_CVKI" property="cbCvki"/>
+        <result column="CHECKSUM" property="checksum"/>
+    </resultMap>
+
+</mapper>

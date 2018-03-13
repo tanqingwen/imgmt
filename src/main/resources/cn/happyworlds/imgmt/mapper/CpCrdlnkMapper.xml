@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpCrdlnkMapper">
+
+    <sql id="cpCrdlnkBaseColumnSql">
+        cl_old_card,
+        cl_new_card,
+        cl_active_flag,
+        cl_convert_date,
+        cl_activated_flag,
+        cl_delivery_method,
+        cl_reason,
+        cl_old_prodct_group,
+        cl_new_prodct_group,
+        cl_old_lcl_crlmt,
+        cl_new_lcl_crlmt,
+        cl_old_frgn_crlmt,
+        cl_new_frgn_crlmt,
+        cl_latest_cardno,
+        cl_mod_date,
+        cl_user_id,
+        cl_timestamp,
+        cl_auth_user_id,
+        checksum
+    </sql>
+
+    <sql id="cpCrdlnkBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clOldCard)">
+                    cl_old_card = #{map.clOldCard}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clNewCard)">
+                    AND cl_new_card = #{map.clNewCard}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clActiveFlag)">
+                    AND cl_active_flag = #{map.clActiveFlag}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clConvertDate)">
+                    AND cl_convert_date = #{map.clConvertDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clActivatedFlag)">
+                    AND cl_activated_flag = #{map.clActivatedFlag}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clDeliveryMethod)">
+                    AND cl_delivery_method = #{map.clDeliveryMethod}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clReason)">
+                    AND cl_reason = #{map.clReason}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clOldProdctGroup)">
+                    AND cl_old_prodct_group = #{map.clOldProdctGroup}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clNewProdctGroup)">
+                    AND cl_new_prodct_group = #{map.clNewProdctGroup}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clOldLclCrlmt)">
+                    AND cl_old_lcl_crlmt = #{map.clOldLclCrlmt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clNewLclCrlmt)">
+                    AND cl_new_lcl_crlmt = #{map.clNewLclCrlmt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clOldFrgnCrlmt)">
+                    AND cl_old_frgn_crlmt = #{map.clOldFrgnCrlmt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clNewFrgnCrlmt)">
+                    AND cl_new_frgn_crlmt = #{map.clNewFrgnCrlmt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clLatestCardno)">
+                    AND cl_latest_cardno = #{map.clLatestCardno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clModDate)">
+                    AND cl_mod_date = #{map.clModDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clUserId)">
+                    AND cl_user_id = #{map.clUserId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clTimestamp)">
+                    AND cl_timestamp = #{map.clTimestamp}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clAuthUserId)">
+                    AND cl_auth_user_id = #{map.clAuthUserId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpCrdlnk" parameterType="cn.happyworlds.imgmt.entity.CpCrdlnk">
+        INSERT INTO cp_crdlnk(
+        <include refid="cpCrdlnkBaseColumnSql"/>
+        )VALUES(
+            #{clOldCard},
+            #{clNewCard},
+            #{clActiveFlag},
+            #{clConvertDate},
+            #{clActivatedFlag},
+            #{clDeliveryMethod},
+            #{clReason},
+            #{clOldProdctGroup},
+            #{clNewProdctGroup},
+            #{clOldLclCrlmt},
+            #{clNewLclCrlmt},
+            #{clOldFrgnCrlmt},
+            #{clNewFrgnCrlmt},
+            #{clLatestCardno},
+            #{clModDate},
+            #{clUserId},
+            #{clTimestamp},
+            #{clAuthUserId},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpCrdlnkByClOldCard" parameterType="String">
+        DELETE FROM cp_crdlnk WHERE cl_old_card = #{clOldCard}
+    </delete>
+
+    <select id="deleteCpCrdlnkByParams" parameterType="map">
+        DELETE FROM cp_crdlnk
+        <include refid="cpCrdlnkBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpCrdlnk" parameterType="cn.happyworlds.imgmt.entity.CpCrdlnk">
+        UPDATE cp_crdlnk
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clNewCard)">
+                cl_new_card = #{clNewCard} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clActiveFlag)">
+                cl_active_flag = #{clActiveFlag} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clConvertDate)">
+                cl_convert_date = #{clConvertDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clActivatedFlag)">
+                cl_activated_flag = #{clActivatedFlag} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clDeliveryMethod)">
+                cl_delivery_method = #{clDeliveryMethod} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clReason)">
+                cl_reason = #{clReason} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clOldProdctGroup)">
+                cl_old_prodct_group = #{clOldProdctGroup} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clNewProdctGroup)">
+                cl_new_prodct_group = #{clNewProdctGroup} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clOldLclCrlmt)">
+                cl_old_lcl_crlmt = #{clOldLclCrlmt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clNewLclCrlmt)">
+                cl_new_lcl_crlmt = #{clNewLclCrlmt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clOldFrgnCrlmt)">
+                cl_old_frgn_crlmt = #{clOldFrgnCrlmt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clNewFrgnCrlmt)">
+                cl_new_frgn_crlmt = #{clNewFrgnCrlmt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clLatestCardno)">
+                cl_latest_cardno = #{clLatestCardno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clModDate)">
+                cl_mod_date = #{clModDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clUserId)">
+                cl_user_id = #{clUserId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clTimestamp)">
+                cl_timestamp = #{clTimestamp} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(clAuthUserId)">
+                cl_auth_user_id = #{clAuthUserId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE cl_old_card = #{clOldCard}
+    </update>
+
+    <update id="updateCpCrdlnkByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_crdlnk
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clNewCard)">
+                    cl_new_card = #{map.clNewCard} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clActiveFlag)">
+                    cl_active_flag = #{map.clActiveFlag} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clConvertDate)">
+                    cl_convert_date = #{map.clConvertDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clActivatedFlag)">
+                    cl_activated_flag = #{map.clActivatedFlag} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clDeliveryMethod)">
+                    cl_delivery_method = #{map.clDeliveryMethod} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clReason)">
+                    cl_reason = #{map.clReason} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clOldProdctGroup)">
+                    cl_old_prodct_group = #{map.clOldProdctGroup} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clNewProdctGroup)">
+                    cl_new_prodct_group = #{map.clNewProdctGroup} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clOldLclCrlmt)">
+                    cl_old_lcl_crlmt = #{map.clOldLclCrlmt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clNewLclCrlmt)">
+                    cl_new_lcl_crlmt = #{map.clNewLclCrlmt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clOldFrgnCrlmt)">
+                    cl_old_frgn_crlmt = #{map.clOldFrgnCrlmt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clNewFrgnCrlmt)">
+                    cl_new_frgn_crlmt = #{map.clNewFrgnCrlmt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clLatestCardno)">
+                    cl_latest_cardno = #{map.clLatestCardno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clModDate)">
+                    cl_mod_date = #{map.clModDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clUserId)">
+                    cl_user_id = #{map.clUserId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clTimestamp)">
+                    cl_timestamp = #{map.clTimestamp} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clAuthUserId)">
+                    cl_auth_user_id = #{map.clAuthUserId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clOldCardCondition)">
+                    cl_old_card = #{map.clOldCardCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clNewCardCondition)">
+                    AND cl_new_card = #{map.clNewCardCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clActiveFlagCondition)">
+                    AND cl_active_flag = #{map.clActiveFlagCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clConvertDateCondition)">
+                    AND cl_convert_date = #{map.clConvertDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clActivatedFlagCondition)">
+                    AND cl_activated_flag = #{map.clActivatedFlagCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clDeliveryMethodCondition)">
+                    AND cl_delivery_method = #{map.clDeliveryMethodCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clReasonCondition)">
+                    AND cl_reason = #{map.clReasonCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clOldProdctGroupCondition)">
+                    AND cl_old_prodct_group = #{map.clOldProdctGroupCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clNewProdctGroupCondition)">
+                    AND cl_new_prodct_group = #{map.clNewProdctGroupCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clOldLclCrlmtCondition)">
+                    AND cl_old_lcl_crlmt = #{map.clOldLclCrlmtCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clNewLclCrlmtCondition)">
+                    AND cl_new_lcl_crlmt = #{map.clNewLclCrlmtCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clOldFrgnCrlmtCondition)">
+                    AND cl_old_frgn_crlmt = #{map.clOldFrgnCrlmtCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clNewFrgnCrlmtCondition)">
+                    AND cl_new_frgn_crlmt = #{map.clNewFrgnCrlmtCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clLatestCardnoCondition)">
+                    AND cl_latest_cardno = #{map.clLatestCardnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clModDateCondition)">
+                    AND cl_mod_date = #{map.clModDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clUserIdCondition)">
+                    AND cl_user_id = #{map.clUserIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clTimestampCondition)">
+                    AND cl_timestamp = #{map.clTimestampCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.clAuthUserIdCondition)">
+                    AND cl_auth_user_id = #{map.clAuthUserIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpCrdlnkByClOldCard" parameterType="String" resultMap="cpCrdlnkMap">
+        SELECT
+        <include refid="cpCrdlnkBaseColumnSql"/>
+        FROM cp_crdlnk
+        WHERE cl_old_card = #{clOldCard}
+    </select>
+
+    <select id="searchCpCrdlnkByParams" parameterType="map" resultMap="cpCrdlnkMap">
+        SELECT
+        <include refid="cpCrdlnkBaseColumnSql"/>
+        FROM cp_crdlnk
+        <include refid="cpCrdlnkBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpCrdlnk" id="cpCrdlnkMap">
+        <id column="cl_old_card" property="clOldCard"/>
+        <result column="cl_new_card" property="clNewCard"/>
+        <result column="cl_active_flag" property="clActiveFlag"/>
+        <result column="cl_convert_date" property="clConvertDate"/>
+        <result column="cl_activated_flag" property="clActivatedFlag"/>
+        <result column="cl_delivery_method" property="clDeliveryMethod"/>
+        <result column="cl_reason" property="clReason"/>
+        <result column="cl_old_prodct_group" property="clOldProdctGroup"/>
+        <result column="cl_new_prodct_group" property="clNewProdctGroup"/>
+        <result column="cl_old_lcl_crlmt" property="clOldLclCrlmt"/>
+        <result column="cl_new_lcl_crlmt" property="clNewLclCrlmt"/>
+        <result column="cl_old_frgn_crlmt" property="clOldFrgnCrlmt"/>
+        <result column="cl_new_frgn_crlmt" property="clNewFrgnCrlmt"/>
+        <result column="cl_latest_cardno" property="clLatestCardno"/>
+        <result column="cl_mod_date" property="clModDate"/>
+        <result column="cl_user_id" property="clUserId"/>
+        <result column="cl_timestamp" property="clTimestamp"/>
+        <result column="cl_auth_user_id" property="clAuthUserId"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpTuiPiaoMapper">
+	<select id="getAllReturnTicket" parameterType="String" resultMap="CpTuiPiaoMap">
+		SELECT
+		  a.hw_order_id AS 'ticketno',
+		  a.hw_order_addtime AS 'returnTime',
+		  a.hw_channel AS 'refundChannels',
+		  a.hw_money AS 'refundAmount',
+		  a.hw_Payment_status as 'refundPayment',
+		  a.hw_sonorderlist as 'sonorderlist',
+		  b.hw_order_addtime as 'orderTime' ,
+		  b.hw_order_finishtime as 'orderFinish',
+		  b.hw_pay_type as 'orderPayType',
+		  b.hw_money as 'orderMoney',
+		  c.`name` as 'orderName'
+		FROM
+		  yw_order a,yw_order b,t_sys_staff c  WHERE a.hw_sonorderlist=b.hw_order_id and a.hw_operator_id=c.id and b.hw_operator_id=c.id 
+		<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(startTime)">
+			and  a.hw_order_addtime <![CDATA[>]]> #{startTime}
+		</if>
+		<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(endTime)">
+			and  a.hw_order_addtime <![CDATA[<=]]> #{endTime}
+		</if>
+	</select>
+	<resultMap type="cn.happyworlds.imgmt.entity.CpTuiPiao" id="CpTuiPiaoMap">
+		<result column="ticketno" property="ticketno"/>
+		<result column="returnTime" property="returnTime"/>
+		<result column="refundChannels" property="refundChannels"/>
+		<result column="refundAmount" property="refundAmount"/>
+		<result column="refundPayment" property="refundPayment"/>
+		<result column="sonorderlist" property="sonorderlist"/>
+		<result column="orderTime" property="orderTime"/>
+		<result column="orderFinish" property="orderFinish"/>
+		<result column="orderPayType" property="orderPayType"/>
+		<result column="orderMoney" property="orderMoney"/>
+		<result column="orderName" property="orderName"/>
+	</resultMap>
+</mapper>

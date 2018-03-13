@@ -1,0 +1,301 @@
+@charset "utf-8";
+.rowWidth {
+	width: 960px;
+	display: inline-block;
+	height: auto;
+	font-size: 18px;
+	color: #626262;
+	z-index: 800;
+	position: relative;
+	left: 60px;
+}
+.row {
+	margin-top: 40px;
+}
+
+.BindContent {
+	-webkit-box-shadow: 0 0px 20px 3px #bcdccd;
+	-moz-box-shadow: 0 0px 20px 3px #bcdccd;
+	box-shadow: 0 0px 20px 3px #bcdccd;
+}
+
+.contentInner {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.BindHeader {
+	height: 80px;
+	line-height: 80px;
+	border-bottom: 2px dashed #45a0e0;
+}
+.headPad {
+	margin-bottom: 20px;
+}
+
+.BindHeader #scanCode {
+	height: 35px;
+	line-height: 35px;
+	width: 60%;
+}
+
+.scanInput {
+	height: 80px;
+	margin-top: 10px;
+	padding-left: 0px;
+}
+
+.BindContent {
+	margin-left: 1%;
+	margin-top: -4%;
+	background-color: #fff;
+}
+
+.scanCode {
+	width: 70%;
+}
+
+.choseRadio {
+	height: 80px;
+	line-height: 80px;
+}
+
+#scanWord {
+	vertical-align: middle;
+	display: inline-block;
+	margin: 0 2%;
+	color: #45a0e0;
+}
+
+.scanInput input {
+	vertical-align: middle;
+}
+
+#bindOk .btn {
+	color: #FFFFFF;
+	background-color: #ed6826;
+	outline: none;
+	border: none;
+	margin-top: 15px;
+}
+
+
+/*按钮样式修改*/
+
+.choice {
+	position: relative;
+}
+
+.choice .radio {
+	position: relative;
+	display: inline-block;
+	font-weight: 400;
+	padding-left: 25px;
+	margin-left: 10px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.choice .radio input {
+	position: absolute;
+	left: -9999px;
+}
+
+.choice .radio i {
+	display: block;
+	position: absolute;
+	top: 29px;
+	left: 0;
+	width: 20px;
+	height: 20px;
+	outline: 0;
+	border: 1px solid #8c8c8c;
+	border-radius: 50%;
+	transition: border-color .3s -webkit-transition: border-color .3s;
+}
+
+.choice .radio input:checked+i {
+	border-color: #00a65a;
+}
+
+.choice .radio input+i:after {
+	position: absolute;
+	content: '';
+	top: 4px;
+	left: 4px;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background-color: #00a65a;
+	opacity: 0;
+	transition: opacity .1s;
+	-webkit-transition: opacity .1s;
+}
+
+.choice .radio input:checked+i:after {
+	opacity: 1;
+}
+
+#orderNum {
+	height: 35px;
+	line-height: 35px;
+}
+
+.order {
+	font-weight: 600;
+}
+
+.orderSure {
+	outline: none;
+	border: none;
+	background-color: #00a65a;
+	color: #FFFFFF;
+	margin: 0 10px 0 40px;
+	margin-top: -5px;
+	height: 35px;
+	border-radius:5px;
+	width:80px;
+}
+.tip-img {
+	height: 260px;
+	width: 78px;
+	position: absolute;
+    left: 40px;
+    top: -60px;
+	background-image: url(../../app/img/side.png);
+}
+
+.tip-img p {
+	width: 15px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 20px;
+	line-height: 27px;
+	margin-top: 40px;
+}
+.btn.focus,
+.btn:focus,
+.btn:hover {
+	color: #FFFFFF;
+}
+
+.bindContentInner {
+	padding: 20px 0;
+	margin: 10px;
+	border-radius: 5px;
+}
+
+
+.readId {
+	width: 150px;
+	vertical-align: middle;
+	margin: 0 10px;
+	height: 35px;
+	line-height: 35px;
+	padding-left: 10px;
+}
+
+#TelNum {
+	height: 35px;
+	line-height: 35px;
+}
+
+ul {
+	list-style: none;
+}
+
+.bindContentInner ul li {
+	height: 45px;
+	line-height: 45px;
+}
+
+.bindContentInner ul {
+	width: 95%;
+	margin: 0 auto;
+}
+
+.rowBottom {
+	margin-bottom: 15px;
+}
+
+.cardBind {
+	padding-bottom: 30px;
+	margin-top:40px;
+}
+/*绑过卡的状态*/
+.binded>div {
+	-webkit-box-shadow: 0 0px 20px 3px #e2e2e2;
+	-moz-box-shadow: 0 0px 20px 3px #e2e2e2;
+	box-shadow: 0 0px 20px 3px #e2e2e2;
+}
+
+.binded {
+	background-color: #f8f8f8;
+	border-radius: 5px;
+	padding: 0 0;
+}
+
+.bindcard {
+	padding-left: 0;
+}
+
+.binded>div {
+	background: url(../../app/img/binded.png) right top no-repeat;
+	z-index: 1;
+}
+
+.binded .btnStyle {
+	background-color: transparent;
+	color: #626262;
+	border: 1px solid #626262;
+}
+
+
+/*正在绑卡的状态*/
+
+.active>div {
+	-webkit-box-shadow: 0 0px 20px 3px #fceae0;
+	-moz-box-shadow: 0 0px 20px 3px #fceae0;
+	box-shadow: 0 0px 20px 3px #fceae0;
+	background-color: #fef6f2;
+}
+
+.active .readBtn {
+	background-color: #2cc47e;
+	color: #FFFFFF;
+}
+
+.active .bindBtn {
+	background-color: #45a0e0;
+	color: #FFFFFF;
+}
+
+
+/*未绑卡的状态*/
+.noBind>div {
+	-webkit-box-shadow: 0 0px 20px 3px #e2e2e2;
+	-moz-box-shadow: 0 0px 20px 3px #e2e2e2;
+	box-shadow: 0 0px 20px 3px #e2e2e2;
+	background-color: #f8f8f8;
+}
+
+.noBind .btnStyle {
+	background-color: transparent;
+	color: #626262;
+	border: 1px solid #626262;
+}
+
+#orderId {
+	height: 30px;
+}
+  .line-input{
+		   		width:290px;
+		   		border:1px solid lightskyblue;
+		   		border-radius:5px;
+		   		text-indent:10px;
+		   }
+		   label{
+			   width:80px;
+			   text-align:right;
+			   margin-right:10px;
+		   }

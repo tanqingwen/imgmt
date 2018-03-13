@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpCtrycdMapper">
+
+    <sql id="cpCtrycdBaseColumnSql">
+        sys_alpha_ctry_cd,
+        sys_numeric_ctry_cd,
+        sys_alt_alpha_ctry_cd,
+        sys_ctry_description,
+        checksum
+    </sql>
+
+    <sql id="cpCtrycdBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAlphaCtryCd)">
+                    sys_alpha_ctry_cd = #{map.sysAlphaCtryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysNumericCtryCd)">
+                    AND sys_numeric_ctry_cd = #{map.sysNumericCtryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAltAlphaCtryCd)">
+                    AND sys_alt_alpha_ctry_cd = #{map.sysAltAlphaCtryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysCtryDescription)">
+                    AND sys_ctry_description = #{map.sysCtryDescription}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpCtrycd" parameterType="cn.happyworlds.imgmt.entity.CpCtrycd">
+        INSERT INTO cp_ctrycd(
+        <include refid="cpCtrycdBaseColumnSql"/>
+        )VALUES(
+            #{sysAlphaCtryCd},
+            #{sysNumericCtryCd},
+            #{sysAltAlphaCtryCd},
+            #{sysCtryDescription},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpCtrycdBySysAlphaCtryCd" parameterType="String">
+        DELETE FROM cp_ctrycd WHERE sys_alpha_ctry_cd = #{sysAlphaCtryCd}
+    </delete>
+
+    <select id="deleteCpCtrycdByParams" parameterType="map">
+        DELETE FROM cp_ctrycd
+        <include refid="cpCtrycdBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpCtrycd" parameterType="cn.happyworlds.imgmt.entity.CpCtrycd">
+        UPDATE cp_ctrycd
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysNumericCtryCd)">
+                sys_numeric_ctry_cd = #{sysNumericCtryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysAltAlphaCtryCd)">
+                sys_alt_alpha_ctry_cd = #{sysAltAlphaCtryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysCtryDescription)">
+                sys_ctry_description = #{sysCtryDescription} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE sys_alpha_ctry_cd = #{sysAlphaCtryCd}
+    </update>
+
+    <update id="updateCpCtrycdByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_ctrycd
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysNumericCtryCd)">
+                    sys_numeric_ctry_cd = #{map.sysNumericCtryCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAltAlphaCtryCd)">
+                    sys_alt_alpha_ctry_cd = #{map.sysAltAlphaCtryCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysCtryDescription)">
+                    sys_ctry_description = #{map.sysCtryDescription} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAlphaCtryCdCondition)">
+                    sys_alpha_ctry_cd = #{map.sysAlphaCtryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysNumericCtryCdCondition)">
+                    AND sys_numeric_ctry_cd = #{map.sysNumericCtryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAltAlphaCtryCdCondition)">
+                    AND sys_alt_alpha_ctry_cd = #{map.sysAltAlphaCtryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysCtryDescriptionCondition)">
+                    AND sys_ctry_description = #{map.sysCtryDescriptionCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpCtrycdBySysAlphaCtryCd" parameterType="String" resultMap="cpCtrycdMap">
+        SELECT
+        <include refid="cpCtrycdBaseColumnSql"/>
+        FROM cp_ctrycd
+        WHERE sys_alpha_ctry_cd = #{sysAlphaCtryCd}
+    </select>
+
+    <select id="searchCpCtrycdByParams" parameterType="map" resultMap="cpCtrycdMap">
+        SELECT
+        <include refid="cpCtrycdBaseColumnSql"/>
+        FROM cp_ctrycd
+        <include refid="cpCtrycdBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpCtrycd" id="cpCtrycdMap">
+        <id column="sys_alpha_ctry_cd" property="sysAlphaCtryCd"/>
+        <result column="sys_numeric_ctry_cd" property="sysNumericCtryCd"/>
+        <result column="sys_alt_alpha_ctry_cd" property="sysAltAlphaCtryCd"/>
+        <result column="sys_ctry_description" property="sysCtryDescription"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

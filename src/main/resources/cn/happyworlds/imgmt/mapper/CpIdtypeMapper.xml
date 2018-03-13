@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpIdtypeMapper">
+
+    <sql id="cpIdtypeBaseColumnSql">
+        cb_id_type,
+        cb_id_desc,
+        cb_id_form,
+        cb_length,
+        checksum
+    </sql>
+
+    <sql id="cpIdtypeBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdType)">
+                    cb_id_type = #{map.cbIdType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdDesc)">
+                    AND cb_id_desc = #{map.cbIdDesc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdForm)">
+                    AND cb_id_form = #{map.cbIdForm}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLength)">
+                    AND cb_length = #{map.cbLength}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpIdtype" parameterType="cn.happyworlds.imgmt.entity.CpIdtype">
+        INSERT INTO cp_idtype(
+        <include refid="cpIdtypeBaseColumnSql"/>
+        )VALUES(
+            #{cbIdType},
+            #{cbIdDesc},
+            #{cbIdForm},
+            #{cbLength},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpIdtypeByCbIdType" parameterType="String">
+        DELETE FROM cp_idtype WHERE cb_id_type = #{cbIdType}
+    </delete>
+
+    <select id="deleteCpIdtypeByParams" parameterType="map">
+        DELETE FROM cp_idtype
+        <include refid="cpIdtypeBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpIdtype" parameterType="cn.happyworlds.imgmt.entity.CpIdtype">
+        UPDATE cp_idtype
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIdDesc)">
+                cb_id_desc = #{cbIdDesc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIdForm)">
+                cb_id_form = #{cbIdForm} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbLength)">
+                cb_length = #{cbLength} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE cb_id_type = #{cbIdType}
+    </update>
+
+    <update id="updateCpIdtypeByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_idtype
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdDesc)">
+                    cb_id_desc = #{map.cbIdDesc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdForm)">
+                    cb_id_form = #{map.cbIdForm} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLength)">
+                    cb_length = #{map.cbLength} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdTypeCondition)">
+                    cb_id_type = #{map.cbIdTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdDescCondition)">
+                    AND cb_id_desc = #{map.cbIdDescCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdFormCondition)">
+                    AND cb_id_form = #{map.cbIdFormCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbLengthCondition)">
+                    AND cb_length = #{map.cbLengthCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpIdtypeByCbIdType" parameterType="String" resultMap="cpIdtypeMap">
+        SELECT
+        <include refid="cpIdtypeBaseColumnSql"/>
+        FROM cp_idtype
+        WHERE cb_id_type = #{cbIdType}
+    </select>
+
+    <select id="searchCpIdtypeByParams" parameterType="map" resultMap="cpIdtypeMap">
+        SELECT
+        <include refid="cpIdtypeBaseColumnSql"/>
+        FROM cp_idtype
+        <include refid="cpIdtypeBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpIdtype" id="cpIdtypeMap">
+        <id column="cb_id_type" property="cbIdType"/>
+        <result column="cb_id_desc" property="cbIdDesc"/>
+        <result column="cb_id_form" property="cbIdForm"/>
+        <result column="cb_length" property="cbLength"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

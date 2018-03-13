@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.TicketShoppingCartMapper">
+
+    <sql id="ticketShoppingCartBaseColumnSql">
+        shopping_id,
+        mobile,
+        amount,
+        ticket_type,
+        varTk_paper_no,
+        special_certificate,
+        special_certificate_number,
+        ticketform,
+        varold_prdgrp,
+        cb_rwds_accno,
+        cb_cardholder_no,
+        cb_id_type,
+        id_no,
+        uname,
+        birthday,
+        Address,
+        vartk_amount,
+        total_amountPaid,
+        user_create
+    </sql>
+
+    <sql id="ticketShoppingCartBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.shoppingId)">
+                    shopping_id = #{map.shoppingId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mobile)">
+                    AND mobile = #{map.mobile}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amount)">
+                    AND amount = #{map.amount}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketType)">
+                    AND ticket_type = #{map.ticketType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.varTkPaperNo)">
+                    AND varTk_paper_no = #{map.varTkPaperNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.specialCertificate)">
+                    AND special_certificate = #{map.specialCertificate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.specialCertificateNumber)">
+                    AND special_certificate_number = #{map.specialCertificateNumber}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketform)">
+                    AND ticketform = #{map.ticketform}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.varoldPrdgrp)">
+                    AND varold_prdgrp = #{map.varoldPrdgrp}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRwdsAccno)">
+                    AND cb_rwds_accno = #{map.cbRwdsAccno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardholderNo)">
+                    AND cb_cardholder_no = #{map.cbCardholderNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdType)">
+                    AND cb_id_type = #{map.cbIdType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idNo)">
+                    AND id_no = #{map.idNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.uname)">
+                    AND uname = #{map.uname}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.birthday)">
+                    AND birthday = #{map.birthday}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.address)">
+                    AND Address = #{map.address}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vartkAmount)">
+                    AND vartk_amount = #{map.vartkAmount}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.totalAmountPaid)">
+                    AND total_amountPaid = #{map.totalAmountPaid}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userCreate)">
+                    AND user_create = #{map.userCreate}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertTicketShoppingCart" parameterType="cn.happyworlds.imgmt.entity.TicketShoppingCart">
+        INSERT INTO ticket_shopping_cart(
+        <include refid="ticketShoppingCartBaseColumnSql"/>
+        )VALUES(
+            #{shoppingId},
+            #{mobile},
+            #{amount},
+            #{ticketType},
+            #{varTkPaperNo},
+            #{specialCertificate},
+            #{specialCertificateNumber},
+            #{ticketform},
+            #{varoldPrdgrp},
+            #{cbRwdsAccno},
+            #{cbCardholderNo},
+            #{cbIdType},
+            #{idNo},
+            #{uname},
+            #{birthday},
+            #{address},
+            #{vartkAmount},
+            #{totalAmountPaid},
+            #{userCreate}
+        )
+    </insert>
+        
+    <delete id="deleteTicketShoppingCartByShoppingId" parameterType="Integer">
+        DELETE FROM ticket_shopping_cart WHERE shopping_id = #{shoppingId}
+    </delete>
+
+    <select id="deleteTicketShoppingCartByParams" parameterType="map">
+        DELETE FROM ticket_shopping_cart
+        <include refid="ticketShoppingCartBaseWhereSql"/>
+    </select>
+
+    <update id="updateTicketShoppingCart" parameterType="cn.happyworlds.imgmt.entity.TicketShoppingCart">
+        UPDATE ticket_shopping_cart
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mobile)">
+                mobile = #{mobile} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(amount)">
+                amount = #{amount} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ticketType)">
+                ticket_type = #{ticketType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(varTkPaperNo)">
+                varTk_paper_no = #{varTkPaperNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(specialCertificate)">
+                special_certificate = #{specialCertificate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(specialCertificateNumber)">
+                special_certificate_number = #{specialCertificateNumber} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ticketform)">
+                ticketform = #{ticketform} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(varoldPrdgrp)">
+                varold_prdgrp = #{varoldPrdgrp} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbRwdsAccno)">
+                cb_rwds_accno = #{cbRwdsAccno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbCardholderNo)">
+                cb_cardholder_no = #{cbCardholderNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cbIdType)">
+                cb_id_type = #{cbIdType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(idNo)">
+                id_no = #{idNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(uname)">
+                uname = #{uname} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(birthday)">
+                birthday = #{birthday} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(address)">
+                Address = #{address} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(vartkAmount)">
+                vartk_amount = #{vartkAmount} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(totalAmountPaid)">
+                total_amountPaid = #{totalAmountPaid} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(userCreate)">
+                user_create = #{userCreate}
+            </if>
+        </set>
+        WHERE shopping_id = #{shoppingId}
+    </update>
+
+    <update id="updateTicketShoppingCartByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE ticket_shopping_cart
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mobile)">
+                    mobile = #{map.mobile} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amount)">
+                    amount = #{map.amount} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketType)">
+                    ticket_type = #{map.ticketType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.varTkPaperNo)">
+                    varTk_paper_no = #{map.varTkPaperNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.specialCertificate)">
+                    special_certificate = #{map.specialCertificate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.specialCertificateNumber)">
+                    special_certificate_number = #{map.specialCertificateNumber} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketform)">
+                    ticketform = #{map.ticketform} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.varoldPrdgrp)">
+                    varold_prdgrp = #{map.varoldPrdgrp} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRwdsAccno)">
+                    cb_rwds_accno = #{map.cbRwdsAccno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardholderNo)">
+                    cb_cardholder_no = #{map.cbCardholderNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdType)">
+                    cb_id_type = #{map.cbIdType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idNo)">
+                    id_no = #{map.idNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.uname)">
+                    uname = #{map.uname} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.birthday)">
+                    birthday = #{map.birthday} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.address)">
+                    Address = #{map.address} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vartkAmount)">
+                    vartk_amount = #{map.vartkAmount} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.totalAmountPaid)">
+                    total_amountPaid = #{map.totalAmountPaid} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userCreate)">
+                    user_create = #{map.userCreate}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.shoppingIdCondition)">
+                    shopping_id = #{map.shoppingIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mobileCondition)">
+                    AND mobile = #{map.mobileCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amountCondition)">
+                    AND amount = #{map.amountCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketTypeCondition)">
+                    AND ticket_type = #{map.ticketTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.varTkPaperNoCondition)">
+                    AND varTk_paper_no = #{map.varTkPaperNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.specialCertificateCondition)">
+                    AND special_certificate = #{map.specialCertificateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.specialCertificateNumberCondition)">
+                    AND special_certificate_number = #{map.specialCertificateNumberCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ticketformCondition)">
+                    AND ticketform = #{map.ticketformCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.varoldPrdgrpCondition)">
+                    AND varold_prdgrp = #{map.varoldPrdgrpCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbRwdsAccnoCondition)">
+                    AND cb_rwds_accno = #{map.cbRwdsAccnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbCardholderNoCondition)">
+                    AND cb_cardholder_no = #{map.cbCardholderNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbIdTypeCondition)">
+                    AND cb_id_type = #{map.cbIdTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idNoCondition)">
+                    AND id_no = #{map.idNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.unameCondition)">
+                    AND uname = #{map.unameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.birthdayCondition)">
+                    AND birthday = #{map.birthdayCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.addressCondition)">
+                    AND Address = #{map.addressCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vartkAmountCondition)">
+                    AND vartk_amount = #{map.vartkAmountCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.totalAmountPaidCondition)">
+                    AND total_amountPaid = #{map.totalAmountPaidCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userCreateCondition)">
+                    AND user_create = #{map.userCreateCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchTicketShoppingCartByShoppingId" parameterType="Integer" resultMap="ticketShoppingCartMap">
+        SELECT
+        <include refid="ticketShoppingCartBaseColumnSql"/>
+        FROM ticket_shopping_cart
+        WHERE shopping_id = #{shoppingId}
+    </select>
+
+    <select id="searchTicketShoppingCartByParams" parameterType="map" resultMap="ticketShoppingCartMap">
+        SELECT
+        <include refid="ticketShoppingCartBaseColumnSql"/>
+        FROM ticket_shopping_cart
+        <include refid="ticketShoppingCartBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.TicketShoppingCart" id="ticketShoppingCartMap">
+        <id column="shopping_id" property="shoppingId"/>
+        <result column="mobile" property="mobile"/>
+        <result column="amount" property="amount"/>
+        <result column="ticket_type" property="ticketType"/>
+        <result column="varTk_paper_no" property="varTkPaperNo"/>
+        <result column="special_certificate" property="specialCertificate"/>
+        <result column="special_certificate_number" property="specialCertificateNumber"/>
+        <result column="ticketform" property="ticketform"/>
+        <result column="varold_prdgrp" property="varoldPrdgrp"/>
+        <result column="cb_rwds_accno" property="cbRwdsAccno"/>
+        <result column="cb_cardholder_no" property="cbCardholderNo"/>
+        <result column="cb_id_type" property="cbIdType"/>
+        <result column="id_no" property="idNo"/>
+        <result column="uname" property="uname"/>
+        <result column="birthday" property="birthday"/>
+        <result column="Address" property="address"/>
+        <result column="vartk_amount" property="vartkAmount"/>
+        <result column="total_amountPaid" property="totalAmountPaid"/>
+        <result column="user_create" property="userCreate"/>
+    </resultMap>
+
+</mapper>

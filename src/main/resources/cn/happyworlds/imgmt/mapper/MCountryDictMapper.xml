@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.MCountryMapper">
+
+    <sql id="MCountryDictBaseColumnSql">
+        alpha_ctry_cd,
+        numeric_ctry_cd,
+        alt_alpha_ctry_cd,
+        ctry_description,
+        checksum
+    </sql>
+
+    <sql id="MCountryDictBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.alphaCtryCd)">
+                    alpha_ctry_cd = #{map.alphaCtryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.numericCtryCd)">
+                    AND numeric_ctry_cd = #{map.numericCtryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.altAlphaCtryCd)">
+                    AND alt_alpha_ctry_cd = #{map.altAlphaCtryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctryDescription)">
+                    AND ctry_description = #{map.ctryDescription}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertMCountryDict" parameterType="cn.happyworlds.imgmt.entity.MCountryDict">
+        INSERT INTO m_country_dict(
+        <include refid="MCountryDictBaseColumnSql"/>
+        )VALUES(
+            #{alphaCtryCd},
+            #{numericCtryCd},
+            #{altAlphaCtryCd},
+            #{ctryDescription},
+            #{checksum}
+        )
+    </insert>
+
+    
+    <delete id="deleteMCountryDictByAlphaCtryCd" parameterType="String">
+        DELETE FROM m_country_dict WHERE alpha_ctry_cd = #{alphaCtryCd}
+    </delete>
+
+    <update id="updateMCountryDict" parameterType="cn.happyworlds.imgmt.entity.MCountryDict">
+        UPDATE m_country_dict
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(numericCtryCd)">
+                numeric_ctry_cd = #{numericCtryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(altAlphaCtryCd)">
+                alt_alpha_ctry_cd = #{altAlphaCtryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ctryDescription)">
+                ctry_description = #{ctryDescription} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum} ,
+            </if>
+        </set>
+        WHERE alpha_ctry_cd = #{alphaCtryCd}
+    </update>
+
+    <select id="searchMCountryDictByAlphaCtryCd" parameterType="String" resultMap="MCountryDictMap">
+        SELECT
+        <include refid="MCountryDictBaseColumnSql"/>
+        FROM m_country_dict
+        WHERE alpha_ctry_cd = #{alphaCtryCd}
+    </select>
+
+    <select id="searchMCountryDictByParams" parameterType="map" resultMap="MCountryDictMap">
+        SELECT
+        <include refid="MCountryDictBaseColumnSql"/>
+        FROM m_country_dict
+        <include refid="MCountryDictBaseWhereSql"/>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.MCountryDict" id="MCountryDictMap">
+        <id column="alpha_ctry_cd" property="alphaCtryCd"/>
+        <result column="numeric_ctry_cd" property="numericCtryCd"/>
+        <result column="alt_alpha_ctry_cd" property="altAlphaCtryCd"/>
+        <result column="ctry_description" property="ctryDescription"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

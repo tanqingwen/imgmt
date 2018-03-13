@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.YwMemberMapper">
+
+    <sql id="ywMemberBaseColumnSql">
+        userId,
+        ID_type,
+        ID_no,
+        username,
+        mobile,
+        password,
+        email,
+        sex,
+        address,
+        weixinId,
+        weiboId,
+        zhifubaoId,
+        nickname,
+        userpic,
+        birthday,
+        pid,
+        user_type,
+        user_grade,
+        integral,
+        balance,
+        frozen_balance,
+        deposit_balance,
+        frozen_deposit_balance,
+        limit_balance,
+        status,
+        loginIp,
+        bund_time,
+        update_time
+    </sql>
+
+    <sql id="ywMemberBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userId)">
+                    userId = #{map.userId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idType)">
+                    AND ID_type = #{map.idType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idNo)">
+                    AND ID_no = #{map.idNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.username)">
+                    AND username = #{map.username}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mobile)">
+                    AND mobile = #{map.mobile}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.password)">
+                    AND password = #{map.password}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.email)">
+                    AND email = #{map.email}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sex)">
+                    AND sex = #{map.sex}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.address)">
+                    AND address = #{map.address}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.weixinId)">
+                    AND weixinId = #{map.weixinId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.weiboId)">
+                    AND weiboId = #{map.weiboId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.zhifubaoId)">
+                    AND zhifubaoId = #{map.zhifubaoId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nickname)">
+                    AND nickname = #{map.nickname}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userpic)">
+                    AND userpic = #{map.userpic}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.birthday)">
+                    AND birthday = #{map.birthday}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pid)">
+                    AND pid = #{map.pid}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userType)">
+                    AND user_type = #{map.userType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userGrade)">
+                    AND user_grade = #{map.userGrade}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.integral)">
+                    AND integral = #{map.integral}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.balance)">
+                    AND balance = #{map.balance}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.frozenBalance)">
+                    AND frozen_balance = #{map.frozenBalance}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.depositBalance)">
+                    AND deposit_balance = #{map.depositBalance}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.frozenDepositBalance)">
+                    AND frozen_deposit_balance = #{map.frozenDepositBalance}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.limitBalance)">
+                    AND limit_balance = #{map.limitBalance}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.status)">
+                    AND status = #{map.status}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.loginIp)">
+                    AND loginIp = #{map.loginIp}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bundTime)">
+                    AND bund_time = #{map.bundTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.updateTime)">
+                    AND update_time = #{map.updateTime}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertYwMember" parameterType="cn.happyworlds.imgmt.entity.YwMember">
+        INSERT INTO yw_member(
+        <include refid="ywMemberBaseColumnSql"/>
+        )VALUES(
+            #{userId},
+            #{idType},
+            #{idNo},
+            #{username},
+            #{mobile},
+            #{password},
+            #{email},
+            #{sex},
+            #{address},
+            #{weixinId},
+            #{weiboId},
+            #{zhifubaoId},
+            #{nickname},
+            #{userpic},
+            #{birthday},
+            #{pid},
+            #{userType},
+            #{userGrade},
+            #{integral},
+            #{balance},
+            #{frozenBalance},
+            #{depositBalance},
+            #{frozenDepositBalance},
+            #{limitBalance},
+            #{status},
+            #{loginIp},
+            #{bundTime},
+            #{updateTime}
+        )
+    </insert>
+        
+    <delete id="deleteYwMemberByUserId" parameterType="Integer">
+        DELETE FROM yw_member WHERE userId = #{userId}
+    </delete>
+
+    <select id="deleteYwMemberByParams" parameterType="map">
+        DELETE FROM yw_member
+        <include refid="ywMemberBaseWhereSql"/>
+    </select>
+
+    <update id="updateYwMember" parameterType="cn.happyworlds.imgmt.entity.YwMember">
+        UPDATE yw_member
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(idType)">
+                ID_type = #{idType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(idNo)">
+                ID_no = #{idNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(username)">
+                username = #{username} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mobile)">
+                mobile = #{mobile} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(password)">
+                password = #{password} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(email)">
+                email = #{email} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sex)">
+                sex = #{sex} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(address)">
+                address = #{address} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(weixinId)">
+                weixinId = #{weixinId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(weiboId)">
+                weiboId = #{weiboId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(zhifubaoId)">
+                zhifubaoId = #{zhifubaoId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(nickname)">
+                nickname = #{nickname} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(userpic)">
+                userpic = #{userpic} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(birthday)">
+                birthday = #{birthday} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(pid)">
+                pid = #{pid} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(userType)">
+                user_type = #{userType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(userGrade)">
+                user_grade = #{userGrade} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(integral)">
+                integral = #{integral} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(balance)">
+                balance = #{balance} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(frozenBalance)">
+                frozen_balance = #{frozenBalance} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(depositBalance)">
+                deposit_balance = #{depositBalance} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(frozenDepositBalance)">
+                frozen_deposit_balance = #{frozenDepositBalance} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(limitBalance)">
+                limit_balance = #{limitBalance} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(status)">
+                status = #{status} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(loginIp)">
+                loginIp = #{loginIp} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(bundTime)">
+                bund_time = #{bundTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(updateTime)">
+                update_time = #{updateTime}
+            </if>
+        </set>
+        WHERE userId = #{userId}
+    </update>
+
+    <update id="updateYwMemberByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE yw_member
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idType)">
+                    ID_type = #{map.idType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idNo)">
+                    ID_no = #{map.idNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.username)">
+                    username = #{map.username} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mobile)">
+                    mobile = #{map.mobile} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.password)">
+                    password = #{map.password} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.email)">
+                    email = #{map.email} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sex)">
+                    sex = #{map.sex} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.address)">
+                    address = #{map.address} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.weixinId)">
+                    weixinId = #{map.weixinId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.weiboId)">
+                    weiboId = #{map.weiboId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.zhifubaoId)">
+                    zhifubaoId = #{map.zhifubaoId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nickname)">
+                    nickname = #{map.nickname} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userpic)">
+                    userpic = #{map.userpic} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.birthday)">
+                    birthday = #{map.birthday} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pid)">
+                    pid = #{map.pid} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userType)">
+                    user_type = #{map.userType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userGrade)">
+                    user_grade = #{map.userGrade} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.integral)">
+                    integral = #{map.integral} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.balance)">
+                    balance = #{map.balance} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.frozenBalance)">
+                    frozen_balance = #{map.frozenBalance} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.depositBalance)">
+                    deposit_balance = #{map.depositBalance} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.frozenDepositBalance)">
+                    frozen_deposit_balance = #{map.frozenDepositBalance} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.limitBalance)">
+                    limit_balance = #{map.limitBalance} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.status)">
+                    status = #{map.status} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.loginIp)">
+                    loginIp = #{map.loginIp} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bundTime)">
+                    bund_time = #{map.bundTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.updateTime)">
+                    update_time = #{map.updateTime}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userIdCondition)">
+                    userId = #{map.userIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idTypeCondition)">
+                    AND ID_type = #{map.idTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idNoCondition)">
+                    AND ID_no = #{map.idNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.usernameCondition)">
+                    AND username = #{map.usernameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mobileCondition)">
+                    AND mobile = #{map.mobileCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.passwordCondition)">
+                    AND password = #{map.passwordCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.emailCondition)">
+                    AND email = #{map.emailCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sexCondition)">
+                    AND sex = #{map.sexCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.addressCondition)">
+                    AND address = #{map.addressCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.weixinIdCondition)">
+                    AND weixinId = #{map.weixinIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.weiboIdCondition)">
+                    AND weiboId = #{map.weiboIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.zhifubaoIdCondition)">
+                    AND zhifubaoId = #{map.zhifubaoIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nicknameCondition)">
+                    AND nickname = #{map.nicknameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userpicCondition)">
+                    AND userpic = #{map.userpicCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.birthdayCondition)">
+                    AND birthday = #{map.birthdayCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.pidCondition)">
+                    AND pid = #{map.pidCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userTypeCondition)">
+                    AND user_type = #{map.userTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userGradeCondition)">
+                    AND user_grade = #{map.userGradeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.integralCondition)">
+                    AND integral = #{map.integralCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.balanceCondition)">
+                    AND balance = #{map.balanceCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.frozenBalanceCondition)">
+                    AND frozen_balance = #{map.frozenBalanceCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.depositBalanceCondition)">
+                    AND deposit_balance = #{map.depositBalanceCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.frozenDepositBalanceCondition)">
+                    AND frozen_deposit_balance = #{map.frozenDepositBalanceCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.limitBalanceCondition)">
+                    AND limit_balance = #{map.limitBalanceCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.statusCondition)">
+                    AND status = #{map.statusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.loginIpCondition)">
+                    AND loginIp = #{map.loginIpCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.bundTimeCondition)">
+                    AND bund_time = #{map.bundTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.updateTimeCondition)">
+                    AND update_time = #{map.updateTimeCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchYwMemberByUserId" parameterType="Integer" resultMap="ywMemberMap">
+        SELECT
+        <include refid="ywMemberBaseColumnSql"/>
+        FROM yw_member
+        WHERE userId = #{userId}
+    </select>
+
+    <select id="searchYwMemberByParams" parameterType="map" resultMap="ywMemberMap">
+        SELECT
+        <include refid="ywMemberBaseColumnSql"/>
+        FROM yw_member
+        <include refid="ywMemberBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.YwMember" id="ywMemberMap">
+        <id column="userId" property="userId"/>
+        <result column="ID_type" property="idType"/>
+        <result column="ID_no" property="idNo"/>
+        <result column="username" property="username"/>
+        <result column="mobile" property="mobile"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+        <result column="sex" property="sex"/>
+        <result column="address" property="address"/>
+        <result column="weixinId" property="weixinId"/>
+        <result column="weiboId" property="weiboId"/>
+        <result column="zhifubaoId" property="zhifubaoId"/>
+        <result column="nickname" property="nickname"/>
+        <result column="userpic" property="userpic"/>
+        <result column="birthday" property="birthday"/>
+        <result column="pid" property="pid"/>
+        <result column="user_type" property="userType"/>
+        <result column="user_grade" property="userGrade"/>
+        <result column="integral" property="integral"/>
+        <result column="balance" property="balance"/>
+        <result column="frozen_balance" property="frozenBalance"/>
+        <result column="deposit_balance" property="depositBalance"/>
+        <result column="frozen_deposit_balance" property="frozenDepositBalance"/>
+        <result column="limit_balance" property="limitBalance"/>
+        <result column="status" property="status"/>
+        <result column="loginIp" property="loginIp"/>
+        <result column="bund_time" property="bundTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+</mapper>

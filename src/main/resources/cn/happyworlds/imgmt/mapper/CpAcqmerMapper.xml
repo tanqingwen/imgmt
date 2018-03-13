@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpAcqmerMapper">
+
+    <sql id="cpAcqmerBaseColumnSql">
+        am_group_id,
+        am_merchant_id,
+        am_recycle_type,
+        am_recycle_date,
+        am_user_define0,
+        am_user_define1,
+        am_user_define2,
+        am_user_define3,
+        am_user_define4,
+        checksum
+    </sql>
+
+    <sql id="cpAcqmerBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amGroupId)">
+                    am_group_id = #{map.amGroupId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amMerchantId)">
+                    AND am_merchant_id = #{map.amMerchantId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amRecycleType)">
+                    AND am_recycle_type = #{map.amRecycleType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amRecycleDate)">
+                    AND am_recycle_date = #{map.amRecycleDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amUserDefine0)">
+                    AND am_user_define0 = #{map.amUserDefine0}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amUserDefine1)">
+                    AND am_user_define1 = #{map.amUserDefine1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amUserDefine2)">
+                    AND am_user_define2 = #{map.amUserDefine2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amUserDefine3)">
+                    AND am_user_define3 = #{map.amUserDefine3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amUserDefine4)">
+                    AND am_user_define4 = #{map.amUserDefine4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpAcqmer" parameterType="cn.happyworlds.imgmt.entity.CpAcqmer">
+        INSERT INTO cp_acqmer(
+        <include refid="cpAcqmerBaseColumnSql"/>
+        )VALUES(
+            #{amGroupId},
+            #{amMerchantId},
+            #{amRecycleType},
+            #{amRecycleDate},
+            #{amUserDefine0},
+            #{amUserDefine1},
+            #{amUserDefine2},
+            #{amUserDefine3},
+            #{amUserDefine4},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpAcqmer" parameterType="map">
+        DELETE FROM cp_acqmer 
+        <include refid="cpAcqmerBaseWhereSql"/>
+    </delete>
+
+    <select id="deleteCpAcqmerByParams" parameterType="map">
+        DELETE FROM cp_acqmer
+        <include refid="cpAcqmerBaseWhereSql"/>
+    </select>
+
+<!--     <update id="updateCpAcqmer" parameterType="cn.happyworlds.imgmt.entity.CpAcqmer"> -->
+<!--         UPDATE cp_acqmer -->
+<!--         <set> -->
+<!--         </set> -->
+<!--         WHERE $pkName = #{${table.pkColumn.variableName}} -->
+<!--     </update> -->
+
+    <update id="updateCpAcqmerByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_acqmer
+            <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amGroupId)">
+                    am_group_id = #{map.amGroupId},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amMerchantId)">
+                    am_merchant_id = #{map.amMerchantId},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amRecycleType)">
+                    am_recycle_type = #{map.amRecycleType},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amRecycleDate)">
+                    am_recycle_date = #{map.amRecycleDate},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amUserDefine0)">
+                    am_user_define0 = #{map.amUserDefine0},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amUserDefine1)">
+                    am_user_define1 = #{map.amUserDefine1},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amUserDefine2)">
+                    am_user_define2 = #{map.amUserDefine2},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amUserDefine3)">
+                    am_user_define3 = #{map.amUserDefine3},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amUserDefine4)">
+                    am_user_define4 = #{map.amUserDefine4},
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amGroupIdCondition)">
+                    am_group_id = #{map.amGroupIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amMerchantIdCondition)">
+                    AND am_merchant_id = #{map.amMerchantIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amRecycleTypeCondition)">
+                    AND am_recycle_type = #{map.amRecycleTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amRecycleDateCondition)">
+                    AND am_recycle_date = #{map.amRecycleDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amUserDefine0Condition)">
+                    AND am_user_define0 = #{map.amUserDefine0Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amUserDefine1Condition)">
+                    AND am_user_define1 = #{map.amUserDefine1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amUserDefine2Condition)">
+                    AND am_user_define2 = #{map.amUserDefine2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amUserDefine3Condition)">
+                    AND am_user_define3 = #{map.amUserDefine3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.amUserDefine4Condition)">
+                    AND am_user_define4 = #{map.amUserDefine4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+<!--     <select id="searchCpAcqmerBy${table.pkColumn.variableSpellSqlName}" parameterType="${table.pkColumn.javaType}" resultMap="cpAcqmerMap"> -->
+<!--         SELECT -->
+<!--         <include refid="cpAcqmerBaseColumnSql"/> -->
+<!--         FROM cp_acqmer -->
+<!--         WHERE ${table.pkColumn.sqlName} = #{${table.pkColumn.variableName}} -->
+<!--     </select> -->
+
+    <select id="searchCpAcqmerByParams" parameterType="map" resultMap="cpAcqmerMap">
+        SELECT
+        <include refid="cpAcqmerBaseColumnSql"/>
+        FROM cp_acqmer
+        <include refid="cpAcqmerBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+	  <!-- add by whb 新增场馆分组获取场馆分组最大值叠加1 start -->
+    <select id="searchMaxAmGroupId" parameterType="String" resultMap="MaxAmGroupId">
+    	select ifnull(max(am_group_id)+1,'1000') am_group_id from cp_acqmer where length(am_group_id)=4
+    </select>
+    
+    <!-- add by whb 新增场馆分组获取场馆分组最大值叠加1返回值 start -->
+	<resultMap type="cn.happyworlds.imgmt.entity.CpAcqmer" id="MaxAmGroupId">
+		<id column="am_group_id" property="amGroupId"/>
+        <result column="am_group_id" property="amGroupId"/>
+	</resultMap>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpAcqmer" id="cpAcqmerMap">
+        <id column="am_group_id" property="amGroupId"/>
+        <id column="am_merchant_id" property="amMerchantId"/>
+        <result column="am_recycle_type" property="amRecycleType"/>
+        <result column="am_recycle_date" property="amRecycleDate"/>
+        <result column="am_user_define0" property="amUserDefine0"/>
+        <result column="am_user_define1" property="amUserDefine1"/>
+        <result column="am_user_define2" property="amUserDefine2"/>
+        <result column="am_user_define3" property="amUserDefine3"/>
+        <result column="am_user_define4" property="amUserDefine4"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

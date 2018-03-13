@@ -1,0 +1,274 @@
+.main-left ,.main-right{
+    float:left;
+    margin-left:20px;
+    background-color:#fff;
+}
+.main-left {
+    width:250px;
+    border:1px solid #ebebeb;
+}
+.main-right {
+    width:680px;
+}
+.main-left-top {
+    padding:20px;
+}
+.head-portrait {
+    float:left;
+    width:60px;
+    height:60px;
+    margin-right:25px;
+    border-radius:50%;
+}
+.main-left-info {
+    float:left;
+    width:120px;
+}
+.main-left-name {
+    width:100%;
+    line-height:30px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size:14px;
+    color:#333;
+}
+.main-left-operation {
+    margin-top:6px;
+}
+.main-left-operation span {
+    display: block;
+    float:left;
+    height:24px;
+    padding:0 8px;
+    border-left:1px solid #e5e5e5;
+}
+/*小图标*/
+.main-left-icon {
+    display: inline-block;
+    margin-top:2px;
+    background:url(../../img/personal_center_icon.png)  no-repeat;
+}
+.sex-icon{height:14px;width:14px;background-position:0 -22px;}
+.sex-selected-icon{height:14px;width:15px;background-position:-16px -22px;}
+.set-icon{height:20px;width:20px;background-position:-74px 0;}
+.bell-icon{height:20px;width:20px;background-position:-22px 0;}
+.gear-icon{height:20px;width:20px;background-position:0 0;}
+.notice-icon{height:20px;width:20px;background-position:-96px 0;}
+.crown-icon{height:20px;width:28px;background-position:-44px 0;}
+.rights-icon{height:20px;width:28px;background-position:-116px 0;}
+.main-left-content {
+    line-height:34px;
+    border-top:1px solid #ebebeb;
+}
+.main-left-title {
+    padding-left:20px;
+    font-size:14px;
+    color:#333;
+}
+.main-left-choose li {
+    padding-left:20px;
+}
+.main-left-choosed {
+    background-color:#ebebeb;
+}
+.main-left-choosed .main-left-message a {
+    color:#ff7800;
+}
+.main-left-list {
+    float:left;
+    width:5px;
+    height:5px;
+    margin:14px 10px;
+    border-radius:50%;
+    background-color:#cacaca;
+}
+.main-left-message {
+    float:left;
+}
+.main-left-message a {
+    color:#525252;
+}
+.main-right-title {
+    padding:15px 20px;
+    font-size:14px;
+    color:#000;
+}
+.main-right-back {
+    display: none;
+    float:right;
+    color:#49b6f4;
+}
+.main-right-back:hover {
+    text-decoration: underline;
+}
+.main-right-filter {
+    padding:0 20px 20px;
+    text-align: right;
+    color:#333;
+}
+.main-right-filter select {
+    padding:4px;
+}
+.mr-table-box {
+    padding:0 20px;
+}
+.mr-table {
+    margin-bottom:20px;
+    width:100%;
+    border-collapse: collapse;
+}
+.mr-table th {
+    line-height:25px;
+    background-color:#f1f1f1;
+    font-weight: 100;
+}
+.mr-table td {
+    padding:10px;
+    border:1px solid #f1f1f1;
+}
+.mr-table-th {
+    width:341px;
+    text-indent: 10px;
+    text-align: left;
+}
+.mr-th-width {
+    width:100px;
+}
+.mr-table-td {
+    text-align: center;
+}
+.mr-table-icon {
+    float:left;
+    width:78px;
+    height:56px;
+    margin-right:10px;
+}
+.mr-table-info {
+    color:#333;
+}
+.mr-info-title {
+    font-size:14px;
+    color:#49b6f4;
+}
+.mr-table-details {
+    color:#49b6f4;
+}
+.mr-page {
+    text-align: center;
+    margin-bottom:20px;
+}
+.mr-page a{
+    display: inline-block;
+    width:26px;
+    height:22px;
+    line-height:22px;
+    color:#333;
+}
+.mr-page .mr-page-seleced {
+    background-color:#49b6f4;
+    color:#fff;
+}
+.mr-page .mr-page-disabled {
+    color:#808080;
+    cursor:default;
+}
+.mr-order-details {
+    display: none;
+    padding:0 20px 20px;
+    color:#333;
+}
+.mr-order-title {
+    height:30px;
+    line-height:30px;
+    background-color:#f1f1f1;
+}
+.mr-order-number {
+    float:left;
+    text-indent: 10px;
+    font-size:14px;
+    margin-right:40px;
+}
+.mr-order-status {
+    float:left;
+    font-size:14px;
+}
+.mr-order-time {
+    float:right;
+    margin-right:20px;
+}
+.mr-goods-details {
+    padding-left:70px;
+    padding-right:20px;
+}
+.mr-goods-title {
+    margin:30px 0 20px 0;
+    font-size:20px;
+}
+.mr-price-info {
+    font-size:18px;
+    margin-bottom:10px;
+}
+.mr-price {
+    float:right;
+    color:#ff7800;
+}
+.mr-price-content {
+    width:100%;
+    padding:15px;
+    margin-bottom:20px;
+    border:1px solid #ccc;
+    border-radius: 3px;
+    font-size:14px;
+}
+.mr-ticket-name {
+    width:290px;
+}
+.mr-price-number {
+    width:140px;
+    text-align: center;
+    color:#ff7800;
+}
+.mr-price-right {
+    text-align: right;
+}
+.mr-actual-payment {
+    border-bottom:1px dashed #ccc;
+}
+.mr-actual-payment span {
+    line-height:60px;
+    font-size:26px;
+    vertical-align: middle;
+}
+.mr-actual-payment .mr-actual-list2 {
+    color:#ff7800;
+}
+.mr-actual-payment .mr-actual-list3 {
+    font-size:14px;
+}
+.mr-actual-all {
+    line-height:40px;
+    font-size:14px;
+}
+.mr-actual-price {
+    float:right;
+    color:#ff7800;
+}
+.mr-payment-details {
+    line-height:30px;
+    font-size:14px;
+}
+.mr-payment-details:nth-child(1) {
+    margin-top:10px;
+}
+.mr-payment-details span {
+    margin-right:20px;
+}
+.mr-remarks-title {
+    float:left;
+}
+.mr-payment-details .mr-payment-remarks {
+    float:left;
+    width:470px;
+    margin:0;
+}

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpVerkeyMapper">
+
+    <sql id="cpVerkeyBaseColumnSql">
+        vk_value,
+        vk_key,
+        vk_desc,
+        vk_mod_date,
+        vk_user_id,
+        checksum
+    </sql>
+
+    <sql id="cpVerkeyBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vkValue)">
+                    vk_value = #{map.vkValue}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vkKey)">
+                    AND vk_key = #{map.vkKey}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vkDesc)">
+                    AND vk_desc = #{map.vkDesc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vkModDate)">
+                    AND vk_mod_date = #{map.vkModDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vkUserId)">
+                    AND vk_user_id = #{map.vkUserId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpVerkey" parameterType="cn.happyworlds.imgmt.entity.CpVerkey">
+        INSERT INTO cp_verkey(
+        <include refid="cpVerkeyBaseColumnSql"/>
+        )VALUES(
+            #{vkValue},
+            #{vkKey},
+            #{vkDesc},
+            #{vkModDate},
+            #{vkUserId},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpVerkeyByVkValue" parameterType="String">
+        DELETE FROM cp_verkey WHERE vk_value = #{vkValue}
+    </delete>
+
+    <select id="deleteCpVerkeyByParams" parameterType="map">
+        DELETE FROM cp_verkey
+        <include refid="cpVerkeyBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpVerkey" parameterType="cn.happyworlds.imgmt.entity.CpVerkey">
+        UPDATE cp_verkey
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(vkKey)">
+                vk_key = #{vkKey} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(vkDesc)">
+                vk_desc = #{vkDesc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(vkModDate)">
+                vk_mod_date = #{vkModDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(vkUserId)">
+                vk_user_id = #{vkUserId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE vk_value = #{vkValue}
+    </update>
+
+    <update id="updateCpVerkeyByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_verkey
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vkKey)">
+                    vk_key = #{map.vkKey} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vkDesc)">
+                    vk_desc = #{map.vkDesc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vkModDate)">
+                    vk_mod_date = #{map.vkModDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vkUserId)">
+                    vk_user_id = #{map.vkUserId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vkValueCondition)">
+                    vk_value = #{map.vkValueCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vkKeyCondition)">
+                    AND vk_key = #{map.vkKeyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vkDescCondition)">
+                    AND vk_desc = #{map.vkDescCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vkModDateCondition)">
+                    AND vk_mod_date = #{map.vkModDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.vkUserIdCondition)">
+                    AND vk_user_id = #{map.vkUserIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpVerkeyByVkValue" parameterType="String" resultMap="cpVerkeyMap">
+        SELECT
+        <include refid="cpVerkeyBaseColumnSql"/>
+        FROM cp_verkey
+        WHERE vk_value = #{vkValue}
+    </select>
+
+    <select id="searchCpVerkeyByParams" parameterType="map" resultMap="cpVerkeyMap">
+        SELECT
+        <include refid="cpVerkeyBaseColumnSql"/>
+        FROM cp_verkey
+        <include refid="cpVerkeyBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpVerkey" id="cpVerkeyMap">
+        <id column="vk_value" property="vkValue"/>
+        <result column="vk_key" property="vkKey"/>
+        <result column="vk_desc" property="vkDesc"/>
+        <result column="vk_mod_date" property="vkModDate"/>
+        <result column="vk_user_id" property="vkUserId"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

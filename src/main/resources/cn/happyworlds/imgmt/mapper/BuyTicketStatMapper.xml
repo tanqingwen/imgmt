@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.BuyTicketStatMapper">
+
+    <sql id="cpTicketBaseColumnSql">
+        tk_ticket_id,
+        tk_card_no,
+        tk_ticket_type,
+        tk_effective_date,
+        tk_expire_date,
+        tk_active_date,
+        tk_retrive_date,
+        cb_recommender_no,
+        checksum
+    </sql>
+
+    <sql id="cpTicketBaseWhereSql">
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkCardNo)">
+                AND right(cp_ticket.tk_card_no,10) = #{map.tkCardNo}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkEffectiveDateStart)">
+             	AND cp_ticket.tk_effective_date &gt;= #{map.tkEffectiveDateStart}
+         	</if>
+         	<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tkEffectiveDateEnd)">
+            	AND cp_ticket.tk_effective_date &lt;= #{map.tkEffectiveDateEnd}
+         	</if>
+        </if>
+    </sql>
+
+    <select id="searchCpTicketAndCpTktypeStat" parameterType="map" resultMap="cpTicketMap">
+        select cp_ticket.*,c.cb_recommender_no from cp_ticket cp_ticket,cp_tktype,cp_crdtbl c 
+        where 1=1 and cp_ticket.tk_ticket_type=tt_type_id  and cp_ticket.tk_card_no=c.CB_CARDHOLDER_NO 
+        <include refid="cpTicketBaseWhereSql"/>
+        order by cp_ticket.tk_effective_date DESC 
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpTicket" id="cpTicketMap">
+        <id column="tk_ticket_id" property="tkTicketId"/>
+        <result column="tk_card_no" property="tkCardNo"/>
+        <result column="tk_ticket_type" property="tkTicketType"/>
+        <result column="tk_effective_date" property="tkEffectiveDate"/>
+        <result column="tk_expire_date" property="tkExpireDate"/>
+        <result column="tk_active_date" property="tkActiveDate"/>
+        <result column="tk_retrive_date" property="tkRetriveDate"/>
+        <result column="cb_recommender_no" property="cbRemmenderNo"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

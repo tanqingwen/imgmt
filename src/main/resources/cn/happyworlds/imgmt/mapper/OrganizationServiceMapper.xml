@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.OrganizationServiceMapper">
+    
+     <select id="searchOrgIdByparentId" parameterType="String" resultType="HashMap">
+       select 
+			max(id) id,
+			parent_id,
+	        name,
+	        level_id,
+	        remark,
+	        status,
+	        createdAt,
+	        updatedAt,
+	        createdBy,
+	        updatedBy
+		from 
+			t_sys_organization 
+		where 
+			parent_id = #{parentId} 
+    </select>
+    
+    <select id="searchOrgIdBylevelId" parameterType="String" resultType="HashMap">
+        select 
+			max(id) id,
+			parent_id,
+	        name,
+	        level_id,
+	        remark,
+	        status,
+	        createdAt,
+	        updatedAt,
+	        createdBy,
+	        updatedBy
+		from 
+			t_sys_organization 
+		where 
+			level_id = #{levelId}
+    </select>
+    
+</mapper>

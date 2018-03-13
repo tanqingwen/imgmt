@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpPrdgrpMapper">
+
+    <sql id="cpPrdgrpBaseColumnSql">
+        PR_PRODCT_GROUP,
+        PR_GROUP_DESC,
+        PR_BIN,
+        PR_CARD_BRAND,
+        PR_CARD_TYPE,
+        PR_BILL_CYC,
+        PR_NEW_CARD_ACTIVATION,
+        PR_REPLC_CARD_ACTIVATION,
+        PR_REISSUE_CARD_ACTIVATION,
+        PR_UPPER_RANGE_VALUE,
+        PR_NEW_CARD_VALID_PRD,
+        PR_RENEWAL_VALID_PRD,
+        PR_RENEWAL_DORMANT_PRD,
+        PR_CARDHOLDER_NO_LEN,
+        PR_CURR_4DBC,
+        PR_NEXT_4DBC,
+        PR_NEXT_4DBC_DATE,
+        PR_AMEX_PRODUCT,
+        PR_CURR_IND,
+        PR_LOWER_RANGE_VALUE,
+        PR_PIN_LENGTH,
+        PR_CARDNO_RAND_FLAG,
+        PR_MIN_CARDNO,
+        PR_PIN_FLAG,
+        PR_PINERR_NUMBER,
+        PR_CANCEL_CARD_DAYS,
+        PR_ALLOW_CARD_NUMS,
+        PR_PRODUCT_NUM,
+        PR_BRANCH_ID,
+        PR_PLASTIC_TYPE,
+        PR_ENCRYPT_FLAG,
+        PR_CARDNUM_RULE,
+        CHECKSUM
+    </sql>
+
+    <sql id="cpPrdgrpBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prProdctGroup)">
+                    PR_PRODCT_GROUP = #{map.prProdctGroup}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prGroupDesc)">
+                    AND PR_GROUP_DESC = #{map.prGroupDesc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prBin)">
+                    AND PR_BIN = #{map.prBin}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCardBrand)">
+                    AND PR_CARD_BRAND = #{map.prCardBrand}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCardType)">
+                    AND PR_CARD_TYPE = #{map.prCardType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prBillCyc)">
+                    AND PR_BILL_CYC = #{map.prBillCyc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prNewCardActivation)">
+                    AND PR_NEW_CARD_ACTIVATION = #{map.prNewCardActivation}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prReplcCardActivation)">
+                    AND PR_REPLC_CARD_ACTIVATION = #{map.prReplcCardActivation}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prReissueCardActivation)">
+                    AND PR_REISSUE_CARD_ACTIVATION = #{map.prReissueCardActivation}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prUpperRangeValue)">
+                    AND PR_UPPER_RANGE_VALUE = #{map.prUpperRangeValue}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prNewCardValidPrd)">
+                    AND PR_NEW_CARD_VALID_PRD = #{map.prNewCardValidPrd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prRenewalValidPrd)">
+                    AND PR_RENEWAL_VALID_PRD = #{map.prRenewalValidPrd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prRenewalDormantPrd)">
+                    AND PR_RENEWAL_DORMANT_PRD = #{map.prRenewalDormantPrd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCardholderNoLen)">
+                    AND PR_CARDHOLDER_NO_LEN = #{map.prCardholderNoLen}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCurr4dbc)">
+                    AND PR_CURR_4DBC = #{map.prCurr4dbc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prNext4dbc)">
+                    AND PR_NEXT_4DBC = #{map.prNext4dbc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prNext4dbcDate)">
+                    AND PR_NEXT_4DBC_DATE = #{map.prNext4dbcDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prAmexProduct)">
+                    AND PR_AMEX_PRODUCT = #{map.prAmexProduct}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCurrInd)">
+                    AND PR_CURR_IND = #{map.prCurrInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prLowerRangeValue)">
+                    AND PR_LOWER_RANGE_VALUE = #{map.prLowerRangeValue}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prPinLength)">
+                    AND PR_PIN_LENGTH = #{map.prPinLength}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCardnoRandFlag)">
+                    AND PR_CARDNO_RAND_FLAG = #{map.prCardnoRandFlag}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prMinCardno)">
+                    AND PR_MIN_CARDNO = #{map.prMinCardno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prPinFlag)">
+                    AND PR_PIN_FLAG = #{map.prPinFlag}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prPinerrNumber)">
+                    AND PR_PINERR_NUMBER = #{map.prPinerrNumber}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCancelCardDays)">
+                    AND PR_CANCEL_CARD_DAYS = #{map.prCancelCardDays}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prAllowCardNums)">
+                    AND PR_ALLOW_CARD_NUMS = #{map.prAllowCardNums}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prProductNum)">
+                    AND PR_PRODUCT_NUM = #{map.prProductNum}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prBranchId)">
+                    AND PR_BRANCH_ID = #{map.prBranchId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prPlasticType)">
+                    AND PR_PLASTIC_TYPE = #{map.prPlasticType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prEncryptFlag)">
+                    AND PR_ENCRYPT_FLAG = #{map.prEncryptFlag}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCardnumRule)">
+                    AND PR_CARDNUM_RULE = #{map.prCardnumRule}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND CHECKSUM = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpPrdgrp" parameterType="cn.happyworlds.imgmt.entity.CpPrdgrp">
+        INSERT INTO cp_prdgrp(
+        <include refid="cpPrdgrpBaseColumnSql"/>
+        )VALUES(
+            #{prProdctGroup},
+            #{prGroupDesc},
+            #{prBin},
+            #{prCardBrand},
+            #{prCardType},
+            #{prBillCyc},
+            #{prNewCardActivation},
+            #{prReplcCardActivation},
+            #{prReissueCardActivation},
+            #{prUpperRangeValue},
+            #{prNewCardValidPrd},
+            #{prRenewalValidPrd},
+            #{prRenewalDormantPrd},
+            #{prCardholderNoLen},
+            #{prCurr4dbc},
+            #{prNext4dbc},
+            #{prNext4dbcDate},
+            #{prAmexProduct},
+            #{prCurrInd},
+            #{prLowerRangeValue},
+            #{prPinLength},
+            #{prCardnoRandFlag},
+            #{prMinCardno},
+            #{prPinFlag},
+            #{prPinerrNumber},
+            #{prCancelCardDays},
+            #{prAllowCardNums},
+            #{prProductNum},
+            #{prBranchId},
+            #{prPlasticType},
+            #{prEncryptFlag},
+            #{prCardnumRule},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpPrdgrpByPrProdctGroup" parameterType="Integer">
+        DELETE FROM cp_prdgrp WHERE PR_PRODCT_GROUP = #{prProdctGroup}
+    </delete>
+
+    <select id="deleteCpPrdgrpByParams" parameterType="map">
+        DELETE FROM cp_prdgrp
+        <include refid="cpPrdgrpBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpPrdgrp" parameterType="cn.happyworlds.imgmt.entity.CpPrdgrp">
+        UPDATE cp_prdgrp
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prGroupDesc)">
+                PR_GROUP_DESC = #{prGroupDesc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prBin)">
+                PR_BIN = #{prBin} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prCardBrand)">
+                PR_CARD_BRAND = #{prCardBrand} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prCardType)">
+                PR_CARD_TYPE = #{prCardType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prBillCyc)">
+                PR_BILL_CYC = #{prBillCyc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prNewCardActivation)">
+                PR_NEW_CARD_ACTIVATION = #{prNewCardActivation} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prReplcCardActivation)">
+                PR_REPLC_CARD_ACTIVATION = #{prReplcCardActivation} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prReissueCardActivation)">
+                PR_REISSUE_CARD_ACTIVATION = #{prReissueCardActivation} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prUpperRangeValue)">
+                PR_UPPER_RANGE_VALUE = #{prUpperRangeValue} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prNewCardValidPrd)">
+                PR_NEW_CARD_VALID_PRD = #{prNewCardValidPrd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prRenewalValidPrd)">
+                PR_RENEWAL_VALID_PRD = #{prRenewalValidPrd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prRenewalDormantPrd)">
+                PR_RENEWAL_DORMANT_PRD = #{prRenewalDormantPrd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prCardholderNoLen)">
+                PR_CARDHOLDER_NO_LEN = #{prCardholderNoLen} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prCurr4dbc)">
+                PR_CURR_4DBC = #{prCurr4dbc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prNext4dbc)">
+                PR_NEXT_4DBC = #{prNext4dbc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prNext4dbcDate)">
+                PR_NEXT_4DBC_DATE = #{prNext4dbcDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prAmexProduct)">
+                PR_AMEX_PRODUCT = #{prAmexProduct} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prCurrInd)">
+                PR_CURR_IND = #{prCurrInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prLowerRangeValue)">
+                PR_LOWER_RANGE_VALUE = #{prLowerRangeValue} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prPinLength)">
+                PR_PIN_LENGTH = #{prPinLength} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prCardnoRandFlag)">
+                PR_CARDNO_RAND_FLAG = #{prCardnoRandFlag} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prMinCardno)">
+                PR_MIN_CARDNO = #{prMinCardno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prPinFlag)">
+                PR_PIN_FLAG = #{prPinFlag} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prPinerrNumber)">
+                PR_PINERR_NUMBER = #{prPinerrNumber} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prCancelCardDays)">
+                PR_CANCEL_CARD_DAYS = #{prCancelCardDays} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prAllowCardNums)">
+                PR_ALLOW_CARD_NUMS = #{prAllowCardNums} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prProductNum)">
+                PR_PRODUCT_NUM = #{prProductNum} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prBranchId)">
+                PR_BRANCH_ID = #{prBranchId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prPlasticType)">
+                PR_PLASTIC_TYPE = #{prPlasticType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prEncryptFlag)">
+                PR_ENCRYPT_FLAG = #{prEncryptFlag} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(prCardnumRule)">
+                PR_CARDNUM_RULE = #{prCardnumRule} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                CHECKSUM = #{checksum}
+            </if>
+        </set>
+        WHERE PR_PRODCT_GROUP = #{prProdctGroup}
+    </update>
+
+    <update id="updateCpPrdgrpByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_prdgrp
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prGroupDesc)">
+                    PR_GROUP_DESC = #{map.prGroupDesc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prBin)">
+                    PR_BIN = #{map.prBin} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCardBrand)">
+                    PR_CARD_BRAND = #{map.prCardBrand} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCardType)">
+                    PR_CARD_TYPE = #{map.prCardType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prBillCyc)">
+                    PR_BILL_CYC = #{map.prBillCyc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prNewCardActivation)">
+                    PR_NEW_CARD_ACTIVATION = #{map.prNewCardActivation} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prReplcCardActivation)">
+                    PR_REPLC_CARD_ACTIVATION = #{map.prReplcCardActivation} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prReissueCardActivation)">
+                    PR_REISSUE_CARD_ACTIVATION = #{map.prReissueCardActivation} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prUpperRangeValue)">
+                    PR_UPPER_RANGE_VALUE = #{map.prUpperRangeValue} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prNewCardValidPrd)">
+                    PR_NEW_CARD_VALID_PRD = #{map.prNewCardValidPrd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prRenewalValidPrd)">
+                    PR_RENEWAL_VALID_PRD = #{map.prRenewalValidPrd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prRenewalDormantPrd)">
+                    PR_RENEWAL_DORMANT_PRD = #{map.prRenewalDormantPrd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCardholderNoLen)">
+                    PR_CARDHOLDER_NO_LEN = #{map.prCardholderNoLen} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCurr4dbc)">
+                    PR_CURR_4DBC = #{map.prCurr4dbc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prNext4dbc)">
+                    PR_NEXT_4DBC = #{map.prNext4dbc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prNext4dbcDate)">
+                    PR_NEXT_4DBC_DATE = #{map.prNext4dbcDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prAmexProduct)">
+                    PR_AMEX_PRODUCT = #{map.prAmexProduct} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCurrInd)">
+                    PR_CURR_IND = #{map.prCurrInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prLowerRangeValue)">
+                    PR_LOWER_RANGE_VALUE = #{map.prLowerRangeValue} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prPinLength)">
+                    PR_PIN_LENGTH = #{map.prPinLength} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCardnoRandFlag)">
+                    PR_CARDNO_RAND_FLAG = #{map.prCardnoRandFlag} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prMinCardno)">
+                    PR_MIN_CARDNO = #{map.prMinCardno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prPinFlag)">
+                    PR_PIN_FLAG = #{map.prPinFlag} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prPinerrNumber)">
+                    PR_PINERR_NUMBER = #{map.prPinerrNumber} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCancelCardDays)">
+                    PR_CANCEL_CARD_DAYS = #{map.prCancelCardDays} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prAllowCardNums)">
+                    PR_ALLOW_CARD_NUMS = #{map.prAllowCardNums} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prProductNum)">
+                    PR_PRODUCT_NUM = #{map.prProductNum} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prBranchId)">
+                    PR_BRANCH_ID = #{map.prBranchId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prPlasticType)">
+                    PR_PLASTIC_TYPE = #{map.prPlasticType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prEncryptFlag)">
+                    PR_ENCRYPT_FLAG = #{map.prEncryptFlag} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCardnumRule)">
+                    PR_CARDNUM_RULE = #{map.prCardnumRule} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    CHECKSUM = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prProdctGroupCondition)">
+                    PR_PRODCT_GROUP = #{map.prProdctGroupCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prGroupDescCondition)">
+                    AND PR_GROUP_DESC = #{map.prGroupDescCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prBinCondition)">
+                    AND PR_BIN = #{map.prBinCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCardBrandCondition)">
+                    AND PR_CARD_BRAND = #{map.prCardBrandCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCardTypeCondition)">
+                    AND PR_CARD_TYPE = #{map.prCardTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prBillCycCondition)">
+                    AND PR_BILL_CYC = #{map.prBillCycCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prNewCardActivationCondition)">
+                    AND PR_NEW_CARD_ACTIVATION = #{map.prNewCardActivationCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prReplcCardActivationCondition)">
+                    AND PR_REPLC_CARD_ACTIVATION = #{map.prReplcCardActivationCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prReissueCardActivationCondition)">
+                    AND PR_REISSUE_CARD_ACTIVATION = #{map.prReissueCardActivationCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prUpperRangeValueCondition)">
+                    AND PR_UPPER_RANGE_VALUE = #{map.prUpperRangeValueCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prNewCardValidPrdCondition)">
+                    AND PR_NEW_CARD_VALID_PRD = #{map.prNewCardValidPrdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prRenewalValidPrdCondition)">
+                    AND PR_RENEWAL_VALID_PRD = #{map.prRenewalValidPrdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prRenewalDormantPrdCondition)">
+                    AND PR_RENEWAL_DORMANT_PRD = #{map.prRenewalDormantPrdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCardholderNoLenCondition)">
+                    AND PR_CARDHOLDER_NO_LEN = #{map.prCardholderNoLenCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCurr4dbcCondition)">
+                    AND PR_CURR_4DBC = #{map.prCurr4dbcCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prNext4dbcCondition)">
+                    AND PR_NEXT_4DBC = #{map.prNext4dbcCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prNext4dbcDateCondition)">
+                    AND PR_NEXT_4DBC_DATE = #{map.prNext4dbcDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prAmexProductCondition)">
+                    AND PR_AMEX_PRODUCT = #{map.prAmexProductCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCurrIndCondition)">
+                    AND PR_CURR_IND = #{map.prCurrIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prLowerRangeValueCondition)">
+                    AND PR_LOWER_RANGE_VALUE = #{map.prLowerRangeValueCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prPinLengthCondition)">
+                    AND PR_PIN_LENGTH = #{map.prPinLengthCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCardnoRandFlagCondition)">
+                    AND PR_CARDNO_RAND_FLAG = #{map.prCardnoRandFlagCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prMinCardnoCondition)">
+                    AND PR_MIN_CARDNO = #{map.prMinCardnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prPinFlagCondition)">
+                    AND PR_PIN_FLAG = #{map.prPinFlagCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prPinerrNumberCondition)">
+                    AND PR_PINERR_NUMBER = #{map.prPinerrNumberCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCancelCardDaysCondition)">
+                    AND PR_CANCEL_CARD_DAYS = #{map.prCancelCardDaysCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prAllowCardNumsCondition)">
+                    AND PR_ALLOW_CARD_NUMS = #{map.prAllowCardNumsCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prProductNumCondition)">
+                    AND PR_PRODUCT_NUM = #{map.prProductNumCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prBranchIdCondition)">
+                    AND PR_BRANCH_ID = #{map.prBranchIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prPlasticTypeCondition)">
+                    AND PR_PLASTIC_TYPE = #{map.prPlasticTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prEncryptFlagCondition)">
+                    AND PR_ENCRYPT_FLAG = #{map.prEncryptFlagCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prCardnumRuleCondition)">
+                    AND PR_CARDNUM_RULE = #{map.prCardnumRuleCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND CHECKSUM = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpPrdgrpByPrProdctGroup" parameterType="Integer" resultMap="cpPrdgrpMap">
+        SELECT
+        <include refid="cpPrdgrpBaseColumnSql"/>
+        FROM cp_prdgrp
+        WHERE PR_PRODCT_GROUP = #{prProdctGroup}
+    </select>
+
+    <select id="searchCpPrdgrpByParams" parameterType="map" resultMap="cpPrdgrpMap">
+        SELECT
+        <include refid="cpPrdgrpBaseColumnSql"/>
+        FROM cp_prdgrp
+        <include refid="cpPrdgrpBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+	<select id="searchCpPrdgrpByprProdctGroup"  parameterType="java.lang.Integer" resultMap="cpPrdgrpMap" >
+		SELECT
+        <include refid="cpPrdgrpBaseColumnSql"/>
+        FROM cp_prdgrp
+        where PR_PRODCT_GROUP >= #{prProdctGroup}
+	</select>
+	
+	<!-- 获取会员等级最大值 -->
+	 <select id="searchMaxprProdctgroup" parameterType="String" resultMap="MaxprGroupGroup">
+    	select  ifnull(max(pr_prodct_group)+1,'1100') pr_prodct_group from cp_prdgrp where pr_prodct_group like '1%';
+    </select>
+	
+	 <!-- add by whb 新增会员等级获取等级最大值叠加1返回值 start -->
+	<resultMap type="cn.happyworlds.imgmt.entity.CpPrdgrp" id="MaxprGroupGroup">
+		<id column="pr_prodct_group" property="prProdctGroup"/>
+        <result column="pr_prodct_group" property="prProdctGroup"/>
+	</resultMap>
+	
+    <resultMap type="cn.happyworlds.imgmt.entity.CpPrdgrp" id="cpPrdgrpMap">
+        <id column="PR_PRODCT_GROUP" property="prProdctGroup"/>
+        <result column="PR_GROUP_DESC" property="prGroupDesc"/>
+        <result column="PR_BIN" property="prBin"/>
+        <result column="PR_CARD_BRAND" property="prCardBrand"/>
+        <result column="PR_CARD_TYPE" property="prCardType"/>
+        <result column="PR_BILL_CYC" property="prBillCyc"/>
+        <result column="PR_NEW_CARD_ACTIVATION" property="prNewCardActivation"/>
+        <result column="PR_REPLC_CARD_ACTIVATION" property="prReplcCardActivation"/>
+        <result column="PR_REISSUE_CARD_ACTIVATION" property="prReissueCardActivation"/>
+        <result column="PR_UPPER_RANGE_VALUE" property="prUpperRangeValue"/>
+        <result column="PR_NEW_CARD_VALID_PRD" property="prNewCardValidPrd"/>
+        <result column="PR_RENEWAL_VALID_PRD" property="prRenewalValidPrd"/>
+        <result column="PR_RENEWAL_DORMANT_PRD" property="prRenewalDormantPrd"/>
+        <result column="PR_CARDHOLDER_NO_LEN" property="prCardholderNoLen"/>
+        <result column="PR_CURR_4DBC" property="prCurr4dbc"/>
+        <result column="PR_NEXT_4DBC" property="prNext4dbc"/>
+        <result column="PR_NEXT_4DBC_DATE" property="prNext4dbcDate"/>
+        <result column="PR_AMEX_PRODUCT" property="prAmexProduct"/>
+        <result column="PR_CURR_IND" property="prCurrInd"/>
+        <result column="PR_LOWER_RANGE_VALUE" property="prLowerRangeValue"/>
+        <result column="PR_PIN_LENGTH" property="prPinLength"/>
+        <result column="PR_CARDNO_RAND_FLAG" property="prCardnoRandFlag"/>
+        <result column="PR_MIN_CARDNO" property="prMinCardno"/>
+        <result column="PR_PIN_FLAG" property="prPinFlag"/>
+        <result column="PR_PINERR_NUMBER" property="prPinerrNumber"/>
+        <result column="PR_CANCEL_CARD_DAYS" property="prCancelCardDays"/>
+        <result column="PR_ALLOW_CARD_NUMS" property="prAllowCardNums"/>
+        <result column="PR_PRODUCT_NUM" property="prProductNum"/>
+        <result column="PR_BRANCH_ID" property="prBranchId"/>
+        <result column="PR_PLASTIC_TYPE" property="prPlasticType"/>
+        <result column="PR_ENCRYPT_FLAG" property="prEncryptFlag"/>
+        <result column="PR_CARDNUM_RULE" property="prCardnumRule"/>
+        <result column="CHECKSUM" property="checksum"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,130 @@
+.gyjbg{
+	width:100%;
+	background-image: url(../../img/animalimg/gyj-bg.jpg);
+	background-position: 50% 50%;
+	background-size: cover;
+	padding-top:50px;
+	padding-bottom: 50px;
+}
+.gyj-hotel{
+width:1000px;
+margin:0 auto ;
+}
+.hotel-time{
+width:1000px;
+height:70px;
+line-height:70px;
+margin:0 auto 20px;
+background:white;
+border-radius:5px ;
+}
+.hotel-time li{
+float: left;
+padding:0 10px;
+}
+.hotel-time span{
+	margin:0 10px;
+}
+.hotel-time input{
+	border:1px gray solid;
+	width:218px;
+	height:30px;
+	color:gray;
+	font-size:18px;
+	text-indent: 10px;
+	border-radius: 5px;
+}
+.hotel-time select{
+	width:80px;
+	height:30px;
+	text-indent: 10px;
+	color:gray;
+	font-size:18px;
+	background:#e5f5fd;
+	border-radius: 5px;
+}
+
+.gyj-room{
+	width:1000px;
+	padding-bottom: 50px;
+	background: white;
+	border-radius: 5px;
+}
+.gyj-room li{
+	width:1000px;
+}
+.room-message{
+	width:1000px;
+}
+.room-message li{
+	margin:25px 0;
+	width:238px;
+	height:160px;
+	float:left;
+	font-size:14px;
+	padding-top:10px;
+	padding-bottom: 10px;
+	background:white;
+	color:#333333;
+	font-family: "微软雅黑";
+}
+.room-message li:last-child{
+	margin-bottom: 0;
+}
+.room-message li strong{
+	font-size:24px;
+	font-family: "微软雅黑";
+	margin-bottom:20px;
+	font-weight: 500;
+}
+.room-message li span{
+	display: block;
+	margin:7px 0;
+}
+.room-message-first{
+	text-align: center;
+}
+.room-message li .room-message-first img{
+	width:80%;
+	height:100%;
+}
+.room-message-trird img{
+	width:50%;
+}
+.room-message-last{
+	text-align: center;
+}
+.room-message-last span a{
+	float:right;
+	margin-right:10px;
+	color:#58c7f5;
+	font-size:16px;
+}
+.room-message-last button{
+	background:#58c7f5;
+	border:none;
+	border-radius: 4px;
+	outline: none;
+	display: inline-block;
+	margin-top:20px;
+	}
+.room-message-last button a{
+	display: inline-block;
+	font-size:14px;
+	color:white;
+	width:108px;
+	height:36px;
+	line-height:36px;
+}
+
+.room-message-last .room-sale strong{
+	font-size:30px;
+	font-family: "微软雅黑";
+}
+
+
+
+
+
+
+

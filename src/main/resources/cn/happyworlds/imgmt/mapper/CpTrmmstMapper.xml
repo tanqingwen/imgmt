@@ -1,0 +1,1056 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpTrmmstMapper">
+
+    <sql id="cpTrmmstBaseColumnSql">
+        tm_terminal_id,
+        tm_merchant_id,
+        tm_date_inst,
+        tm_date_canx,
+        tm_host_serial,
+        tm_edc_serial,
+        tm_edc_printer_no,
+        tm_last_settle_date,
+        tm_last_batch_no,
+        tm_batch_close,
+        tm_dba_name,
+        tm_phy_state,
+        tm_phy_city,
+        tm_phy_country,
+        tm_vs_term_type,
+        tm_mc_term_type,
+        tm_ae_term_type,
+        tm_trxn_curr_cd,
+        tm_monthly_rental_fee,
+        tm_emv_compliant_fg,
+        tm_current_key,
+        tm_old_key,
+        tm_region_cd,
+        tm_download,
+        tm_mode_type,
+        tm_status,
+        tm_active_time,
+        tm_version_no,
+        tm_pin_key,
+        tm_mac_key,
+        tm_blklst_seq,
+        tm_old_mackey,
+        tm_old_pinkey,
+        tm_master_key,
+        tm_brand,
+        tm_model,
+        tm_iswatch,
+        tm_orgid,
+        tm_netaddr,
+        tm_netport,
+        tm_contactaddr,
+        tm_termaddr,
+        tm_adminid,
+        tm_opertermid,
+        tm_inst_type,
+        tm_system,
+        tm_use_state,
+        tm_lay_type,
+        tm_isselfbank,
+        tm_isvideowatch,
+        tm_isups,
+        tm_geog,
+        tm_func_area,
+        tm_protoco,
+        tm_setup_user,
+        tm_setup_timestamp,
+        tm_auth_user,
+        tm_auth_timestamp,
+        tm_appv_user,
+        tm_appv_timestamp,
+        tm_down_ind,
+        tm_down_timestamp,
+        tm_appl_status,
+        checksum
+    </sql>
+
+    <sql id="cpTrmmstBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmTerminalId)">
+                    tm_terminal_id = #{map.tmTerminalId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmMerchantId)">
+                    AND tm_merchant_id = #{map.tmMerchantId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDateInst)">
+                    AND tm_date_inst = #{map.tmDateInst}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDateCanx)">
+                    AND tm_date_canx = #{map.tmDateCanx}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmHostSerial)">
+                    AND tm_host_serial = #{map.tmHostSerial}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmEdcSerial)">
+                    AND tm_edc_serial = #{map.tmEdcSerial}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmEdcPrinterNo)">
+                    AND tm_edc_printer_no = #{map.tmEdcPrinterNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmLastSettleDate)">
+                    AND tm_last_settle_date = #{map.tmLastSettleDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmLastBatchNo)">
+                    AND tm_last_batch_no = #{map.tmLastBatchNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmBatchClose)">
+                    AND tm_batch_close = #{map.tmBatchClose}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDbaName)">
+                    AND tm_dba_name = #{map.tmDbaName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmPhyState)">
+                    AND tm_phy_state = #{map.tmPhyState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmPhyCity)">
+                    AND tm_phy_city = #{map.tmPhyCity}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmPhyCountry)">
+                    AND tm_phy_country = #{map.tmPhyCountry}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmVsTermType)">
+                    AND tm_vs_term_type = #{map.tmVsTermType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmMcTermType)">
+                    AND tm_mc_term_type = #{map.tmMcTermType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAeTermType)">
+                    AND tm_ae_term_type = #{map.tmAeTermType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmTrxnCurrCd)">
+                    AND tm_trxn_curr_cd = #{map.tmTrxnCurrCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmMonthlyRentalFee)">
+                    AND tm_monthly_rental_fee = #{map.tmMonthlyRentalFee}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmEmvCompliantFg)">
+                    AND tm_emv_compliant_fg = #{map.tmEmvCompliantFg}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmCurrentKey)">
+                    AND tm_current_key = #{map.tmCurrentKey}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmOldKey)">
+                    AND tm_old_key = #{map.tmOldKey}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmRegionCd)">
+                    AND tm_region_cd = #{map.tmRegionCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDownload)">
+                    AND tm_download = #{map.tmDownload}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmModeType)">
+                    AND tm_mode_type = #{map.tmModeType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmStatus)">
+                    AND tm_status = #{map.tmStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmActiveTime)">
+                    AND tm_active_time = #{map.tmActiveTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmVersionNo)">
+                    AND tm_version_no = #{map.tmVersionNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmPinKey)">
+                    AND tm_pin_key = #{map.tmPinKey}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmMacKey)">
+                    AND tm_mac_key = #{map.tmMacKey}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmBlklstSeq)">
+                    AND tm_blklst_seq = #{map.tmBlklstSeq}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmOldMackey)">
+                    AND tm_old_mackey = #{map.tmOldMackey}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmOldPinkey)">
+                    AND tm_old_pinkey = #{map.tmOldPinkey}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmMasterKey)">
+                    AND tm_master_key = #{map.tmMasterKey}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmBrand)">
+                    AND tm_brand = #{map.tmBrand}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmModel)">
+                    AND tm_model = #{map.tmModel}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmIswatch)">
+                    AND tm_iswatch = #{map.tmIswatch}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmOrgid)">
+                    AND tm_orgid = #{map.tmOrgid}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmNetaddr)">
+                    AND tm_netaddr = #{map.tmNetaddr}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmNetport)">
+                    AND tm_netport = #{map.tmNetport}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmContactaddr)">
+                    AND tm_contactaddr = #{map.tmContactaddr}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmTermaddr)">
+                    AND tm_termaddr = #{map.tmTermaddr}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAdminid)">
+                    AND tm_adminid = #{map.tmAdminid}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmOpertermid)">
+                    AND tm_opertermid = #{map.tmOpertermid}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmInstType)">
+                    AND tm_inst_type = #{map.tmInstType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmSystem)">
+                    AND tm_system = #{map.tmSystem}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmUseState)">
+                    AND tm_use_state = #{map.tmUseState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmLayType)">
+                    AND tm_lay_type = #{map.tmLayType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmIsselfbank)">
+                    AND tm_isselfbank = #{map.tmIsselfbank}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmIsvideowatch)">
+                    AND tm_isvideowatch = #{map.tmIsvideowatch}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmIsups)">
+                    AND tm_isups = #{map.tmIsups}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmGeog)">
+                    AND tm_geog = #{map.tmGeog}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmFuncArea)">
+                    AND tm_func_area = #{map.tmFuncArea}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmProtoco)">
+                    AND tm_protoco = #{map.tmProtoco}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmSetupUser)">
+                    AND tm_setup_user = #{map.tmSetupUser}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmSetupTimestamp)">
+                    AND tm_setup_timestamp = #{map.tmSetupTimestamp}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAuthUser)">
+                    AND tm_auth_user = #{map.tmAuthUser}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAuthTimestamp)">
+                    AND tm_auth_timestamp = #{map.tmAuthTimestamp}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAppvUser)">
+                    AND tm_appv_user = #{map.tmAppvUser}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAppvTimestamp)">
+                    AND tm_appv_timestamp = #{map.tmAppvTimestamp}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDownInd)">
+                    AND tm_down_ind = #{map.tmDownInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDownTimestamp)">
+                    AND tm_down_timestamp = #{map.tmDownTimestamp}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmApplStatus)">
+                    AND tm_appl_status = #{map.tmApplStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpTrmmst" parameterType="cn.happyworlds.imgmt.entity.CpTrmmst">
+        INSERT INTO cp_trmmst(
+        <include refid="cpTrmmstBaseColumnSql"/>
+        )VALUES(
+            #{tmTerminalId},
+            #{tmMerchantId},
+            #{tmDateInst},
+            #{tmDateCanx},
+            #{tmHostSerial},
+            #{tmEdcSerial},
+            #{tmEdcPrinterNo},
+            #{tmLastSettleDate},
+            #{tmLastBatchNo},
+            #{tmBatchClose},
+            #{tmDbaName},
+            #{tmPhyState},
+            #{tmPhyCity},
+            #{tmPhyCountry},
+            #{tmVsTermType},
+            #{tmMcTermType},
+            #{tmAeTermType},
+            #{tmTrxnCurrCd},
+            #{tmMonthlyRentalFee},
+            #{tmEmvCompliantFg},
+            #{tmCurrentKey},
+            #{tmOldKey},
+            #{tmRegionCd},
+            #{tmDownload},
+            #{tmModeType},
+            #{tmStatus},
+            #{tmActiveTime},
+            #{tmVersionNo},
+            #{tmPinKey},
+            #{tmMacKey},
+            #{tmBlklstSeq},
+            #{tmOldMackey},
+            #{tmOldPinkey},
+            #{tmMasterKey},
+            #{tmBrand},
+            #{tmModel},
+            #{tmIswatch},
+            #{tmOrgid},
+            #{tmNetaddr},
+            #{tmNetport},
+            #{tmContactaddr},
+            #{tmTermaddr},
+            #{tmAdminid},
+            #{tmOpertermid},
+            #{tmInstType},
+            #{tmSystem},
+            #{tmUseState},
+            #{tmLayType},
+            #{tmIsselfbank},
+            #{tmIsvideowatch},
+            #{tmIsups},
+            #{tmGeog},
+            #{tmFuncArea},
+            #{tmProtoco},
+            #{tmSetupUser},
+            #{tmSetupTimestamp},
+            #{tmAuthUser},
+            #{tmAuthTimestamp},
+            #{tmAppvUser},
+            #{tmAppvTimestamp},
+            #{tmDownInd},
+            #{tmDownTimestamp},
+            #{tmApplStatus},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpTrmmstByTmTerminalId" parameterType="String">
+        DELETE FROM cp_trmmst WHERE tm_terminal_id = #{tmTerminalId}
+    </delete>
+
+    <select id="deleteCpTrmmstByParams" parameterType="map">
+        DELETE FROM cp_trmmst
+        <include refid="cpTrmmstBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpTrmmst" parameterType="cn.happyworlds.imgmt.entity.CpTrmmst">
+        UPDATE cp_trmmst
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmMerchantId)">
+                tm_merchant_id = #{tmMerchantId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmDateInst)">
+                tm_date_inst = #{tmDateInst} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmDateCanx)">
+                tm_date_canx = #{tmDateCanx} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmHostSerial)">
+                tm_host_serial = #{tmHostSerial} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmEdcSerial)">
+                tm_edc_serial = #{tmEdcSerial} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmEdcPrinterNo)">
+                tm_edc_printer_no = #{tmEdcPrinterNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmLastSettleDate)">
+                tm_last_settle_date = #{tmLastSettleDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmLastBatchNo)">
+                tm_last_batch_no = #{tmLastBatchNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmBatchClose)">
+                tm_batch_close = #{tmBatchClose} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmDbaName)">
+                tm_dba_name = #{tmDbaName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmPhyState)">
+                tm_phy_state = #{tmPhyState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmPhyCity)">
+                tm_phy_city = #{tmPhyCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmPhyCountry)">
+                tm_phy_country = #{tmPhyCountry} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmVsTermType)">
+                tm_vs_term_type = #{tmVsTermType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmMcTermType)">
+                tm_mc_term_type = #{tmMcTermType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmAeTermType)">
+                tm_ae_term_type = #{tmAeTermType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmTrxnCurrCd)">
+                tm_trxn_curr_cd = #{tmTrxnCurrCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmMonthlyRentalFee)">
+                tm_monthly_rental_fee = #{tmMonthlyRentalFee} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmEmvCompliantFg)">
+                tm_emv_compliant_fg = #{tmEmvCompliantFg} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmCurrentKey)">
+                tm_current_key = #{tmCurrentKey} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmOldKey)">
+                tm_old_key = #{tmOldKey} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmRegionCd)">
+                tm_region_cd = #{tmRegionCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmDownload)">
+                tm_download = #{tmDownload} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmModeType)">
+                tm_mode_type = #{tmModeType} ,
+            </if>
+           <!-- 
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmStatus)">
+           --> 
+                tm_status = #{tmStatus} ,
+            <!--    
+            </if>
+           --> 
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmActiveTime)">
+                tm_active_time = #{tmActiveTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmVersionNo)">
+                tm_version_no = #{tmVersionNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmPinKey)">
+                tm_pin_key = #{tmPinKey} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmMacKey)">
+                tm_mac_key = #{tmMacKey} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmBlklstSeq)">
+                tm_blklst_seq = #{tmBlklstSeq} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmOldMackey)">
+                tm_old_mackey = #{tmOldMackey} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmOldPinkey)">
+                tm_old_pinkey = #{tmOldPinkey} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmMasterKey)">
+                tm_master_key = #{tmMasterKey} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmBrand)">
+                tm_brand = #{tmBrand} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmModel)">
+                tm_model = #{tmModel} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmIswatch)">
+                tm_iswatch = #{tmIswatch} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmOrgid)">
+                tm_orgid = #{tmOrgid} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmNetaddr)">
+                tm_netaddr = #{tmNetaddr} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmNetport)">
+                tm_netport = #{tmNetport} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmContactaddr)">
+                tm_contactaddr = #{tmContactaddr} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmTermaddr)">
+                tm_termaddr = #{tmTermaddr} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmAdminid)">
+                tm_adminid = #{tmAdminid} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmOpertermid)">
+                tm_opertermid = #{tmOpertermid} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmInstType)">
+                tm_inst_type = #{tmInstType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmSystem)">
+                tm_system = #{tmSystem} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmUseState)">
+                tm_use_state = #{tmUseState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmLayType)">
+                tm_lay_type = #{tmLayType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmIsselfbank)">
+                tm_isselfbank = #{tmIsselfbank} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmIsvideowatch)">
+                tm_isvideowatch = #{tmIsvideowatch} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmIsups)">
+                tm_isups = #{tmIsups} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmGeog)">
+                tm_geog = #{tmGeog} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmFuncArea)">
+                tm_func_area = #{tmFuncArea} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmProtoco)">
+                tm_protoco = #{tmProtoco} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmSetupUser)">
+                tm_setup_user = #{tmSetupUser} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmSetupTimestamp)">
+                tm_setup_timestamp = #{tmSetupTimestamp} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmAuthUser)">
+                tm_auth_user = #{tmAuthUser} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmAuthTimestamp)">
+                tm_auth_timestamp = #{tmAuthTimestamp} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmAppvUser)">
+                tm_appv_user = #{tmAppvUser} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmAppvTimestamp)">
+                tm_appv_timestamp = #{tmAppvTimestamp} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmDownInd)">
+                tm_down_ind = #{tmDownInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmDownTimestamp)">
+                tm_down_timestamp = #{tmDownTimestamp} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(tmApplStatus)">
+                tm_appl_status = #{tmApplStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE tm_terminal_id = #{tmTerminalId}
+    </update>
+
+    <update id="updateCpTrmmstByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_trmmst
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmMerchantId)">
+                    tm_merchant_id = #{map.tmMerchantId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDateInst)">
+                    tm_date_inst = #{map.tmDateInst} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDateCanx)">
+                    tm_date_canx = #{map.tmDateCanx} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmHostSerial)">
+                    tm_host_serial = #{map.tmHostSerial} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmEdcSerial)">
+                    tm_edc_serial = #{map.tmEdcSerial} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmEdcPrinterNo)">
+                    tm_edc_printer_no = #{map.tmEdcPrinterNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmLastSettleDate)">
+                    tm_last_settle_date = #{map.tmLastSettleDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmLastBatchNo)">
+                    tm_last_batch_no = #{map.tmLastBatchNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmBatchClose)">
+                    tm_batch_close = #{map.tmBatchClose} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDbaName)">
+                    tm_dba_name = #{map.tmDbaName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmPhyState)">
+                    tm_phy_state = #{map.tmPhyState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmPhyCity)">
+                    tm_phy_city = #{map.tmPhyCity} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmPhyCountry)">
+                    tm_phy_country = #{map.tmPhyCountry} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmVsTermType)">
+                    tm_vs_term_type = #{map.tmVsTermType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmMcTermType)">
+                    tm_mc_term_type = #{map.tmMcTermType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAeTermType)">
+                    tm_ae_term_type = #{map.tmAeTermType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmTrxnCurrCd)">
+                    tm_trxn_curr_cd = #{map.tmTrxnCurrCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmMonthlyRentalFee)">
+                    tm_monthly_rental_fee = #{map.tmMonthlyRentalFee} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmEmvCompliantFg)">
+                    tm_emv_compliant_fg = #{map.tmEmvCompliantFg} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmCurrentKey)">
+                    tm_current_key = #{map.tmCurrentKey} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmOldKey)">
+                    tm_old_key = #{map.tmOldKey} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmRegionCd)">
+                    tm_region_cd = #{map.tmRegionCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDownload)">
+                    tm_download = #{map.tmDownload} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmModeType)">
+                    tm_mode_type = #{map.tmModeType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmStatus)">
+                    tm_status = #{map.tmStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmActiveTime)">
+                    tm_active_time = #{map.tmActiveTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmVersionNo)">
+                    tm_version_no = #{map.tmVersionNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmPinKey)">
+                    tm_pin_key = #{map.tmPinKey} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmMacKey)">
+                    tm_mac_key = #{map.tmMacKey} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmBlklstSeq)">
+                    tm_blklst_seq = #{map.tmBlklstSeq} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmOldMackey)">
+                    tm_old_mackey = #{map.tmOldMackey} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmOldPinkey)">
+                    tm_old_pinkey = #{map.tmOldPinkey} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmMasterKey)">
+                    tm_master_key = #{map.tmMasterKey} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmBrand)">
+                    tm_brand = #{map.tmBrand} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmModel)">
+                    tm_model = #{map.tmModel} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmIswatch)">
+                    tm_iswatch = #{map.tmIswatch} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmOrgid)">
+                    tm_orgid = #{map.tmOrgid} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmNetaddr)">
+                    tm_netaddr = #{map.tmNetaddr} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmNetport)">
+                    tm_netport = #{map.tmNetport} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmContactaddr)">
+                    tm_contactaddr = #{map.tmContactaddr} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmTermaddr)">
+                    tm_termaddr = #{map.tmTermaddr} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAdminid)">
+                    tm_adminid = #{map.tmAdminid} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmOpertermid)">
+                    tm_opertermid = #{map.tmOpertermid} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmInstType)">
+                    tm_inst_type = #{map.tmInstType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmSystem)">
+                    tm_system = #{map.tmSystem} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmUseState)">
+                    tm_use_state = #{map.tmUseState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmLayType)">
+                    tm_lay_type = #{map.tmLayType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmIsselfbank)">
+                    tm_isselfbank = #{map.tmIsselfbank} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmIsvideowatch)">
+                    tm_isvideowatch = #{map.tmIsvideowatch} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmIsups)">
+                    tm_isups = #{map.tmIsups} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmGeog)">
+                    tm_geog = #{map.tmGeog} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmFuncArea)">
+                    tm_func_area = #{map.tmFuncArea} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmProtoco)">
+                    tm_protoco = #{map.tmProtoco} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmSetupUser)">
+                    tm_setup_user = #{map.tmSetupUser} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmSetupTimestamp)">
+                    tm_setup_timestamp = #{map.tmSetupTimestamp} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAuthUser)">
+                    tm_auth_user = #{map.tmAuthUser} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAuthTimestamp)">
+                    tm_auth_timestamp = #{map.tmAuthTimestamp} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAppvUser)">
+                    tm_appv_user = #{map.tmAppvUser} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAppvTimestamp)">
+                    tm_appv_timestamp = #{map.tmAppvTimestamp} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDownInd)">
+                    tm_down_ind = #{map.tmDownInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDownTimestamp)">
+                    tm_down_timestamp = #{map.tmDownTimestamp} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmApplStatus)">
+                    tm_appl_status = #{map.tmApplStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmTerminalIdCondition)">
+                    tm_terminal_id = #{map.tmTerminalIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmMerchantIdCondition)">
+                    AND tm_merchant_id = #{map.tmMerchantIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDateInstCondition)">
+                    AND tm_date_inst = #{map.tmDateInstCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDateCanxCondition)">
+                    AND tm_date_canx = #{map.tmDateCanxCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmHostSerialCondition)">
+                    AND tm_host_serial = #{map.tmHostSerialCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmEdcSerialCondition)">
+                    AND tm_edc_serial = #{map.tmEdcSerialCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmEdcPrinterNoCondition)">
+                    AND tm_edc_printer_no = #{map.tmEdcPrinterNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmLastSettleDateCondition)">
+                    AND tm_last_settle_date = #{map.tmLastSettleDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmLastBatchNoCondition)">
+                    AND tm_last_batch_no = #{map.tmLastBatchNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmBatchCloseCondition)">
+                    AND tm_batch_close = #{map.tmBatchCloseCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDbaNameCondition)">
+                    AND tm_dba_name = #{map.tmDbaNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmPhyStateCondition)">
+                    AND tm_phy_state = #{map.tmPhyStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmPhyCityCondition)">
+                    AND tm_phy_city = #{map.tmPhyCityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmPhyCountryCondition)">
+                    AND tm_phy_country = #{map.tmPhyCountryCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmVsTermTypeCondition)">
+                    AND tm_vs_term_type = #{map.tmVsTermTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmMcTermTypeCondition)">
+                    AND tm_mc_term_type = #{map.tmMcTermTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAeTermTypeCondition)">
+                    AND tm_ae_term_type = #{map.tmAeTermTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmTrxnCurrCdCondition)">
+                    AND tm_trxn_curr_cd = #{map.tmTrxnCurrCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmMonthlyRentalFeeCondition)">
+                    AND tm_monthly_rental_fee = #{map.tmMonthlyRentalFeeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmEmvCompliantFgCondition)">
+                    AND tm_emv_compliant_fg = #{map.tmEmvCompliantFgCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmCurrentKeyCondition)">
+                    AND tm_current_key = #{map.tmCurrentKeyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmOldKeyCondition)">
+                    AND tm_old_key = #{map.tmOldKeyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmRegionCdCondition)">
+                    AND tm_region_cd = #{map.tmRegionCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDownloadCondition)">
+                    AND tm_download = #{map.tmDownloadCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmModeTypeCondition)">
+                    AND tm_mode_type = #{map.tmModeTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmStatusCondition)">
+                    AND tm_status = #{map.tmStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmActiveTimeCondition)">
+                    AND tm_active_time = #{map.tmActiveTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmVersionNoCondition)">
+                    AND tm_version_no = #{map.tmVersionNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmPinKeyCondition)">
+                    AND tm_pin_key = #{map.tmPinKeyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmMacKeyCondition)">
+                    AND tm_mac_key = #{map.tmMacKeyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmBlklstSeqCondition)">
+                    AND tm_blklst_seq = #{map.tmBlklstSeqCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmOldMackeyCondition)">
+                    AND tm_old_mackey = #{map.tmOldMackeyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmOldPinkeyCondition)">
+                    AND tm_old_pinkey = #{map.tmOldPinkeyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmMasterKeyCondition)">
+                    AND tm_master_key = #{map.tmMasterKeyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmBrandCondition)">
+                    AND tm_brand = #{map.tmBrandCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmModelCondition)">
+                    AND tm_model = #{map.tmModelCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmIswatchCondition)">
+                    AND tm_iswatch = #{map.tmIswatchCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmOrgidCondition)">
+                    AND tm_orgid = #{map.tmOrgidCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmNetaddrCondition)">
+                    AND tm_netaddr = #{map.tmNetaddrCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmNetportCondition)">
+                    AND tm_netport = #{map.tmNetportCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmContactaddrCondition)">
+                    AND tm_contactaddr = #{map.tmContactaddrCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmTermaddrCondition)">
+                    AND tm_termaddr = #{map.tmTermaddrCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAdminidCondition)">
+                    AND tm_adminid = #{map.tmAdminidCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmOpertermidCondition)">
+                    AND tm_opertermid = #{map.tmOpertermidCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmInstTypeCondition)">
+                    AND tm_inst_type = #{map.tmInstTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmSystemCondition)">
+                    AND tm_system = #{map.tmSystemCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmUseStateCondition)">
+                    AND tm_use_state = #{map.tmUseStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmLayTypeCondition)">
+                    AND tm_lay_type = #{map.tmLayTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmIsselfbankCondition)">
+                    AND tm_isselfbank = #{map.tmIsselfbankCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmIsvideowatchCondition)">
+                    AND tm_isvideowatch = #{map.tmIsvideowatchCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmIsupsCondition)">
+                    AND tm_isups = #{map.tmIsupsCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmGeogCondition)">
+                    AND tm_geog = #{map.tmGeogCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmFuncAreaCondition)">
+                    AND tm_func_area = #{map.tmFuncAreaCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmProtocoCondition)">
+                    AND tm_protoco = #{map.tmProtocoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmSetupUserCondition)">
+                    AND tm_setup_user = #{map.tmSetupUserCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmSetupTimestampCondition)">
+                    AND tm_setup_timestamp = #{map.tmSetupTimestampCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAuthUserCondition)">
+                    AND tm_auth_user = #{map.tmAuthUserCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAuthTimestampCondition)">
+                    AND tm_auth_timestamp = #{map.tmAuthTimestampCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAppvUserCondition)">
+                    AND tm_appv_user = #{map.tmAppvUserCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmAppvTimestampCondition)">
+                    AND tm_appv_timestamp = #{map.tmAppvTimestampCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDownIndCondition)">
+                    AND tm_down_ind = #{map.tmDownIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDownTimestampCondition)">
+                    AND tm_down_timestamp = #{map.tmDownTimestampCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmApplStatusCondition)">
+                    AND tm_appl_status = #{map.tmApplStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpTrmmstByTmTerminalId" parameterType="String" resultMap="cpTrmmstMap">
+        SELECT
+        <include refid="cpTrmmstBaseColumnSql"/>
+        FROM cp_trmmst
+        WHERE tm_terminal_id = #{tmTerminalId}
+    </select>
+    
+    <!-- add by Hugh 新增闸机获取闸机最大值叠加1 start -->
+    <select id="searchMaxGateTrmmstTerminalId" parameterType="String" resultMap="MaxTerminal">
+    	select ifnull(max(tm_terminal_id)+1,'20000000') tm_terminal_id from cp_trmmst where tm_edc_serial='0' and length(tm_terminal_id)=8
+    </select>
+    <!-- add by Hugh 新增闸机获取闸机最大值叠加1 end -->
+    
+    
+    <!-- add by Hugh 新增终端获取终端最大值叠加1 start -->
+    <select id="searchMaxTrmmstTerminalId" parameterType="String" resultMap="MaxTerminal">
+    	select ifnull(max(tm_terminal_id)+1,'10000000') tm_terminal_id from cp_trmmst where tm_edc_serial='1' and length(tm_terminal_id)=8
+    </select>
+    <!-- add by Hugh 新增终端获取终端最大值叠加1 end -->
+    
+
+    <select id="searchCpTrmmstByParams" parameterType="map" resultMap="cpTrmmstMap">
+        SELECT
+        <include refid="cpTrmmstBaseColumnSql"/>
+        FROM cp_trmmst
+        <include refid="cpTrmmstBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+    <!-- 根据终端ip查终端名称 -->
+    <select id="seachTrmmstByIp" parameterType="String" resultMap="cpTrmmstMap">
+    	select tm_date_canx FROM cp_trmmst 
+    	where tm_host_serial=#{posIp}
+    </select>
+
+	<!-- add by Hugh 新增终端闸机获取终端最大值叠加1返回值 start -->
+	<resultMap type="cn.happyworlds.imgmt.entity.CpTrmmst" id="MaxTerminal">
+		<id column="tm_terminal_id" property="tmTerminalId"/>
+        <result column="tm_terminal_id" property="tmTerminalId"/>
+	</resultMap>
+	<!-- add by Hugh 新增终端闸机获取终端最大值叠加1返回值 end -->
+
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpTrmmst" id="cpTrmmstMap">
+        <id column="tm_terminal_id" property="tmTerminalId"/>
+        <result column="tm_merchant_id" property="tmMerchantId"/>
+        <result column="tm_date_inst" property="tmDateInst"/>
+        <result column="tm_date_canx" property="tmDateCanx"/>
+        <result column="tm_host_serial" property="tmHostSerial"/>
+        <result column="tm_edc_serial" property="tmEdcSerial"/>
+        <result column="tm_edc_printer_no" property="tmEdcPrinterNo"/>
+        <result column="tm_last_settle_date" property="tmLastSettleDate"/>
+        <result column="tm_last_batch_no" property="tmLastBatchNo"/>
+        <result column="tm_batch_close" property="tmBatchClose"/>
+        <result column="tm_dba_name" property="tmDbaName"/>
+        <result column="tm_phy_state" property="tmPhyState"/>
+        <result column="tm_phy_city" property="tmPhyCity"/>
+        <result column="tm_phy_country" property="tmPhyCountry"/>
+        <result column="tm_vs_term_type" property="tmVsTermType"/>
+        <result column="tm_mc_term_type" property="tmMcTermType"/>
+        <result column="tm_ae_term_type" property="tmAeTermType"/>
+        <result column="tm_trxn_curr_cd" property="tmTrxnCurrCd"/>
+        <result column="tm_monthly_rental_fee" property="tmMonthlyRentalFee"/>
+        <result column="tm_emv_compliant_fg" property="tmEmvCompliantFg"/>
+        <result column="tm_current_key" property="tmCurrentKey"/>
+        <result column="tm_old_key" property="tmOldKey"/>
+        <result column="tm_region_cd" property="tmRegionCd"/>
+        <result column="tm_download" property="tmDownload"/>
+        <result column="tm_mode_type" property="tmModeType"/>
+        <result column="tm_status" property="tmStatus"/>
+        <result column="tm_active_time" property="tmActiveTime"/>
+        <result column="tm_version_no" property="tmVersionNo"/>
+        <result column="tm_pin_key" property="tmPinKey"/>
+        <result column="tm_mac_key" property="tmMacKey"/>
+        <result column="tm_blklst_seq" property="tmBlklstSeq"/>
+        <result column="tm_old_mackey" property="tmOldMackey"/>
+        <result column="tm_old_pinkey" property="tmOldPinkey"/>
+        <result column="tm_master_key" property="tmMasterKey"/>
+        <result column="tm_brand" property="tmBrand"/>
+        <result column="tm_model" property="tmModel"/>
+        <result column="tm_iswatch" property="tmIswatch"/>
+        <result column="tm_orgid" property="tmOrgid"/>
+        <result column="tm_netaddr" property="tmNetaddr"/>
+        <result column="tm_netport" property="tmNetport"/>
+        <result column="tm_contactaddr" property="tmContactaddr"/>
+        <result column="tm_termaddr" property="tmTermaddr"/>
+        <result column="tm_adminid" property="tmAdminid"/>
+        <result column="tm_opertermid" property="tmOpertermid"/>
+        <result column="tm_inst_type" property="tmInstType"/>
+        <result column="tm_system" property="tmSystem"/>
+        <result column="tm_use_state" property="tmUseState"/>
+        <result column="tm_lay_type" property="tmLayType"/>
+        <result column="tm_isselfbank" property="tmIsselfbank"/>
+        <result column="tm_isvideowatch" property="tmIsvideowatch"/>
+        <result column="tm_isups" property="tmIsups"/>
+        <result column="tm_geog" property="tmGeog"/>
+        <result column="tm_func_area" property="tmFuncArea"/>
+        <result column="tm_protoco" property="tmProtoco"/>
+        <result column="tm_setup_user" property="tmSetupUser"/>
+        <result column="tm_setup_timestamp" property="tmSetupTimestamp"/>
+        <result column="tm_auth_user" property="tmAuthUser"/>
+        <result column="tm_auth_timestamp" property="tmAuthTimestamp"/>
+        <result column="tm_appv_user" property="tmAppvUser"/>
+        <result column="tm_appv_timestamp" property="tmAppvTimestamp"/>
+        <result column="tm_down_ind" property="tmDownInd"/>
+        <result column="tm_down_timestamp" property="tmDownTimestamp"/>
+        <result column="tm_appl_status" property="tmApplStatus"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

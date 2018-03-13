@@ -1,0 +1,113 @@
+.bgimg{
+	background-image: url(../../img/perfect-holiday/perfect-bg.png);
+}
+.holiday-ticket{
+	width:1000px;
+	height:auto;
+	margin:0 auto;
+	padding-top:52px;
+	padding-bottom: 120px;
+}
+.holiday-ticket li{
+	width:100%;
+	height:250px;
+	background:white;
+	padding:3px 0 5px 5px;
+	margin:15px 0;
+	border-style: solid; 
+    border-width: 3px;  
+    border-color: white;  
+
+}
+.holiday-ticket li:hover{
+	border-style:solid;  
+    border-width: 3px;  
+    border-color: #06a9f3;  
+
+}
+.holiday-img{
+	width: 400px;
+	height:215px;
+	padding:15px 0 0;
+	display: inline-block;
+	overflow: hidden;
+	float:left;
+}
+.holiday-img img{
+	width: 368px;
+	height:215px;
+	display: block;
+	margin:0 auto;
+}
+.holiday-details{
+	width:430px;
+	height:250px;
+	display: inline-block;
+	float:left;
+	padding-left:5px;
+}
+.holiday-sale{
+	width:155px;
+	height:250px;
+	display: inline-block;
+	float:left;
+	text-align: center;
+	border-left:1px dashed lightgray;
+}
+
+.holiday-details h3{
+	font-size:16px;
+	color:#333;
+	padding-top:15px;
+	margin:30px 0 10px 0;
+	font-family: "微软雅黑";
+}
+.holiday-details p{
+	font-size:12px;
+	color:gray;
+	line-height:25px;
+	font-family: "微软雅黑";
+}
+.holiday-sale strong{
+	font-size:22px;
+}
+.holiday-sale button{
+	background:#58c7f5;
+	border:none;
+	outline: none;
+	border-radius: 5px;
+}
+.holiday-sale button a{
+	width:100px;
+	height:30px;
+	line-height:30px;
+	display: block;
+	color:white;
+	font-size:14px;
+}
+.holiday-sale-top{
+	width:155px;
+	height:50px;
+	margin:70px 0 0 0;
+}
+.holiday-big{
+	width: 368px;
+	height:215px;
+	display: block;
+	margin:0 auto;
+	overflow:hidden;
+}
+
+.holiday-big:hover img {
+  -webkit-transform:scale(1.2,1.2);
+    -moz-transform:scale(1.2,1.2);
+    transform:scale(1.2,1.2);
+}
+.holiday-big img {
+  transition: all 0.5s;
+  -moz-transition: all 0.5s; /* Firefox 4 */
+  -webkit-transition: all 0.5s; /* Safari 和 Chrome */
+  -o-transition: all 0.5s;
+	width: 378px;
+	height:220px;
+}

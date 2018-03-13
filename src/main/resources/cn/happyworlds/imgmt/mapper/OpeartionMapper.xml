@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.OpeartionMapper">
+
+    <sql id="opeartionStatBaseColumnSql">
+        ct_card_number,
+		ct_approve_time,
+		cb_embossname,
+		pr_group_desc,
+		ct_fee_amount,
+		ct_tran_amount,
+		ct_bill_curr_amt,
+		ct_user_create,
+		ct_tran_code
+    </sql>
+
+    <sql id="opeartionStatBaseWhereSql">
+        <if test="map!=null">
+        	<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctApproveTimeStart)">
+                AND substring(ct_approve_time,1,8) &gt;= #{map.ctApproveTimeStart}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctApproveTimeEnd)">
+                AND substring(ct_approve_time,1,8) &lt;= #{map.ctApproveTimeEnd}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCardNumber)">
+                AND right(ct_card_number,6) = #{map.ctCardNumber}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctTranCode)">
+                AND ct_tran_code = #{map.ctTranCode}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserCreate)">
+                AND ct_user_create = #{map.ctUserCreate}
+            </if>
+        </if>
+    </sql>
+
+    <select id="searchOpeartionStatWhereK" parameterType="map" resultMap="opeartionMap">
+    	select 
+    	<include refid="opeartionStatBaseColumnSql"/> 
+    	from cp_ceptrx,cp_prdgrp,cp_crdtbl 
+    	where 1=1 
+    	and ct_card_number = cb_cardholder_no 
+    	and cb_card_prdct_group = pr_prodct_group 
+    	and ct_reversal_flag = 0 
+    	and CB_CARDHOLDER_NO not 
+    	in(select CB_CARDHOLDER_NO 
+    		from cp_crdlnk,cp_crdtbl,cp_ceptrx where 1=1 
+    		and CB_CARDHOLDER_NO=cl_new_card 
+    		and cl_old_card=ct_card_number  order by cl_timestamp DESC)  
+    	and (ct_tran_code='OPENCARD' or ct_tran_code='OPENCDTK')  
+    	<include refid="opeartionStatBaseWhereSql"/>
+    	order by ct_approve_time DESC
+    </select>
+    
+    <select id="searchOpeartionStatWhereOther" parameterType="map" resultMap="opeartionMap">
+    	select 
+    	<include refid="opeartionStatBaseColumnSql"/> 
+    	from cp_ceptrx,cp_prdgrp,cp_crdtbl 
+    	where 1=1 
+    	and ct_card_number = cb_cardholder_no 
+    	and cb_card_prdct_group = pr_prodct_group 
+    	and ct_reversal_flag = 0 
+    	<include refid="opeartionStatBaseWhereSql"/>
+    	order by ct_approve_time DESC
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.Opeartion" id="opeartionMap">
+        <id column="ct_card_number" property="ctCardNumber"/>
+        <result column="ct_approve_time" property="ctApproveTime"/>
+        <result column="cb_embossname" property="cbEmbossname"/>
+        <result column="pr_group_desc" property="prGroupDesc"/>
+        <result column="ct_fee_amount" property="ctFeeAmount"/>
+        <result column="ct_tran_amount" property="ctTranAmount"/>
+        <result column="ct_bill_curr_amt" property="ctBillCurrAmt"/>
+        <result column="ct_user_create" property="ctUserCreate"/>
+        <result column="ct_tran_code" property="ctTranCode"/>
+        
+    </resultMap>
+
+</mapper>

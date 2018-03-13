@@ -1,0 +1,108 @@
+package cn.happyworlds.imgmt.entity;
+
+import java.io.Serializable;
+
+/**
+ * 
+ * @author YanJiangyuan,160907
+ */
+public class AclUserBrchsetMap implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+	/**
+	 *  
+	 */
+	private String userId;
+	/**
+	 *  
+	 */
+	private String branchSetId;
+	/**
+	 *  
+	 */
+	private String sysFlag;
+	/**
+	 *  
+	 */
+	private String modifyTime;
+	/**
+	 *  
+	 */
+	private String modifyBy;
+	/**
+	 * 
+	 * @param userId
+	 */
+	public void setUserId(String userId){
+		this.userId = userId;
+	}
+	
+    /**
+     * 
+     * @return
+     */	
+    public String getUserId(){
+    	return userId;
+    }
+	/**
+	 * 
+	 * @param branchSetId
+	 */
+	public void setBranchSetId(String branchSetId){
+		this.branchSetId = branchSetId;
+	}
+	
+    /**
+     * 
+     * @return
+     */	
+    public String getBranchSetId(){
+    	return branchSetId;
+    }
+	/**
+	 * 
+	 * @param sysFlag
+	 */
+	public void setSysFlag(String sysFlag){
+		this.sysFlag = sysFlag;
+	}
+	
+    /**
+     * 
+     * @return
+     */	
+    public String getSysFlag(){
+    	return sysFlag;
+    }
+	/**
+	 * 
+	 * @param modifyTime
+	 */
+	public void setModifyTime(String modifyTime){
+		this.modifyTime = modifyTime;
+	}
+	
+    /**
+     * 
+     * @return
+     */	
+    public String getModifyTime(){
+    	return modifyTime;
+    }
+	/**
+	 * 
+	 * @param modifyBy
+	 */
+	public void setModifyBy(String modifyBy){
+		this.modifyBy = modifyBy;
+	}
+	
+    /**
+     * 
+     * @return
+     */	
+    public String getModifyBy(){
+    	return modifyBy;
+    }
+}

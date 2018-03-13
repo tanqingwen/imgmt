@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.YwTicketMapper">
+
+    <sql id="ywTicketBaseColumnSql">
+        hw_ticket_code,
+        hw_member_id,
+        hw_ticket_period,
+        hw_ticket_startdate,
+        hw_ticket_expirydate,
+        hw_card_number,
+        hw_ticket_state,
+        hw_brake_id,
+        hw_enterGate_id,
+        hw_enterGate_time,
+        hw_outGate_id,
+        hw_outGate_time
+    </sql>
+
+    <sql id="ywTicketBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTicketCode)">
+                    hw_ticket_code = #{map.hwTicketCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberId)">
+                    AND hw_member_id = #{map.hwMemberId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTicketPeriod)">
+                    AND hw_ticket_period = #{map.hwTicketPeriod}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTicketStartdate)">
+                    AND hw_ticket_startdate = #{map.hwTicketStartdate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTicketExpirydate)">
+                    AND hw_ticket_expirydate = #{map.hwTicketExpirydate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwCardNumber)">
+                    AND hw_card_number = #{map.hwCardNumber}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTicketState)">
+                    AND hw_ticket_state = #{map.hwTicketState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwBrakeId)">
+                    AND hw_brake_id = #{map.hwBrakeId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwEnterGateId)">
+                    AND hw_enterGate_id = #{map.hwEnterGateId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwEnterGateTime)">
+                    AND hw_enterGate_time = #{map.hwEnterGateTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOutGateId)">
+                    AND hw_outGate_id = #{map.hwOutGateId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOutGateTime)">
+                    AND hw_outGate_time = #{map.hwOutGateTime}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertYwTicket" parameterType="cn.happyworlds.imgmt.entity.YwTicket">
+        INSERT INTO yw_ticket(
+        <include refid="ywTicketBaseColumnSql"/>
+        )VALUES(
+            #{hwTicketCode},
+            #{hwMemberId},
+            #{hwTicketPeriod},
+            #{hwTicketStartdate},
+            #{hwTicketExpirydate},
+            #{hwCardNumber},
+            #{hwTicketState},
+            #{hwBrakeId},
+            #{hwEnterGateId},
+            #{hwEnterGateTime},
+            #{hwOutGateId},
+            #{hwOutGateTime}
+        )
+    </insert>
+        
+    <delete id="deleteYwTicketByHwTicketCode" parameterType="String">
+        DELETE FROM yw_ticket WHERE hw_ticket_code = #{hwTicketCode}
+    </delete>
+
+    <select id="deleteYwTicketByParams" parameterType="map">
+        DELETE FROM yw_ticket
+        <include refid="ywTicketBaseWhereSql"/>
+    </select>
+
+    <update id="updateYwTicket" parameterType="cn.happyworlds.imgmt.entity.YwTicket">
+        UPDATE yw_ticket
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwMemberId)">
+                hw_member_id = #{hwMemberId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwTicketPeriod)">
+                hw_ticket_period = #{hwTicketPeriod} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwTicketStartdate)">
+                hw_ticket_startdate = #{hwTicketStartdate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwTicketExpirydate)">
+                hw_ticket_expirydate = #{hwTicketExpirydate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwCardNumber)">
+                hw_card_number = #{hwCardNumber} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwTicketState)">
+                hw_ticket_state = #{hwTicketState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwBrakeId)">
+                hw_brake_id = #{hwBrakeId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwEnterGateId)">
+                hw_enterGate_id = #{hwEnterGateId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwEnterGateTime)">
+                hw_enterGate_time = #{hwEnterGateTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwOutGateId)">
+                hw_outGate_id = #{hwOutGateId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwOutGateTime)">
+                hw_outGate_time = #{hwOutGateTime}
+            </if>
+        </set>
+        WHERE hw_ticket_code = #{hwTicketCode}
+    </update>
+
+    <update id="updateYwTicketByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE yw_ticket
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberId)">
+                    hw_member_id = #{map.hwMemberId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTicketPeriod)">
+                    hw_ticket_period = #{map.hwTicketPeriod} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTicketStartdate)">
+                    hw_ticket_startdate = #{map.hwTicketStartdate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTicketExpirydate)">
+                    hw_ticket_expirydate = #{map.hwTicketExpirydate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwCardNumber)">
+                    hw_card_number = #{map.hwCardNumber} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTicketState)">
+                    hw_ticket_state = #{map.hwTicketState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwBrakeId)">
+                    hw_brake_id = #{map.hwBrakeId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwEnterGateId)">
+                    hw_enterGate_id = #{map.hwEnterGateId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwEnterGateTime)">
+                    hw_enterGate_time = #{map.hwEnterGateTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOutGateId)">
+                    hw_outGate_id = #{map.hwOutGateId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOutGateTime)">
+                    hw_outGate_time = #{map.hwOutGateTime}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTicketCodeCondition)">
+                    hw_ticket_code = #{map.hwTicketCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberIdCondition)">
+                    AND hw_member_id = #{map.hwMemberIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTicketPeriodCondition)">
+                    AND hw_ticket_period = #{map.hwTicketPeriodCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTicketStartdateCondition)">
+                    AND hw_ticket_startdate = #{map.hwTicketStartdateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTicketExpirydateCondition)">
+                    AND hw_ticket_expirydate = #{map.hwTicketExpirydateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwCardNumberCondition)">
+                    AND hw_card_number = #{map.hwCardNumberCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTicketStateCondition)">
+                    AND hw_ticket_state = #{map.hwTicketStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwBrakeIdCondition)">
+                    AND hw_brake_id = #{map.hwBrakeIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwEnterGateIdCondition)">
+                    AND hw_enterGate_id = #{map.hwEnterGateIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwEnterGateTimeCondition)">
+                    AND hw_enterGate_time = #{map.hwEnterGateTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOutGateIdCondition)">
+                    AND hw_outGate_id = #{map.hwOutGateIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOutGateTimeCondition)">
+                    AND hw_outGate_time = #{map.hwOutGateTimeCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchYwTicketByHwTicketCode" parameterType="String" resultMap="ywTicketMap">
+        SELECT
+        <include refid="ywTicketBaseColumnSql"/>
+        FROM yw_ticket
+        WHERE hw_ticket_code = #{hwTicketCode}
+    </select>
+
+    <select id="searchYwTicketByParams" parameterType="map" resultMap="ywTicketMap">
+        SELECT
+        <include refid="ywTicketBaseColumnSql"/>
+        FROM yw_ticket
+        <include refid="ywTicketBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.YwTicket" id="ywTicketMap">
+        <id column="hw_ticket_code" property="hwTicketCode"/>
+        <result column="hw_member_id" property="hwMemberId"/>
+        <result column="hw_ticket_period" property="hwTicketPeriod"/>
+        <result column="hw_ticket_startdate" property="hwTicketStartdate"/>
+        <result column="hw_ticket_expirydate" property="hwTicketExpirydate"/>
+        <result column="hw_card_number" property="hwCardNumber"/>
+        <result column="hw_ticket_state" property="hwTicketState"/>
+        <result column="hw_brake_id" property="hwBrakeId"/>
+        <result column="hw_enterGate_id" property="hwEnterGateId"/>
+        <result column="hw_enterGate_time" property="hwEnterGateTime"/>
+        <result column="hw_outGate_id" property="hwOutGateId"/>
+        <result column="hw_outGate_time" property="hwOutGateTime"/>
+    </resultMap>
+
+</mapper>

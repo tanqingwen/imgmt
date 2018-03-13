@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.ReYwOrderMapper">
+
+    <sql id="ywOrderBaseColumnSql">
+        hw_order_id,
+        hw_member_id,
+        hw_mobile_phone,
+        hw_channel,
+        hw_payment_listid,
+        hw_money,
+        hw_order_state,
+        hw_credential,
+        hw_order_addtime,
+        hw_order_paytime,
+        hw_order_finishtime,
+        hw_Payment_status,
+        hw_operator_id,
+        hw_pay_type,
+        hw_ip,
+        hw_type
+    </sql>
+
+    <sql id="ywOrderBaseWhereSql">
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderId)">
+                AND hw_order_id = #{map.hwOrderId}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMobilePhone)">
+                AND hw_mobile_phone = #{map.hwMobilePhone}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderAddtimeStart)">
+                AND hw_order_addtime &gt;= #{map.hwOrderAddtimeStart}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderAddtimeEnd)">
+                AND hw_order_addtime &lt;= #{map.hwOrderAddtimeEnd}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPaymentStatus)">
+                AND hw_payment_status = #{map.hwPaymentStatus}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderState)">
+                AND hw_order_state = #{map.hwOrderState}
+            </if>
+        </if>
+    </sql>
+    
+     <sql id="ywOrderBaseWhereSql2">
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderId)">
+                AND hw_order_id = #{map.hwOrderId}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMobilePhone)">
+                AND hw_mobile_phone = #{map.hwMobilePhone}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderAddtimeStart)">
+                AND hw_order_addtime &gt;= #{map.hwOrderAddtimeStart}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderAddtimeEnd)">
+                AND hw_order_addtime &lt;= #{map.hwOrderAddtimeEnd}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPaymentStatus)">
+                AND hw_payment_status = #{map.hwPaymentStatus}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderState)">
+                AND hw_order_state != 'R' AND hw_order_state != 'P' 
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPaymentStatus)">
+                AND hw_Payment_status = #{hwPaymentStatus}
+            </if>
+        </if>
+    </sql>
+
+    <select id="searchYwOrderStat" parameterType="map" resultMap="ywOrderMap">
+        select * from yw_order where 1=1 
+        <include refid="ywOrderBaseWhereSql"/>
+        order by hw_order_addtime desc
+    </select>
+    <select id="searchYwOrderStat2" parameterType="map" resultMap="ywOrderMap">
+        select * from yw_order where 1=1 
+        <include refid="ywOrderBaseWhereSql2"/>
+        order by hw_order_addtime desc
+    </select>
+    
+    <select id="searchEachChannel" parameterType="map" resultMap="ywOrderMap">
+    	
+		<![CDATA[
+		select (select * from  (SELECT t.hw_channel from yw_order t GROUP BY t.hw_channel ) t1 limit 0,1)  as  channel,ty.tt_type_desc as ticketname ,count(t4.hw_orderitem_id) as count,sum(t4.hw_amount) as sum,count( DISTINCT t4.hw_order_id) as num from 
+		(select * from yw_orderitem  i where   i.hw_admission_time >= #{map.startTime}  and  i.hw_admission_time <= #{map.endTime} and i.hw_order_id in
+		(select 
+				t2.hw_order_id from  yw_order t2 where t2.hw_Payment_status = 'Y' and t2.hw_channel = 
+			(select * from  (SELECT t.hw_channel from yw_order t GROUP BY t.hw_channel ) t1 limit 0,1) ) ) t4,cp_tktype ty where t4.hw_prodct_group = ty.tt_type_id group by t4.hw_prodct_group 
+		
+		union all 
+		
+		
+		select (select * from  (SELECT t.hw_channel from yw_order t GROUP BY t.hw_channel ) t1 limit 1,1)  as  channel,ty.tt_type_desc as ticketname ,count(t4.hw_orderitem_id) as count,sum(t4.hw_amount) as sum,count( DISTINCT t4.hw_order_id) as num from 
+		(select * from yw_orderitem  i where   i.hw_admission_time >= #{map.startTime}  and  i.hw_admission_time <=#{map.endTime} and i.hw_order_id in
+		(select 
+				t2.hw_order_id from  yw_order t2 where t2.hw_Payment_status = 'Y' and t2.hw_channel = 
+			(select * from  (SELECT t.hw_channel from yw_order t GROUP BY t.hw_channel ) t1 limit 1,1) ) ) t4,cp_tktype ty where t4.hw_prodct_group = ty.tt_type_id group by t4.hw_prodct_group 
+		
+		union ALL
+		
+		select (select * from  (SELECT t.hw_channel from yw_order t GROUP BY t.hw_channel ) t1 limit 2,1)  as  channel,ty.tt_type_desc as ticketname ,count(t4.hw_orderitem_id) as count,sum(t4.hw_amount) as sum,count( DISTINCT t4.hw_order_id) as num from 
+		(select * from yw_orderitem  i where   i.hw_admission_time >= #{map.startTime}  and  i.hw_admission_time <=#{map.endTime} and i.hw_order_id in
+		(select 
+				t2.hw_order_id from  yw_order t2 where t2.hw_Payment_status = 'Y' and t2.hw_channel = 
+			(select * from  (SELECT t.hw_channel from yw_order t GROUP BY t.hw_channel ) t1 limit 2,1) ) ) t4,cp_tktype ty where t4.hw_prodct_group = ty.tt_type_id group by t4.hw_prodct_group 
+		
+		union ALL
+		
+		select (select * from  (SELECT t.hw_channel from yw_order t GROUP BY t.hw_channel ) t1 limit 3,1)  as  channel,ty.tt_type_desc as ticketname ,count(t4.hw_orderitem_id) as count,sum(t4.hw_amount) as sum,count( DISTINCT t4.hw_order_id) as num from 
+		(select * from yw_orderitem  i where   i.hw_admission_time >= #{map.startTime}  and  i.hw_admission_time <=#{map.endTime} and i.hw_order_id in
+		(select 
+				t2.hw_order_id from  yw_order t2 where t2.hw_Payment_status = 'Y' and t2.hw_channel = 
+			(select * from  (SELECT t.hw_channel from yw_order t GROUP BY t.hw_channel ) t1 limit 3,1) ) ) t4,cp_tktype ty where t4.hw_prodct_group = ty.tt_type_id group by t4.hw_prodct_group 
+		
+		union ALL
+		
+		select (select * from  (SELECT t.hw_channel from yw_order t GROUP BY t.hw_channel ) t1 limit 4,1)  as  channel,ty.tt_type_desc as ticketname ,count(t4.hw_orderitem_id) as count,sum(t4.hw_amount) as sum,count( DISTINCT t4.hw_order_id) as num from 
+		(select * from yw_orderitem  i where   i.hw_admission_time >= #{map.startTime}  and  i.hw_admission_time <=#{map.endTime} and i.hw_order_id in
+		(select 
+				t2.hw_order_id from  yw_order t2 where t2.hw_Payment_status = 'Y' and t2.hw_channel = 
+			(select * from  (SELECT t.hw_channel from yw_order t GROUP BY t.hw_channel ) t1 limit 4,1) ) ) t4,cp_tktype ty where t4.hw_prodct_group = ty.tt_type_id group by t4.hw_prodct_group 
+		
+		union ALL
+		
+		select (select * from  (SELECT t.hw_channel from yw_order t GROUP BY t.hw_channel ) t1 limit 5,1)  as  channel,ty.tt_type_desc as ticketname ,count(t4.hw_orderitem_id) as count,sum(t4.hw_amount) as sum,count( DISTINCT t4.hw_order_id) as num from 
+		(select * from yw_orderitem  i where   i.hw_admission_time >= #{map.startTime}  and  i.hw_admission_time <=#{map.endTime} and i.hw_order_id in
+		(select 
+				t2.hw_order_id from  yw_order t2 where t2.hw_Payment_status = 'Y' and t2.hw_channel = 
+			(select * from  (SELECT t.hw_channel from yw_order t GROUP BY t.hw_channel ) t1 limit 5,1) ) ) t4,cp_tktype ty where t4.hw_prodct_group = ty.tt_type_id group by t4.hw_prodct_group 
+		
+		union ALL
+		
+		select (select * from  (SELECT t.hw_channel from yw_order t GROUP BY t.hw_channel ) t1 limit 6,1)  as  channel,ty.tt_type_desc as ticketname ,count(t4.hw_orderitem_id) as count,sum(t4.hw_amount) as sum,count( DISTINCT t4.hw_order_id) as num from 
+		(select * from yw_orderitem  i where   i.hw_admission_time >= #{map.startTime}  and  i.hw_admission_time <=#{map.endTime} and i.hw_order_id in
+		(select 
+				t2.hw_order_id from  yw_order t2 where t2.hw_Payment_status = 'Y' and t2.hw_channel = 
+			(select * from  (SELECT t.hw_channel from yw_order t GROUP BY t.hw_channel ) t1 limit 6,1) ) ) t4,cp_tktype ty where t4.hw_prodct_group = ty.tt_type_id group by t4.hw_prodct_group 
+    	]]>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.YwOrder" id="ywOrderMap">
+        <id column="hw_order_id" property="hwOrderId"/>
+        <result column="hw_member_id" property="hwMemberId"/>
+        <result column="hw_mobile_phone" property="hwMobilePhone"/>
+        <result column="hw_channel" property="hwChannel"/>
+        <result column="hw_payment_listid" property="hwPaymentListid"/>
+        <result column="hw_money" property="hwMoney"/>
+        <result column="hw_order_state" property="hwOrderState"/>
+        <result column="hw_credential" property="hwCredential"/>
+        <result column="hw_order_addtime" property="hwOrderAddtime"/>
+        <result column="hw_order_paytime" property="hwOrderPaytime"/>
+        <result column="hw_order_finishtime" property="hwOrderFinishtime"/>
+        <result column="hw_payment_status" property="hwPaymentStatus"/>
+        <result column="hw_operator_id" property="hwOperatorId"/>
+        <result column="hw_pay_type" property="hwPayType"/>
+        <result column="hw_ip" property="hwIp"/>
+        <result column="hw_type" property="hwType"/>
+        <result column="channel" property="channel"/>
+        <result column="ticketname" property="ticketName"/>
+        <result column="count" property="count"/>
+        <result column="sum" property="sum"/>
+        <result column="num" property="num"/>
+    </resultMap>
+
+</mapper>

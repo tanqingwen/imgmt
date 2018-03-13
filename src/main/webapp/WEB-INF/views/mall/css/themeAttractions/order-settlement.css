@@ -1,0 +1,146 @@
+.order-settlement{
+	width:1000px;
+	background:white;
+	border-radius: 5px;
+	margin:0 auto;
+}
+.order-settlement h2{
+	font-size:16px;
+	width:100%;
+	height:67px;
+	line-height:67px;
+	text-indent: 45px;
+	border-bottom: 1px #d1d1d1 solid;
+}
+.order{
+	width:100%;
+	height:1420px;
+}
+.order-left{
+	float:left;
+	width:765px;
+	height:100%;
+	background:white;
+}
+.order-right{
+	float:right;
+	width:228px;
+	height:95%;
+	background:#e3f6ff;
+}
+.house2{
+	margin-left:40px;
+}
+.house2 span{
+	display: block;
+	height:80px;
+	line-height:80px;
+	width:100%;
+	margin:0 auto;
+}
+.house2 span i{
+	margin:0 30px;
+}
+.house2 span i strong{
+	font-size:18px;
+	font-family: "微软雅黑";
+	color:#333333;
+}
+.house2 span a{
+	float:right;
+	color:#07a9f4;
+}
+.houseprice{
+width:665px;
+margin:0 0 20px 60px;
+}
+.houseprice ul li i{
+	display: block;
+	margin:10px 0;
+	width:450px;
+	height:40px;
+
+}
+.guest-information{
+	margin-left:40px;
+}
+.houseprice ul li i input[type="text"]{
+	width:190px;
+	height:30px;
+	border:lightgray 1px solid;
+	border-radius: 5px;
+	box-shadow: 0 5px 5px #888888;
+	background:#efefef;
+	margin-left:30px;
+	float:right;
+	margin-right:100px;
+}
+.checking{
+	list-style: none;
+	width:20px;
+	height:20px;
+	box-shadow: 0 3px 5px #888888;
+	margin-right:20px;
+	border:none;
+}
+.sale-function{
+	width:30px;
+	height:30px;
+	border:none;
+	border-radius: 55px;
+	margin-right:30px;
+}
+.houseprice ul li i button{
+	width:103px;
+	height:35px;
+	background:#58c7f5;
+	color:white;
+	border:none;
+	outline: none;
+	font-size:16px;
+	font-family: "微软雅黑";
+	cursor: pointer;
+	border-radius: 5px;
+	margin-top:5px;
+}
+.houseprice ul li i button a{
+	color:white;
+}
+.order-settlement h5{
+	display: block;
+	width:100%;
+	height:67px;
+	line-height:67px;
+	text-indent: 105px;
+
+	color:gray;
+}
+.qwe{
+	width:1000px;
+	height:30px;
+	border-top: 1px solid lightgray;
+}
+
+.order-right h2{
+	width:100%;
+	height:75px;
+	line-height:75px;
+	font-size:16px;
+}
+.order-right ul{
+	display: block;
+	height:126px;
+	border-top:1px solid lightgray;
+	border-bottom:1px solid lightgray;
+	padding:10px 15px;
+}
+.order-right ul li{
+	margin:15px 0;
+	font-size: 14px;
+	color:#666666;
+}
+.order-right h3{
+	font-size: 14px;
+	color:#99999;
+margin:20px 0 0 15px;
+}

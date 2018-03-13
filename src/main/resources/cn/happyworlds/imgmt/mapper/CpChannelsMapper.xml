@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpChannelsMapper">
+	<sql id="cpChannelsColumnSql">
+		cp_channel_id,
+		cp_mercial,
+		cp_ticket_name,
+		cp_order_sum,
+		cp_ticket_sum,
+		cp_amounts_receivable,
+		cp_amount,
+		cp_order_time
+	</sql>
+	<select id="searchCpChannelsByParams" parameterType="map"
+		resultMap="CpChannelsMap">
+		SELECT
+		<include refid="cpChannelsColumnSql" />
+		from cp_channels
+		<include refid="cpChannelsBaseWhereSql" />
+		<if test="map!=null">
+			<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+				ORDER BY #{map.ORDER_BY}
+			</if>
+		</if>
+	</select>
+	<sql id="cpChannelsBaseWhereSql">
+		<if test="map!=null">
+			<where>
+				<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpChannelId)">
+					cp_channel_id = #{map.cpChannelId}
+				</if>
+				<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpMercial)">
+					cp_mercial = #{map.cpMercial}
+				</if>
+				<if
+					test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpTicketName)">
+					cp_ticket_name = #{map.cpTicketName}
+				</if>
+				<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpOrderSum)">
+					cp_order_sum = #{map.cpOrderSum}
+				</if>
+				<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpTicketSum)">
+					cp_ticket_sum = #{map.cpTicketSum}
+				</if>
+				<if
+					test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpAmountsReceivable)">
+					cp_amounts_receivable = #{map.cpAmountsReceivable}
+				</if>
+				<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpAmount)">
+					cp_amount = #{map.cpAmount}
+				</if>
+				<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cpOrderTime)">
+					cp_order_time = #{map.cpOrderTime}
+				</if>
+			</where>
+		</if>
+	</sql>
+	<select id="findAllOrder" parameterType="String" resultMap="CpChannelsMap">
+		select b.hw_channel as 'cp_mercial',c.tt_type_desc as 'cp_ticket_name',count(c.tt_type_desc) as 'cp_ticket_sum',
+		sum(a.hw_unit_price) as 'cp_amounts_receivable' ,sum(a.hw_amount) as 'cp_amount'
+		from yw_orderitem a,yw_order b,cp_tktype c
+		where a.hw_order_id=b.hw_order_id and a.hw_prodct_group=c.tt_type_id
+		and b.hw_Payment_status='Y' and a.hw_status != 'R'
+		<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(startTime)">
+			and  b.hw_order_addtime <![CDATA[>]]> #{startTime}
+		</if>
+		<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(endTime)">
+			and  b.hw_order_addtime <![CDATA[<=]]> #{endTime}
+		</if>
+		
+		group by b.hw_channel,c.tt_type_desc;
+	</select>
+
+	<resultMap type="cn.happyworlds.imgmt.entity.CpChannels" id="CpChannelsMap">
+		<id column="cp_channel_id" property="cpChannelId" />
+		<result column="cp_mercial" property="cpMercial" />
+		<result column="cp_ticket_name" property="cpTicketName" />
+		<result column="cp_order_sum" property="cpOrderSum" />
+		<result column="cp_ticket_sum" property="cpTicketSum" />
+		<result column="cp_amounts_receivable" property="cpAmountsReceivable" />
+		<result column="cp_amount" property="cpAmount" />
+		<result column="cp_order_time" property="cpOrderTime" />
+	</resultMap>
+</mapper>

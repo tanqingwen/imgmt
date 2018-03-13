@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpNuworkMapper">
+
+    <sql id="cpNuworkBaseColumnSql">
+        nu_bin_no,
+        nu_seq_no,
+        nu_usage_ind,
+        checksum
+    </sql>
+
+    <sql id="cpNuworkBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuBinNo)">
+                    nu_bin_no = #{map.nuBinNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuSeqNo)">
+                    AND nu_seq_no = #{map.nuSeqNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuUsageInd)">
+                    AND nu_usage_ind = #{map.nuUsageInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpNuwork" parameterType="cn.happyworlds.imgmt.entity.CpNuwork">
+        INSERT INTO cp_nuwork(
+        <include refid="cpNuworkBaseColumnSql"/>
+        )VALUES(
+            #{nuBinNo},
+            #{nuSeqNo},
+            #{nuUsageInd},
+            #{checksum}
+        )
+    </insert>
+        
+    <!--      
+    <delete id="deleteCpNuworkBy${table.pkColumn.variableSpellSqlName}" parameterType="${table.pkColumn.javaType}">
+        DELETE FROM cp_nuwork WHERE ${table.pkColumn.sqlName} = #{${table.pkColumn.variableName}}
+    </delete>
+	-->
+	
+    <select id="deleteCpNuworkByParams" parameterType="map">
+        DELETE FROM cp_nuwork
+        <include refid="cpNuworkBaseWhereSql"/>
+    </select>
+
+	<!--  
+    <update id="updateCpNuwork" parameterType="cn.happyworlds.imgmt.entity.CpNuwork">
+        UPDATE cp_nuwork
+        <set>
+        </set>
+        WHERE $pkName = #{${table.pkColumn.variableName}}
+    </update>
+	-->
+    <update id="updateCpNuworkByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_nuwork
+            <set>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuBinNoCondition)">
+                    nu_bin_no = #{map.nuBinNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuSeqNoCondition)">
+                    AND nu_seq_no = #{map.nuSeqNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nuUsageIndCondition)">
+                    AND nu_usage_ind = #{map.nuUsageIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+	<!--  
+    <select id="searchCpNuworkBy${table.pkColumn.variableSpellSqlName}" parameterType="${table.pkColumn.javaType}" resultMap="cpNuworkMap">
+        SELECT
+        <include refid="cpNuworkBaseColumnSql"/>
+        FROM cp_nuwork
+        WHERE ${table.pkColumn.sqlName} = #{${table.pkColumn.variableName}}
+    </select>
+	-->
+	
+    <select id="searchCpNuworkByParams" parameterType="map" resultMap="cpNuworkMap">
+        SELECT
+        <include refid="cpNuworkBaseColumnSql"/>
+        FROM cp_nuwork
+        <include refid="cpNuworkBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpNuwork" id="cpNuworkMap">
+        <id column="nu_bin_no" property="nuBinNo"/>
+        <result column="nu_seq_no" property="nuSeqNo"/>
+        <result column="nu_usage_ind" property="nuUsageInd"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+</mapper>

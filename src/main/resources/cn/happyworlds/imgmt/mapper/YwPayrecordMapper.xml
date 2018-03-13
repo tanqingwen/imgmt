@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.YwPayrecordMapper">
+
+    <sql id="ywPayrecordBaseColumnSql">
+        hw_sn,
+        hw_flow_id,
+        hw_pay_id,
+        hw_order_id,
+        hw_member_id,
+        hw_mobile_phone,
+        hw_name,
+        hw_type,
+        hw_amount,
+        hw_amount_ticket,
+        hw_deposit_payable,
+        hw_deposit_acture,
+        hw_amount_recharge,
+        hw_deposit_price,
+        hw_deposit_qty,
+        hw_activate_qty,
+        hw_sn_payother,
+        hw_pay_type,
+        hw_pay_status,
+        hw_generation_time,
+        hw_pay_time,
+        hw_operator_id,
+        hw_terminal_id,
+        hw_pay_reserve1,
+        hw_pay_reserve2,
+        hw_pay_reserve3,
+        hw_pay_reserve4,
+        hw_pay_account
+    </sql>
+
+    <sql id="ywPayrecordBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwSn)">
+                    hw_sn = #{map.hwSn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwFlowId)">
+                    AND hw_flow_id = #{map.hwFlowId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayId)">
+                    AND hw_pay_id = #{map.hwPayId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderId)">
+                    AND hw_order_id = #{map.hwOrderId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberId)">
+                    AND hw_member_id = #{map.hwMemberId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMobilePhone)">
+                    AND hw_mobile_phone = #{map.hwMobilePhone}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwName)">
+                    AND hw_name = #{map.hwName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwType)">
+                    AND hw_type = #{map.hwType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAmount)">
+                    AND hw_amount = #{map.hwAmount}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAmountTicket)">
+                    AND hw_amount_ticket = #{map.hwAmountTicket}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositPayable)">
+                    AND hw_deposit_payable = #{map.hwDepositPayable}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositActure)">
+                    AND hw_deposit_acture = #{map.hwDepositActure}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAmountRecharge)">
+                    AND hw_amount_recharge = #{map.hwAmountRecharge}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositPrice)">
+                    AND hw_deposit_price = #{map.hwDepositPrice}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositQty)">
+                    AND hw_deposit_qty = #{map.hwDepositQty}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwActivateQty)">
+                    AND hw_activate_qty = #{map.hwActivateQty}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwSnPayother)">
+                    AND hw_sn_payother = #{map.hwSnPayother}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayType)">
+                    AND hw_pay_type = #{map.hwPayType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayStatus)">
+                    AND hw_pay_status = #{map.hwPayStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGenerationTime)">
+                    AND hw_generation_time = #{map.hwGenerationTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayTime)">
+                    AND hw_pay_time = #{map.hwPayTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOperatorId)">
+                    AND hw_operator_id = #{map.hwOperatorId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTerminalId)">
+                    AND hw_terminal_id = #{map.hwTerminalId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayReserve1)">
+                    AND hw_pay_reserve1 = #{map.hwPayReserve1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayReserve2)">
+                    AND hw_pay_reserve2 = #{map.hwPayReserve2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayReserve3)">
+                    AND hw_pay_reserve3 = #{map.hwPayReserve3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayReserve4)">
+                    AND hw_pay_reserve4 = #{map.hwPayReserve4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayAccount)">
+                    AND hw_pay_account = #{map.hwPayAccount}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertYwPayrecord" parameterType="cn.happyworlds.imgmt.entity.YwPayrecord">
+        INSERT INTO yw_payrecord(
+        <include refid="ywPayrecordBaseColumnSql"/>
+        )VALUES(
+            #{hwSn},
+            #{hwFlowId},
+            #{hwPayId},
+            #{hwOrderId},
+            #{hwMemberId},
+            #{hwMobilePhone},
+            #{hwName},
+            #{hwType},
+            #{hwAmount},
+            #{hwAmountTicket},
+            #{hwDepositPayable},
+            #{hwDepositActure},
+            #{hwAmountRecharge},
+            #{hwDepositPrice},
+            #{hwDepositQty},
+            #{hwActivateQty},
+            #{hwSnPayother},
+            #{hwPayType},
+            #{hwPayStatus},
+            #{hwGenerationTime},
+            #{hwPayTime},
+            #{hwOperatorId},
+            #{hwTerminalId},
+            #{hwPayReserve1},
+            #{hwPayReserve2},
+            #{hwPayReserve3},
+            #{hwPayReserve4},
+            #{hwPayAccount}
+        )
+    </insert>
+        
+    <delete id="deleteYwPayrecordByHwSn" parameterType="String">
+        DELETE FROM yw_payrecord WHERE hw_sn = #{hwSn}
+    </delete>
+
+    <select id="deleteYwPayrecordByParams" parameterType="map">
+        DELETE FROM yw_payrecord
+        <include refid="ywPayrecordBaseWhereSql"/>
+    </select>
+
+    <update id="updateYwPayrecord" parameterType="cn.happyworlds.imgmt.entity.YwPayrecord">
+        UPDATE yw_payrecord
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwFlowId)">
+                hw_flow_id = #{hwFlowId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwPayId)">
+                hw_pay_id = #{hwPayId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwOrderId)">
+                hw_order_id = #{hwOrderId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwMemberId)">
+                hw_member_id = #{hwMemberId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwMobilePhone)">
+                hw_mobile_phone = #{hwMobilePhone} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwName)">
+                hw_name = #{hwName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwType)">
+                hw_type = #{hwType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwAmount)">
+                hw_amount = #{hwAmount} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwAmountTicket)">
+                hw_amount_ticket = #{hwAmountTicket} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwDepositPayable)">
+                hw_deposit_payable = #{hwDepositPayable} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwDepositActure)">
+                hw_deposit_acture = #{hwDepositActure} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwAmountRecharge)">
+                hw_amount_recharge = #{hwAmountRecharge} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwDepositPrice)">
+                hw_deposit_price = #{hwDepositPrice} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwDepositQty)">
+                hw_deposit_qty = #{hwDepositQty} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwActivateQty)">
+                hw_activate_qty = #{hwActivateQty} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwSnPayother)">
+                hw_sn_payother = #{hwSnPayother} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwPayType)">
+                hw_pay_type = #{hwPayType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwPayStatus)">
+                hw_pay_status = #{hwPayStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwGenerationTime)">
+                hw_generation_time = #{hwGenerationTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwPayTime)">
+                hw_pay_time = #{hwPayTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwOperatorId)">
+                hw_operator_id = #{hwOperatorId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwTerminalId)">
+                hw_terminal_id = #{hwTerminalId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwPayReserve1)">
+                hw_pay_reserve1 = #{hwPayReserve1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwPayReserve2)">
+                hw_pay_reserve2 = #{hwPayReserve2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwPayReserve3)">
+                hw_pay_reserve3 = #{hwPayReserve3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwPayReserve4)">
+                hw_pay_reserve4 = #{hwPayReserve4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwPayAccount)">
+                hw_pay_account = #{hwPayAccount}
+            </if>
+        </set>
+        WHERE hw_sn = #{hwSn}
+    </update>
+
+    <update id="updateYwPayrecordByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE yw_payrecord
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwFlowId)">
+                    hw_flow_id = #{map.hwFlowId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayId)">
+                    hw_pay_id = #{map.hwPayId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderId)">
+                    hw_order_id = #{map.hwOrderId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberId)">
+                    hw_member_id = #{map.hwMemberId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMobilePhone)">
+                    hw_mobile_phone = #{map.hwMobilePhone} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwName)">
+                    hw_name = #{map.hwName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwType)">
+                    hw_type = #{map.hwType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAmount)">
+                    hw_amount = #{map.hwAmount} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAmountTicket)">
+                    hw_amount_ticket = #{map.hwAmountTicket} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositPayable)">
+                    hw_deposit_payable = #{map.hwDepositPayable} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositActure)">
+                    hw_deposit_acture = #{map.hwDepositActure} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAmountRecharge)">
+                    hw_amount_recharge = #{map.hwAmountRecharge} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositPrice)">
+                    hw_deposit_price = #{map.hwDepositPrice} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositQty)">
+                    hw_deposit_qty = #{map.hwDepositQty} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwActivateQty)">
+                    hw_activate_qty = #{map.hwActivateQty} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwSnPayother)">
+                    hw_sn_payother = #{map.hwSnPayother} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayType)">
+                    hw_pay_type = #{map.hwPayType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayStatus)">
+                    hw_pay_status = #{map.hwPayStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGenerationTime)">
+                    hw_generation_time = #{map.hwGenerationTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayTime)">
+                    hw_pay_time = #{map.hwPayTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOperatorId)">
+                    hw_operator_id = #{map.hwOperatorId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTerminalId)">
+                    hw_terminal_id = #{map.hwTerminalId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayReserve1)">
+                    hw_pay_reserve1 = #{map.hwPayReserve1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayReserve2)">
+                    hw_pay_reserve2 = #{map.hwPayReserve2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayReserve3)">
+                    hw_pay_reserve3 = #{map.hwPayReserve3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayReserve4)">
+                    hw_pay_reserve4 = #{map.hwPayReserve4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayAccount)">
+                    hw_pay_account = #{map.hwPayAccount}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwSnCondition)">
+                    hw_sn = #{map.hwSnCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwFlowIdCondition)">
+                    AND hw_flow_id = #{map.hwFlowIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayIdCondition)">
+                    AND hw_pay_id = #{map.hwPayIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderIdCondition)">
+                    AND hw_order_id = #{map.hwOrderIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberIdCondition)">
+                    AND hw_member_id = #{map.hwMemberIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMobilePhoneCondition)">
+                    AND hw_mobile_phone = #{map.hwMobilePhoneCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwNameCondition)">
+                    AND hw_name = #{map.hwNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTypeCondition)">
+                    AND hw_type = #{map.hwTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAmountCondition)">
+                    AND hw_amount = #{map.hwAmountCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAmountTicketCondition)">
+                    AND hw_amount_ticket = #{map.hwAmountTicketCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositPayableCondition)">
+                    AND hw_deposit_payable = #{map.hwDepositPayableCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositActureCondition)">
+                    AND hw_deposit_acture = #{map.hwDepositActureCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwAmountRechargeCondition)">
+                    AND hw_amount_recharge = #{map.hwAmountRechargeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositPriceCondition)">
+                    AND hw_deposit_price = #{map.hwDepositPriceCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwDepositQtyCondition)">
+                    AND hw_deposit_qty = #{map.hwDepositQtyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwActivateQtyCondition)">
+                    AND hw_activate_qty = #{map.hwActivateQtyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwSnPayotherCondition)">
+                    AND hw_sn_payother = #{map.hwSnPayotherCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayTypeCondition)">
+                    AND hw_pay_type = #{map.hwPayTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayStatusCondition)">
+                    AND hw_pay_status = #{map.hwPayStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGenerationTimeCondition)">
+                    AND hw_generation_time = #{map.hwGenerationTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayTimeCondition)">
+                    AND hw_pay_time = #{map.hwPayTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOperatorIdCondition)">
+                    AND hw_operator_id = #{map.hwOperatorIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwTerminalIdCondition)">
+                    AND hw_terminal_id = #{map.hwTerminalIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayReserve1Condition)">
+                    AND hw_pay_reserve1 = #{map.hwPayReserve1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayReserve2Condition)">
+                    AND hw_pay_reserve2 = #{map.hwPayReserve2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayReserve3Condition)">
+                    AND hw_pay_reserve3 = #{map.hwPayReserve3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayReserve4Condition)">
+                    AND hw_pay_reserve4 = #{map.hwPayReserve4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayAccountCondition)">
+                    AND hw_pay_account = #{map.hwPayAccountCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchYwPayrecordByHwSn" parameterType="String" resultMap="ywPayrecordMap">
+        SELECT
+        <include refid="ywPayrecordBaseColumnSql"/>
+        FROM yw_payrecord
+        WHERE hw_sn = #{hwSn}
+    </select>
+
+    <select id="searchYwPayrecordByParams" parameterType="map" resultMap="ywPayrecordMap">
+        SELECT
+        <include refid="ywPayrecordBaseColumnSql"/>
+        FROM yw_payrecord
+        <include refid="ywPayrecordBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.YwPayrecord" id="ywPayrecordMap">
+        <id column="hw_sn" property="hwSn"/>
+        <result column="hw_flow_id" property="hwFlowId"/>
+        <result column="hw_pay_id" property="hwPayId"/>
+        <result column="hw_order_id" property="hwOrderId"/>
+        <result column="hw_member_id" property="hwMemberId"/>
+        <result column="hw_mobile_phone" property="hwMobilePhone"/>
+        <result column="hw_name" property="hwName"/>
+        <result column="hw_type" property="hwType"/>
+        <result column="hw_amount" property="hwAmount"/>
+        <result column="hw_amount_ticket" property="hwAmountTicket"/>
+        <result column="hw_deposit_payable" property="hwDepositPayable"/>
+        <result column="hw_deposit_acture" property="hwDepositActure"/>
+        <result column="hw_amount_recharge" property="hwAmountRecharge"/>
+        <result column="hw_deposit_price" property="hwDepositPrice"/>
+        <result column="hw_deposit_qty" property="hwDepositQty"/>
+        <result column="hw_activate_qty" property="hwActivateQty"/>
+        <result column="hw_sn_payother" property="hwSnPayother"/>
+        <result column="hw_pay_type" property="hwPayType"/>
+        <result column="hw_pay_status" property="hwPayStatus"/>
+        <result column="hw_generation_time" property="hwGenerationTime"/>
+        <result column="hw_pay_time" property="hwPayTime"/>
+        <result column="hw_operator_id" property="hwOperatorId"/>
+        <result column="hw_terminal_id" property="hwTerminalId"/>
+        <result column="hw_pay_reserve1" property="hwPayReserve1"/>
+        <result column="hw_pay_reserve2" property="hwPayReserve2"/>
+        <result column="hw_pay_reserve3" property="hwPayReserve3"/>
+        <result column="hw_pay_reserve4" property="hwPayReserve4"/>
+        <result column="hw_pay_account" property="hwPayAccount"/>
+    </resultMap>
+
+</mapper>

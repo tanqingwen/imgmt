@@ -1,0 +1,635 @@
+/*box*/
+.box{
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    background: url(../images/hm_images/new_vendor_bg.jpg) no-repeat;
+    background-size:cover;
+    color:#fff;
+    overflow:hidden;
+}
+.vendor-map {
+    position:absolute;
+    top:359px;
+    left:108px;
+    width:1718px;
+    height:592px;
+    background:url('../images/hm_images/fenqu_passenger.png')  no-repeat;
+}
+.bg-shade {
+    width:100%;
+    height:136px;
+    background-color:#fff;
+    opacity:0.1;
+}
+.vendor-title {
+    position:absolute;
+    left:33px;
+    top:27px;
+    width:542px;
+    height:86px;
+    background:url('../images/hm_images/passenger_titlee.png') no-repeat;
+}
+.time-box {
+    position:absolute;
+    left:920px;
+    top:37px;
+    width:964px;
+    height:64px;
+    background:url('../images/hm_images/time_border.png') no-repeat;
+}
+.time-number {
+    position:absolute;
+    left:9px;
+    top:9px;
+    width:46px;
+    height:46px;
+    background:url('../images/hm_images/ten_number.png') no-repeat;
+    background-position: 0 0;
+}
+.time-year02 {
+    left:68px;
+}
+.time-year03 {
+    left:127px;
+}
+.time-year04 {
+    left:186px;
+}
+.time-month01 {
+    left:272px;
+    background:url('../images/hm_images/two_number.png') no-repeat;
+}
+.time-month02 {
+    left:331px;
+}
+.time-day01 {
+    left:422px;
+    background:url('../images/hm_images/four_number.png') no-repeat;
+}
+.time-day02 {
+    left:481px;
+}
+.time-hour01 {
+    left:578px;
+    background:url('../images/hm_images/three_number.png') no-repeat;
+}
+.time-hour02 {
+    left:637px;
+}
+.time-minute01 {
+    left:714px;
+    background:url('../images/hm_images/six_number.png') no-repeat;
+}
+.time-minute02 {
+    left:773px;
+}
+.time-second01 {
+    left:850px;
+    background:url('../images/hm_images/six_number.png') no-repeat;
+}
+.time-second02 {
+    left:909px;
+}
+.main-part {
+    position:absolute;
+    left: 36px;
+    top:195px;
+    width:530px;
+    height:290px;
+}
+.data-base-icon {
+    position:absolute;
+    left:3px;
+    top:88px;
+    width: 460px;
+    height: 226px;
+    background:url('../images/hm_images/data-base-icon.png') no-repeat;
+    opacity: 1;
+    animation:baseIcon 1.3s;
+}
+@keyframes baseIcon {
+    0% {
+        top:138px;
+        opacity:0;
+    }
+    40% {
+        top:138px;
+        opacity:0;
+    }
+    100% {
+        top:88px;
+        opacity:1;
+    }
+}
+.area{
+    position: absolute;
+    animation:areamove 1.3s;
+}
+@keyframes areamove {
+    0% {
+        margin-left: -50px;
+        margin-top: 30px;
+        opacity:0;
+    }
+    40% {
+        margin-left: -25px;
+        margin-top: -15px;
+        opacity:0.5;
+    }
+    100% {
+        margin-left: 0;
+        margin-top: 0;
+        opacity:1;
+    }
+}
+.area1{
+    top: 338px;
+    left: 34px;
+}
+.area-react{
+    position: absolute;
+    width: 280px;
+    height: 110px;
+    padding-left: 4px;
+    background: url(../images/hm_images/react_box_passenger.png) no-repeat;
+}
+.area-react p{
+    font-size: 18px;
+    color: #f4d18e;
+    margin-top: 30px;
+}
+.load{
+    font-size: 14px;
+    color: #f4d18e;
+}
+.load2{
+    color: 
+}
+.load span{
+    float: left;
+    margin-top: 4px;
+}
+.area-line{
+    position: absolute;
+    top: 108px;
+    overflow: hidden;
+}
+.line-box{
+    position: absolute;
+}
+.area-line1{
+    width: 82px;
+    height: 116px;
+    left: 76px;
+}
+.line-box1{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 82px;
+    height: 116px;
+    /*z-index: 10;*/
+    background: url(../images/hm_images/line_1_passenger.png) no-repeat;
+    animation:apertlineone 1s;
+}
+@keyframes apertlineone {
+    0% {
+        top: 116px;
+        left: 82px;
+        opacity: 0;
+    }
+    50% {
+        top: 58px;
+        left: 41px;
+        opacity: 0;
+    }
+    100% {
+        top: 0;
+        left: 0;
+        opacity: 1;
+    }
+}
+
+.load-bg,.load-bg2{
+    position: relative;
+    float: left;
+    display: inline-block;
+    width: 136px;
+    height: 20px;
+    background: url(../images/hm_images/load_bg_passenger.png) no-repeat;
+    margin-top: 5px;
+    margin-left: 2px;
+    overflow: hidden;
+}
+.load-true,.load-plan{
+    position: absolute;
+    left:-135px; 
+    top: 0;
+    width: 136px;
+    height: 20px;
+    background: url(../images/hm_images/load_line_passenger.png) no-repeat;
+}
+.load-bg2{
+    background: url(../images/hm_images/load_bg2_passenger.png) no-repeat;
+}
+.load-plan{
+    background: url(../images/hm_images/load_line2_passenger.png) no-repeat;
+}
+.text-now,.text-plan{
+    float: left;
+}
+
+.area2{
+    left: 226px;
+    top: 196px;
+}
+.area-line2{
+    width: 108px;
+    height: 204px;
+    left: 92px;
+}
+.line-box2{
+    width: 108px;
+    height: 204px;
+    background: url(../images/hm_images/line_2_passenger.png) no-repeat;
+    animation:apertlinetow 1s;
+}
+@keyframes apertlinetow {
+    0% {
+        top: 204px;
+        left: 108px;
+        opacity: 0;
+    }
+    50% {
+        top: 102px;
+        left: 54px;
+        opacity: 0;
+    }
+    100% {
+        top: 0;
+        left: 0;
+        opacity: 1;
+    }
+}
+.area3{
+    left: 85px;
+    top: 721px;
+}
+.area-line3{
+    width: 64px;
+    height: 108px;
+    left: 260px;
+    top: -90px;
+}
+.line-box3{
+    width: 64px;
+    height: 108px;
+    background: url(../images/hm_images/line_3_passenger.png) no-repeat;
+    animation: apertlineB 1s;
+}
+
+.area4{
+   left: 374px;
+   top: 327px;
+}
+.area-line4{
+    width: 56px;
+    height: 96px;
+    left: 136px;
+}
+.line-box4{
+    width: 56px;
+    height: 96px;
+    background: url(../images/hm_images/line_4_passenger.png) no-repeat;
+    animation:apertlinefour 1s;
+}
+@keyframes apertlinefour {
+    0% {
+        top: 96px;
+        left: 56px;
+        opacity: 0;
+    }
+    50% {
+        top: 48px;
+        left: 28px;
+        opacity: 0;
+    }
+    100% {
+        top: 0;
+        left: 0;
+        opacity: 1;
+    }
+}
+.area5{
+   left: 398px;
+   top: 763px;
+}
+.area-line5{
+    width: 64px;
+    height: 180px;
+    left: 260px;
+    top: -162px;
+}
+.line-box5{
+    width: 64px;
+    height: 180px;
+    background: url(../images/hm_images/line_5_passenger.png) no-repeat;
+    animation: apertlineB 1s;
+}
+
+.area6{
+   left: 581px;
+   top: 204px;
+}
+.area-line6{
+    width: 32px;
+    height: 148px;
+    left: 112px;
+}
+.line-box6{
+    width: 32px;
+    height: 148px;
+    background: url(../images/hm_images/line_6_passenger.png) no-repeat;
+    animation:apertlinesix 1s;
+}
+@keyframes apertlinesix {
+    0% {
+        top: 148px;
+        left: 32px;
+        opacity: 0;
+    }
+    50% {
+        top: 74px;
+        left: 16px;
+        opacity: 0;
+    }
+    100% {
+        top: 0;
+        left: 0;
+        opacity: 1;
+    }
+}
+.area7{
+   left: 851px;
+    top: 514px;
+}
+.area-line7{
+    width: 172px;
+    height: 26px;
+    left: -113px;
+    top: -8px;
+}
+.line-box7{
+    width: 172px;
+    height: 26px;
+    background: url(../images/hm_images/line_7_passenger.png) no-repeat;
+    animation: apertlineC 1s;
+}
+
+.area8{
+   left: 586px;
+   top: 920px;
+}
+.area-line8{
+    width: 176px;
+    height: 170px;
+    left: 78px;
+    top: -149px;
+
+}
+.line-box8{
+    width: 176px;
+    height: 170px;
+    background: url(../images/hm_images/line_8_passenger.png) no-repeat;
+    animation: apertlineB 1s;
+}
+
+.area9{
+   left: 876px;
+   top: 170px;
+}
+.area-line9{
+    width: 96px;
+    height: 206px;
+    left: -6px;
+
+}
+.line-box9{
+    width: 96px;
+    height: 206px;
+    background: url(../images/hm_images/line_9_passenger.png) no-repeat;
+    animation:apertlinenine 1s;
+}
+@keyframes apertlinenine {
+    0% {
+        top: 206px;
+        left: 96px;
+        opacity: 0;
+    }
+    50% {
+        top: 103px;
+        left: 48px;
+        opacity: 0;
+    }
+    100% {
+        top: 0;
+        left: 0;
+        opacity: 1;
+    }
+}
+.area10{
+   left: 792px;
+   top: 808px;
+}
+.area-line10{
+    width: 50px;
+    height: 176px;
+    left: 106px;
+    top: -155px;
+
+}
+.line-box10{
+    width: 50px;
+    height: 176px;
+    background: url(../images/hm_images/line_10_passenger.png) no-repeat;
+    animation: apertlineB 1s;
+}
+
+.area11{
+   left: 950px;
+   top: 290px;
+}
+.area-line11{
+    width: 88px;
+    height: 38px;
+    left: -22px;
+    top: 108px;
+
+}
+.line-box11{
+    width: 88px;
+    height: 38px;
+    background: url(../images/hm_images/11_line_passenger.png) no-repeat;
+    animation: apertlineC 1s;
+}
+
+.area12{
+   left: 1188px;
+   top: 681px;
+}
+.area-line12{
+    width: 60px;
+    height: 114px;
+    left: -60px;
+    top: -58px;
+
+}
+.line-box12{
+    width: 60px;
+    height: 114px;
+    background: url(../images/hm_images/12_line_passenger.png) no-repeat;
+    animation: apertlineB 1s;
+}
+
+.area13{
+   left: 1092px;
+   top: 896px;
+}
+.area-line13{
+    width: 60px;
+    height: 114px;
+    left: 0px;
+    top: -97px;
+
+}
+.line-box13{
+    width: 60px;
+    height: 114px;
+    background: url(../images/hm_images/13_line_passenger.png) no-repeat;
+    animation: apertlineB 1s;
+}
+
+.area14{
+   left: 1266px;
+    top: 184px;
+}
+.area-line14{
+    width: 60px;
+    height: 114px;
+    left: 54px;
+
+}
+.line-box14{
+    width: 60px;
+    height: 114px;
+    background: url(../images/hm_images/14_line_passenger.png) no-repeat;
+    animation:apertlinefourteen 1s;
+}
+
+.area15{
+    left: 1623px;
+    top: 184px;
+}
+.area-line15{
+    width: 138px;
+    height: 204px;
+    left: -135px;
+    top: 80px;
+}
+.line-box15{
+    width: 138px;
+    height: 204px;
+    background: url(../images/hm_images/15_line_passenger.png) no-repeat;
+    animation:apertlineC 1s;
+}
+
+.area16{
+    left: 1622px;
+    top: 358px;
+}
+.area-line16{
+    width: 30px;
+    height: 108px;
+    left: 58px;
+}
+.line-box16{
+    width: 30px;
+    height: 108px;
+    background: url(../images/hm_images/16_line_passenger.png) no-repeat;
+    animation:apertlinesixteen 1s;
+}
+@keyframes apertlinesixteen {
+    0% {
+        top: 206px;
+        left: 96px;
+        opacity: 0;
+    }
+    50% {
+        top: 103px;
+        left: 48px;
+        opacity: 0;
+    }
+    100% {
+        top: 0;
+        left: 0;
+        opacity: 1;
+    }
+}
+
+.area17{
+    left: 1608px;
+    top: 690px;
+}
+.area-line17{
+    width: 138px;
+    height: 204px;
+    left: -138px;
+    top: -54px;
+}
+.line-box17{
+    width: 138px;
+    height: 204px;
+    background: url(../images/hm_images/17_line_passenger.png) no-repeat;
+    animation:apertlineC 1s;
+}
+
+.area18{
+    left: 1484px;
+    top: 954px;
+}
+.area-line18{
+    width: 30px;
+    height: 128px;
+    left: -26px;
+    top: -102px;
+}
+.line-box18{
+    width: 30px;
+    height: 128px;
+    background: url(../images/hm_images/18_line_passenger.png) no-repeat;
+    animation:apertlineB 1s;
+}
+@keyframes apertlineB {
+    0% {
+        height: 0;
+    }
+    50% {
+        height: 50%;
+    }
+    100% {
+        height: 100%;
+    }
+}
+
+@keyframes apertlineC {
+    0% {
+        width: 0;
+    }
+    50% {
+        width: 50%;
+    }
+    100% {
+        width: 100%;
+    }
+}

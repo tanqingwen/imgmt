@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.ReYwPayrecordMapper">
+
+    <sql id="ywPayrecordBaseColumnSql">
+        hw_sn,
+        hw_order_id,
+        hw_member_id,
+        hw_mobile_phone,
+        hw_name,
+        hw_type,
+        hw_amount,
+        hw_amount_ticket,
+        hw_deposit_payable,
+        hw_deposit_acture,
+        hw_amount_recharge,
+        hw_deposit_price,
+        hw_deposit_qty,
+        hw_activate_qty,
+        hw_sn_payother,
+        hw_pay_type,
+        hw_pay_status,
+        hw_pay_time,
+        hw_operator_id,
+        hw_terminal_id,
+        hw_pay_account
+    </sql>
+
+	<sql id="ywPayrecordBaseWhereSql">
+        <if test="map!=null">
+        	<where>
+	            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOrderId)">
+	                AND hw_order_id = #{map.hwOrderId}
+	            </if>
+	            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMobilePhone)">
+	                AND hw_mobile_phone = #{map.hwMobilePhone}
+	            </if>
+	            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwMemberId)">
+	                AND hw_member_id = #{map.hwMemberId}
+	            </if>
+	            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayStatus)">
+	                AND hw_pay_status = #{map.hwPayStatus}
+	            </if>
+	            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayTimeStart)">
+	                AND hw_pay_time &gt;= #{map.hwPayTimeStart}
+	            </if>
+	            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwPayTimeEnd)">
+	                AND hw_pay_time &lt;= #{map.hwPayTimeEnd}
+	            </if>
+            </where>
+        </if>
+    </sql>
+
+    <select id="searchYwPayrecordByParams" parameterType="map" resultMap="ywPayrecordMap">
+        SELECT * FROM yw_payrecord
+        <include refid="ywPayrecordBaseWhereSql"/>
+        order by hw_pay_time desc
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.YwPayrecord" id="ywPayrecordMap">
+        <id column="hw_sn" property="hwSn"/>
+        <result column="hw_order_id" property="hwOrderId"/>
+        <result column="hw_member_id" property="hwMemberId"/>
+        <result column="hw_mobile_phone" property="hwMobilePhone"/>
+        <result column="hw_name" property="hwName"/>
+        <result column="hw_type" property="hwType"/>
+        <result column="hw_amount" property="hwAmount"/>
+        <result column="hw_amount_ticket" property="hwAmountTicket"/>
+        <result column="hw_deposit_payable" property="hwDepositPayable"/>
+        <result column="hw_deposit_acture" property="hwDepositActure"/>
+        <result column="hw_amount_recharge" property="hwAmountRecharge"/>
+        <result column="hw_deposit_price" property="hwDepositPrice"/>
+        <result column="hw_deposit_qty" property="hwDepositQty"/>
+        <result column="hw_activate_qty" property="hwActivateQty"/>
+        <result column="hw_sn_payother" property="hwSnPayother"/>
+        <result column="hw_pay_type" property="hwPayType"/>
+        <result column="hw_pay_status" property="hwPayStatus"/>
+        <result column="hw_pay_time" property="hwPayTime"/>
+        <result column="hw_operator_id" property="hwOperatorId"/>
+        <result column="hw_terminal_id" property="hwTerminalId"/>
+        <result column="hw_pay_account" property="hwPayAccount"/>
+    </resultMap>
+
+</mapper>

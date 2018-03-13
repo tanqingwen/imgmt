@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpCurtblMapper">
+
+    <sql id="cpCurtblBaseColumnSql">
+        cu_curr_cd,
+        cu_alpha_cd,
+        cu_exponent,
+        cu_conv_rate,
+        cu_base_rate,
+        cu_rmb_rate,
+        cu_usd_rate,
+        cu_usd_method,
+        cu_cash_buying_rate,
+        cu_cash_selling_rate,
+        cu_tel_buying_rate,
+        cu_tel_selling_rate,
+        cu_middle_rate,
+        cu_flat_buying_rate,
+        cu_flat_selling_rate,
+        cu_settle_rate,
+        cu_user_id,
+        cu_mod_date,
+        checksum
+    </sql>
+
+    <sql id="cpCurtblBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuCurrCd)">
+                    cu_curr_cd = #{map.cuCurrCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuAlphaCd)">
+                    AND cu_alpha_cd = #{map.cuAlphaCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuExponent)">
+                    AND cu_exponent = #{map.cuExponent}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuConvRate)">
+                    AND cu_conv_rate = #{map.cuConvRate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuBaseRate)">
+                    AND cu_base_rate = #{map.cuBaseRate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuRmbRate)">
+                    AND cu_rmb_rate = #{map.cuRmbRate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuUsdRate)">
+                    AND cu_usd_rate = #{map.cuUsdRate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuUsdMethod)">
+                    AND cu_usd_method = #{map.cuUsdMethod}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuCashBuyingRate)">
+                    AND cu_cash_buying_rate = #{map.cuCashBuyingRate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuCashSellingRate)">
+                    AND cu_cash_selling_rate = #{map.cuCashSellingRate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuTelBuyingRate)">
+                    AND cu_tel_buying_rate = #{map.cuTelBuyingRate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuTelSellingRate)">
+                    AND cu_tel_selling_rate = #{map.cuTelSellingRate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuMiddleRate)">
+                    AND cu_middle_rate = #{map.cuMiddleRate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuFlatBuyingRate)">
+                    AND cu_flat_buying_rate = #{map.cuFlatBuyingRate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuFlatSellingRate)">
+                    AND cu_flat_selling_rate = #{map.cuFlatSellingRate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuSettleRate)">
+                    AND cu_settle_rate = #{map.cuSettleRate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuUserId)">
+                    AND cu_user_id = #{map.cuUserId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuModDate)">
+                    AND cu_mod_date = #{map.cuModDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpCurtbl" parameterType="cn.happyworlds.imgmt.entity.CpCurtbl">
+        INSERT INTO cp_curtbl(
+        <include refid="cpCurtblBaseColumnSql"/>
+        )VALUES(
+            #{cuCurrCd},
+            #{cuAlphaCd},
+            #{cuExponent},
+            #{cuConvRate},
+            #{cuBaseRate},
+            #{cuRmbRate},
+            #{cuUsdRate},
+            #{cuUsdMethod},
+            #{cuCashBuyingRate},
+            #{cuCashSellingRate},
+            #{cuTelBuyingRate},
+            #{cuTelSellingRate},
+            #{cuMiddleRate},
+            #{cuFlatBuyingRate},
+            #{cuFlatSellingRate},
+            #{cuSettleRate},
+            #{cuUserId},
+            #{cuModDate},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpCurtblByCuCurrCd" parameterType="Long">
+        DELETE FROM cp_curtbl WHERE cu_curr_cd = #{cuCurrCd}
+    </delete>
+
+    <select id="deleteCpCurtblByParams" parameterType="map">
+        DELETE FROM cp_curtbl
+        <include refid="cpCurtblBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpCurtbl" parameterType="cn.happyworlds.imgmt.entity.CpCurtbl">
+        UPDATE cp_curtbl
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuAlphaCd)">
+                cu_alpha_cd = #{cuAlphaCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuExponent)">
+                cu_exponent = #{cuExponent} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuConvRate)">
+                cu_conv_rate = #{cuConvRate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuBaseRate)">
+                cu_base_rate = #{cuBaseRate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuRmbRate)">
+                cu_rmb_rate = #{cuRmbRate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuUsdRate)">
+                cu_usd_rate = #{cuUsdRate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuUsdMethod)">
+                cu_usd_method = #{cuUsdMethod} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuCashBuyingRate)">
+                cu_cash_buying_rate = #{cuCashBuyingRate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuCashSellingRate)">
+                cu_cash_selling_rate = #{cuCashSellingRate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuTelBuyingRate)">
+                cu_tel_buying_rate = #{cuTelBuyingRate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuTelSellingRate)">
+                cu_tel_selling_rate = #{cuTelSellingRate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuMiddleRate)">
+                cu_middle_rate = #{cuMiddleRate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuFlatBuyingRate)">
+                cu_flat_buying_rate = #{cuFlatBuyingRate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuFlatSellingRate)">
+                cu_flat_selling_rate = #{cuFlatSellingRate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuSettleRate)">
+                cu_settle_rate = #{cuSettleRate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuUserId)">
+                cu_user_id = #{cuUserId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(cuModDate)">
+                cu_mod_date = #{cuModDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE cu_curr_cd = #{cuCurrCd}
+    </update>
+
+    <update id="updateCpCurtblByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_curtbl
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuAlphaCd)">
+                    cu_alpha_cd = #{map.cuAlphaCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuExponent)">
+                    cu_exponent = #{map.cuExponent} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuConvRate)">
+                    cu_conv_rate = #{map.cuConvRate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuBaseRate)">
+                    cu_base_rate = #{map.cuBaseRate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuRmbRate)">
+                    cu_rmb_rate = #{map.cuRmbRate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuUsdRate)">
+                    cu_usd_rate = #{map.cuUsdRate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuUsdMethod)">
+                    cu_usd_method = #{map.cuUsdMethod} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuCashBuyingRate)">
+                    cu_cash_buying_rate = #{map.cuCashBuyingRate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuCashSellingRate)">
+                    cu_cash_selling_rate = #{map.cuCashSellingRate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuTelBuyingRate)">
+                    cu_tel_buying_rate = #{map.cuTelBuyingRate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuTelSellingRate)">
+                    cu_tel_selling_rate = #{map.cuTelSellingRate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuMiddleRate)">
+                    cu_middle_rate = #{map.cuMiddleRate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuFlatBuyingRate)">
+                    cu_flat_buying_rate = #{map.cuFlatBuyingRate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuFlatSellingRate)">
+                    cu_flat_selling_rate = #{map.cuFlatSellingRate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuSettleRate)">
+                    cu_settle_rate = #{map.cuSettleRate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuUserId)">
+                    cu_user_id = #{map.cuUserId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuModDate)">
+                    cu_mod_date = #{map.cuModDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuCurrCdCondition)">
+                    cu_curr_cd = #{map.cuCurrCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuAlphaCdCondition)">
+                    AND cu_alpha_cd = #{map.cuAlphaCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuExponentCondition)">
+                    AND cu_exponent = #{map.cuExponentCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuConvRateCondition)">
+                    AND cu_conv_rate = #{map.cuConvRateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuBaseRateCondition)">
+                    AND cu_base_rate = #{map.cuBaseRateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuRmbRateCondition)">
+                    AND cu_rmb_rate = #{map.cuRmbRateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuUsdRateCondition)">
+                    AND cu_usd_rate = #{map.cuUsdRateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuUsdMethodCondition)">
+                    AND cu_usd_method = #{map.cuUsdMethodCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuCashBuyingRateCondition)">
+                    AND cu_cash_buying_rate = #{map.cuCashBuyingRateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuCashSellingRateCondition)">
+                    AND cu_cash_selling_rate = #{map.cuCashSellingRateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuTelBuyingRateCondition)">
+                    AND cu_tel_buying_rate = #{map.cuTelBuyingRateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuTelSellingRateCondition)">
+                    AND cu_tel_selling_rate = #{map.cuTelSellingRateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuMiddleRateCondition)">
+                    AND cu_middle_rate = #{map.cuMiddleRateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuFlatBuyingRateCondition)">
+                    AND cu_flat_buying_rate = #{map.cuFlatBuyingRateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuFlatSellingRateCondition)">
+                    AND cu_flat_selling_rate = #{map.cuFlatSellingRateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuSettleRateCondition)">
+                    AND cu_settle_rate = #{map.cuSettleRateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuUserIdCondition)">
+                    AND cu_user_id = #{map.cuUserIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cuModDateCondition)">
+                    AND cu_mod_date = #{map.cuModDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpCurtblByCuCurrCd" parameterType="Long" resultMap="cpCurtblMap">
+        SELECT
+        <include refid="cpCurtblBaseColumnSql"/>
+        FROM cp_curtbl
+        WHERE cu_curr_cd = #{cuCurrCd}
+    </select>
+
+    <select id="searchCpCurtblByParams" parameterType="map" resultMap="cpCurtblMap">
+        SELECT
+        <include refid="cpCurtblBaseColumnSql"/>
+        FROM cp_curtbl
+        <include refid="cpCurtblBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpCurtbl" id="cpCurtblMap">
+        <id column="cu_curr_cd" property="cuCurrCd"/>
+        <result column="cu_alpha_cd" property="cuAlphaCd"/>
+        <result column="cu_exponent" property="cuExponent"/>
+        <result column="cu_conv_rate" property="cuConvRate"/>
+        <result column="cu_base_rate" property="cuBaseRate"/>
+        <result column="cu_rmb_rate" property="cuRmbRate"/>
+        <result column="cu_usd_rate" property="cuUsdRate"/>
+        <result column="cu_usd_method" property="cuUsdMethod"/>
+        <result column="cu_cash_buying_rate" property="cuCashBuyingRate"/>
+        <result column="cu_cash_selling_rate" property="cuCashSellingRate"/>
+        <result column="cu_tel_buying_rate" property="cuTelBuyingRate"/>
+        <result column="cu_tel_selling_rate" property="cuTelSellingRate"/>
+        <result column="cu_middle_rate" property="cuMiddleRate"/>
+        <result column="cu_flat_buying_rate" property="cuFlatBuyingRate"/>
+        <result column="cu_flat_selling_rate" property="cuFlatSellingRate"/>
+        <result column="cu_settle_rate" property="cuSettleRate"/>
+        <result column="cu_user_id" property="cuUserId"/>
+        <result column="cu_mod_date" property="cuModDate"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

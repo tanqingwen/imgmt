@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.TSysDepartmentMapper">
+
+    <sql id="TSysDepartmentBaseColumnSql">
+        dept_id,
+        dept_parent_id,
+        dept_name,
+        dept_level,
+        dept_remark,
+        dept_status,
+        dept_create_date,
+        dept_update_date,
+        dept_create_by,
+        dept_update_by
+    </sql>
+
+    <sql id="TSysDepartmentBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.deptId)">
+                    dept_id = #{map.deptId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.deptParentId)">
+                    AND dept_parent_id = #{map.deptParentId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.deptName)">
+                    AND dept_name = #{map.deptName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.deptLevel)">
+                    AND dept_level = #{map.deptLevel}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.deptRemark)">
+                    AND dept_remark = #{map.deptRemark}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.deptStatus)">
+                    AND dept_status = #{map.deptStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.deptCreateDate)">
+                    AND dept_create_date = #{map.deptCreateDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.deptUpdateDate)">
+                    AND dept_update_date = #{map.deptUpdateDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.deptCreateBy)">
+                    AND dept_create_by = #{map.deptCreateBy}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.deptUpdateBy)">
+                    AND dept_update_by = #{map.deptUpdateBy}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertTSysDepartment" parameterType="cn.happyworlds.imgmt.entity.TSysDepartment">
+        INSERT INTO t_sys_department(
+        <include refid="TSysDepartmentBaseColumnSql"/>
+        )VALUES(
+            #{deptId},
+            #{deptParentId},
+            #{deptName},
+            #{deptLevel},
+            #{deptRemark},
+            #{deptStatus},
+            #{deptCreateDate},
+            #{deptUpdateDate},
+            #{deptCreateBy},
+            #{deptUpdateBy}
+        )
+    </insert>
+
+	<select id="searchMaxChildenByParentId" parameterType="String" resultMap="TSysDepartmentMap">
+        SELECT
+        <include refid="TSysDepartmentBaseColumnSql"/>
+        FROM 
+        	t_sys_department
+        WHERE 
+        	dept_parent_id = #{deptParentId} 
+        ORDER BY 
+        	dept_id DESC 
+        LIMIT 1 
+    </select>
+    
+    <delete id="deleteTSysDepartmentByDeptId" parameterType="String">
+        DELETE FROM t_sys_department WHERE dept_id = #{deptId}
+    </delete>
+
+    <update id="updateTSysDepartment" parameterType="cn.happyworlds.imgmt.entity.TSysDepartment">
+        UPDATE t_sys_department
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(deptParentId)">
+                dept_parent_id = #{deptParentId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(deptName)">
+                dept_name = #{deptName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(deptLevel)">
+                dept_level = #{deptLevel} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(deptRemark)">
+                dept_remark = #{deptRemark} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(deptStatus)">
+                dept_status = #{deptStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(deptCreateDate)">
+                dept_create_date = #{deptCreateDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(deptUpdateDate)">
+                dept_update_date = #{deptUpdateDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(deptCreateBy)">
+                dept_create_by = #{deptCreateBy} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(deptUpdateBy)">
+                dept_update_by = #{deptUpdateBy} ,
+            </if>
+        </set>
+        WHERE dept_id = #{deptId}
+    </update>
+
+    <select id="searchTSysDepartmentByDeptId" parameterType="String" resultMap="TSysDepartmentMap">
+        SELECT
+        <include refid="TSysDepartmentBaseColumnSql"/>
+        FROM t_sys_department
+        WHERE dept_id = #{deptId}
+    </select>
+
+    <select id="searchTSysDepartmentByParams" parameterType="map" resultMap="TSysDepartmentMap">
+        SELECT
+        <include refid="TSysDepartmentBaseColumnSql"/>
+        FROM t_sys_department
+        <include refid="TSysDepartmentBaseWhereSql"/>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.TSysDepartment" id="TSysDepartmentMap">
+        <id column="dept_id" property="deptId"/>
+        <result column="dept_parent_id" property="deptParentId"/>
+        <result column="dept_name" property="deptName"/>
+        <result column="dept_level" property="deptLevel"/>
+        <result column="dept_remark" property="deptRemark"/>
+        <result column="dept_status" property="deptStatus"/>
+        <result column="dept_create_date" property="deptCreateDate"/>
+        <result column="dept_update_date" property="deptUpdateDate"/>
+        <result column="dept_create_by" property="deptCreateBy"/>
+        <result column="dept_update_by" property="deptUpdateBy"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hp.crm.mapper.MAppMemberMapper">
+
+    <sql id="MAppMemberBaseColumnSql">
+        memberId,
+        memberName,
+        memberCard,
+        memberTicketId,
+        memberStatus,
+        memberType,
+        memberTime,
+        memberValidity
+    </sql>
+
+    <sql id="MAppMemberBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.memberId)">
+                    memberId = #{map.memberId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.memberName)">
+                    AND memberName = #{map.memberName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.memberCard)">
+                    AND memberCard = #{map.memberCard}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.memberTicketId)">
+                    AND memberTicketId = #{map.memberTicketId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.memberStatus)">
+                    AND memberStatus = #{map.memberStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.memberType)">
+                    AND memberType = #{map.memberType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.memberTime)">
+                    AND memberTime = #{map.memberTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.memberValidity)">
+                    AND memberValidity = #{map.memberValidity}
+                </if>
+            </where>
+        </if>
+    </sql>
+	
+    <insert id="insertMAppMember" parameterType="com.hp.crm.entity.MAppMember">
+        INSERT INTO app_member(
+        <include refid="MAppMemberBaseColumnSql"/>
+        )VALUES(
+            #{memberId},
+            #{memberName},
+            #{memberCard},
+            #{memberTicketId},
+            #{memberStatus},
+            #{memberType},
+            #{memberTime},
+            #{memberValidity}
+        )
+    </insert>
+
+    
+    <delete id="deleteMAppMemberByCityId" parameterType="String">
+        DELETE FROM app_member WHERE memberId = #{memberId}
+    </delete>
+
+    <update id="updateMAppMember" parameterType="com.hp.crm.entity.MAppMember">
+        UPDATE app_member
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(memberName)">
+                memberName = #{memberName},
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(memberCard)">
+                memberCard = #{memberCard} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(memberTicketId)">
+                memberTicketId = #{memberTicketId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(memberStatus)">
+                memberStatus = #{memberStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(memberType)">
+                memberType = #{memberType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(memberTime)">
+                memberTime = #{memberTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(memberValidity)">
+                memberValidity = #{memberValidity} ,
+            </if>
+        </set>
+        WHERE memberId = #{memberId}
+    </update>
+
+    <select id="searchMAppMemberBymemberId" parameterType="String" resultMap="MAppMemberMap">
+        SELECT
+        <include refid="MAppMemberBaseColumnSql"/>
+        FROM app_member
+        WHERE memberId = #{memberId}
+    </select>
+
+    <select id="searchMAppMemberByParams" parameterType="map" resultMap="MAppMemberMap">
+        SELECT
+        <include refid="MAppMemberBaseColumnSql"/>
+        FROM app_member
+        <include refid="MAppMemberBaseWhereSql"/>
+    </select>
+
+    <resultMap type="com.hp.crm.entity.MAppMember" id="MAppMemberMap">
+        <id column="memberId" property="memberId"/>
+        <result column="memberName" property="memberName"/>
+        <result column="memberCard" property="memberCard"/>
+        <result column="memberTicketId" property="memberTicketId"/>
+        <result column="memberStatus" property="memberStatus"/>
+        <result column="memberType" property="memberType"/>
+        <result column="memberTime" property="memberTime"/>
+        <result column="memberValidity" property="memberValidity"/>
+    </resultMap>
+
+</mapper>

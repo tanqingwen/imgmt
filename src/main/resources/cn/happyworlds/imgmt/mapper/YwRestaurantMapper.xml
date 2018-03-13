@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.YwRestaurantMapper">
+
+    <sql id="ywRestaurantBaseColumnSql">
+        restaurant_id,
+        restaurant_name,
+        restaurant_picture
+    </sql>
+
+    <sql id="ywRestaurantBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.restaurantId)">
+                    restaurant_id = #{map.restaurantId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.restaurantName)">
+                    AND restaurant_name = #{map.restaurantName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.restaurantPicture)">
+                    AND restaurant_picture = #{map.restaurantPicture}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertYwRestaurant" parameterType="cn.happyworlds.imgmt.entity.YwRestaurant">
+        INSERT INTO yw_restaurant(
+        <include refid="ywRestaurantBaseColumnSql"/>
+        )VALUES(
+            #{restaurantId},
+            #{restaurantName},
+            #{restaurantPicture}
+        )
+    </insert>
+        
+    <delete id="deleteYwRestaurantByRestaurantId" parameterType="String">
+        DELETE FROM yw_restaurant WHERE restaurant_id = #{restaurantId}
+    </delete>
+
+    <select id="deleteYwRestaurantByParams" parameterType="map">
+        DELETE FROM yw_restaurant
+        <include refid="ywRestaurantBaseWhereSql"/>
+    </select>
+
+    <update id="updateYwRestaurant" parameterType="cn.happyworlds.imgmt.entity.YwRestaurant">
+        UPDATE yw_restaurant
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(restaurantName)">
+                restaurant_name = #{restaurantName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(restaurantPicture)">
+                restaurant_picture = #{restaurantPicture}
+            </if>
+        </set>
+        WHERE restaurant_id = #{restaurantId}
+    </update>
+
+    <update id="updateYwRestaurantByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE yw_restaurant
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.restaurantName)">
+                    restaurant_name = #{map.restaurantName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.restaurantPicture)">
+                    restaurant_picture = #{map.restaurantPicture}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.restaurantIdCondition)">
+                    restaurant_id = #{map.restaurantIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.restaurantNameCondition)">
+                    AND restaurant_name = #{map.restaurantNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.restaurantPictureCondition)">
+                    AND restaurant_picture = #{map.restaurantPictureCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchYwRestaurantByRestaurantId" parameterType="String" resultMap="ywRestaurantMap">
+        SELECT
+        <include refid="ywRestaurantBaseColumnSql"/>
+        FROM yw_restaurant
+        WHERE restaurant_id = #{restaurantId}
+    </select>
+
+    <select id="searchYwRestaurantByParams" parameterType="map" resultMap="ywRestaurantMap">
+        SELECT
+        <include refid="ywRestaurantBaseColumnSql"/>
+        FROM yw_restaurant
+        <include refid="ywRestaurantBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.YwRestaurant" id="ywRestaurantMap">
+        <id column="restaurant_id" property="restaurantId"/>
+        <result column="restaurant_name" property="restaurantName"/>
+        <result column="restaurant_picture" property="restaurantPicture"/>
+    </resultMap>
+
+</mapper>

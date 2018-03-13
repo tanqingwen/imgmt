@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.YwGateMapper">
+
+    <sql id="ywGateBaseColumnSql">
+        hw_gate_id,
+        hw_gate_name,
+        hw_gate_note,
+        hw_venue_id,
+        hw_gate_loc,
+        hw_gate_ip,
+        hw_open_time
+    </sql>
+
+    <sql id="ywGateBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateId)">
+                    hw_gate_id = #{map.hwGateId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateName)">
+                    AND hw_gate_name = #{map.hwGateName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateNote)">
+                    AND hw_gate_note = #{map.hwGateNote}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenueId)">
+                    AND hw_venue_id = #{map.hwVenueId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateLoc)">
+                    AND hw_gate_loc = #{map.hwGateLoc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateIp)">
+                    AND hw_gate_ip = #{map.hwGateIp}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOpenTime)">
+                    AND hw_open_time = #{map.hwOpenTime}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertYwGate" parameterType="cn.happyworlds.imgmt.entity.YwGate">
+        INSERT INTO yw_gate(
+        <include refid="ywGateBaseColumnSql"/>
+        )VALUES(
+            #{hwGateId},
+            #{hwGateName},
+            #{hwGateNote},
+            #{hwVenueId},
+            #{hwGateLoc},
+            #{hwGateIp},
+            #{hwOpenTime}
+        )
+    </insert>
+        
+    <delete id="deleteYwGateByHwGateId" parameterType="String">
+        DELETE FROM yw_gate WHERE hw_gate_id = #{hwGateId}
+    </delete>
+
+    <select id="deleteYwGateByParams" parameterType="map">
+        DELETE FROM yw_gate
+        <include refid="ywGateBaseWhereSql"/>
+    </select>
+
+    <update id="updateYwGate" parameterType="cn.happyworlds.imgmt.entity.YwGate">
+        UPDATE yw_gate
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwGateName)">
+                hw_gate_name = #{hwGateName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwGateNote)">
+                hw_gate_note = #{hwGateNote} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwVenueId)">
+                hw_venue_id = #{hwVenueId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwGateLoc)">
+                hw_gate_loc = #{hwGateLoc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwGateIp)">
+                hw_gate_ip = #{hwGateIp} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(hwOpenTime)">
+                hw_open_time = #{hwOpenTime}
+            </if>
+        </set>
+        WHERE hw_gate_id = #{hwGateId}
+    </update>
+
+    <update id="updateYwGateByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE yw_gate
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateName)">
+                    hw_gate_name = #{map.hwGateName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateNote)">
+                    hw_gate_note = #{map.hwGateNote} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenueId)">
+                    hw_venue_id = #{map.hwVenueId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateLoc)">
+                    hw_gate_loc = #{map.hwGateLoc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateIp)">
+                    hw_gate_ip = #{map.hwGateIp} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOpenTime)">
+                    hw_open_time = #{map.hwOpenTime}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateIdCondition)">
+                    hw_gate_id = #{map.hwGateIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateNameCondition)">
+                    AND hw_gate_name = #{map.hwGateNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateNoteCondition)">
+                    AND hw_gate_note = #{map.hwGateNoteCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwVenueIdCondition)">
+                    AND hw_venue_id = #{map.hwVenueIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateLocCondition)">
+                    AND hw_gate_loc = #{map.hwGateLocCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwGateIpCondition)">
+                    AND hw_gate_ip = #{map.hwGateIpCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.hwOpenTimeCondition)">
+                    AND hw_open_time = #{map.hwOpenTimeCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchYwGateByHwGateId" parameterType="String" resultMap="ywGateMap">
+        SELECT
+        <include refid="ywGateBaseColumnSql"/>
+        FROM yw_gate
+        WHERE hw_gate_id = #{hwGateId}
+    </select>
+
+    <select id="searchYwGateByParams" parameterType="map" resultMap="ywGateMap">
+        	SELECT *
+        	FROM yw_gate
+        	<include refid="ywGateBaseWhereSql"/>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.YwGate" id="ywGateMap">
+        <id column="hw_gate_id" property="hwGateId"/>
+        <result column="hw_gate_name" property="hwGateName"/>
+        <result column="hw_gate_note" property="hwGateNote"/>
+        <result column="hw_venue_id" property="hwVenueId"/>
+        <result column="hw_gate_loc" property="hwGateLoc"/>
+        <result column="hw_gate_ip" property="hwGateIp"/>
+        <result column="hw_open_time" property="hwOpenTime"/>
+    </resultMap>
+
+</mapper>

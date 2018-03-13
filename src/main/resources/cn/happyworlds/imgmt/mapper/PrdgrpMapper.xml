@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.PrdgrpMapper">
+
+    <sql id="cpPrdgrpBaseColumnSql">
+        PR_PRODCT_GROUP,
+        PR_GROUP_DESC,
+        PR_BIN,
+        PR_CARD_BRAND,
+        PR_CARD_TYPE,
+        PR_BILL_CYC,
+        PR_NEW_CARD_ACTIVATION,
+        PR_REPLC_CARD_ACTIVATION,
+        PR_REISSUE_CARD_ACTIVATION,
+        PR_UPPER_RANGE_VALUE,
+        PR_NEW_CARD_VALID_PRD,
+        PR_RENEWAL_VALID_PRD,
+        PR_RENEWAL_DORMANT_PRD,
+        PR_CARDHOLDER_NO_LEN,
+        PR_CURR_4DBC,
+        PR_NEXT_4DBC,
+        PR_NEXT_4DBC_DATE,
+        PR_AMEX_PRODUCT,
+        PR_CURR_IND,
+        PR_LOWER_RANGE_VALUE,
+        PR_PIN_LENGTH,
+        PR_CARDNO_RAND_FLAG,
+        PR_MIN_CARDNO,
+        PR_PIN_FLAG,
+        PR_PINERR_NUMBER,
+        PR_CANCEL_CARD_DAYS,
+        PR_ALLOW_CARD_NUMS,
+        PR_PRODUCT_NUM,
+        PR_BRANCH_ID,
+        PR_PLASTIC_TYPE,
+        PR_ENCRYPT_FLAG,
+        PR_CARDNUM_RULE,
+        CHECKSUM,
+        hw_price,
+        hw_price_one,
+        hw_price_two,
+        hw_price_three,
+        hw_holiday_price,
+        hw_childprice,
+        hw_elder_price,
+        hw_soldier_price,
+        hw_teacher_price,
+        hw_staff_price,
+        hw_special_price,
+        hw_category,
+        hw_startdate,
+        hw_enddate,
+        hw_venueid,
+        hw_gateid,
+        hw_member_support,
+        hw_state,
+        hw_date,
+        hw_userid,
+        pr_curr4Dbc,
+        pr_next4Dbc,
+        pr_next4Dbc_date,
+        hw_ticket_des,
+        hw_ticket_pic
+    </sql>
+    
+    <select id="searchCpPrdgrpByParamsHwCategoryALL" resultMap="cpPrdgrpMap">
+        select distinct hw_category,PR_CARD_BRAND,PR_CARD_TYPE from cp_prdgrp
+    </select>
+    
+    <select id="searchCpPrdgrpByParamsHwCategory" parameterType="String" resultMap="cpPrdgrpMap">
+        select distinct hw_category,PR_CARD_BRAND,PR_CARD_TYPE from cp_prdgrp where PR_GROUP_DESC like "%"#{prGroupDesc}"%"
+    </select>
+    <!-- 查询特定 -->
+    <select id="searchCpPrdgrpByHoliday" parameterType="map" resultMap="cpPrdgrpMap">
+        select * from cp_prdgrp where PR_GROUP_DESC like "%"#{map.prGroupDesc}"%" and PR_CARD_BRAND=#{map.prCardBrand} and PR_CARD_TYPE=#{map.prCardType}
+    </select>
+    <!-- 查询非特定 -->
+    <select id="searchCpPrdgrpByNotHoliday" parameterType="map" resultMap="cpPrdgrpMap">
+        select * from cp_prdgrp where PR_GROUP_DESC not like "%"#{map.prGroupDesc}"%" and PR_CARD_BRAND=#{map.prCardBrand} and PR_CARD_TYPE=#{map.prCardType}
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpPrdgrp" id="cpPrdgrpMap">
+        <id column="PR_PRODCT_GROUP" property="prProdctGroup"/>
+        <result column="PR_GROUP_DESC" property="prGroupDesc"/>
+        <result column="PR_BIN" property="prBin"/>
+        <result column="PR_CARD_BRAND" property="prCardBrand"/>
+        <result column="PR_CARD_TYPE" property="prCardType"/>
+        <result column="PR_BILL_CYC" property="prBillCyc"/>
+        <result column="PR_NEW_CARD_ACTIVATION" property="prNewCardActivation"/>
+        <result column="PR_REPLC_CARD_ACTIVATION" property="prReplcCardActivation"/>
+        <result column="PR_REISSUE_CARD_ACTIVATION" property="prReissueCardActivation"/>
+        <result column="PR_UPPER_RANGE_VALUE" property="prUpperRangeValue"/>
+        <result column="PR_NEW_CARD_VALID_PRD" property="prNewCardValidPrd"/>
+        <result column="PR_RENEWAL_VALID_PRD" property="prRenewalValidPrd"/>
+        <result column="PR_RENEWAL_DORMANT_PRD" property="prRenewalDormantPrd"/>
+        <result column="PR_CARDHOLDER_NO_LEN" property="prCardholderNoLen"/>
+        <result column="PR_CURR_4DBC" property="prCurr4dbc"/>
+        <result column="PR_NEXT_4DBC" property="prNext4dbc"/>
+        <result column="PR_NEXT_4DBC_DATE" property="prNext4dbcDate"/>
+        <result column="PR_AMEX_PRODUCT" property="prAmexProduct"/>
+        <result column="PR_CURR_IND" property="prCurrInd"/>
+        <result column="PR_LOWER_RANGE_VALUE" property="prLowerRangeValue"/>
+        <result column="PR_PIN_LENGTH" property="prPinLength"/>
+        <result column="PR_CARDNO_RAND_FLAG" property="prCardnoRandFlag"/>
+        <result column="PR_MIN_CARDNO" property="prMinCardno"/>
+        <result column="PR_PIN_FLAG" property="prPinFlag"/>
+        <result column="PR_PINERR_NUMBER" property="prPinerrNumber"/>
+        <result column="PR_CANCEL_CARD_DAYS" property="prCancelCardDays"/>
+        <result column="PR_ALLOW_CARD_NUMS" property="prAllowCardNums"/>
+        <result column="PR_PRODUCT_NUM" property="prProductNum"/>
+        <result column="PR_BRANCH_ID" property="prBranchId"/>
+        <result column="PR_PLASTIC_TYPE" property="prPlasticType"/>
+        <result column="PR_ENCRYPT_FLAG" property="prEncryptFlag"/>
+        <result column="PR_CARDNUM_RULE" property="prCardnumRule"/>
+        <result column="CHECKSUM" property="checksum"/>
+        <result column="hw_price" property="hwPrice"/>
+        <result column="hw_price_one" property="hwPriceOne"/>
+        <result column="hw_price_two" property="hwPriceTwo"/>
+        <result column="hw_price_three" property="hwPriceThree"/>
+        <result column="hw_holiday_price" property="hwHolidayPrice"/>
+        <result column="hw_childprice" property="hwChildprice"/>
+        <result column="hw_elder_price" property="hwElderPrice"/>
+        <result column="hw_soldier_price" property="hwSoldierPrice"/>
+        <result column="hw_teacher_price" property="hwTeacherPrice"/>
+        <result column="hw_staff_price" property="hwStaffPrice"/>
+        <result column="hw_special_price" property="hwSpecialPrice"/>
+        <result column="hw_category" property="hwCategory"/>
+        <result column="hw_startdate" property="hwStartdate"/>
+        <result column="hw_enddate" property="hwEnddate"/>
+        <result column="hw_venueid" property="hwVenueid"/>
+        <result column="hw_gateid" property="hwGateid"/>
+        <result column="hw_member_support" property="hwMemberSupport"/>
+        <result column="hw_state" property="hwState"/>
+        <result column="hw_date" property="hwDate"/>
+        <result column="hw_userid" property="hwUserid"/>
+        <result column="pr_curr4Dbc" property="prCurr4Dbc"/>
+        <result column="pr_next4Dbc" property="prNext4Dbc"/>
+        <result column="pr_next4Dbc_date" property="prNext4DbcDate"/>
+        <result column="hw_ticket_des" property="hwTicketDes"/>
+        <result column="hw_ticket_pic" property="hwTicketPic"/>
+    </resultMap>
+
+</mapper>

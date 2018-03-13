@@ -1,0 +1,410 @@
+@charset "utf-8";
+body {
+	font-family: "微软雅黑";
+}
+
+header {
+	background-color: #3c8dbc;
+}
+
+h3 {
+	height: 44px;
+	line-height: 44px;
+}
+
+header h3 {
+	margin-top: 0px;
+	height: 60px;
+	line-height: 60px;
+}
+
+.paymoney {
+	height: 40px;
+	line-height: 40px;
+}
+
+.allpay {
+	color: red;
+}
+
+.btnAll {
+	height: 40px;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	outline: none;
+	font-size: 16px;
+	font-weight: 500;
+	text-align: center;
+}
+
+.col-xs-6,
+.col-xs-12 {
+	padding: 0;
+}
+
+.btn-orang {
+	background: #ed6826;
+	width: 120px;
+}
+
+.btn-orang:hover{
+	background: #FF6826;
+	width: 120px;
+}
+
+#resale {
+	background: #00a65a;
+	width: 80px;
+}
+
+.btnGro {
+	margin-bottom: 40px;
+}
+
+.activeBtn a {
+	height: 40px;
+	line-height: 40px;
+	color: #333;
+	font-size: 16px;
+}
+
+
+/*弹框*/
+
+.mark8,
+.mark7,
+.mark6,
+.mark5,
+.mark4,
+.mark3,
+.mark2,
+.mark1 {
+	width: 250px;
+	height: 300px;
+	z-index: 999;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin: -150px 0 0 -125px;
+	background: white;
+	/* text-align: center; */
+	border-radius: 5px;
+	/* border: 1px solid red; */
+	鎶曞叆瀹樻柟鍚屼汉鎵樼璐�
+}
+
+.mark8,
+.mark7,
+.mark6,
+.mark5,
+.mark4,
+.mark3,
+.mark2,
+.mark1 span {
+	float: right;
+}
+
+.mark1 h2 {
+	margin-top: 100px;
+}
+
+.mark1 p {
+	color: #ed6928;
+}
+
+.mark1-blue {
+	margin-top: 50px;
+	color: #44a0df;
+	font-size: 20px;
+}
+
+.mark1-blue input {
+	width: 220px;
+	height: 45px;
+	border: #44a0df 1px solid;
+	margin-left: 15px;
+}
+
+.markbox {
+	display: block;
+	position: absolute;
+	top: 0px;
+	filter: alpha(opacity=8);
+	background-color: rgb(3, 3, 3);
+	z-index: 998;
+	left: 0px;
+	opacity: 0.8;
+	-moz-opacity: 0.8;
+}
+
+#tickettype {
+	padding-right: 0px;
+	padding-top: 0px;
+	padding-bottom: 0;
+}
+
+#closedimg {
+	cursor: pointer;
+	margin: 1px 2px 0 0;
+}
+
+.close {
+	height: 60px;
+	width: 100%;
+	line-height: 60px;
+	text-align: right;
+	margin-right: 15px;
+}
+
+#closedimg {
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.form-horizontal .form-group {
+	margin: 0;
+}
+
+.mark2 .innerMark2 {
+	width: 600px;
+	margin: 0 auto;
+}
+.payType {
+	width: 80%;
+    padding-left: 0;
+    margin: 0 auto;
+}
+.payType li {
+	list-style: none;
+	border: 1px solid #ADADAD;
+	height: 50px;
+	line-height: 45px;
+	margin-bottom: 10px;
+	font-size: 18px;
+	color: #000000;
+}
+
+.payType .wechat{
+	height: 50px;
+	line-height: 30px;
+}
+.mark2 .innerMark2 {
+	margin-top: 50px;
+	width: 100%;
+}
+
+.payType li a {
+	color: #000;
+	text-decoration: none;
+}
+
+.payType li img {
+	width: 40px;
+	height: 35px;
+	margin-right: 5px;
+}
+
+.mark3 .all {
+	height: 40px;
+	line-height: 40px;
+	color: #44A0DF;
+}
+
+.mark3 .all label {
+	background-color: #44A0DF;
+	color: #FFFFFF;
+	height: 50px;
+	/* width:50px; */
+	line-height: 50px;
+	
+}
+
+.mark3 .all input {
+	margin-left: -5px;
+	border-color: #44A0DF;
+	outline: none;
+	padding-left: 4px;
+}
+
+.mark3 .receipts {
+	height: 50px;
+	line-height: 50px;
+	color: #F7AA00;
+}
+
+.mark3 input {
+	height: 50px;
+	line-height: 50px;
+}
+
+.mark3 .receipts label {
+	background-color: #F7AA00;
+	text-align: center;
+/* 	width: 50px; */
+	color: #FFFFFF;
+}
+
+.mark3 .receipts input {
+	border-color: #F7AA00;
+	outline: none;
+	padding-left: 4px;
+	 margin-left: -5px;
+}
+
+.mark3 .receipts {
+	margin: 10px 0 10px;
+}
+
+.mark3 .change {
+	height: 50px;
+	line-height: 50px;
+	color: #6FBA2C;
+	    margin-bottom: 10px;
+}
+
+.mark3 .change label {
+	background-color: #6FBA2C;
+/* 	width: 50px; */
+	text-align: center;
+	color: #FFFFFF;
+}
+
+.mark3 .change input {
+	border-color: #6FBA2C;
+	outline: none;
+	border: 2px solid #6FBA2C;
+	padding-left: 4px;
+   margin-left: -5px;
+}
+
+.sureOrder {
+	margin: 0 auto;
+}
+
+.sureOrder input {
+	width: 120px;
+	height: 40px;
+	line-height: 40px;
+	background-color: #f1793D;
+	color: #FFFFFF;
+	outline: none;
+	border: none;
+}
+
+.mark4 .mark4Content {
+	margin-top: 70px;
+}
+
+
+.mark4 .repayment {
+	margin-top: 30px;
+}
+
+.mark4 .overtime {
+	margin-top: 20px;
+	color: #000000;
+}
+.mark2{
+	background-color: lavender;
+}
+.mark4 .repayment button {
+	border: none;
+	outline: none;
+	background-color: #43a1e0;
+	color: #FFFFFF;
+	width: 140px;
+	height: 55px;
+	border-radius: 5px;
+}
+
+.mark5Content {
+	margin-top: 100px;
+}
+
+.mark5Content h4 {
+	color: #ED6928;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.mark5Content div {
+	color: #44a0e1;
+	font-size: 16px;
+}
+
+.mark5Content div input {
+	outline: none;
+	border: 1px solid #44a0e1;
+}
+
+.mark7Content h1 {
+	margin: 70px 0 60px 0;
+}
+
+.mark7Content button {
+	border: none;
+	outline: none;
+	background-color: #43a1e0;
+	color: #FFFFFF;
+	width: 200px;
+	height: 55px;
+	border-radius: 5px;
+	font-size: 24px;
+}
+
+.idSwitch button {
+	display: inline-block;
+}
+
+#defaultForm .noDocumentsLabel {
+	margin-left: 9%;
+}
+
+.payCardBtn {
+	background-color: ;
+}
+
+.payCardBtn {
+	color: #fff;
+	height: 40px;
+	margin-top: -6px;
+	background-color: #52a8e5;
+}
+
+.payCardBtn:hover {
+	color: #fff;
+	background-color: #59a8e9;
+}
+
+.mark8 label {
+	font-size: 20px;
+}
+
+.mark8 #payCode {
+	margin: 0 15px;
+	height: 40px;
+	line-height: 40px;
+	text-indent: 5px;
+}
+
+.Mark3Inner {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.form-horizontal .form-group {
+	padding: 0;
+}
+.row {
+   margin-right: 0px; 
+     margin-left: 0px; 
+}
+#cashPayBtn{
+	border-radius: 5px;
+}
+#payCode{
+	width: 60%;
+	display: inline-block;
+}
+	

@@ -1,0 +1,330 @@
+			{
+				margin: 0;
+				padding: 0;
+			}
+			
+			li {
+				list-style: none;
+			}
+			
+			body {
+				font-family: "微软雅黑";
+				background: #eeeeee;
+			}
+			
+			.row {
+				width: 960px;
+				margin: 20px auto;
+				position: Relative;
+				background: white;
+				-webkit-box-shadow: 0 0px 20px 3px #bcdccd;
+				-moz-box-shadow: 0 0px 20px 3px #bcdccd;
+				box-shadow: 0 0px 20px 3px #bcdccd;
+			}
+			
+			.tip-img {
+				position: absolute;
+				left: -80px;
+				top: -12px;
+			}
+			
+			.content {
+				width: 960px;
+				margin: 0 auto;
+			}
+			
+			.main {
+				width: 901px;
+				margin: 0 auto;
+			}
+			
+			.main h3 {
+				width: 100%;
+				height: 40px;
+				line-height: 40px;
+				font-family: "微软雅黑";
+				margin-top:0;
+				
+			}
+			
+			.form-line label{width:100px;text-align:right;}
+			
+			.col-lg-6 i {
+				font-style: normal;
+				font-size: 16px;
+				font-weight: 700;
+				width: 100px;
+				display: inline-block;
+				line-height: 35px;
+				text-align: right;
+				word-wrap: normal;
+				float: left;
+				color: rgb(98, 98, 98)
+			}
+			
+			.col-lg-6 .line-input {
+				width: 290px;
+				height: 40px;
+				padding: 0;
+				border: lightblue 1px solid;
+				border-radius: 5px;
+				outline: none;
+				color: lightslategray;
+				text-indent: 5px;
+				display: inline-block;
+				font-size: 14px;
+				margin-left: 10px;
+			}
+			
+			.col-lg-6 {
+				padding: 0;
+				float: left;
+				width: 50%;
+				display: inline-block;
+			}
+			
+			.lable {
+				float: left;
+				width: 220px;
+			}
+			
+			.col-lg-12 {}
+			
+			.label select {
+				width: 220px;
+				height: 40px;
+				border: lightblue 1px solid;
+				border-radius: 5px;
+				outline: none;
+				color: lightslategray;
+				text-indent: 5px;
+				font-weight: 500;
+				display: inline-block;
+				font-size: 14px;
+				padding: 1px 0;
+				margin-left: 10px;
+			}
+			
+			select option {
+				width: 250px;
+				font-size: 14px;
+				height: 40px;
+				border: lightblue 1px solid;
+				border-radius: 5px;
+				outline: none;
+				color: lightslategray;
+				text-indent: 10px;
+				font-family: "微软雅黑";
+				font-weight: 500;
+				display: inline-block;
+			}
+			
+			.form-a {
+				display: inline-block;
+				color: black;
+				width: 80px;
+				font-size: 18px;
+				height: 40px;
+				line-height: 40px;
+				text-align: left;
+			}
+			
+			.line-input:focus {
+				border-color: lightskyblue;
+			}
+			
+			.form-line .mag {}
+			
+			.btn-size {
+				width: 80px;
+				height: 40px;
+				background: #00a65a;
+				color: white;
+				border: none;
+				border-radius: 4px;
+				outline: none;
+				font-size: 16px;
+				font-family: "微软雅黑";
+				font-weight: 500;
+			}
+			
+			.btn-orang {
+				width: 132px;
+				height: 40px;
+				background: #ed6826;
+				color: white;
+				border: none;
+				border-radius: 4px;
+				outline: none;
+				font-size: 16px;
+				font-family: "微软雅黑";
+				font-weight: 500;
+			}
+			
+			.more-ul {
+				width: 220px;
+				border: lightblue 1px solid;
+				position: absolute;
+				left: 102px;
+				top: 40px;
+				z-index: 2;
+				background: white;
+			}
+			
+			.more-ul li {
+				width: 100%;
+				height: 40px;
+				display: block;
+				line-height: 40px;
+				font-size: 12px;
+				border-bottom: 1px solid lightblue;
+			}
+			
+			.more-ul li:last-child {
+				border: none;
+			}
+			
+			.more-ul li input {
+				width: 16px;
+				height: 16px;
+				margin: 0 5px 0;
+				vertical-align: middle;
+			}
+			
+			input[type=checkbox] {
+				vertical-align: middle;
+			}
+			
+			#hr {
+				width: 100%;
+				color: white;
+				margin-bottom: 20px;
+				border-bottom: 2px dashed lightgrey;
+			}
+			
+			.table input[type=checkbox] {
+				vertical-align: middle;
+				margin-bottom: 10px;
+				width: 16px;
+				height: 16px;
+			}
+			
+			.form-table td {
+				height: 35px;
+				line-height: 35px;
+				font-size: 18px;
+			}
+			
+			.table>tbody>tr>td {
+				vertical-align: middle;
+			}
+			
+			.table th {
+				font-weight: 500;
+				font-size: 18px;
+				color: rgb(98, 98, 98);
+			}
+			
+			.mark1 {
+				width: 790px;
+				height: 510px;
+				z-index: 999;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin: -250px 0 0 -395px;
+				background: white;
+				text-align: center;
+				border-radius: 5px;
+			}
+			
+			.mark1 span {
+				float: right;
+			}
+			
+			.mark1 h2 {
+				margin-top: 100px;
+			}
+			
+			.mark1 p {
+				color: #ed6928;
+			}
+			
+			.mark1-blue {
+				margin-top: 50px;
+				color: #44a0df;
+				font-size: 20px;
+			}
+			
+			.mark1-blue input {
+				width: 220px;
+				height: 45px;
+				border: #44a0df 1px solid;
+				margin-left: 15px;
+			}
+			
+			.markbox {
+				display: block;
+				position: absolute;
+				top: 0px;
+				filter: alpha(opacity=8);
+				background-color: rgb(3, 3, 3);
+				z-index: 998;
+				left: 0px;
+				opacity: 0.8;
+				-moz-opacity: 0.8;
+			}
+			
+			#tickettype {
+				padding-right: 0px;
+				padding-top: 0px;
+				padding-bottom: 0;
+			}
+			
+			#closedimg {
+				cursor: pointer;
+				margin: 1px 2px 0 0;
+			}
+			
+			.clearfix {
+				content: '';
+				clear: both;
+				display: block;
+			}
+			
+			.form-line1 {
+				margin-top: 0px;
+			}
+			
+			.ticketStatus {
+				display: none;
+			}
+			
+			.typeStyle {
+				margin: 0 10px 0 15px;
+			}
+			
+			.form-group .fontCol {
+				font-size: 16px;
+				font-weight: 700;
+				color: rgb(98, 98, 98)
+			}
+			
+			#cbIdType,
+			#idNo {
+				height: 40px;
+				line-height: 40px;
+				padding: 0;
+				margin-left: 7px;
+				border: lightblue 1px solid;
+				border-radius: 5px;
+				width: 290px;display: inline-block;
+				border: lightblue 1px solid;
+			}
+			
+			.increaseMar .mag .label {
+				margin-top: 20px;
+			}
+			#ticketKind,#phone{width: 290px;display: inline-block; border: lightblue 1px solid;height: 40px; line-height: 40px;}
+			.noDocumentsLabel{margin-left: 42px;}
+#CbRwdsAccno{margin-left: 10px;}

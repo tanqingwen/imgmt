@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpBrchidMapper">
+
+    <sql id="cpBrchidBaseColumnSql">
+        br_branch_id,
+        br_branch_name,
+        br_cost_centre,
+        br_user_id,
+        br_mod_date,
+        checksum
+    </sql>
+
+    <sql id="cpBrchidBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.brBranchId)">
+                    br_branch_id = #{map.brBranchId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.brBranchName)">
+                    AND br_branch_name = #{map.brBranchName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.brCostCentre)">
+                    AND br_cost_centre = #{map.brCostCentre}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.brUserId)">
+                    AND br_user_id = #{map.brUserId}
+                </if>
+                <if test="cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.brModDate)">
+                    AND br_mod_date = #{map.brModDate}
+                </if>
+                <if test="cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpBrchid" parameterType="cn.happyworlds.imgmt.entity.CpBrchid">
+        INSERT INTO cp_brchid(
+        <include refid="cpBrchidBaseColumnSql"/>
+        )VALUES(
+            #{brBranchId},
+            #{brBranchName},
+            #{brCostCentre},
+            #{brUserId},
+            #{brModDate},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpBrchidByBrBranchId" parameterType="String">
+        DELETE FROM cp_brchid WHERE br_branch_id = #{brBranchId}
+    </delete>
+
+    <select id="deleteCpBrchidByParams" parameterType="map">
+        DELETE FROM cp_brchid
+        <include refid="cpBrchidBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpBrchid" parameterType="cn.happyworlds.imgmt.entity.CpBrchid">
+        UPDATE cp_brchid
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(brBranchName)">
+                br_branch_name = #{brBranchName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(brCostCentre)">
+                br_cost_centre = #{brCostCentre} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(brUserId)">
+                br_user_id = #{brUserId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(brModDate)">
+                br_mod_date = #{brModDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE br_branch_id = #{brBranchId}
+    </update>
+
+    <update id="updateCpBrchidByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_brchid
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.brBranchName)">
+                    br_branch_name = #{map.brBranchName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.brCostCentre)">
+                    br_cost_centre = #{map.brCostCentre} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.brUserId)">
+                    br_user_id = #{map.brUserId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.brModDate)">
+                    br_mod_date = #{map.brModDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.brBranchIdCondition)">
+                    br_branch_id = #{map.brBranchIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.brBranchNameCondition)">
+                    AND br_branch_name = #{map.brBranchNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.brCostCentreCondition)">
+                    AND br_cost_centre = #{map.brCostCentreCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.brUserIdCondition)">
+                    AND br_user_id = #{map.brUserIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.brModDateCondition)">
+                    AND br_mod_date = #{map.brModDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpBrchidByBrBranchId" parameterType="String" resultMap="cpBrchidMap">
+        SELECT
+        <include refid="cpBrchidBaseColumnSql"/>
+        FROM cp_brchid
+        WHERE br_branch_id = #{brBranchId}
+    </select>
+
+    <select id="searchCpBrchidByParams" parameterType="map" resultMap="cpBrchidMap">
+        SELECT
+        <include refid="cpBrchidBaseColumnSql"/>
+        FROM cp_brchid
+        <include refid="cpBrchidBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpBrchid" id="cpBrchidMap">
+        <id column="br_branch_id" property="brBranchId"/>
+        <result column="br_branch_name" property="brBranchName"/>
+        <result column="br_cost_centre" property="brCostCentre"/>
+        <result column="br_user_id" property="brUserId"/>
+        <result column="br_mod_date" property="brModDate"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

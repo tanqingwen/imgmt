@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.DisUserMapper">
+
+    <sql id="disUserBaseColumnSql">
+        id,
+        user_id,
+        dis_id,
+        dis_status,
+        dis_name1,
+        dis_name2,
+        dis_name3,
+        dis_name4
+    </sql>
+
+    <sql id="disUserBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.id)">
+                    id = #{map.id}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userId)">
+                    AND user_id = #{map.userId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disId)">
+                    AND dis_id = #{map.disId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disStatus)">
+                    AND dis_status = #{map.disStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disName1)">
+                    AND dis_name1 = #{map.disName1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disName2)">
+                    AND dis_name2 = #{map.disName2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disName3)">
+                    AND dis_name3 = #{map.disName3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disName4)">
+                    AND dis_name4 = #{map.disName4}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertDisUser" parameterType="cn.happyworlds.imgmt.entity.DisUser">
+        INSERT INTO dis_user(
+        <include refid="disUserBaseColumnSql"/>
+        )VALUES(
+            #{id},
+            #{userId},
+            #{disId},
+            #{disStatus},
+            #{disName1},
+            #{disName2},
+            #{disName3},
+            #{disName4}
+        )
+    </insert>
+        
+    <delete id="deleteDisUserById" parameterType="Integer">
+        DELETE FROM dis_user WHERE id = #{id}
+    </delete>
+
+    <select id="deleteDisUserByParams" parameterType="map">
+        DELETE FROM dis_user
+        <include refid="disUserBaseWhereSql"/>
+    </select>
+
+    <update id="updateDisUser" parameterType="cn.happyworlds.imgmt.entity.DisUser">
+        UPDATE dis_user
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(userId)">
+                user_id = #{userId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disId)">
+                dis_id = #{disId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disStatus)">
+                dis_status = #{disStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disName1)">
+                dis_name1 = #{disName1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disName2)">
+                dis_name2 = #{disName2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disName3)">
+                dis_name3 = #{disName3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disName4)">
+                dis_name4 = #{disName4}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateDisUserByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE dis_user
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userId)">
+                    user_id = #{map.userId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disId)">
+                    dis_id = #{map.disId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disStatus)">
+                    dis_status = #{map.disStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disName1)">
+                    dis_name1 = #{map.disName1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disName2)">
+                    dis_name2 = #{map.disName2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disName3)">
+                    dis_name3 = #{map.disName3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disName4)">
+                    dis_name4 = #{map.disName4}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idCondition)">
+                    id = #{map.idCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.userIdCondition)">
+                    AND user_id = #{map.userIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disIdCondition)">
+                    AND dis_id = #{map.disIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disStatusCondition)">
+                    AND dis_status = #{map.disStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disName1Condition)">
+                    AND dis_name1 = #{map.disName1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disName2Condition)">
+                    AND dis_name2 = #{map.disName2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disName3Condition)">
+                    AND dis_name3 = #{map.disName3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disName4Condition)">
+                    AND dis_name4 = #{map.disName4Condition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchDisUserById" parameterType="Integer" resultMap="disUserMap">
+        SELECT
+        <include refid="disUserBaseColumnSql"/>
+        FROM dis_user
+        WHERE id = #{id}
+    </select>
+
+    <select id="searchDisUserByParams" parameterType="map" resultMap="disUserMap">
+        SELECT
+        <include refid="disUserBaseColumnSql"/>
+        FROM dis_user
+        <include refid="disUserBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.DisUser" id="disUserMap">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="dis_id" property="disId"/>
+        <result column="dis_status" property="disStatus"/>
+        <result column="dis_name1" property="disName1"/>
+        <result column="dis_name2" property="disName2"/>
+        <result column="dis_name3" property="disName3"/>
+        <result column="dis_name4" property="disName4"/>
+    </resultMap>
+
+</mapper>

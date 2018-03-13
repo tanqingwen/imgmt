@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.RechargeMapper">
+
+    <sql id="rechangeBaseColumnSql">
+    	ct_user_create,
+    	ct_reversal_flag,
+    	ct_card_number,
+    	cb_embossname,
+    	ct_approve_time,
+    	pr_group_desc,
+    	ct_bill_curr_amt
+    </sql>
+
+    <sql id="rechargeBaseWhereSql">
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCardNumber)">
+                and right(ct_card_number,6) = #{map.ctCardNumber}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prGroupDesc)">
+                AND pr_group_desc = #{map.prGroupDesc}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEmbossname)">
+                AND cb_embossname = #{map.cbEmbossname}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctApproveTimeStart)">
+                AND substring(ct_approve_time,1,8) &gt;= #{map.ctApproveTimeStart}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctApproveTimeEnd)">
+                AND substring(ct_approve_time,1,8) &lt;= #{map.ctApproveTimeEnd}
+            </if>                
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserCreate)">
+                AND ct_user_create = #{map.ctUserCreate}
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctUserCreateNull)">
+                AND ct_user_create != #{map.ctUserCreateNull}
+            </if>  
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctReversalFlag)">
+                AND ct_reversal_flag = #{map.ctReversalFlag}
+            </if>              
+        </if>
+    </sql>
+
+    <select id="searchRechargeByParams" parameterType="map" resultMap="rechargeMap">
+    	select 
+    	<include refid="rechangeBaseColumnSql"/> 
+    	from cp_ceptrx,cp_prdgrp,cp_crdtbl 
+    	where 1=1  
+    	and ct_card_number = cb_cardholder_no  
+    	and cb_card_prdct_group = pr_prodct_group 
+    	and ct_tran_code='DEPOSIT'  
+    	<include refid="rechargeBaseWhereSql"/>
+    	order by ct_approve_time DESC 
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.Recharge" id="rechargeMap">
+        <id column="ct_card_number" property="ctCardNumber"/>
+        <result column="pr_group_desc" property="prGroupDesc"/>
+        <result column="cb_embossname" property="cbEmbossname"/>
+        <result column="ct_approve_time" property="ctApproveTime"/>
+        <result column="ct_bill_curr_amt" property="ctBillCurrAmt"/>
+        <result column="ct_user_create" property="ctUserCreate"/>
+        <result column="ct_reversal_flag" property="ctReversalFlag"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpTrxcdeMapper">
+
+    <sql id="cpTrxcdeBaseColumnSql">
+        sys_trxn_cd,
+        sys_trxn_desc,
+        sys_trxn_type,
+        sys_gst_ind,
+        sys_fee_ind,
+        sys_loyalty_pts,
+        sys_mod_date,
+        sys_user_id,
+        sys_action_cd,
+        sys_db_cr_ind,
+        sys_voucher_ind,
+        sys_cash_ind,
+        sys_od_ind,
+        sys_offset_seq,
+        sys_penalty_seq,
+        sys_reg_ind,
+        sys_frq_method,
+        sys_pin_verify_ind,
+        sys_fee_waiver_rule,
+        sys_voucher_rule,
+        sys_next_trxn_code,
+        sys_next_interval,
+        sys_gl_trxn_code,
+        sys_card_plastic_ind,
+        sys_card_status_ind,
+        sys_report_id,
+        sys_procd_check_ind,
+        sys_dropdown_list,
+        sys_auth_ind,
+        sys_auth_amount,
+        checksum
+    </sql>
+
+    <sql id="cpTrxcdeBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysTrxnCd)">
+                    sys_trxn_cd = #{map.sysTrxnCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysTrxnDesc)">
+                    AND sys_trxn_desc = #{map.sysTrxnDesc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysTrxnType)">
+                    AND sys_trxn_type = #{map.sysTrxnType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysGstInd)">
+                    AND sys_gst_ind = #{map.sysGstInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysFeeInd)">
+                    AND sys_fee_ind = #{map.sysFeeInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysLoyaltyPts)">
+                    AND sys_loyalty_pts = #{map.sysLoyaltyPts}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysModDate)">
+                    AND sys_mod_date = #{map.sysModDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysUserId)">
+                    AND sys_user_id = #{map.sysUserId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysActionCd)">
+                    AND sys_action_cd = #{map.sysActionCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysDbCrInd)">
+                    AND sys_db_cr_ind = #{map.sysDbCrInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysVoucherInd)">
+                    AND sys_voucher_ind = #{map.sysVoucherInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysCashInd)">
+                    AND sys_cash_ind = #{map.sysCashInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysOdInd)">
+                    AND sys_od_ind = #{map.sysOdInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysOffsetSeq)">
+                    AND sys_offset_seq = #{map.sysOffsetSeq}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysPenaltySeq)">
+                    AND sys_penalty_seq = #{map.sysPenaltySeq}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysRegInd)">
+                    AND sys_reg_ind = #{map.sysRegInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysFrqMethod)">
+                    AND sys_frq_method = #{map.sysFrqMethod}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysPinVerifyInd)">
+                    AND sys_pin_verify_ind = #{map.sysPinVerifyInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysFeeWaiverRule)">
+                    AND sys_fee_waiver_rule = #{map.sysFeeWaiverRule}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysVoucherRule)">
+                    AND sys_voucher_rule = #{map.sysVoucherRule}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysNextTrxnCode)">
+                    AND sys_next_trxn_code = #{map.sysNextTrxnCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysNextInterval)">
+                    AND sys_next_interval = #{map.sysNextInterval}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysGlTrxnCode)">
+                    AND sys_gl_trxn_code = #{map.sysGlTrxnCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysCardPlasticInd)">
+                    AND sys_card_plastic_ind = #{map.sysCardPlasticInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysCardStatusInd)">
+                    AND sys_card_status_ind = #{map.sysCardStatusInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysReportId)">
+                    AND sys_report_id = #{map.sysReportId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysProcdCheckInd)">
+                    AND sys_procd_check_ind = #{map.sysProcdCheckInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysDropdownList)">
+                    AND sys_dropdown_list = #{map.sysDropdownList}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAuthInd)">
+                    AND sys_auth_ind = #{map.sysAuthInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAuthAmount)">
+                    AND sys_auth_amount = #{map.sysAuthAmount}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpTrxcde" parameterType="cn.happyworlds.imgmt.entity.CpTrxcde">
+        INSERT INTO cp_trxcde(
+        <include refid="cpTrxcdeBaseColumnSql"/>
+        )VALUES(
+            #{sysTrxnCd},
+            #{sysTrxnDesc},
+            #{sysTrxnType},
+            #{sysGstInd},
+            #{sysFeeInd},
+            #{sysLoyaltyPts},
+            #{sysModDate},
+            #{sysUserId},
+            #{sysActionCd},
+            #{sysDbCrInd},
+            #{sysVoucherInd},
+            #{sysCashInd},
+            #{sysOdInd},
+            #{sysOffsetSeq},
+            #{sysPenaltySeq},
+            #{sysRegInd},
+            #{sysFrqMethod},
+            #{sysPinVerifyInd},
+            #{sysFeeWaiverRule},
+            #{sysVoucherRule},
+            #{sysNextTrxnCode},
+            #{sysNextInterval},
+            #{sysGlTrxnCode},
+            #{sysCardPlasticInd},
+            #{sysCardStatusInd},
+            #{sysReportId},
+            #{sysProcdCheckInd},
+            #{sysDropdownList},
+            #{sysAuthInd},
+            #{sysAuthAmount},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpTrxcdeBySysTrxnCd" parameterType="String">
+        DELETE FROM cp_trxcde WHERE sys_trxn_cd = #{sysTrxnCd}
+    </delete>
+
+    <select id="deleteCpTrxcdeByParams" parameterType="map">
+        DELETE FROM cp_trxcde
+        <include refid="cpTrxcdeBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpTrxcde" parameterType="cn.happyworlds.imgmt.entity.CpTrxcde">
+        UPDATE cp_trxcde
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysTrxnDesc)">
+                sys_trxn_desc = #{sysTrxnDesc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysTrxnType)">
+                sys_trxn_type = #{sysTrxnType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysGstInd)">
+                sys_gst_ind = #{sysGstInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysFeeInd)">
+                sys_fee_ind = #{sysFeeInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysLoyaltyPts)">
+                sys_loyalty_pts = #{sysLoyaltyPts} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysModDate)">
+                sys_mod_date = #{sysModDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysUserId)">
+                sys_user_id = #{sysUserId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysActionCd)">
+                sys_action_cd = #{sysActionCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysDbCrInd)">
+                sys_db_cr_ind = #{sysDbCrInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysVoucherInd)">
+                sys_voucher_ind = #{sysVoucherInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysCashInd)">
+                sys_cash_ind = #{sysCashInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysOdInd)">
+                sys_od_ind = #{sysOdInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysOffsetSeq)">
+                sys_offset_seq = #{sysOffsetSeq} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysPenaltySeq)">
+                sys_penalty_seq = #{sysPenaltySeq} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysRegInd)">
+                sys_reg_ind = #{sysRegInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysFrqMethod)">
+                sys_frq_method = #{sysFrqMethod} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysPinVerifyInd)">
+                sys_pin_verify_ind = #{sysPinVerifyInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysFeeWaiverRule)">
+                sys_fee_waiver_rule = #{sysFeeWaiverRule} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysVoucherRule)">
+                sys_voucher_rule = #{sysVoucherRule} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysNextTrxnCode)">
+                sys_next_trxn_code = #{sysNextTrxnCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysNextInterval)">
+                sys_next_interval = #{sysNextInterval} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysGlTrxnCode)">
+                sys_gl_trxn_code = #{sysGlTrxnCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysCardPlasticInd)">
+                sys_card_plastic_ind = #{sysCardPlasticInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysCardStatusInd)">
+                sys_card_status_ind = #{sysCardStatusInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysReportId)">
+                sys_report_id = #{sysReportId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysProcdCheckInd)">
+                sys_procd_check_ind = #{sysProcdCheckInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysDropdownList)">
+                sys_dropdown_list = #{sysDropdownList} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysAuthInd)">
+                sys_auth_ind = #{sysAuthInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(sysAuthAmount)">
+                sys_auth_amount = #{sysAuthAmount} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE sys_trxn_cd = #{sysTrxnCd}
+    </update>
+
+    <update id="updateCpTrxcdeByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_trxcde
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysTrxnDesc)">
+                    sys_trxn_desc = #{map.sysTrxnDesc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysTrxnType)">
+                    sys_trxn_type = #{map.sysTrxnType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysGstInd)">
+                    sys_gst_ind = #{map.sysGstInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysFeeInd)">
+                    sys_fee_ind = #{map.sysFeeInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysLoyaltyPts)">
+                    sys_loyalty_pts = #{map.sysLoyaltyPts} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysModDate)">
+                    sys_mod_date = #{map.sysModDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysUserId)">
+                    sys_user_id = #{map.sysUserId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysActionCd)">
+                    sys_action_cd = #{map.sysActionCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysDbCrInd)">
+                    sys_db_cr_ind = #{map.sysDbCrInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysVoucherInd)">
+                    sys_voucher_ind = #{map.sysVoucherInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysCashInd)">
+                    sys_cash_ind = #{map.sysCashInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysOdInd)">
+                    sys_od_ind = #{map.sysOdInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysOffsetSeq)">
+                    sys_offset_seq = #{map.sysOffsetSeq} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysPenaltySeq)">
+                    sys_penalty_seq = #{map.sysPenaltySeq} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysRegInd)">
+                    sys_reg_ind = #{map.sysRegInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysFrqMethod)">
+                    sys_frq_method = #{map.sysFrqMethod} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysPinVerifyInd)">
+                    sys_pin_verify_ind = #{map.sysPinVerifyInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysFeeWaiverRule)">
+                    sys_fee_waiver_rule = #{map.sysFeeWaiverRule} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysVoucherRule)">
+                    sys_voucher_rule = #{map.sysVoucherRule} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysNextTrxnCode)">
+                    sys_next_trxn_code = #{map.sysNextTrxnCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysNextInterval)">
+                    sys_next_interval = #{map.sysNextInterval} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysGlTrxnCode)">
+                    sys_gl_trxn_code = #{map.sysGlTrxnCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysCardPlasticInd)">
+                    sys_card_plastic_ind = #{map.sysCardPlasticInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysCardStatusInd)">
+                    sys_card_status_ind = #{map.sysCardStatusInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysReportId)">
+                    sys_report_id = #{map.sysReportId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysProcdCheckInd)">
+                    sys_procd_check_ind = #{map.sysProcdCheckInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysDropdownList)">
+                    sys_dropdown_list = #{map.sysDropdownList} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAuthInd)">
+                    sys_auth_ind = #{map.sysAuthInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAuthAmount)">
+                    sys_auth_amount = #{map.sysAuthAmount} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysTrxnCdCondition)">
+                    sys_trxn_cd = #{map.sysTrxnCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysTrxnDescCondition)">
+                    AND sys_trxn_desc = #{map.sysTrxnDescCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysTrxnTypeCondition)">
+                    AND sys_trxn_type = #{map.sysTrxnTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysGstIndCondition)">
+                    AND sys_gst_ind = #{map.sysGstIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysFeeIndCondition)">
+                    AND sys_fee_ind = #{map.sysFeeIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysLoyaltyPtsCondition)">
+                    AND sys_loyalty_pts = #{map.sysLoyaltyPtsCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysModDateCondition)">
+                    AND sys_mod_date = #{map.sysModDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysUserIdCondition)">
+                    AND sys_user_id = #{map.sysUserIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysActionCdCondition)">
+                    AND sys_action_cd = #{map.sysActionCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysDbCrIndCondition)">
+                    AND sys_db_cr_ind = #{map.sysDbCrIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysVoucherIndCondition)">
+                    AND sys_voucher_ind = #{map.sysVoucherIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysCashIndCondition)">
+                    AND sys_cash_ind = #{map.sysCashIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysOdIndCondition)">
+                    AND sys_od_ind = #{map.sysOdIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysOffsetSeqCondition)">
+                    AND sys_offset_seq = #{map.sysOffsetSeqCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysPenaltySeqCondition)">
+                    AND sys_penalty_seq = #{map.sysPenaltySeqCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysRegIndCondition)">
+                    AND sys_reg_ind = #{map.sysRegIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysFrqMethodCondition)">
+                    AND sys_frq_method = #{map.sysFrqMethodCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysPinVerifyIndCondition)">
+                    AND sys_pin_verify_ind = #{map.sysPinVerifyIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysFeeWaiverRuleCondition)">
+                    AND sys_fee_waiver_rule = #{map.sysFeeWaiverRuleCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysVoucherRuleCondition)">
+                    AND sys_voucher_rule = #{map.sysVoucherRuleCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysNextTrxnCodeCondition)">
+                    AND sys_next_trxn_code = #{map.sysNextTrxnCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysNextIntervalCondition)">
+                    AND sys_next_interval = #{map.sysNextIntervalCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysGlTrxnCodeCondition)">
+                    AND sys_gl_trxn_code = #{map.sysGlTrxnCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysCardPlasticIndCondition)">
+                    AND sys_card_plastic_ind = #{map.sysCardPlasticIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysCardStatusIndCondition)">
+                    AND sys_card_status_ind = #{map.sysCardStatusIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysReportIdCondition)">
+                    AND sys_report_id = #{map.sysReportIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysProcdCheckIndCondition)">
+                    AND sys_procd_check_ind = #{map.sysProcdCheckIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysDropdownListCondition)">
+                    AND sys_dropdown_list = #{map.sysDropdownListCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAuthIndCondition)">
+                    AND sys_auth_ind = #{map.sysAuthIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysAuthAmountCondition)">
+                    AND sys_auth_amount = #{map.sysAuthAmountCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpTrxcdeBySysTrxnCd" parameterType="String" resultMap="cpTrxcdeMap">
+        SELECT
+        <include refid="cpTrxcdeBaseColumnSql"/>
+        FROM cp_trxcde
+        WHERE sys_trxn_cd = #{sysTrxnCd}
+    </select>
+
+    <select id="searchCpTrxcdeByParams" parameterType="map" resultMap="cpTrxcdeMap">
+        SELECT
+        <include refid="cpTrxcdeBaseColumnSql"/>
+        FROM cp_trxcde
+        <include refid="cpTrxcdeBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpTrxcde" id="cpTrxcdeMap">
+        <id column="sys_trxn_cd" property="sysTrxnCd"/>
+        <result column="sys_trxn_desc" property="sysTrxnDesc"/>
+        <result column="sys_trxn_type" property="sysTrxnType"/>
+        <result column="sys_gst_ind" property="sysGstInd"/>
+        <result column="sys_fee_ind" property="sysFeeInd"/>
+        <result column="sys_loyalty_pts" property="sysLoyaltyPts"/>
+        <result column="sys_mod_date" property="sysModDate"/>
+        <result column="sys_user_id" property="sysUserId"/>
+        <result column="sys_action_cd" property="sysActionCd"/>
+        <result column="sys_db_cr_ind" property="sysDbCrInd"/>
+        <result column="sys_voucher_ind" property="sysVoucherInd"/>
+        <result column="sys_cash_ind" property="sysCashInd"/>
+        <result column="sys_od_ind" property="sysOdInd"/>
+        <result column="sys_offset_seq" property="sysOffsetSeq"/>
+        <result column="sys_penalty_seq" property="sysPenaltySeq"/>
+        <result column="sys_reg_ind" property="sysRegInd"/>
+        <result column="sys_frq_method" property="sysFrqMethod"/>
+        <result column="sys_pin_verify_ind" property="sysPinVerifyInd"/>
+        <result column="sys_fee_waiver_rule" property="sysFeeWaiverRule"/>
+        <result column="sys_voucher_rule" property="sysVoucherRule"/>
+        <result column="sys_next_trxn_code" property="sysNextTrxnCode"/>
+        <result column="sys_next_interval" property="sysNextInterval"/>
+        <result column="sys_gl_trxn_code" property="sysGlTrxnCode"/>
+        <result column="sys_card_plastic_ind" property="sysCardPlasticInd"/>
+        <result column="sys_card_status_ind" property="sysCardStatusInd"/>
+        <result column="sys_report_id" property="sysReportId"/>
+        <result column="sys_procd_check_ind" property="sysProcdCheckInd"/>
+        <result column="sys_dropdown_list" property="sysDropdownList"/>
+        <result column="sys_auth_ind" property="sysAuthInd"/>
+        <result column="sys_auth_amount" property="sysAuthAmount"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

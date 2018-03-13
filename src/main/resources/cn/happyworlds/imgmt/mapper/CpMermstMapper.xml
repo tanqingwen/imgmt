@@ -1,0 +1,2574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpMermstMapper">
+
+    <sql id="cpMermstBaseColumnSql">
+        mm_merchant_no,
+        mm_microfilm_no,
+        mm_dba_name,
+        mm_biz_name,
+        mm_stmt_name,
+        mm_smell_name,
+        mm_phy_line1,
+        mm_phy_line2,
+        mm_phy_line3,
+        mm_phy_line4,
+        mm_phy_line5,
+        mm_phy_city,
+        mm_phy_state,
+        mm_phy_country,
+        mm_phy_postal_cd,
+        mm_phy_telno,
+        mm_mob_telno,
+        mm_fax_telno,
+        mm_contact_name,
+        mm_email_address,
+        mm_web_address,
+        mm_business_times,
+        mm_agreement_start_date,
+        mm_agreement_end_date,
+        mm_agreem_pre_subs_date,
+        mm_set_up_cd,
+        mm_set_up_date,
+        mm_sales_officer,
+        mm_vindicator_officer,
+        mm_cancel_type,
+        mm_cancel_reason,
+        mm_cancel_date,
+        mm_servicing_centre,
+        mm_accept_ind,
+        mm_person_id,
+        mm_contract_date,
+        mm_contract_tel_no,
+        mm_reg_name,
+        mm_reg_line1,
+        mm_reg_line2,
+        mm_reg_line3,
+        mm_reg_line4,
+        mm_reg_line5,
+        mm_reg_postal_cd,
+        mm_accept_crdtyp,
+        mm_bank_name,
+        mm_bank_accno,
+        mm_pay_bank_acc_type,
+        mm_pay_bank_code,
+        mm_pay_branch,
+        mm_fee_accno,
+        mm_stmt_ind,
+        mm_stmt_send_email,
+        mm_stmt_copy_email,
+        mm_central_pay,
+        mm_chain_accno,
+        mm_old_acc_number,
+        mm_pmt_mode,
+        mm_pmt_ftyp,
+        mm_pmt_freq,
+        mm_pmt_curr,
+        mm_pmt_name,
+        mm_corr_line1,
+        mm_corr_line2,
+        mm_corr_line3,
+        mm_corr_line4,
+        mm_corr_line5,
+        mm_corr_city,
+        mm_corr_state,
+        mm_corr_cntry_cd,
+        mm_corr_postal_cd,
+        mm_corr_telno,
+        mm_actual_cooperant_time,
+        mm_blank_merch_ind,
+        mm_year_turnover,
+        mm_bussiness_license,
+        mm_organi_code_number,
+        mm_license_expire_begin_date,
+        mm_license_expire_end_date,
+        mm_principal,
+        mm_principal_id_no,
+        mm_principal_address,
+        mm_reg_capital,
+        mm_gui_code,
+        mm_tax_number,
+        mm_risk_status,
+        mm_status_cd,
+        mm_pos_status_cd,
+        mm_tran_freq_cd,
+        mm_disc_code,
+        mm_fee_refund_ind,
+        mm_fl_limit_amt,
+        mm_prom_disc_code,
+        mm_prom_disc_start,
+        mm_prom_disc_end,
+        mm_next_disc_code,
+        mm_next_disc_end,
+        mm_disc_chg_ind,
+        mm_industry,
+        mm_vs_sic,
+        mm_mc_sic,
+        mm_ae_sic,
+        mm_di_sic,
+        mm_jcb_sic,
+        mm_cup_sic,
+        mm_lc_sic,
+        mm_pos_ind,
+        mm_cam_ind,
+        mm_gl_ind1,
+        mm_gl_ind2,
+        mm_gl_ind3,
+        mm_db_cr_ind,
+        mm_sales_area_cd,
+        mm_card_accept,
+        mm_no_imprinter,
+        mm_no_pos,
+        mm_service_fee_code,
+        mm_rebate_fee_code,
+        mm_mc_aid,
+        mm_vs_tirf,
+        mm_distributn_cd,
+        mm_vs_no_bulletn,
+        mm_mc_no_bulletn,
+        mm_ae_no_bulletn,
+        mm_di_no_bulletn,
+        mm_jcb_no_bulletn,
+        mm_cup_no_bulletn,
+        mm_lc_no_bulletn,
+        mm_caution_cd,
+        mm_merchant_size,
+        mm_hold_reason,
+        mm_outstd_bal,
+        mm_pending_bal,
+        mm_payment_freq_vm,
+        mm_mod_time,
+        mm_mod_user,
+        mm_auth_time,
+        mm_auth_user,
+        mm_mce_ind,
+        mm_local_acct,
+        mm_gui_type,
+        mm_gui_percentage,
+        mm_gui_gen_time,
+        mm_user_code1,
+        mm_user_code2,
+        mm_user_code3,
+        mm_biz_license,
+        mm_user_amt1,
+        mm_user_amt2,
+        mm_user_amt3,
+        mm_user_amt4,
+        mm_user_amt5,
+        mm_user_field1,
+        mm_user_field2,
+        mm_user_field3,
+        mm_user_field4,
+        mm_user_field5,
+        mm_user_field6,
+        mm_user_field7,
+        mm_user_field8,
+        mm_user_field9,
+        mm_user_field10,
+        mm_user_field11,
+        mm_next_settle_date,
+        mm_password,
+        checksum
+    </sql>
+
+    <sql id="cpMermstBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMerchantNo)">
+                    mm_merchant_no = #{map.mmMerchantNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMicrofilmNo)">
+                    AND mm_microfilm_no = #{map.mmMicrofilmNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDbaName)">
+                    AND mm_dba_name = #{map.mmDbaName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBizName)">
+                    AND mm_biz_name = #{map.mmBizName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmStmtName)">
+                    AND mm_stmt_name = #{map.mmStmtName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmSmellName)">
+                    AND mm_smell_name = #{map.mmSmellName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyLine1)">
+                    AND mm_phy_line1 = #{map.mmPhyLine1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyLine2)">
+                    AND mm_phy_line2 = #{map.mmPhyLine2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyLine3)">
+                    AND mm_phy_line3 = #{map.mmPhyLine3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyLine4)">
+                    AND mm_phy_line4 = #{map.mmPhyLine4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyLine5)">
+                    AND mm_phy_line5 = #{map.mmPhyLine5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyCity)">
+                    AND mm_phy_city = #{map.mmPhyCity}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyState)">
+                    AND mm_phy_state = #{map.mmPhyState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyCountry)">
+                    AND mm_phy_country = #{map.mmPhyCountry}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyPostalCd)">
+                    AND mm_phy_postal_cd = #{map.mmPhyPostalCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyTelno)">
+                    AND mm_phy_telno = #{map.mmPhyTelno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMobTelno)">
+                    AND mm_mob_telno = #{map.mmMobTelno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmFaxTelno)">
+                    AND mm_fax_telno = #{map.mmFaxTelno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmContactName)">
+                    AND mm_contact_name = #{map.mmContactName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmEmailAddress)">
+                    AND mm_email_address = #{map.mmEmailAddress}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmWebAddress)">
+                    AND mm_web_address = #{map.mmWebAddress}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBusinessTimes)">
+                    AND mm_business_times = #{map.mmBusinessTimes}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAgreementStartDate)">
+                    AND mm_agreement_start_date = #{map.mmAgreementStartDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAgreementEndDate)">
+                    AND mm_agreement_end_date = #{map.mmAgreementEndDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAgreemPreSubsDate)">
+                    AND mm_agreem_pre_subs_date = #{map.mmAgreemPreSubsDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmSetUpCd)">
+                    AND mm_set_up_cd = #{map.mmSetUpCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmSetUpDate)">
+                    AND mm_set_up_date = #{map.mmSetUpDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmSalesOfficer)">
+                    AND mm_sales_officer = #{map.mmSalesOfficer}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmVindicatorOfficer)">
+                    AND mm_vindicator_officer = #{map.mmVindicatorOfficer}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCancelType)">
+                    AND mm_cancel_type = #{map.mmCancelType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCancelReason)">
+                    AND mm_cancel_reason = #{map.mmCancelReason}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCancelDate)">
+                    AND mm_cancel_date = #{map.mmCancelDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmServicingCentre)">
+                    AND mm_servicing_centre = #{map.mmServicingCentre}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAcceptInd)">
+                    AND mm_accept_ind = #{map.mmAcceptInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPersonId)">
+                    AND mm_person_id = #{map.mmPersonId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmContractDate)">
+                    AND mm_contract_date = #{map.mmContractDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmContractTelNo)">
+                    AND mm_contract_tel_no = #{map.mmContractTelNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegName)">
+                    AND mm_reg_name = #{map.mmRegName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegLine1)">
+                    AND mm_reg_line1 = #{map.mmRegLine1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegLine2)">
+                    AND mm_reg_line2 = #{map.mmRegLine2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegLine3)">
+                    AND mm_reg_line3 = #{map.mmRegLine3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegLine4)">
+                    AND mm_reg_line4 = #{map.mmRegLine4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegLine5)">
+                    AND mm_reg_line5 = #{map.mmRegLine5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegPostalCd)">
+                    AND mm_reg_postal_cd = #{map.mmRegPostalCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAcceptCrdtyp)">
+                    AND mm_accept_crdtyp = #{map.mmAcceptCrdtyp}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBankName)">
+                    AND mm_bank_name = #{map.mmBankName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBankAccno)">
+                    AND mm_bank_accno = #{map.mmBankAccno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPayBankAccType)">
+                    AND mm_pay_bank_acc_type = #{map.mmPayBankAccType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPayBankCode)">
+                    AND mm_pay_bank_code = #{map.mmPayBankCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPayBranch)">
+                    AND mm_pay_branch = #{map.mmPayBranch}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmFeeAccno)">
+                    AND mm_fee_accno = #{map.mmFeeAccno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmStmtInd)">
+                    AND mm_stmt_ind = #{map.mmStmtInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmStmtSendEmail)">
+                    AND mm_stmt_send_email = #{map.mmStmtSendEmail}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmStmtCopyEmail)">
+                    AND mm_stmt_copy_email = #{map.mmStmtCopyEmail}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCentralPay)">
+                    AND mm_central_pay = #{map.mmCentralPay}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmChainAccno)">
+                    AND mm_chain_accno = #{map.mmChainAccno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmOldAccNumber)">
+                    AND mm_old_acc_number = #{map.mmOldAccNumber}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPmtMode)">
+                    AND mm_pmt_mode = #{map.mmPmtMode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPmtFtyp)">
+                    AND mm_pmt_ftyp = #{map.mmPmtFtyp}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPmtFreq)">
+                    AND mm_pmt_freq = #{map.mmPmtFreq}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPmtCurr)">
+                    AND mm_pmt_curr = #{map.mmPmtCurr}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPmtName)">
+                    AND mm_pmt_name = #{map.mmPmtName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrLine1)">
+                    AND mm_corr_line1 = #{map.mmCorrLine1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrLine2)">
+                    AND mm_corr_line2 = #{map.mmCorrLine2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrLine3)">
+                    AND mm_corr_line3 = #{map.mmCorrLine3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrLine4)">
+                    AND mm_corr_line4 = #{map.mmCorrLine4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrLine5)">
+                    AND mm_corr_line5 = #{map.mmCorrLine5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrCity)">
+                    AND mm_corr_city = #{map.mmCorrCity}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrState)">
+                    AND mm_corr_state = #{map.mmCorrState}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrCntryCd)">
+                    AND mm_corr_cntry_cd = #{map.mmCorrCntryCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrPostalCd)">
+                    AND mm_corr_postal_cd = #{map.mmCorrPostalCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrTelno)">
+                    AND mm_corr_telno = #{map.mmCorrTelno}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmActualCooperantTime)">
+                    AND mm_actual_cooperant_time = #{map.mmActualCooperantTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBlankMerchInd)">
+                    AND mm_blank_merch_ind = #{map.mmBlankMerchInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmYearTurnover)">
+                    AND mm_year_turnover = #{map.mmYearTurnover}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBussinessLicense)">
+                    AND mm_bussiness_license = #{map.mmBussinessLicense}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmOrganiCodeNumber)">
+                    AND mm_organi_code_number = #{map.mmOrganiCodeNumber}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmLicenseExpireBeginDate)">
+                    AND mm_license_expire_begin_date = #{map.mmLicenseExpireBeginDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmLicenseExpireEndDate)">
+                    AND mm_license_expire_end_date = #{map.mmLicenseExpireEndDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPrincipal)">
+                    AND mm_principal = #{map.mmPrincipal}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPrincipalIdNo)">
+                    AND mm_principal_id_no = #{map.mmPrincipalIdNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPrincipalAddress)">
+                    AND mm_principal_address = #{map.mmPrincipalAddress}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegCapital)">
+                    AND mm_reg_capital = #{map.mmRegCapital}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGuiCode)">
+                    AND mm_gui_code = #{map.mmGuiCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmTaxNumber)">
+                    AND mm_tax_number = #{map.mmTaxNumber}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRiskStatus)">
+                    AND mm_risk_status = #{map.mmRiskStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmStatusCd)">
+                    AND mm_status_cd = #{map.mmStatusCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPosStatusCd)">
+                    AND mm_pos_status_cd = #{map.mmPosStatusCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmTranFreqCd)">
+                    AND mm_tran_freq_cd = #{map.mmTranFreqCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDiscCode)">
+                    AND mm_disc_code = #{map.mmDiscCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmFeeRefundInd)">
+                    AND mm_fee_refund_ind = #{map.mmFeeRefundInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmFlLimitAmt)">
+                    AND mm_fl_limit_amt = #{map.mmFlLimitAmt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPromDiscCode)">
+                    AND mm_prom_disc_code = #{map.mmPromDiscCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPromDiscStart)">
+                    AND mm_prom_disc_start = #{map.mmPromDiscStart}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPromDiscEnd)">
+                    AND mm_prom_disc_end = #{map.mmPromDiscEnd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmNextDiscCode)">
+                    AND mm_next_disc_code = #{map.mmNextDiscCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmNextDiscEnd)">
+                    AND mm_next_disc_end = #{map.mmNextDiscEnd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDiscChgInd)">
+                    AND mm_disc_chg_ind = #{map.mmDiscChgInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmIndustry)">
+                    AND mm_industry = #{map.mmIndustry}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmVsSic)">
+                    AND mm_vs_sic = #{map.mmVsSic}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMcSic)">
+                    AND mm_mc_sic = #{map.mmMcSic}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAeSic)">
+                    AND mm_ae_sic = #{map.mmAeSic}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDiSic)">
+                    AND mm_di_sic = #{map.mmDiSic}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmJcbSic)">
+                    AND mm_jcb_sic = #{map.mmJcbSic}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCupSic)">
+                    AND mm_cup_sic = #{map.mmCupSic}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmLcSic)">
+                    AND mm_lc_sic = #{map.mmLcSic}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPosInd)">
+                    AND mm_pos_ind = #{map.mmPosInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCamInd)">
+                    AND mm_cam_ind = #{map.mmCamInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGlInd1)">
+                    AND mm_gl_ind1 = #{map.mmGlInd1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGlInd2)">
+                    AND mm_gl_ind2 = #{map.mmGlInd2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGlInd3)">
+                    AND mm_gl_ind3 = #{map.mmGlInd3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDbCrInd)">
+                    AND mm_db_cr_ind = #{map.mmDbCrInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmSalesAreaCd)">
+                    AND mm_sales_area_cd = #{map.mmSalesAreaCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCardAccept)">
+                    AND mm_card_accept = #{map.mmCardAccept}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmNoImprinter)">
+                    AND mm_no_imprinter = #{map.mmNoImprinter}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmNoPos)">
+                    AND mm_no_pos = #{map.mmNoPos}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmServiceFeeCode)">
+                    AND mm_service_fee_code = #{map.mmServiceFeeCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRebateFeeCode)">
+                    AND mm_rebate_fee_code = #{map.mmRebateFeeCode}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMcAid)">
+                    AND mm_mc_aid = #{map.mmMcAid}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmVsTirf)">
+                    AND mm_vs_tirf = #{map.mmVsTirf}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDistributnCd)">
+                    AND mm_distributn_cd = #{map.mmDistributnCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmVsNoBulletn)">
+                    AND mm_vs_no_bulletn = #{map.mmVsNoBulletn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMcNoBulletn)">
+                    AND mm_mc_no_bulletn = #{map.mmMcNoBulletn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAeNoBulletn)">
+                    AND mm_ae_no_bulletn = #{map.mmAeNoBulletn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDiNoBulletn)">
+                    AND mm_di_no_bulletn = #{map.mmDiNoBulletn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmJcbNoBulletn)">
+                    AND mm_jcb_no_bulletn = #{map.mmJcbNoBulletn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCupNoBulletn)">
+                    AND mm_cup_no_bulletn = #{map.mmCupNoBulletn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmLcNoBulletn)">
+                    AND mm_lc_no_bulletn = #{map.mmLcNoBulletn}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCautionCd)">
+                    AND mm_caution_cd = #{map.mmCautionCd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMerchantSize)">
+                    AND mm_merchant_size = #{map.mmMerchantSize}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmHoldReason)">
+                    AND mm_hold_reason = #{map.mmHoldReason}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmOutstdBal)">
+                    AND mm_outstd_bal = #{map.mmOutstdBal}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPendingBal)">
+                    AND mm_pending_bal = #{map.mmPendingBal}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPaymentFreqVm)">
+                    AND mm_payment_freq_vm = #{map.mmPaymentFreqVm}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmModTime)">
+                    AND mm_mod_time = #{map.mmModTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmModUser)">
+                    AND mm_mod_user = #{map.mmModUser}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAuthTime)">
+                    AND mm_auth_time = #{map.mmAuthTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAuthUser)">
+                    AND mm_auth_user = #{map.mmAuthUser}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMceInd)">
+                    AND mm_mce_ind = #{map.mmMceInd}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmLocalAcct)">
+                    AND mm_local_acct = #{map.mmLocalAcct}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGuiType)">
+                    AND mm_gui_type = #{map.mmGuiType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGuiPercentage)">
+                    AND mm_gui_percentage = #{map.mmGuiPercentage}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGuiGenTime)">
+                    AND mm_gui_gen_time = #{map.mmGuiGenTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserCode1)">
+                    AND mm_user_code1 = #{map.mmUserCode1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserCode2)">
+                    AND mm_user_code2 = #{map.mmUserCode2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserCode3)">
+                    AND mm_user_code3 = #{map.mmUserCode3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBizLicense)">
+                    AND mm_biz_license = #{map.mmBizLicense}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserAmt1)">
+                    AND mm_user_amt1 = #{map.mmUserAmt1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserAmt2)">
+                    AND mm_user_amt2 = #{map.mmUserAmt2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserAmt3)">
+                    AND mm_user_amt3 = #{map.mmUserAmt3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserAmt4)">
+                    AND mm_user_amt4 = #{map.mmUserAmt4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserAmt5)">
+                    AND mm_user_amt5 = #{map.mmUserAmt5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField1)">
+                    AND mm_user_field1 = #{map.mmUserField1}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField2)">
+                    AND mm_user_field2 = #{map.mmUserField2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField3)">
+                    AND mm_user_field3 = #{map.mmUserField3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField4)">
+                    AND mm_user_field4 = #{map.mmUserField4}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField5)">
+                    AND mm_user_field5 = #{map.mmUserField5}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField6)">
+                    AND mm_user_field6 = #{map.mmUserField6}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField7)">
+                    AND mm_user_field7 = #{map.mmUserField7}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField8)">
+                    AND mm_user_field8 = #{map.mmUserField8}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField9)">
+                    AND mm_user_field9 = #{map.mmUserField9}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField10)">
+                    AND mm_user_field10 = #{map.mmUserField10}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField11)">
+                    AND mm_user_field11 = #{map.mmUserField11}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmNextSettleDate)">
+                    AND mm_next_settle_date = #{map.mmNextSettleDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPassword)">
+                    AND mm_password = #{map.mmPassword}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpMermst" parameterType="cn.happyworlds.imgmt.entity.CpMermst">
+        INSERT INTO cp_mermst(
+        <include refid="cpMermstBaseColumnSql"/>
+        )VALUES(
+            #{mmMerchantNo},
+            #{mmMicrofilmNo},
+            #{mmDbaName},
+            #{mmBizName},
+            #{mmStmtName},
+            #{mmSmellName},
+            #{mmPhyLine1},
+            #{mmPhyLine2},
+            #{mmPhyLine3},
+            #{mmPhyLine4},
+            #{mmPhyLine5},
+            #{mmPhyCity},
+            #{mmPhyState},
+            #{mmPhyCountry},
+            #{mmPhyPostalCd},
+            #{mmPhyTelno},
+            #{mmMobTelno},
+            #{mmFaxTelno},
+            #{mmContactName},
+            #{mmEmailAddress},
+            #{mmWebAddress},
+            #{mmBusinessTimes},
+            #{mmAgreementStartDate},
+            #{mmAgreementEndDate},
+            #{mmAgreemPreSubsDate},
+            #{mmSetUpCd},
+            #{mmSetUpDate},
+            #{mmSalesOfficer},
+            #{mmVindicatorOfficer},
+            #{mmCancelType},
+            #{mmCancelReason},
+            #{mmCancelDate},
+            #{mmServicingCentre},
+            #{mmAcceptInd},
+            #{mmPersonId},
+            #{mmContractDate},
+            #{mmContractTelNo},
+            #{mmRegName},
+            #{mmRegLine1},
+            #{mmRegLine2},
+            #{mmRegLine3},
+            #{mmRegLine4},
+            #{mmRegLine5},
+            #{mmRegPostalCd},
+            #{mmAcceptCrdtyp},
+            #{mmBankName},
+            #{mmBankAccno},
+            #{mmPayBankAccType},
+            #{mmPayBankCode},
+            #{mmPayBranch},
+            #{mmFeeAccno},
+            #{mmStmtInd},
+            #{mmStmtSendEmail},
+            #{mmStmtCopyEmail},
+            #{mmCentralPay},
+            #{mmChainAccno},
+            #{mmOldAccNumber},
+            #{mmPmtMode},
+            #{mmPmtFtyp},
+            #{mmPmtFreq},
+            #{mmPmtCurr},
+            #{mmPmtName},
+            #{mmCorrLine1},
+            #{mmCorrLine2},
+            #{mmCorrLine3},
+            #{mmCorrLine4},
+            #{mmCorrLine5},
+            #{mmCorrCity},
+            #{mmCorrState},
+            #{mmCorrCntryCd},
+            #{mmCorrPostalCd},
+            #{mmCorrTelno},
+            #{mmActualCooperantTime},
+            #{mmBlankMerchInd},
+            #{mmYearTurnover},
+            #{mmBussinessLicense},
+            #{mmOrganiCodeNumber},
+            #{mmLicenseExpireBeginDate},
+            #{mmLicenseExpireEndDate},
+            #{mmPrincipal},
+            #{mmPrincipalIdNo},
+            #{mmPrincipalAddress},
+            #{mmRegCapital},
+            #{mmGuiCode},
+            #{mmTaxNumber},
+            #{mmRiskStatus},
+            #{mmStatusCd},
+            #{mmPosStatusCd},
+            #{mmTranFreqCd},
+            #{mmDiscCode},
+            #{mmFeeRefundInd},
+            #{mmFlLimitAmt},
+            #{mmPromDiscCode},
+            #{mmPromDiscStart},
+            #{mmPromDiscEnd},
+            #{mmNextDiscCode},
+            #{mmNextDiscEnd},
+            #{mmDiscChgInd},
+            #{mmIndustry},
+            #{mmVsSic},
+            #{mmMcSic},
+            #{mmAeSic},
+            #{mmDiSic},
+            #{mmJcbSic},
+            #{mmCupSic},
+            #{mmLcSic},
+            #{mmPosInd},
+            #{mmCamInd},
+            #{mmGlInd1},
+            #{mmGlInd2},
+            #{mmGlInd3},
+            #{mmDbCrInd},
+            #{mmSalesAreaCd},
+            #{mmCardAccept},
+            #{mmNoImprinter},
+            #{mmNoPos},
+            #{mmServiceFeeCode},
+            #{mmRebateFeeCode},
+            #{mmMcAid},
+            #{mmVsTirf},
+            #{mmDistributnCd},
+            #{mmVsNoBulletn},
+            #{mmMcNoBulletn},
+            #{mmAeNoBulletn},
+            #{mmDiNoBulletn},
+            #{mmJcbNoBulletn},
+            #{mmCupNoBulletn},
+            #{mmLcNoBulletn},
+            #{mmCautionCd},
+            #{mmMerchantSize},
+            #{mmHoldReason},
+            #{mmOutstdBal},
+            #{mmPendingBal},
+            #{mmPaymentFreqVm},
+            #{mmModTime},
+            #{mmModUser},
+            #{mmAuthTime},
+            #{mmAuthUser},
+            #{mmMceInd},
+            #{mmLocalAcct},
+            #{mmGuiType},
+            #{mmGuiPercentage},
+            #{mmGuiGenTime},
+            #{mmUserCode1},
+            #{mmUserCode2},
+            #{mmUserCode3},
+            #{mmBizLicense},
+            #{mmUserAmt1},
+            #{mmUserAmt2},
+            #{mmUserAmt3},
+            #{mmUserAmt4},
+            #{mmUserAmt5},
+            #{mmUserField1},
+            #{mmUserField2},
+            #{mmUserField3},
+            #{mmUserField4},
+            #{mmUserField5},
+            #{mmUserField6},
+            #{mmUserField7},
+            #{mmUserField8},
+            #{mmUserField9},
+            #{mmUserField10},
+            #{mmUserField11},
+            #{mmNextSettleDate},
+            #{mmPassword},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpMermstByMmMerchantNo" parameterType="String">
+        DELETE FROM cp_mermst WHERE mm_merchant_no = #{mmMerchantNo}
+    </delete>
+
+    <select id="deleteCpMermstByParams" parameterType="map">
+        DELETE FROM cp_mermst
+        <include refid="cpMermstBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpMermst" parameterType="cn.happyworlds.imgmt.entity.CpMermst">
+        UPDATE cp_mermst
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmMicrofilmNo)">
+                mm_microfilm_no = #{mmMicrofilmNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmDbaName)">
+                mm_dba_name = #{mmDbaName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmBizName)">
+                mm_biz_name = #{mmBizName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmStmtName)">
+                mm_stmt_name = #{mmStmtName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmSmellName)">
+                mm_smell_name = #{mmSmellName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPhyLine1)">
+                mm_phy_line1 = #{mmPhyLine1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPhyLine2)">
+                mm_phy_line2 = #{mmPhyLine2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPhyLine3)">
+                mm_phy_line3 = #{mmPhyLine3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPhyLine4)">
+                mm_phy_line4 = #{mmPhyLine4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPhyLine5)">
+                mm_phy_line5 = #{mmPhyLine5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPhyCity)">
+                mm_phy_city = #{mmPhyCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPhyState)">
+                mm_phy_state = #{mmPhyState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPhyCountry)">
+                mm_phy_country = #{mmPhyCountry} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPhyPostalCd)">
+                mm_phy_postal_cd = #{mmPhyPostalCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPhyTelno)">
+                mm_phy_telno = #{mmPhyTelno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmMobTelno)">
+                mm_mob_telno = #{mmMobTelno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmFaxTelno)">
+                mm_fax_telno = #{mmFaxTelno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmContactName)">
+                mm_contact_name = #{mmContactName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmEmailAddress)">
+                mm_email_address = #{mmEmailAddress} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmWebAddress)">
+                mm_web_address = #{mmWebAddress} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmBusinessTimes)">
+                mm_business_times = #{mmBusinessTimes} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmAgreementStartDate)">
+                mm_agreement_start_date = #{mmAgreementStartDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmAgreementEndDate)">
+                mm_agreement_end_date = #{mmAgreementEndDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmAgreemPreSubsDate)">
+                mm_agreem_pre_subs_date = #{mmAgreemPreSubsDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmSetUpCd)">
+                mm_set_up_cd = #{mmSetUpCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmSetUpDate)">
+                mm_set_up_date = #{mmSetUpDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmSalesOfficer)">
+                mm_sales_officer = #{mmSalesOfficer} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmVindicatorOfficer)">
+                mm_vindicator_officer = #{mmVindicatorOfficer} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCancelType)">
+                mm_cancel_type = #{mmCancelType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCancelReason)">
+                mm_cancel_reason = #{mmCancelReason} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCancelDate)">
+                mm_cancel_date = #{mmCancelDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmServicingCentre)">
+                mm_servicing_centre = #{mmServicingCentre} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmAcceptInd)">
+                mm_accept_ind = #{mmAcceptInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPersonId)">
+                mm_person_id = #{mmPersonId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmContractDate)">
+                mm_contract_date = #{mmContractDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmContractTelNo)">
+                mm_contract_tel_no = #{mmContractTelNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmRegName)">
+                mm_reg_name = #{mmRegName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmRegLine1)">
+                mm_reg_line1 = #{mmRegLine1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmRegLine2)">
+                mm_reg_line2 = #{mmRegLine2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmRegLine3)">
+                mm_reg_line3 = #{mmRegLine3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmRegLine4)">
+                mm_reg_line4 = #{mmRegLine4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmRegLine5)">
+                mm_reg_line5 = #{mmRegLine5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmRegPostalCd)">
+                mm_reg_postal_cd = #{mmRegPostalCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmAcceptCrdtyp)">
+                mm_accept_crdtyp = #{mmAcceptCrdtyp} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmBankName)">
+                mm_bank_name = #{mmBankName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmBankAccno)">
+                mm_bank_accno = #{mmBankAccno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPayBankAccType)">
+                mm_pay_bank_acc_type = #{mmPayBankAccType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPayBankCode)">
+                mm_pay_bank_code = #{mmPayBankCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPayBranch)">
+                mm_pay_branch = #{mmPayBranch} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmFeeAccno)">
+                mm_fee_accno = #{mmFeeAccno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmStmtInd)">
+                mm_stmt_ind = #{mmStmtInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmStmtSendEmail)">
+                mm_stmt_send_email = #{mmStmtSendEmail} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmStmtCopyEmail)">
+                mm_stmt_copy_email = #{mmStmtCopyEmail} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCentralPay)">
+                mm_central_pay = #{mmCentralPay} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmChainAccno)">
+                mm_chain_accno = #{mmChainAccno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmOldAccNumber)">
+                mm_old_acc_number = #{mmOldAccNumber} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPmtMode)">
+                mm_pmt_mode = #{mmPmtMode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPmtFtyp)">
+                mm_pmt_ftyp = #{mmPmtFtyp} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPmtFreq)">
+                mm_pmt_freq = #{mmPmtFreq} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPmtCurr)">
+                mm_pmt_curr = #{mmPmtCurr} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPmtName)">
+                mm_pmt_name = #{mmPmtName} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCorrLine1)">
+                mm_corr_line1 = #{mmCorrLine1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCorrLine2)">
+                mm_corr_line2 = #{mmCorrLine2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCorrLine3)">
+                mm_corr_line3 = #{mmCorrLine3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCorrLine4)">
+                mm_corr_line4 = #{mmCorrLine4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCorrLine5)">
+                mm_corr_line5 = #{mmCorrLine5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCorrCity)">
+                mm_corr_city = #{mmCorrCity} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCorrState)">
+                mm_corr_state = #{mmCorrState} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCorrCntryCd)">
+                mm_corr_cntry_cd = #{mmCorrCntryCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCorrPostalCd)">
+                mm_corr_postal_cd = #{mmCorrPostalCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCorrTelno)">
+                mm_corr_telno = #{mmCorrTelno} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmActualCooperantTime)">
+                mm_actual_cooperant_time = #{mmActualCooperantTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmBlankMerchInd)">
+                mm_blank_merch_ind = #{mmBlankMerchInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmYearTurnover)">
+                mm_year_turnover = #{mmYearTurnover} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmBussinessLicense)">
+                mm_bussiness_license = #{mmBussinessLicense} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmOrganiCodeNumber)">
+                mm_organi_code_number = #{mmOrganiCodeNumber} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmLicenseExpireBeginDate)">
+                mm_license_expire_begin_date = #{mmLicenseExpireBeginDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmLicenseExpireEndDate)">
+                mm_license_expire_end_date = #{mmLicenseExpireEndDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPrincipal)">
+                mm_principal = #{mmPrincipal} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPrincipalIdNo)">
+                mm_principal_id_no = #{mmPrincipalIdNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPrincipalAddress)">
+                mm_principal_address = #{mmPrincipalAddress} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmRegCapital)">
+                mm_reg_capital = #{mmRegCapital} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmGuiCode)">
+                mm_gui_code = #{mmGuiCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmTaxNumber)">
+                mm_tax_number = #{mmTaxNumber} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmRiskStatus)">
+                mm_risk_status = #{mmRiskStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmStatusCd)">
+                mm_status_cd = #{mmStatusCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPosStatusCd)">
+                mm_pos_status_cd = #{mmPosStatusCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmTranFreqCd)">
+                mm_tran_freq_cd = #{mmTranFreqCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmDiscCode)">
+                mm_disc_code = #{mmDiscCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmFeeRefundInd)">
+                mm_fee_refund_ind = #{mmFeeRefundInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmFlLimitAmt)">
+                mm_fl_limit_amt = #{mmFlLimitAmt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPromDiscCode)">
+                mm_prom_disc_code = #{mmPromDiscCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPromDiscStart)">
+                mm_prom_disc_start = #{mmPromDiscStart} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPromDiscEnd)">
+                mm_prom_disc_end = #{mmPromDiscEnd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmNextDiscCode)">
+                mm_next_disc_code = #{mmNextDiscCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmNextDiscEnd)">
+                mm_next_disc_end = #{mmNextDiscEnd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmDiscChgInd)">
+                mm_disc_chg_ind = #{mmDiscChgInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmIndustry)">
+                mm_industry = #{mmIndustry} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmVsSic)">
+                mm_vs_sic = #{mmVsSic} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmMcSic)">
+                mm_mc_sic = #{mmMcSic} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmAeSic)">
+                mm_ae_sic = #{mmAeSic} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmDiSic)">
+                mm_di_sic = #{mmDiSic} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmJcbSic)">
+                mm_jcb_sic = #{mmJcbSic} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCupSic)">
+                mm_cup_sic = #{mmCupSic} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmLcSic)">
+                mm_lc_sic = #{mmLcSic} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPosInd)">
+                mm_pos_ind = #{mmPosInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCamInd)">
+                mm_cam_ind = #{mmCamInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmGlInd1)">
+                mm_gl_ind1 = #{mmGlInd1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmGlInd2)">
+                mm_gl_ind2 = #{mmGlInd2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmGlInd3)">
+                mm_gl_ind3 = #{mmGlInd3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmDbCrInd)">
+                mm_db_cr_ind = #{mmDbCrInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmSalesAreaCd)">
+                mm_sales_area_cd = #{mmSalesAreaCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCardAccept)">
+                mm_card_accept = #{mmCardAccept} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmNoImprinter)">
+                mm_no_imprinter = #{mmNoImprinter} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmNoPos)">
+                mm_no_pos = #{mmNoPos} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmServiceFeeCode)">
+                mm_service_fee_code = #{mmServiceFeeCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmRebateFeeCode)">
+                mm_rebate_fee_code = #{mmRebateFeeCode} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmMcAid)">
+                mm_mc_aid = #{mmMcAid} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmVsTirf)">
+                mm_vs_tirf = #{mmVsTirf} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmDistributnCd)">
+                mm_distributn_cd = #{mmDistributnCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmVsNoBulletn)">
+                mm_vs_no_bulletn = #{mmVsNoBulletn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmMcNoBulletn)">
+                mm_mc_no_bulletn = #{mmMcNoBulletn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmAeNoBulletn)">
+                mm_ae_no_bulletn = #{mmAeNoBulletn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmDiNoBulletn)">
+                mm_di_no_bulletn = #{mmDiNoBulletn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmJcbNoBulletn)">
+                mm_jcb_no_bulletn = #{mmJcbNoBulletn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCupNoBulletn)">
+                mm_cup_no_bulletn = #{mmCupNoBulletn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmLcNoBulletn)">
+                mm_lc_no_bulletn = #{mmLcNoBulletn} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmCautionCd)">
+                mm_caution_cd = #{mmCautionCd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmMerchantSize)">
+                mm_merchant_size = #{mmMerchantSize} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmHoldReason)">
+                mm_hold_reason = #{mmHoldReason} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmOutstdBal)">
+                mm_outstd_bal = #{mmOutstdBal} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPendingBal)">
+                mm_pending_bal = #{mmPendingBal} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPaymentFreqVm)">
+                mm_payment_freq_vm = #{mmPaymentFreqVm} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmModTime)">
+                mm_mod_time = #{mmModTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmModUser)">
+                mm_mod_user = #{mmModUser} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmAuthTime)">
+                mm_auth_time = #{mmAuthTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmAuthUser)">
+                mm_auth_user = #{mmAuthUser} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmMceInd)">
+                mm_mce_ind = #{mmMceInd} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmLocalAcct)">
+                mm_local_acct = #{mmLocalAcct} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmGuiType)">
+                mm_gui_type = #{mmGuiType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmGuiPercentage)">
+                mm_gui_percentage = #{mmGuiPercentage} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmGuiGenTime)">
+                mm_gui_gen_time = #{mmGuiGenTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserCode1)">
+                mm_user_code1 = #{mmUserCode1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserCode2)">
+                mm_user_code2 = #{mmUserCode2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserCode3)">
+                mm_user_code3 = #{mmUserCode3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmBizLicense)">
+                mm_biz_license = #{mmBizLicense} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserAmt1)">
+                mm_user_amt1 = #{mmUserAmt1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserAmt2)">
+                mm_user_amt2 = #{mmUserAmt2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserAmt3)">
+                mm_user_amt3 = #{mmUserAmt3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserAmt4)">
+                mm_user_amt4 = #{mmUserAmt4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserAmt5)">
+                mm_user_amt5 = #{mmUserAmt5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserField1)">
+                mm_user_field1 = #{mmUserField1} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserField2)">
+                mm_user_field2 = #{mmUserField2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserField3)">
+                mm_user_field3 = #{mmUserField3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserField4)">
+                mm_user_field4 = #{mmUserField4} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserField5)">
+                mm_user_field5 = #{mmUserField5} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserField6)">
+                mm_user_field6 = #{mmUserField6} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserField7)">
+                mm_user_field7 = #{mmUserField7} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserField8)">
+                mm_user_field8 = #{mmUserField8} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserField9)">
+                mm_user_field9 = #{mmUserField9} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserField10)">
+                mm_user_field10 = #{mmUserField10} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmUserField11)">
+                mm_user_field11 = #{mmUserField11} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmNextSettleDate)">
+                mm_next_settle_date = #{mmNextSettleDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(mmPassword)">
+                mm_password = #{mmPassword} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE mm_merchant_no = #{mmMerchantNo}
+    </update>
+
+    <update id="updateCpMermstByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_mermst
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMicrofilmNo)">
+                    mm_microfilm_no = #{map.mmMicrofilmNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDbaName)">
+                    mm_dba_name = #{map.mmDbaName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBizName)">
+                    mm_biz_name = #{map.mmBizName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmStmtName)">
+                    mm_stmt_name = #{map.mmStmtName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmSmellName)">
+                    mm_smell_name = #{map.mmSmellName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyLine1)">
+                    mm_phy_line1 = #{map.mmPhyLine1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyLine2)">
+                    mm_phy_line2 = #{map.mmPhyLine2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyLine3)">
+                    mm_phy_line3 = #{map.mmPhyLine3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyLine4)">
+                    mm_phy_line4 = #{map.mmPhyLine4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyLine5)">
+                    mm_phy_line5 = #{map.mmPhyLine5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyCity)">
+                    mm_phy_city = #{map.mmPhyCity} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyState)">
+                    mm_phy_state = #{map.mmPhyState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyCountry)">
+                    mm_phy_country = #{map.mmPhyCountry} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyPostalCd)">
+                    mm_phy_postal_cd = #{map.mmPhyPostalCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyTelno)">
+                    mm_phy_telno = #{map.mmPhyTelno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMobTelno)">
+                    mm_mob_telno = #{map.mmMobTelno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmFaxTelno)">
+                    mm_fax_telno = #{map.mmFaxTelno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmContactName)">
+                    mm_contact_name = #{map.mmContactName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmEmailAddress)">
+                    mm_email_address = #{map.mmEmailAddress} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmWebAddress)">
+                    mm_web_address = #{map.mmWebAddress} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBusinessTimes)">
+                    mm_business_times = #{map.mmBusinessTimes} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAgreementStartDate)">
+                    mm_agreement_start_date = #{map.mmAgreementStartDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAgreementEndDate)">
+                    mm_agreement_end_date = #{map.mmAgreementEndDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAgreemPreSubsDate)">
+                    mm_agreem_pre_subs_date = #{map.mmAgreemPreSubsDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmSetUpCd)">
+                    mm_set_up_cd = #{map.mmSetUpCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmSetUpDate)">
+                    mm_set_up_date = #{map.mmSetUpDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmSalesOfficer)">
+                    mm_sales_officer = #{map.mmSalesOfficer} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmVindicatorOfficer)">
+                    mm_vindicator_officer = #{map.mmVindicatorOfficer} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCancelType)">
+                    mm_cancel_type = #{map.mmCancelType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCancelReason)">
+                    mm_cancel_reason = #{map.mmCancelReason} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCancelDate)">
+                    mm_cancel_date = #{map.mmCancelDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmServicingCentre)">
+                    mm_servicing_centre = #{map.mmServicingCentre} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAcceptInd)">
+                    mm_accept_ind = #{map.mmAcceptInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPersonId)">
+                    mm_person_id = #{map.mmPersonId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmContractDate)">
+                    mm_contract_date = #{map.mmContractDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmContractTelNo)">
+                    mm_contract_tel_no = #{map.mmContractTelNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegName)">
+                    mm_reg_name = #{map.mmRegName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegLine1)">
+                    mm_reg_line1 = #{map.mmRegLine1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegLine2)">
+                    mm_reg_line2 = #{map.mmRegLine2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegLine3)">
+                    mm_reg_line3 = #{map.mmRegLine3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegLine4)">
+                    mm_reg_line4 = #{map.mmRegLine4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegLine5)">
+                    mm_reg_line5 = #{map.mmRegLine5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegPostalCd)">
+                    mm_reg_postal_cd = #{map.mmRegPostalCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAcceptCrdtyp)">
+                    mm_accept_crdtyp = #{map.mmAcceptCrdtyp} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBankName)">
+                    mm_bank_name = #{map.mmBankName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBankAccno)">
+                    mm_bank_accno = #{map.mmBankAccno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPayBankAccType)">
+                    mm_pay_bank_acc_type = #{map.mmPayBankAccType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPayBankCode)">
+                    mm_pay_bank_code = #{map.mmPayBankCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPayBranch)">
+                    mm_pay_branch = #{map.mmPayBranch} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmFeeAccno)">
+                    mm_fee_accno = #{map.mmFeeAccno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmStmtInd)">
+                    mm_stmt_ind = #{map.mmStmtInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmStmtSendEmail)">
+                    mm_stmt_send_email = #{map.mmStmtSendEmail} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmStmtCopyEmail)">
+                    mm_stmt_copy_email = #{map.mmStmtCopyEmail} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCentralPay)">
+                    mm_central_pay = #{map.mmCentralPay} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmChainAccno)">
+                    mm_chain_accno = #{map.mmChainAccno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmOldAccNumber)">
+                    mm_old_acc_number = #{map.mmOldAccNumber} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPmtMode)">
+                    mm_pmt_mode = #{map.mmPmtMode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPmtFtyp)">
+                    mm_pmt_ftyp = #{map.mmPmtFtyp} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPmtFreq)">
+                    mm_pmt_freq = #{map.mmPmtFreq} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPmtCurr)">
+                    mm_pmt_curr = #{map.mmPmtCurr} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPmtName)">
+                    mm_pmt_name = #{map.mmPmtName} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrLine1)">
+                    mm_corr_line1 = #{map.mmCorrLine1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrLine2)">
+                    mm_corr_line2 = #{map.mmCorrLine2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrLine3)">
+                    mm_corr_line3 = #{map.mmCorrLine3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrLine4)">
+                    mm_corr_line4 = #{map.mmCorrLine4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrLine5)">
+                    mm_corr_line5 = #{map.mmCorrLine5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrCity)">
+                    mm_corr_city = #{map.mmCorrCity} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrState)">
+                    mm_corr_state = #{map.mmCorrState} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrCntryCd)">
+                    mm_corr_cntry_cd = #{map.mmCorrCntryCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrPostalCd)">
+                    mm_corr_postal_cd = #{map.mmCorrPostalCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrTelno)">
+                    mm_corr_telno = #{map.mmCorrTelno} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmActualCooperantTime)">
+                    mm_actual_cooperant_time = #{map.mmActualCooperantTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBlankMerchInd)">
+                    mm_blank_merch_ind = #{map.mmBlankMerchInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmYearTurnover)">
+                    mm_year_turnover = #{map.mmYearTurnover} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBussinessLicense)">
+                    mm_bussiness_license = #{map.mmBussinessLicense} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmOrganiCodeNumber)">
+                    mm_organi_code_number = #{map.mmOrganiCodeNumber} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmLicenseExpireBeginDate)">
+                    mm_license_expire_begin_date = #{map.mmLicenseExpireBeginDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmLicenseExpireEndDate)">
+                    mm_license_expire_end_date = #{map.mmLicenseExpireEndDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPrincipal)">
+                    mm_principal = #{map.mmPrincipal} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPrincipalIdNo)">
+                    mm_principal_id_no = #{map.mmPrincipalIdNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPrincipalAddress)">
+                    mm_principal_address = #{map.mmPrincipalAddress} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegCapital)">
+                    mm_reg_capital = #{map.mmRegCapital} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGuiCode)">
+                    mm_gui_code = #{map.mmGuiCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmTaxNumber)">
+                    mm_tax_number = #{map.mmTaxNumber} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRiskStatus)">
+                    mm_risk_status = #{map.mmRiskStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmStatusCd)">
+                    mm_status_cd = #{map.mmStatusCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPosStatusCd)">
+                    mm_pos_status_cd = #{map.mmPosStatusCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmTranFreqCd)">
+                    mm_tran_freq_cd = #{map.mmTranFreqCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDiscCode)">
+                    mm_disc_code = #{map.mmDiscCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmFeeRefundInd)">
+                    mm_fee_refund_ind = #{map.mmFeeRefundInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmFlLimitAmt)">
+                    mm_fl_limit_amt = #{map.mmFlLimitAmt} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPromDiscCode)">
+                    mm_prom_disc_code = #{map.mmPromDiscCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPromDiscStart)">
+                    mm_prom_disc_start = #{map.mmPromDiscStart} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPromDiscEnd)">
+                    mm_prom_disc_end = #{map.mmPromDiscEnd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmNextDiscCode)">
+                    mm_next_disc_code = #{map.mmNextDiscCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmNextDiscEnd)">
+                    mm_next_disc_end = #{map.mmNextDiscEnd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDiscChgInd)">
+                    mm_disc_chg_ind = #{map.mmDiscChgInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmIndustry)">
+                    mm_industry = #{map.mmIndustry} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmVsSic)">
+                    mm_vs_sic = #{map.mmVsSic} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMcSic)">
+                    mm_mc_sic = #{map.mmMcSic} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAeSic)">
+                    mm_ae_sic = #{map.mmAeSic} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDiSic)">
+                    mm_di_sic = #{map.mmDiSic} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmJcbSic)">
+                    mm_jcb_sic = #{map.mmJcbSic} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCupSic)">
+                    mm_cup_sic = #{map.mmCupSic} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmLcSic)">
+                    mm_lc_sic = #{map.mmLcSic} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPosInd)">
+                    mm_pos_ind = #{map.mmPosInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCamInd)">
+                    mm_cam_ind = #{map.mmCamInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGlInd1)">
+                    mm_gl_ind1 = #{map.mmGlInd1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGlInd2)">
+                    mm_gl_ind2 = #{map.mmGlInd2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGlInd3)">
+                    mm_gl_ind3 = #{map.mmGlInd3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDbCrInd)">
+                    mm_db_cr_ind = #{map.mmDbCrInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmSalesAreaCd)">
+                    mm_sales_area_cd = #{map.mmSalesAreaCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCardAccept)">
+                    mm_card_accept = #{map.mmCardAccept} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmNoImprinter)">
+                    mm_no_imprinter = #{map.mmNoImprinter} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmNoPos)">
+                    mm_no_pos = #{map.mmNoPos} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmServiceFeeCode)">
+                    mm_service_fee_code = #{map.mmServiceFeeCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRebateFeeCode)">
+                    mm_rebate_fee_code = #{map.mmRebateFeeCode} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMcAid)">
+                    mm_mc_aid = #{map.mmMcAid} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmVsTirf)">
+                    mm_vs_tirf = #{map.mmVsTirf} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDistributnCd)">
+                    mm_distributn_cd = #{map.mmDistributnCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmVsNoBulletn)">
+                    mm_vs_no_bulletn = #{map.mmVsNoBulletn} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMcNoBulletn)">
+                    mm_mc_no_bulletn = #{map.mmMcNoBulletn} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAeNoBulletn)">
+                    mm_ae_no_bulletn = #{map.mmAeNoBulletn} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDiNoBulletn)">
+                    mm_di_no_bulletn = #{map.mmDiNoBulletn} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmJcbNoBulletn)">
+                    mm_jcb_no_bulletn = #{map.mmJcbNoBulletn} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCupNoBulletn)">
+                    mm_cup_no_bulletn = #{map.mmCupNoBulletn} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmLcNoBulletn)">
+                    mm_lc_no_bulletn = #{map.mmLcNoBulletn} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCautionCd)">
+                    mm_caution_cd = #{map.mmCautionCd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMerchantSize)">
+                    mm_merchant_size = #{map.mmMerchantSize} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmHoldReason)">
+                    mm_hold_reason = #{map.mmHoldReason} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmOutstdBal)">
+                    mm_outstd_bal = #{map.mmOutstdBal} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPendingBal)">
+                    mm_pending_bal = #{map.mmPendingBal} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPaymentFreqVm)">
+                    mm_payment_freq_vm = #{map.mmPaymentFreqVm} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmModTime)">
+                    mm_mod_time = #{map.mmModTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmModUser)">
+                    mm_mod_user = #{map.mmModUser} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAuthTime)">
+                    mm_auth_time = #{map.mmAuthTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAuthUser)">
+                    mm_auth_user = #{map.mmAuthUser} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMceInd)">
+                    mm_mce_ind = #{map.mmMceInd} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmLocalAcct)">
+                    mm_local_acct = #{map.mmLocalAcct} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGuiType)">
+                    mm_gui_type = #{map.mmGuiType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGuiPercentage)">
+                    mm_gui_percentage = #{map.mmGuiPercentage} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGuiGenTime)">
+                    mm_gui_gen_time = #{map.mmGuiGenTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserCode1)">
+                    mm_user_code1 = #{map.mmUserCode1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserCode2)">
+                    mm_user_code2 = #{map.mmUserCode2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserCode3)">
+                    mm_user_code3 = #{map.mmUserCode3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBizLicense)">
+                    mm_biz_license = #{map.mmBizLicense} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserAmt1)">
+                    mm_user_amt1 = #{map.mmUserAmt1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserAmt2)">
+                    mm_user_amt2 = #{map.mmUserAmt2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserAmt3)">
+                    mm_user_amt3 = #{map.mmUserAmt3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserAmt4)">
+                    mm_user_amt4 = #{map.mmUserAmt4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserAmt5)">
+                    mm_user_amt5 = #{map.mmUserAmt5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField1)">
+                    mm_user_field1 = #{map.mmUserField1} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField2)">
+                    mm_user_field2 = #{map.mmUserField2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField3)">
+                    mm_user_field3 = #{map.mmUserField3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField4)">
+                    mm_user_field4 = #{map.mmUserField4} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField5)">
+                    mm_user_field5 = #{map.mmUserField5} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField6)">
+                    mm_user_field6 = #{map.mmUserField6} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField7)">
+                    mm_user_field7 = #{map.mmUserField7} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField8)">
+                    mm_user_field8 = #{map.mmUserField8} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField9)">
+                    mm_user_field9 = #{map.mmUserField9} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField10)">
+                    mm_user_field10 = #{map.mmUserField10} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField11)">
+                    mm_user_field11 = #{map.mmUserField11} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmNextSettleDate)">
+                    mm_next_settle_date = #{map.mmNextSettleDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPassword)">
+                    mm_password = #{map.mmPassword} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMerchantNoCondition)">
+                    mm_merchant_no = #{map.mmMerchantNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMicrofilmNoCondition)">
+                    AND mm_microfilm_no = #{map.mmMicrofilmNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDbaNameCondition)">
+                    AND mm_dba_name = #{map.mmDbaNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBizNameCondition)">
+                    AND mm_biz_name = #{map.mmBizNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmStmtNameCondition)">
+                    AND mm_stmt_name = #{map.mmStmtNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmSmellNameCondition)">
+                    AND mm_smell_name = #{map.mmSmellNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyLine1Condition)">
+                    AND mm_phy_line1 = #{map.mmPhyLine1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyLine2Condition)">
+                    AND mm_phy_line2 = #{map.mmPhyLine2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyLine3Condition)">
+                    AND mm_phy_line3 = #{map.mmPhyLine3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyLine4Condition)">
+                    AND mm_phy_line4 = #{map.mmPhyLine4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyLine5Condition)">
+                    AND mm_phy_line5 = #{map.mmPhyLine5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyCityCondition)">
+                    AND mm_phy_city = #{map.mmPhyCityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyStateCondition)">
+                    AND mm_phy_state = #{map.mmPhyStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyCountryCondition)">
+                    AND mm_phy_country = #{map.mmPhyCountryCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyPostalCdCondition)">
+                    AND mm_phy_postal_cd = #{map.mmPhyPostalCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPhyTelnoCondition)">
+                    AND mm_phy_telno = #{map.mmPhyTelnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMobTelnoCondition)">
+                    AND mm_mob_telno = #{map.mmMobTelnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmFaxTelnoCondition)">
+                    AND mm_fax_telno = #{map.mmFaxTelnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmContactNameCondition)">
+                    AND mm_contact_name = #{map.mmContactNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmEmailAddressCondition)">
+                    AND mm_email_address = #{map.mmEmailAddressCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmWebAddressCondition)">
+                    AND mm_web_address = #{map.mmWebAddressCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBusinessTimesCondition)">
+                    AND mm_business_times = #{map.mmBusinessTimesCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAgreementStartDateCondition)">
+                    AND mm_agreement_start_date = #{map.mmAgreementStartDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAgreementEndDateCondition)">
+                    AND mm_agreement_end_date = #{map.mmAgreementEndDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAgreemPreSubsDateCondition)">
+                    AND mm_agreem_pre_subs_date = #{map.mmAgreemPreSubsDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmSetUpCdCondition)">
+                    AND mm_set_up_cd = #{map.mmSetUpCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmSetUpDateCondition)">
+                    AND mm_set_up_date = #{map.mmSetUpDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmSalesOfficerCondition)">
+                    AND mm_sales_officer = #{map.mmSalesOfficerCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmVindicatorOfficerCondition)">
+                    AND mm_vindicator_officer = #{map.mmVindicatorOfficerCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCancelTypeCondition)">
+                    AND mm_cancel_type = #{map.mmCancelTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCancelReasonCondition)">
+                    AND mm_cancel_reason = #{map.mmCancelReasonCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCancelDateCondition)">
+                    AND mm_cancel_date = #{map.mmCancelDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmServicingCentreCondition)">
+                    AND mm_servicing_centre = #{map.mmServicingCentreCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAcceptIndCondition)">
+                    AND mm_accept_ind = #{map.mmAcceptIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPersonIdCondition)">
+                    AND mm_person_id = #{map.mmPersonIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmContractDateCondition)">
+                    AND mm_contract_date = #{map.mmContractDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmContractTelNoCondition)">
+                    AND mm_contract_tel_no = #{map.mmContractTelNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegNameCondition)">
+                    AND mm_reg_name = #{map.mmRegNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegLine1Condition)">
+                    AND mm_reg_line1 = #{map.mmRegLine1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegLine2Condition)">
+                    AND mm_reg_line2 = #{map.mmRegLine2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegLine3Condition)">
+                    AND mm_reg_line3 = #{map.mmRegLine3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegLine4Condition)">
+                    AND mm_reg_line4 = #{map.mmRegLine4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegLine5Condition)">
+                    AND mm_reg_line5 = #{map.mmRegLine5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegPostalCdCondition)">
+                    AND mm_reg_postal_cd = #{map.mmRegPostalCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAcceptCrdtypCondition)">
+                    AND mm_accept_crdtyp = #{map.mmAcceptCrdtypCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBankNameCondition)">
+                    AND mm_bank_name = #{map.mmBankNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBankAccnoCondition)">
+                    AND mm_bank_accno = #{map.mmBankAccnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPayBankAccTypeCondition)">
+                    AND mm_pay_bank_acc_type = #{map.mmPayBankAccTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPayBankCodeCondition)">
+                    AND mm_pay_bank_code = #{map.mmPayBankCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPayBranchCondition)">
+                    AND mm_pay_branch = #{map.mmPayBranchCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmFeeAccnoCondition)">
+                    AND mm_fee_accno = #{map.mmFeeAccnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmStmtIndCondition)">
+                    AND mm_stmt_ind = #{map.mmStmtIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmStmtSendEmailCondition)">
+                    AND mm_stmt_send_email = #{map.mmStmtSendEmailCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmStmtCopyEmailCondition)">
+                    AND mm_stmt_copy_email = #{map.mmStmtCopyEmailCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCentralPayCondition)">
+                    AND mm_central_pay = #{map.mmCentralPayCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmChainAccnoCondition)">
+                    AND mm_chain_accno = #{map.mmChainAccnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmOldAccNumberCondition)">
+                    AND mm_old_acc_number = #{map.mmOldAccNumberCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPmtModeCondition)">
+                    AND mm_pmt_mode = #{map.mmPmtModeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPmtFtypCondition)">
+                    AND mm_pmt_ftyp = #{map.mmPmtFtypCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPmtFreqCondition)">
+                    AND mm_pmt_freq = #{map.mmPmtFreqCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPmtCurrCondition)">
+                    AND mm_pmt_curr = #{map.mmPmtCurrCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPmtNameCondition)">
+                    AND mm_pmt_name = #{map.mmPmtNameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrLine1Condition)">
+                    AND mm_corr_line1 = #{map.mmCorrLine1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrLine2Condition)">
+                    AND mm_corr_line2 = #{map.mmCorrLine2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrLine3Condition)">
+                    AND mm_corr_line3 = #{map.mmCorrLine3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrLine4Condition)">
+                    AND mm_corr_line4 = #{map.mmCorrLine4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrLine5Condition)">
+                    AND mm_corr_line5 = #{map.mmCorrLine5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrCityCondition)">
+                    AND mm_corr_city = #{map.mmCorrCityCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrStateCondition)">
+                    AND mm_corr_state = #{map.mmCorrStateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrCntryCdCondition)">
+                    AND mm_corr_cntry_cd = #{map.mmCorrCntryCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrPostalCdCondition)">
+                    AND mm_corr_postal_cd = #{map.mmCorrPostalCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCorrTelnoCondition)">
+                    AND mm_corr_telno = #{map.mmCorrTelnoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmActualCooperantTimeCondition)">
+                    AND mm_actual_cooperant_time = #{map.mmActualCooperantTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBlankMerchIndCondition)">
+                    AND mm_blank_merch_ind = #{map.mmBlankMerchIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmYearTurnoverCondition)">
+                    AND mm_year_turnover = #{map.mmYearTurnoverCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBussinessLicenseCondition)">
+                    AND mm_bussiness_license = #{map.mmBussinessLicenseCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmOrganiCodeNumberCondition)">
+                    AND mm_organi_code_number = #{map.mmOrganiCodeNumberCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmLicenseExpireBeginDateCondition)">
+                    AND mm_license_expire_begin_date = #{map.mmLicenseExpireBeginDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmLicenseExpireEndDateCondition)">
+                    AND mm_license_expire_end_date = #{map.mmLicenseExpireEndDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPrincipalCondition)">
+                    AND mm_principal = #{map.mmPrincipalCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPrincipalIdNoCondition)">
+                    AND mm_principal_id_no = #{map.mmPrincipalIdNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPrincipalAddressCondition)">
+                    AND mm_principal_address = #{map.mmPrincipalAddressCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRegCapitalCondition)">
+                    AND mm_reg_capital = #{map.mmRegCapitalCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGuiCodeCondition)">
+                    AND mm_gui_code = #{map.mmGuiCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmTaxNumberCondition)">
+                    AND mm_tax_number = #{map.mmTaxNumberCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRiskStatusCondition)">
+                    AND mm_risk_status = #{map.mmRiskStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmStatusCdCondition)">
+                    AND mm_status_cd = #{map.mmStatusCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPosStatusCdCondition)">
+                    AND mm_pos_status_cd = #{map.mmPosStatusCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmTranFreqCdCondition)">
+                    AND mm_tran_freq_cd = #{map.mmTranFreqCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDiscCodeCondition)">
+                    AND mm_disc_code = #{map.mmDiscCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmFeeRefundIndCondition)">
+                    AND mm_fee_refund_ind = #{map.mmFeeRefundIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmFlLimitAmtCondition)">
+                    AND mm_fl_limit_amt = #{map.mmFlLimitAmtCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPromDiscCodeCondition)">
+                    AND mm_prom_disc_code = #{map.mmPromDiscCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPromDiscStartCondition)">
+                    AND mm_prom_disc_start = #{map.mmPromDiscStartCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPromDiscEndCondition)">
+                    AND mm_prom_disc_end = #{map.mmPromDiscEndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmNextDiscCodeCondition)">
+                    AND mm_next_disc_code = #{map.mmNextDiscCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmNextDiscEndCondition)">
+                    AND mm_next_disc_end = #{map.mmNextDiscEndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDiscChgIndCondition)">
+                    AND mm_disc_chg_ind = #{map.mmDiscChgIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmIndustryCondition)">
+                    AND mm_industry = #{map.mmIndustryCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmVsSicCondition)">
+                    AND mm_vs_sic = #{map.mmVsSicCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMcSicCondition)">
+                    AND mm_mc_sic = #{map.mmMcSicCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAeSicCondition)">
+                    AND mm_ae_sic = #{map.mmAeSicCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDiSicCondition)">
+                    AND mm_di_sic = #{map.mmDiSicCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmJcbSicCondition)">
+                    AND mm_jcb_sic = #{map.mmJcbSicCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCupSicCondition)">
+                    AND mm_cup_sic = #{map.mmCupSicCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmLcSicCondition)">
+                    AND mm_lc_sic = #{map.mmLcSicCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPosIndCondition)">
+                    AND mm_pos_ind = #{map.mmPosIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCamIndCondition)">
+                    AND mm_cam_ind = #{map.mmCamIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGlInd1Condition)">
+                    AND mm_gl_ind1 = #{map.mmGlInd1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGlInd2Condition)">
+                    AND mm_gl_ind2 = #{map.mmGlInd2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGlInd3Condition)">
+                    AND mm_gl_ind3 = #{map.mmGlInd3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDbCrIndCondition)">
+                    AND mm_db_cr_ind = #{map.mmDbCrIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmSalesAreaCdCondition)">
+                    AND mm_sales_area_cd = #{map.mmSalesAreaCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCardAcceptCondition)">
+                    AND mm_card_accept = #{map.mmCardAcceptCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmNoImprinterCondition)">
+                    AND mm_no_imprinter = #{map.mmNoImprinterCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmNoPosCondition)">
+                    AND mm_no_pos = #{map.mmNoPosCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmServiceFeeCodeCondition)">
+                    AND mm_service_fee_code = #{map.mmServiceFeeCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmRebateFeeCodeCondition)">
+                    AND mm_rebate_fee_code = #{map.mmRebateFeeCodeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMcAidCondition)">
+                    AND mm_mc_aid = #{map.mmMcAidCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmVsTirfCondition)">
+                    AND mm_vs_tirf = #{map.mmVsTirfCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDistributnCdCondition)">
+                    AND mm_distributn_cd = #{map.mmDistributnCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmVsNoBulletnCondition)">
+                    AND mm_vs_no_bulletn = #{map.mmVsNoBulletnCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMcNoBulletnCondition)">
+                    AND mm_mc_no_bulletn = #{map.mmMcNoBulletnCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAeNoBulletnCondition)">
+                    AND mm_ae_no_bulletn = #{map.mmAeNoBulletnCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmDiNoBulletnCondition)">
+                    AND mm_di_no_bulletn = #{map.mmDiNoBulletnCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmJcbNoBulletnCondition)">
+                    AND mm_jcb_no_bulletn = #{map.mmJcbNoBulletnCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCupNoBulletnCondition)">
+                    AND mm_cup_no_bulletn = #{map.mmCupNoBulletnCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmLcNoBulletnCondition)">
+                    AND mm_lc_no_bulletn = #{map.mmLcNoBulletnCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmCautionCdCondition)">
+                    AND mm_caution_cd = #{map.mmCautionCdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMerchantSizeCondition)">
+                    AND mm_merchant_size = #{map.mmMerchantSizeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmHoldReasonCondition)">
+                    AND mm_hold_reason = #{map.mmHoldReasonCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmOutstdBalCondition)">
+                    AND mm_outstd_bal = #{map.mmOutstdBalCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPendingBalCondition)">
+                    AND mm_pending_bal = #{map.mmPendingBalCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPaymentFreqVmCondition)">
+                    AND mm_payment_freq_vm = #{map.mmPaymentFreqVmCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmModTimeCondition)">
+                    AND mm_mod_time = #{map.mmModTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmModUserCondition)">
+                    AND mm_mod_user = #{map.mmModUserCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAuthTimeCondition)">
+                    AND mm_auth_time = #{map.mmAuthTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmAuthUserCondition)">
+                    AND mm_auth_user = #{map.mmAuthUserCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmMceIndCondition)">
+                    AND mm_mce_ind = #{map.mmMceIndCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmLocalAcctCondition)">
+                    AND mm_local_acct = #{map.mmLocalAcctCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGuiTypeCondition)">
+                    AND mm_gui_type = #{map.mmGuiTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGuiPercentageCondition)">
+                    AND mm_gui_percentage = #{map.mmGuiPercentageCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmGuiGenTimeCondition)">
+                    AND mm_gui_gen_time = #{map.mmGuiGenTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserCode1Condition)">
+                    AND mm_user_code1 = #{map.mmUserCode1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserCode2Condition)">
+                    AND mm_user_code2 = #{map.mmUserCode2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserCode3Condition)">
+                    AND mm_user_code3 = #{map.mmUserCode3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmBizLicenseCondition)">
+                    AND mm_biz_license = #{map.mmBizLicenseCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserAmt1Condition)">
+                    AND mm_user_amt1 = #{map.mmUserAmt1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserAmt2Condition)">
+                    AND mm_user_amt2 = #{map.mmUserAmt2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserAmt3Condition)">
+                    AND mm_user_amt3 = #{map.mmUserAmt3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserAmt4Condition)">
+                    AND mm_user_amt4 = #{map.mmUserAmt4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserAmt5Condition)">
+                    AND mm_user_amt5 = #{map.mmUserAmt5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField1Condition)">
+                    AND mm_user_field1 = #{map.mmUserField1Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField2Condition)">
+                    AND mm_user_field2 = #{map.mmUserField2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField3Condition)">
+                    AND mm_user_field3 = #{map.mmUserField3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField4Condition)">
+                    AND mm_user_field4 = #{map.mmUserField4Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField5Condition)">
+                    AND mm_user_field5 = #{map.mmUserField5Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField6Condition)">
+                    AND mm_user_field6 = #{map.mmUserField6Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField7Condition)">
+                    AND mm_user_field7 = #{map.mmUserField7Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField8Condition)">
+                    AND mm_user_field8 = #{map.mmUserField8Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField9Condition)">
+                    AND mm_user_field9 = #{map.mmUserField9Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField10Condition)">
+                    AND mm_user_field10 = #{map.mmUserField10Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmUserField11Condition)">
+                    AND mm_user_field11 = #{map.mmUserField11Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmNextSettleDateCondition)">
+                    AND mm_next_settle_date = #{map.mmNextSettleDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.mmPasswordCondition)">
+                    AND mm_password = #{map.mmPasswordCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpMermstByMmMerchantNo" parameterType="String" resultMap="cpMermstMap">
+        SELECT
+        <include refid="cpMermstBaseColumnSql"/>
+        FROM cp_mermst
+        WHERE mm_merchant_no = #{mmMerchantNo}
+    </select>
+    
+    <select id="searchCpMermstByParams" parameterType="map" resultMap="cpMermstMap">
+        SELECT
+        <include refid="cpMermstBaseColumnSql"/>
+        FROM cp_mermst
+        <include refid="cpMermstBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+	 <!-- add by Hugh 新增商户获取商户最大值叠加1 start -->
+    <select id="searchMaxMermstId" parameterType="String" resultMap="MaxMermst">
+    	select ifnull(max(mm_merchant_no)+1,'100000') mm_merchant_no from cp_mermst where mm_phy_state='1' and length(mm_merchant_no)=6
+    </select>
+    <!-- add by Hugh 新增商户获取商户最大值叠加1 end -->
+    
+    <!-- add by Hugh 新增场馆获取场馆最大值叠加1 start -->
+    <select id="searchMaxVeneId" parameterType="String" resultMap="MaxMermst">
+    	select ifnull(max(mm_merchant_no)+1,'10000') mm_merchant_no from cp_mermst where mm_phy_state='0' and length(mm_merchant_no)=5
+    </select>
+    <!-- add by Hugh 新增场馆获取场馆最大值叠加1 end -->
+    
+    <!-- add by Hugh 新增商户场馆获取商户场馆最大值叠加1返回值 start -->
+	<resultMap type="cn.happyworlds.imgmt.entity.CpMermst" id="MaxMermst">
+		<id column="mm_merchant_no" property="mmMerchantNo"/>
+        <result column="mm_merchant_no" property="mmMerchantNo"/>
+	</resultMap>
+	<!-- add by Hugh 新增终端闸机获取终端最大值叠加1返回值 end -->
+	
+    <resultMap type="cn.happyworlds.imgmt.entity.CpMermst" id="cpMermstMap">
+        <id column="mm_merchant_no" property="mmMerchantNo"/>
+        <result column="mm_microfilm_no" property="mmMicrofilmNo"/>
+        <result column="mm_dba_name" property="mmDbaName"/>
+        <result column="mm_biz_name" property="mmBizName"/>
+        <result column="mm_stmt_name" property="mmStmtName"/>
+        <result column="mm_smell_name" property="mmSmellName"/>
+        <result column="mm_phy_line1" property="mmPhyLine1"/>
+        <result column="mm_phy_line2" property="mmPhyLine2"/>
+        <result column="mm_phy_line3" property="mmPhyLine3"/>
+        <result column="mm_phy_line4" property="mmPhyLine4"/>
+        <result column="mm_phy_line5" property="mmPhyLine5"/>
+        <result column="mm_phy_city" property="mmPhyCity"/>
+        <result column="mm_phy_state" property="mmPhyState"/>
+        <result column="mm_phy_country" property="mmPhyCountry"/>
+        <result column="mm_phy_postal_cd" property="mmPhyPostalCd"/>
+        <result column="mm_phy_telno" property="mmPhyTelno"/>
+        <result column="mm_mob_telno" property="mmMobTelno"/>
+        <result column="mm_fax_telno" property="mmFaxTelno"/>
+        <result column="mm_contact_name" property="mmContactName"/>
+        <result column="mm_email_address" property="mmEmailAddress"/>
+        <result column="mm_web_address" property="mmWebAddress"/>
+        <result column="mm_business_times" property="mmBusinessTimes"/>
+        <result column="mm_agreement_start_date" property="mmAgreementStartDate"/>
+        <result column="mm_agreement_end_date" property="mmAgreementEndDate"/>
+        <result column="mm_agreem_pre_subs_date" property="mmAgreemPreSubsDate"/>
+        <result column="mm_set_up_cd" property="mmSetUpCd"/>
+        <result column="mm_set_up_date" property="mmSetUpDate"/>
+        <result column="mm_sales_officer" property="mmSalesOfficer"/>
+        <result column="mm_vindicator_officer" property="mmVindicatorOfficer"/>
+        <result column="mm_cancel_type" property="mmCancelType"/>
+        <result column="mm_cancel_reason" property="mmCancelReason"/>
+        <result column="mm_cancel_date" property="mmCancelDate"/>
+        <result column="mm_servicing_centre" property="mmServicingCentre"/>
+        <result column="mm_accept_ind" property="mmAcceptInd"/>
+        <result column="mm_person_id" property="mmPersonId"/>
+        <result column="mm_contract_date" property="mmContractDate"/>
+        <result column="mm_contract_tel_no" property="mmContractTelNo"/>
+        <result column="mm_reg_name" property="mmRegName"/>
+        <result column="mm_reg_line1" property="mmRegLine1"/>
+        <result column="mm_reg_line2" property="mmRegLine2"/>
+        <result column="mm_reg_line3" property="mmRegLine3"/>
+        <result column="mm_reg_line4" property="mmRegLine4"/>
+        <result column="mm_reg_line5" property="mmRegLine5"/>
+        <result column="mm_reg_postal_cd" property="mmRegPostalCd"/>
+        <result column="mm_accept_crdtyp" property="mmAcceptCrdtyp"/>
+        <result column="mm_bank_name" property="mmBankName"/>
+        <result column="mm_bank_accno" property="mmBankAccno"/>
+        <result column="mm_pay_bank_acc_type" property="mmPayBankAccType"/>
+        <result column="mm_pay_bank_code" property="mmPayBankCode"/>
+        <result column="mm_pay_branch" property="mmPayBranch"/>
+        <result column="mm_fee_accno" property="mmFeeAccno"/>
+        <result column="mm_stmt_ind" property="mmStmtInd"/>
+        <result column="mm_stmt_send_email" property="mmStmtSendEmail"/>
+        <result column="mm_stmt_copy_email" property="mmStmtCopyEmail"/>
+        <result column="mm_central_pay" property="mmCentralPay"/>
+        <result column="mm_chain_accno" property="mmChainAccno"/>
+        <result column="mm_old_acc_number" property="mmOldAccNumber"/>
+        <result column="mm_pmt_mode" property="mmPmtMode"/>
+        <result column="mm_pmt_ftyp" property="mmPmtFtyp"/>
+        <result column="mm_pmt_freq" property="mmPmtFreq"/>
+        <result column="mm_pmt_curr" property="mmPmtCurr"/>
+        <result column="mm_pmt_name" property="mmPmtName"/>
+        <result column="mm_corr_line1" property="mmCorrLine1"/>
+        <result column="mm_corr_line2" property="mmCorrLine2"/>
+        <result column="mm_corr_line3" property="mmCorrLine3"/>
+        <result column="mm_corr_line4" property="mmCorrLine4"/>
+        <result column="mm_corr_line5" property="mmCorrLine5"/>
+        <result column="mm_corr_city" property="mmCorrCity"/>
+        <result column="mm_corr_state" property="mmCorrState"/>
+        <result column="mm_corr_cntry_cd" property="mmCorrCntryCd"/>
+        <result column="mm_corr_postal_cd" property="mmCorrPostalCd"/>
+        <result column="mm_corr_telno" property="mmCorrTelno"/>
+        <result column="mm_actual_cooperant_time" property="mmActualCooperantTime"/>
+        <result column="mm_blank_merch_ind" property="mmBlankMerchInd"/>
+        <result column="mm_year_turnover" property="mmYearTurnover"/>
+        <result column="mm_bussiness_license" property="mmBussinessLicense"/>
+        <result column="mm_organi_code_number" property="mmOrganiCodeNumber"/>
+        <result column="mm_license_expire_begin_date" property="mmLicenseExpireBeginDate"/>
+        <result column="mm_license_expire_end_date" property="mmLicenseExpireEndDate"/>
+        <result column="mm_principal" property="mmPrincipal"/>
+        <result column="mm_principal_id_no" property="mmPrincipalIdNo"/>
+        <result column="mm_principal_address" property="mmPrincipalAddress"/>
+        <result column="mm_reg_capital" property="mmRegCapital"/>
+        <result column="mm_gui_code" property="mmGuiCode"/>
+        <result column="mm_tax_number" property="mmTaxNumber"/>
+        <result column="mm_risk_status" property="mmRiskStatus"/>
+        <result column="mm_status_cd" property="mmStatusCd"/>
+        <result column="mm_pos_status_cd" property="mmPosStatusCd"/>
+        <result column="mm_tran_freq_cd" property="mmTranFreqCd"/>
+        <result column="mm_disc_code" property="mmDiscCode"/>
+        <result column="mm_fee_refund_ind" property="mmFeeRefundInd"/>
+        <result column="mm_fl_limit_amt" property="mmFlLimitAmt"/>
+        <result column="mm_prom_disc_code" property="mmPromDiscCode"/>
+        <result column="mm_prom_disc_start" property="mmPromDiscStart"/>
+        <result column="mm_prom_disc_end" property="mmPromDiscEnd"/>
+        <result column="mm_next_disc_code" property="mmNextDiscCode"/>
+        <result column="mm_next_disc_end" property="mmNextDiscEnd"/>
+        <result column="mm_disc_chg_ind" property="mmDiscChgInd"/>
+        <result column="mm_industry" property="mmIndustry"/>
+        <result column="mm_vs_sic" property="mmVsSic"/>
+        <result column="mm_mc_sic" property="mmMcSic"/>
+        <result column="mm_ae_sic" property="mmAeSic"/>
+        <result column="mm_di_sic" property="mmDiSic"/>
+        <result column="mm_jcb_sic" property="mmJcbSic"/>
+        <result column="mm_cup_sic" property="mmCupSic"/>
+        <result column="mm_lc_sic" property="mmLcSic"/>
+        <result column="mm_pos_ind" property="mmPosInd"/>
+        <result column="mm_cam_ind" property="mmCamInd"/>
+        <result column="mm_gl_ind1" property="mmGlInd1"/>
+        <result column="mm_gl_ind2" property="mmGlInd2"/>
+        <result column="mm_gl_ind3" property="mmGlInd3"/>
+        <result column="mm_db_cr_ind" property="mmDbCrInd"/>
+        <result column="mm_sales_area_cd" property="mmSalesAreaCd"/>
+        <result column="mm_card_accept" property="mmCardAccept"/>
+        <result column="mm_no_imprinter" property="mmNoImprinter"/>
+        <result column="mm_no_pos" property="mmNoPos"/>
+        <result column="mm_service_fee_code" property="mmServiceFeeCode"/>
+        <result column="mm_rebate_fee_code" property="mmRebateFeeCode"/>
+        <result column="mm_mc_aid" property="mmMcAid"/>
+        <result column="mm_vs_tirf" property="mmVsTirf"/>
+        <result column="mm_distributn_cd" property="mmDistributnCd"/>
+        <result column="mm_vs_no_bulletn" property="mmVsNoBulletn"/>
+        <result column="mm_mc_no_bulletn" property="mmMcNoBulletn"/>
+        <result column="mm_ae_no_bulletn" property="mmAeNoBulletn"/>
+        <result column="mm_di_no_bulletn" property="mmDiNoBulletn"/>
+        <result column="mm_jcb_no_bulletn" property="mmJcbNoBulletn"/>
+        <result column="mm_cup_no_bulletn" property="mmCupNoBulletn"/>
+        <result column="mm_lc_no_bulletn" property="mmLcNoBulletn"/>
+        <result column="mm_caution_cd" property="mmCautionCd"/>
+        <result column="mm_merchant_size" property="mmMerchantSize"/>
+        <result column="mm_hold_reason" property="mmHoldReason"/>
+        <result column="mm_outstd_bal" property="mmOutstdBal"/>
+        <result column="mm_pending_bal" property="mmPendingBal"/>
+        <result column="mm_payment_freq_vm" property="mmPaymentFreqVm"/>
+        <result column="mm_mod_time" property="mmModTime"/>
+        <result column="mm_mod_user" property="mmModUser"/>
+        <result column="mm_auth_time" property="mmAuthTime"/>
+        <result column="mm_auth_user" property="mmAuthUser"/>
+        <result column="mm_mce_ind" property="mmMceInd"/>
+        <result column="mm_local_acct" property="mmLocalAcct"/>
+        <result column="mm_gui_type" property="mmGuiType"/>
+        <result column="mm_gui_percentage" property="mmGuiPercentage"/>
+        <result column="mm_gui_gen_time" property="mmGuiGenTime"/>
+        <result column="mm_user_code1" property="mmUserCode1"/>
+        <result column="mm_user_code2" property="mmUserCode2"/>
+        <result column="mm_user_code3" property="mmUserCode3"/>
+        <result column="mm_biz_license" property="mmBizLicense"/>
+        <result column="mm_user_amt1" property="mmUserAmt1"/>
+        <result column="mm_user_amt2" property="mmUserAmt2"/>
+        <result column="mm_user_amt3" property="mmUserAmt3"/>
+        <result column="mm_user_amt4" property="mmUserAmt4"/>
+        <result column="mm_user_amt5" property="mmUserAmt5"/>
+        <result column="mm_user_field1" property="mmUserField1"/>
+        <result column="mm_user_field2" property="mmUserField2"/>
+        <result column="mm_user_field3" property="mmUserField3"/>
+        <result column="mm_user_field4" property="mmUserField4"/>
+        <result column="mm_user_field5" property="mmUserField5"/>
+        <result column="mm_user_field6" property="mmUserField6"/>
+        <result column="mm_user_field7" property="mmUserField7"/>
+        <result column="mm_user_field8" property="mmUserField8"/>
+        <result column="mm_user_field9" property="mmUserField9"/>
+        <result column="mm_user_field10" property="mmUserField10"/>
+        <result column="mm_user_field11" property="mmUserField11"/>
+        <result column="mm_next_settle_date" property="mmNextSettleDate"/>
+        <result column="mm_password" property="mmPassword"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

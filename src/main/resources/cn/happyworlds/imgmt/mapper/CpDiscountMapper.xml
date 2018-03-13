@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpDiscountMapper">
+
+    <sql id="cpDiscountBaseColumnSql">
+        dis_id,
+        dis_type,
+        dis_service,
+        dis_desc,
+        dis_begin_time,
+        dis_end_time,
+        dis_money,
+        dis_shop,
+        dis_shop2,
+        dis_shop3,
+        dis_period,
+        dis_status,
+        dis_url,
+        checksum
+    </sql>
+
+    <sql id="cpDiscountBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disId)">
+                    dis_id = #{map.disId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disType)">
+                    AND dis_type = #{map.disType}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disService)">
+                    AND dis_service = #{map.disService}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disDesc)">
+                    AND dis_desc = #{map.disDesc}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disBeginTime)">
+                    AND dis_begin_time = #{map.disBeginTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disEndTime)">
+                    AND dis_end_time = #{map.disEndTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disMoney)">
+                    AND dis_money = #{map.disMoney}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disShop)">
+                    AND dis_shop = #{map.disShop}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disShop2)">
+                    AND dis_shop2 = #{map.disShop2}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disShop3)">
+                    AND dis_shop3 = #{map.disShop3}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disPeriod)">
+                    AND dis_period = #{map.disPeriod}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disStatus)">
+                    AND dis_status = #{map.disStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disUrl)">
+                    AND dis_url = #{map.disUrl}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    AND checksum = #{map.checksum}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpDiscount" parameterType="cn.happyworlds.imgmt.entity.CpDiscount">
+        INSERT INTO cp_discount(
+        <include refid="cpDiscountBaseColumnSql"/>
+        )VALUES(
+            #{disId},
+            #{disType},
+            #{disService},
+            #{disDesc},
+            #{disBeginTime},
+            #{disEndTime},
+            #{disMoney},
+            #{disShop},
+            #{disShop2},
+            #{disShop3},
+            #{disPeriod},
+            #{disStatus},
+            #{disUrl},
+            #{checksum}
+        )
+    </insert>
+        
+    <delete id="deleteCpDiscountByDisId" parameterType="String">
+        DELETE FROM cp_discount WHERE dis_id = #{disId}
+    </delete>
+
+    <select id="deleteCpDiscountByParams" parameterType="map">
+        DELETE FROM cp_discount
+        <include refid="cpDiscountBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpDiscount" parameterType="cn.happyworlds.imgmt.entity.CpDiscount">
+        UPDATE cp_discount
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disType)">
+                dis_type = #{disType} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disService)">
+                dis_service = #{disService} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disDesc)">
+                dis_desc = #{disDesc} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disBeginTime)">
+                dis_begin_time = #{disBeginTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disEndTime)">
+                dis_end_time = #{disEndTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disMoney)">
+                dis_money = #{disMoney} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disShop)">
+                dis_shop = #{disShop} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disShop2)">
+                dis_shop2 = #{disShop2} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disShop3)">
+                dis_shop3 = #{disShop3} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disPeriod)">
+                dis_period = #{disPeriod} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disStatus)">
+                dis_status = #{disStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(disUrl)">
+                dis_url = #{disUrl} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(checksum)">
+                checksum = #{checksum}
+            </if>
+        </set>
+        WHERE dis_id = #{disId}
+    </update>
+
+    <update id="updateCpDiscountByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_discount
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disType)">
+                    dis_type = #{map.disType} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disService)">
+                    dis_service = #{map.disService} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disDesc)">
+                    dis_desc = #{map.disDesc} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disBeginTime)">
+                    dis_begin_time = #{map.disBeginTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disEndTime)">
+                    dis_end_time = #{map.disEndTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disMoney)">
+                    dis_money = #{map.disMoney} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disShop)">
+                    dis_shop = #{map.disShop} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disShop2)">
+                    dis_shop2 = #{map.disShop2} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disShop3)">
+                    dis_shop3 = #{map.disShop3} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disPeriod)">
+                    dis_period = #{map.disPeriod} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disStatus)">
+                    dis_status = #{map.disStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disUrl)">
+                    dis_url = #{map.disUrl} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksum)">
+                    checksum = #{map.checksum}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disIdCondition)">
+                    dis_id = #{map.disIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disTypeCondition)">
+                    AND dis_type = #{map.disTypeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disServiceCondition)">
+                    AND dis_service = #{map.disServiceCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disDescCondition)">
+                    AND dis_desc = #{map.disDescCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disBeginTimeCondition)">
+                    AND dis_begin_time = #{map.disBeginTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disEndTimeCondition)">
+                    AND dis_end_time = #{map.disEndTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disMoneyCondition)">
+                    AND dis_money = #{map.disMoneyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disShopCondition)">
+                    AND dis_shop = #{map.disShopCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disShop2Condition)">
+                    AND dis_shop2 = #{map.disShop2Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disShop3Condition)">
+                    AND dis_shop3 = #{map.disShop3Condition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disPeriodCondition)">
+                    AND dis_period = #{map.disPeriodCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disStatusCondition)">
+                    AND dis_status = #{map.disStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.disUrlCondition)">
+                    AND dis_url = #{map.disUrlCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.checksumCondition)">
+                    AND checksum = #{map.checksumCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpDiscountByDisId" parameterType="String" resultMap="cpDiscountMap">
+        SELECT
+        <include refid="cpDiscountBaseColumnSql"/>
+        FROM cp_discount
+        WHERE dis_id = #{disId}
+    </select>
+
+    <select id="searchCpDiscountByParams" parameterType="map" resultMap="cpDiscountMap">
+        SELECT
+        <include refid="cpDiscountBaseColumnSql"/>
+        FROM cp_discount
+        <include refid="cpDiscountBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+	
+	<select id="searchCpDiscountByMaxId" parameterType="String" resultMap="MaxDiscount">
+		select IFNULL(max(dis_id)+1,'10001') dis_id from cp_discount
+	</select>
+	
+	<resultMap type="cn.happyworlds.imgmt.entity.CpDiscount" id="MaxDiscount">
+		<id column="dis_id" property="disId"/>
+        <result column="dis_id" property="disId"/>
+	</resultMap>
+	
+    <resultMap type="cn.happyworlds.imgmt.entity.CpDiscount" id="cpDiscountMap">
+        <id column="dis_id" property="disId"/>
+        <result column="dis_type" property="disType"/>
+        <result column="dis_service" property="disService"/>
+        <result column="dis_desc" property="disDesc"/>
+        <result column="dis_begin_time" property="disBeginTime"/>
+        <result column="dis_end_time" property="disEndTime"/>
+        <result column="dis_money" property="disMoney"/>
+        <result column="dis_shop" property="disShop"/>
+        <result column="dis_shop2" property="disShop2"/>
+        <result column="dis_shop3" property="disShop3"/>
+        <result column="dis_period" property="disPeriod"/>
+        <result column="dis_status" property="disStatus"/>
+        <result column="dis_url" property="disUrl"/>
+        <result column="checksum" property="checksum"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.TSysOrganizationMapper">
+
+    <sql id="TSysOrganizationBaseColumnSql">
+        id,
+        parent_id,
+        name,
+        level_id,
+        remark,
+        status,
+        createdAt,
+        updatedAt,
+        createdBy,
+        updatedBy
+    </sql>
+
+    <sql id="TSysOrganizationBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.id)">
+                    id = #{map.id}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.parentId)">
+                    AND parent_id = #{map.parentId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.name)">
+                    AND name = #{map.name}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.levelId)">
+                    AND level_id = #{map.levelId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.remark)">
+                    AND remark = #{map.remark}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.status)">
+                    AND status = #{map.status}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.createdAt)">
+                    AND createdAt = #{map.createdAt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.updatedAt)">
+                    AND updatedAt = #{map.updatedAt}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.createdBy)">
+                    AND createdBy = #{map.createdBy}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.updatedBy)">
+                    AND updatedBy = #{map.updatedBy}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertTSysOrganization" parameterType="cn.happyworlds.imgmt.entity.TSysOrganization">
+        INSERT INTO t_sys_organization(
+        <include refid="TSysOrganizationBaseColumnSql"/>
+        )VALUES(
+            #{id},
+            #{parentId},
+            #{name},
+            #{levelId},
+            #{remark},
+            #{status},
+            #{createdAt},
+            #{updatedAt},
+            #{createdBy},
+            #{updatedBy}
+        )
+    </insert>
+
+    
+    <delete id="deleteTSysOrganizationById" parameterType="String">
+        DELETE FROM t_sys_organization WHERE id = #{id}
+    </delete>
+
+    <update id="updateTSysOrganization" parameterType="cn.happyworlds.imgmt.entity.TSysOrganization">
+        UPDATE t_sys_organization
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(parentId)">
+                parent_id = #{parentId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(name)">
+                name = #{name} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(levelId)">
+                level_id = #{levelId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(remark)">
+                remark = #{remark} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(status)">
+                status = #{status} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(createdAt)">
+                createdAt = #{createdAt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(updatedAt)">
+                updatedAt = #{updatedAt} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(createdBy)">
+                createdBy = #{createdBy} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(updatedBy)">
+                updatedBy = #{updatedBy} ,
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="searchTSysOrganizationById" parameterType="String" resultMap="TSysOrganizationMap">
+        SELECT
+        <include refid="TSysOrganizationBaseColumnSql"/>
+        FROM t_sys_organization
+        WHERE id = #{id}
+    </select>
+
+    <select id="searchTSysOrganizationByParams" parameterType="map" resultMap="TSysOrganizationMap">
+        SELECT
+        <include refid="TSysOrganizationBaseColumnSql"/>
+        FROM t_sys_organization
+        <include refid="TSysOrganizationBaseWhereSql"/>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.TSysOrganization" id="TSysOrganizationMap">
+        <id column="id" property="id"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="name" property="name"/>
+        <result column="level_id" property="levelId"/>
+        <result column="remark" property="remark"/>
+        <result column="status" property="status"/>
+        <result column="createdAt" property="createdAt"/>
+        <result column="updatedAt" property="updatedAt"/>
+        <result column="createdBy" property="createdBy"/>
+        <result column="updatedBy" property="updatedBy"/>
+    </resultMap>
+
+</mapper>

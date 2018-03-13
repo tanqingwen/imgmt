@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.AclBrchsetBrchMapMapper">
+
+    <sql id="aclBrchsetBrchMapBaseColumnSql">
+        branch_id,
+        branch_set_id,
+        sys_flag,
+        modify_time,
+        modify_by
+    </sql>
+
+    <sql id="aclBrchsetBrchMapBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.branchId)">
+                    branch_id = #{map.branchId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.branchSetId)">
+                    AND branch_set_id = #{map.branchSetId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysFlag)">
+                    AND sys_flag = #{map.sysFlag}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyTime)">
+                    AND modify_time = #{map.modifyTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyBy)">
+                    AND modify_by = #{map.modifyBy}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertAclBrchsetBrchMap" parameterType="cn.happyworlds.imgmt.entity.AclBrchsetBrchMap">
+        INSERT INTO acl_brchset_brch_map(
+        <include refid="aclBrchsetBrchMapBaseColumnSql"/>
+        )VALUES(
+            #{branchId},
+            #{branchSetId},
+            #{sysFlag},
+            #{modifyTime},
+            #{modifyBy}
+        )
+    </insert>
+        
+    <!-- <delete id="deleteAclBrchsetBrchMapBy${table.pkColumn.variableSpellSqlName}" parameterType="${table.pkColumn.javaType}">
+        DELETE FROM acl_brchset_brch_map WHERE ${table.pkColumn.sqlName} = #{${table.pkColumn.variableName}}
+    </delete> -->
+
+    <select id="deleteAclBrchsetBrchMapByParams" parameterType="map">
+        DELETE FROM acl_brchset_brch_map
+        <include refid="aclBrchsetBrchMapBaseWhereSql"/>
+    </select>
+
+    <!-- <update id="updateAclBrchsetBrchMap" parameterType="cn.happyworlds.imgmt.entity.AclBrchsetBrchMap">
+        UPDATE acl_brchset_brch_map
+        <set>
+        </set>
+        WHERE $pkName = #{${table.pkColumn.variableName}}
+    </update> -->
+
+    <update id="updateAclBrchsetBrchMapByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE acl_brchset_brch_map
+            <set>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.branchIdCondition)">
+                    branch_id = #{map.branchIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.branchSetIdCondition)">
+                    AND branch_set_id = #{map.branchSetIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.sysFlagCondition)">
+                    AND sys_flag = #{map.sysFlagCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyTimeCondition)">
+                    AND modify_time = #{map.modifyTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyByCondition)">
+                    AND modify_by = #{map.modifyByCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <!-- <select id="searchAclBrchsetBrchMapBy${table.pkColumn.variableSpellSqlName}" parameterType="${table.pkColumn.javaType}" resultMap="aclBrchsetBrchMapMap">
+        SELECT
+        <include refid="aclBrchsetBrchMapBaseColumnSql"/>
+        FROM acl_brchset_brch_map
+        WHERE ${table.pkColumn.sqlName} = #{${table.pkColumn.variableName}}
+    </select> -->
+
+    <select id="searchAclBrchsetBrchMapByParams" parameterType="map" resultMap="aclBrchsetBrchMapMap">
+        SELECT
+        <include refid="aclBrchsetBrchMapBaseColumnSql"/>
+        FROM acl_brchset_brch_map
+        <include refid="aclBrchsetBrchMapBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.AclBrchsetBrchMap" id="aclBrchsetBrchMapMap">
+        <id column="branch_id" property="branchId"/>
+        <id column="branch_set_id" property="branchSetId"/>
+        <result column="sys_flag" property="sysFlag"/>
+        <result column="modify_time" property="modifyTime"/>
+        <result column="modify_by" property="modifyBy"/>
+    </resultMap>
+
+</mapper>

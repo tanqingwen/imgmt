@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.CpNewcrdMapper">
+
+    <sql id="cpNewcrdBaseColumnSql">
+        nc_card_no,
+        nc_branch_id,
+        nc_time,
+        nc_emergency,
+        nc_status,
+        nc_pick_date,
+        modify_time,
+        modify_by,
+        nc_user_id,
+        nc_batch_no,
+        nc_batch_status,
+        nc_card_reason,
+        nc_check_flag
+    </sql>
+
+    <sql id="cpNewcrdBaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncCardNo)">
+                    nc_card_no = #{map.ncCardNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncBranchId)">
+                    AND nc_branch_id = #{map.ncBranchId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncTime)">
+                    AND nc_time = #{map.ncTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncEmergency)">
+                    AND nc_emergency = #{map.ncEmergency}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncStatus)">
+                    AND nc_status = #{map.ncStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncPickDate)">
+                    AND nc_pick_date = #{map.ncPickDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyTime)">
+                    AND modify_time = #{map.modifyTime}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyBy)">
+                    AND modify_by = #{map.modifyBy}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncUserId)">
+                    AND nc_user_id = #{map.ncUserId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncBatchNo)">
+                    AND nc_batch_no = #{map.ncBatchNo}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncBatchStatus)">
+                    AND nc_batch_status = #{map.ncBatchStatus}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncCardReason)">
+                    AND nc_card_reason = #{map.ncCardReason}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncCheckFlag)">
+                    AND nc_check_flag = #{map.ncCheckFlag}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertCpNewcrd" parameterType="cn.happyworlds.imgmt.entity.CpNewcrd">
+        INSERT INTO cp_newcrd(
+        <include refid="cpNewcrdBaseColumnSql"/>
+        )VALUES(
+            #{ncCardNo},
+            #{ncBranchId},
+            #{ncTime},
+            #{ncEmergency},
+            #{ncStatus},
+            #{ncPickDate},
+            #{modifyTime},
+            #{modifyBy},
+            #{ncUserId},
+            #{ncBatchNo},
+            #{ncBatchStatus},
+            #{ncCardReason},
+            #{ncCheckFlag}
+        )
+    </insert>
+        
+    <delete id="deleteCpNewcrdByNcCardNo" parameterType="String">
+        DELETE FROM cp_newcrd WHERE nc_card_no = #{ncCardNo}
+    </delete>
+
+    <select id="deleteCpNewcrdByParams" parameterType="map">
+        DELETE FROM cp_newcrd
+        <include refid="cpNewcrdBaseWhereSql"/>
+    </select>
+
+    <update id="updateCpNewcrd" parameterType="cn.happyworlds.imgmt.entity.CpNewcrd">
+        UPDATE cp_newcrd
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ncBranchId)">
+                nc_branch_id = #{ncBranchId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ncTime)">
+                nc_time = #{ncTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ncEmergency)">
+                nc_emergency = #{ncEmergency} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ncStatus)">
+                nc_status = #{ncStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ncPickDate)">
+                nc_pick_date = #{ncPickDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(modifyTime)">
+                modify_time = #{modifyTime} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(modifyBy)">
+                modify_by = #{modifyBy} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ncUserId)">
+                nc_user_id = #{ncUserId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ncBatchNo)">
+                nc_batch_no = #{ncBatchNo} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ncBatchStatus)">
+                nc_batch_status = #{ncBatchStatus} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ncCardReason)">
+                nc_card_reason = #{ncCardReason} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(ncCheckFlag)">
+                nc_check_flag = #{ncCheckFlag}
+            </if>
+        </set>
+        WHERE nc_card_no = #{ncCardNo}
+    </update>
+
+    <update id="updateCpNewcrdByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE cp_newcrd
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncBranchId)">
+                    nc_branch_id = #{map.ncBranchId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncTime)">
+                    nc_time = #{map.ncTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncEmergency)">
+                    nc_emergency = #{map.ncEmergency} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncStatus)">
+                    nc_status = #{map.ncStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncPickDate)">
+                    nc_pick_date = #{map.ncPickDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyTime)">
+                    modify_time = #{map.modifyTime} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyBy)">
+                    modify_by = #{map.modifyBy} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncUserId)">
+                    nc_user_id = #{map.ncUserId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncBatchNo)">
+                    nc_batch_no = #{map.ncBatchNo} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncBatchStatus)">
+                    nc_batch_status = #{map.ncBatchStatus} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncCardReason)">
+                    nc_card_reason = #{map.ncCardReason} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncCheckFlag)">
+                    nc_check_flag = #{map.ncCheckFlag}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncCardNoCondition)">
+                    nc_card_no = #{map.ncCardNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncBranchIdCondition)">
+                    AND nc_branch_id = #{map.ncBranchIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncTimeCondition)">
+                    AND nc_time = #{map.ncTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncEmergencyCondition)">
+                    AND nc_emergency = #{map.ncEmergencyCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncStatusCondition)">
+                    AND nc_status = #{map.ncStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncPickDateCondition)">
+                    AND nc_pick_date = #{map.ncPickDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyTimeCondition)">
+                    AND modify_time = #{map.modifyTimeCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.modifyByCondition)">
+                    AND modify_by = #{map.modifyByCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncUserIdCondition)">
+                    AND nc_user_id = #{map.ncUserIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncBatchNoCondition)">
+                    AND nc_batch_no = #{map.ncBatchNoCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncBatchStatusCondition)">
+                    AND nc_batch_status = #{map.ncBatchStatusCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncCardReasonCondition)">
+                    AND nc_card_reason = #{map.ncCardReasonCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ncCheckFlagCondition)">
+                    AND nc_check_flag = #{map.ncCheckFlagCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchCpNewcrdByNcCardNo" parameterType="String" resultMap="cpNewcrdMap">
+        SELECT
+        <include refid="cpNewcrdBaseColumnSql"/>
+        FROM cp_newcrd
+        WHERE nc_card_no = #{ncCardNo}
+    </select>
+
+    <select id="searchCpNewcrdByParams" parameterType="map" resultMap="cpNewcrdMap">
+        SELECT
+        <include refid="cpNewcrdBaseColumnSql"/>
+        FROM cp_newcrd
+        <include refid="cpNewcrdBaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.CpNewcrd" id="cpNewcrdMap">
+        <id column="nc_card_no" property="ncCardNo"/>
+        <result column="nc_branch_id" property="ncBranchId"/>
+        <result column="nc_time" property="ncTime"/>
+        <result column="nc_emergency" property="ncEmergency"/>
+        <result column="nc_status" property="ncStatus"/>
+        <result column="nc_pick_date" property="ncPickDate"/>
+        <result column="modify_time" property="modifyTime"/>
+        <result column="modify_by" property="modifyBy"/>
+        <result column="nc_user_id" property="ncUserId"/>
+        <result column="nc_batch_no" property="ncBatchNo"/>
+        <result column="nc_batch_status" property="ncBatchStatus"/>
+        <result column="nc_card_reason" property="ncCardReason"/>
+        <result column="nc_check_flag" property="ncCheckFlag"/>
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,16 @@
+.activities-detals{
+	width:1000px;
+	padding:20px;
+	margin:50px auto;
+	background:white;
+}
+.activities-detals img{
+	width:100%;
+	display: block;
+}
+.activities-detals p{
+	padding:20px 0;
+	font-size:15px;
+	text-indent: 40px;
+	letter-spacing: 5px;
+}

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.ConsumptionMapper">
+
+	<sql id ="consumptionBaseColumnSql">
+		ct_card_number,
+		pr_group_desc,
+		cb_embossname,
+		ct_terminal_id,
+		ct_merchant_id,
+		tm_dba_name,
+		tm_model,
+		ct_dispute_date,
+		ct_approve_time,
+		ct_tran_zone,
+		ct_bill_curr_amt,
+		ct_card_amount,
+		ct_tran_amount,
+		ct_outstd_after_post
+	</sql>
+	
+	<sql id="consumptionBaseWhereSql">
+		<if test="map!=null">
+			<where>
+				1=1 and ct_card_number = cb_cardholder_no and cb_card_prdct_group = pr_prodct_group and tm_terminal_id = ct_terminal_id and ct_tran_code in('SALE','TKSALE','BUYTICKET') and cp_ceptrx.ct_auth_resp='00'
+				<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDisputeDateStart)">
+                    AND ct_dispute_date &gt;= #{map.ctDisputeDateStart}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDisputeDateEnd)">
+                    AND ct_dispute_date &lt;= #{map.ctDisputeDateEnd}
+                </if>
+				<if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctCardNumber)">
+                    AND right(ct_card_number,6) = #{map.ctCardNumber}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.prProdctGroup)">
+                    AND pr_prodct_group = #{map.prProdctGroup}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmDbaName)">
+                    AND tm_dba_name= #{map.tmDbaName}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.tmModel)">
+                    AND tm_model = #{map.tmModel}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDisputeDateStatusUPM)">
+                	AND substr(ct_dispute_date,6,1) != substr(ct_post_time,6,1)
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ctDisputeDateStatusINM)">
+                	AND substr(ct_dispute_date,6,1) = substr(ct_post_time,6,1)
+                </if>
+                 <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.cbEmbossname)">
+                    AND cb_embossname = #{map.cbEmbossname}
+                </if>
+                order by ct_dispute_date,ct_tran_zone desc
+			</where>
+		</if>
+	</sql>
+	
+	<select id="searchConsumptionByParams" parameterType="map" resultMap="ConsumptionMap">
+    <!-- select *  from cp_ceptrx,cp_prdgrp,cp_crdtbl where 1=1 
+			and ct_card_number = cb_cardholder_no 
+			and cb_card_prdct_group = pr_prodct_group 
+			and ct_reversal_flag = 0 
+			and CB_CARDHOLDER_NO not in(select CB_CARDHOLDER_NO 
+							from cp_crdlnk,cp_crdtbl,cp_ceptrx where 1=1 
+							and CB_CARDHOLDER_NO=cl_new_card 
+							and cl_old_card=ct_card_number  order by cl_timestamp DESC)  
+			and ct_tran_code='OPENCARD'  
+			and substring(ct_approve_time,1,8) >= '20160729'  
+			and substring(ct_approve_time,1,8) <= '20160729'  order by ct_approve_time DESC  -->
+        SELECT
+        <include refid="consumptionBaseColumnSql"/>
+        FROM cp_ceptrx,cp_trmmst,cp_prdgrp,cp_crdtbl 
+        <include refid="consumptionBaseWhereSql"/>
+        
+      
+    </select>
+    
+    <resultMap type="cn.happyworlds.imgmt.entity.Consumption" id="ConsumptionMap">
+        <id column="ct_card_number" property="ctCardNumber"/>
+        <result column="pr_group_desc" property="prGroupDesc"/>
+        <result column="cb_embossname" property="cbEmbossname"/>
+        <result column="ct_terminal_id" property="ctTerminalId"/>
+        <result column="ct_merchant_id" property="ctMerchantId"/>
+        <result column="tm_dba_name" property="tmDbaName"/>
+        <result column="tm_model" property="tmModel"/>
+        <result column="ct_dispute_date" property="ctDisputeDate"/>
+        <result column="ct_approve_time" property="ctApproveTime"/>
+        <result column="ct_tran_zone" property="ctTranZone"/>
+        <result column="ct_bill_curr_amt" property="ctBillCurrAmt"/>
+        <result column="ct_card_amount" property="ctCardAmount"/>
+        <result column="ct_tran_amount" property="ctTranAmount"/>
+        <result column="ct_outstd_after_post" property="ctOutstdAfterPost"/>
+    </resultMap>
+
+</mapper>

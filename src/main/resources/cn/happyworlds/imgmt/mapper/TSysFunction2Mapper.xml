@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.happyworlds.imgmt.mapper.TSysFunction2Mapper">
+
+    <sql id="TSysFunction2BaseColumnSql">
+        funt_id,
+        funt_parent_id,
+        id,
+        name,
+        funt_level,
+        funt_create_date,
+        funt_update_data,
+        funt_create_by,
+        funt_update_by,
+        module,
+        remark
+    </sql>
+
+    <sql id="TSysFunction2BaseWhereSql">
+        <if test="map!=null">
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtId)">
+                    funt_id = #{map.funtId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtParentId)">
+                    AND funt_parent_id = #{map.funtParentId}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.id)">
+                    AND id = #{map.id}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.name)">
+                    AND name = #{map.name}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtLevel)">
+                    AND funt_level = #{map.funtLevel}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtCreateDate)">
+                    AND funt_create_date = #{map.funtCreateDate}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtUpdateData)">
+                    AND funt_update_data = #{map.funtUpdateData}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtCreateBy)">
+                    AND funt_create_by = #{map.funtCreateBy}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtUpdateBy)">
+                    AND funt_update_by = #{map.funtUpdateBy}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.module)">
+                    AND module = #{map.module}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.remark)">
+                    AND remark = #{map.remark}
+                </if>
+            </where>
+        </if>
+    </sql>
+
+    <insert id="insertTSysFunction2" parameterType="cn.happyworlds.imgmt.entity.TSysFunction2">
+        INSERT INTO t_sys_function2(
+        <include refid="TSysFunction2BaseColumnSql"/>
+        )VALUES(
+            #{funtId},
+            #{funtParentId},
+            #{id},
+            #{name},
+            #{funtLevel},
+            #{funtCreateDate},
+            #{funtUpdateData},
+            #{funtCreateBy},
+            #{funtUpdateBy},
+            #{module},
+            #{remark}
+        )
+    </insert>
+        
+    <delete id="deleteTSysFunction2ByFuntId" parameterType="Integer">
+        DELETE FROM t_sys_function2 WHERE funt_id = #{funtId}
+    </delete>
+	
+	<delete id="deleteTSysFunction2ById" parameterType="String">
+        DELETE FROM t_sys_function2 WHERE id = #{id}
+    </delete>
+    
+    <select id="deleteTSysFunction2ByParams" parameterType="map">
+        DELETE FROM t_sys_function2
+        <include refid="TSysFunction2BaseWhereSql"/>
+    </select>
+
+    <update id="updateTSysFunction2" parameterType="cn.happyworlds.imgmt.entity.TSysFunction2">
+        UPDATE t_sys_function2
+        <set>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(funtParentId)">
+                funt_parent_id = #{funtParentId} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(id)">
+                id = #{id} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(name)">
+                name = #{name} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(funtLevel)">
+                funt_level = #{funtLevel} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(funtCreateDate)">
+                funt_create_date = #{funtCreateDate} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(funtUpdateData)">
+                funt_update_data = #{funtUpdateData} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(funtCreateBy)">
+                funt_create_by = #{funtCreateBy} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(funtUpdateBy)">
+                funt_update_by = #{funtUpdateBy} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(module)">
+                module = #{module} ,
+            </if>
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(remark)">
+                remark = #{remark}
+            </if>
+        </set>
+        WHERE funt_id = #{funtId}
+    </update>
+
+    <update id="updateTSysFunction2ByParams" parameterType="map">
+        <if test="map!=null">
+            UPDATE t_sys_function2
+            <set>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtParentId)">
+                    funt_parent_id = #{map.funtParentId} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.id)">
+                    id = #{map.id} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.name)">
+                    name = #{map.name} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtLevel)">
+                    funt_level = #{map.funtLevel} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtCreateDate)">
+                    funt_create_date = #{map.funtCreateDate} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtUpdateData)">
+                    funt_update_data = #{map.funtUpdateData} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtCreateBy)">
+                    funt_create_by = #{map.funtCreateBy} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtUpdateBy)">
+                    funt_update_by = #{map.funtUpdateBy} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.module)">
+                    module = #{map.module} ,
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.remark)">
+                    remark = #{map.remark}
+                </if>
+            </set>
+            <where>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtIdCondition)">
+                    funt_id = #{map.funtIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtParentIdCondition)">
+                    AND funt_parent_id = #{map.funtParentIdCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.idCondition)">
+                    AND id = #{map.idCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.nameCondition)">
+                    AND name = #{map.nameCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtLevelCondition)">
+                    AND funt_level = #{map.funtLevelCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtCreateDateCondition)">
+                    AND funt_create_date = #{map.funtCreateDateCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtUpdateDataCondition)">
+                    AND funt_update_data = #{map.funtUpdateDataCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtCreateByCondition)">
+                    AND funt_create_by = #{map.funtCreateByCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.funtUpdateByCondition)">
+                    AND funt_update_by = #{map.funtUpdateByCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.moduleCondition)">
+                    AND module = #{map.moduleCondition}
+                </if>
+                <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.remarkCondition)">
+                    AND remark = #{map.remarkCondition}
+                </if>
+            </where>
+        </if>
+    </update>
+
+    <select id="searchTSysFunction2ByFuntId" parameterType="Integer" resultMap="TSysFunction2Map">
+        SELECT
+        <include refid="TSysFunction2BaseColumnSql"/>
+        FROM t_sys_function2
+        WHERE funt_id = #{funtId}
+    </select>
+	
+	<select id="searchMaxChildenByParentId" parameterType="String" resultMap="TSysFunction2Map">
+        SELECT
+        <include refid="TSysFunction2BaseColumnSql"/>
+        FROM 
+        	t_sys_function2
+        WHERE 
+        	funt_parent_id = #{funtParentId} 
+        ORDER BY 
+        	funt_id DESC 
+        LIMIT 1 
+    </select>
+    
+    <select id="searchTSysFunction2ByParams" parameterType="map" resultMap="TSysFunction2Map">
+        SELECT
+        <include refid="TSysFunction2BaseColumnSql"/>
+        FROM t_sys_function2
+        <include refid="TSysFunction2BaseWhereSql"/>
+        <if test="map!=null">
+            <if test="@cn.happyworlds.imgmt.util.Objects@isNotEmpty(map.ORDER_BY)">
+                ORDER BY #{map.ORDER_BY}
+            </if>
+        </if>
+    </select>
+
+    <resultMap type="cn.happyworlds.imgmt.entity.TSysFunction2" id="TSysFunction2Map">
+        <id column="funt_id" property="funtId"/>
+        <result column="funt_parent_id" property="funtParentId"/>
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="funt_level" property="funtLevel"/>
+        <result column="funt_create_date" property="funtCreateDate"/>
+        <result column="funt_update_data" property="funtUpdateData"/>
+        <result column="funt_create_by" property="funtCreateBy"/>
+        <result column="funt_update_by" property="funtUpdateBy"/>
+        <result column="module" property="module"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+
+</mapper>
